@@ -1,0 +1,236 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Cart | Ethnic Vault</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:#F8F3EA;
+    font-family:'Poppins',sans-serif;
+}
+
+.topbar{
+    padding:25px 0;
+}
+
+.back-btn{
+    background:#111827;
+    color:#D8B56A;
+    padding:12px 22px;
+    border-radius:40px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+.back-btn:hover{
+    background:#D8B56A;
+    color:#111827;
+    text-decoration:none;
+}
+
+.page-title{
+    font-family:'Playfair Display',serif;
+    font-size:46px;
+    margin-bottom:35px;
+    color:#1E1E1E;
+}
+
+.cart-card{
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom:25px;
+}
+
+.cart-img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.design-title{
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:10px;
+}
+
+.price{
+    color:#B8924C;
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.qty{
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+.total-box{
+    background:#111827;
+    color:white;
+    padding:30px;
+    border-radius:24px;
+    text-align:center;
+    margin-top:20px;
+}
+
+.total-box h2{
+    font-size:38px;
+    margin-top:12px;
+    color:#D8B56A;
+}
+
+.btn-theme{
+    width:100%;
+    margin-top:15px;
+    border:none;
+    background:linear-gradient(135deg,#B8924C,#D8B56A);
+    color:white;
+    padding:14px;
+    border-radius:14px;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+.btn-theme:hover{
+    transform:translateY(-2px);
+}
+
+.remove-btn{
+    width:100%;
+    margin-top:10px;
+    background:#dc3545;
+    color:white;
+    border:none;
+    padding:12px;
+    border-radius:12px;
+    text-decoration:none;
+    display:inline-block;
+    text-align:center;
+}
+
+.empty-box{
+    background:white;
+    padding:50px;
+    border-radius:24px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="topbar">
+
+        <a href="/" class="back-btn">
+            ← Back To Homepage
+        </a>
+
+    </div>
+
+    <h1 class="page-title">
+        My Shopping Cart
+    </h1>
+
+    {% if cart_items %}
+
+    <div class="row">
+
+        {% for item in cart_items %}
+
+        <div class="col-md-4">
+
+            <div class="cart-card">
+
+                <img src="{{ item.design.design_image1.url }}"
+                     class="cart-img">
+
+                <div class="card-content">
+
+                    <div class="design-title">
+                        {{ item.design.design_title }}
+                    </div>
+
+                    <div class="price">
+                        ₹ {{ item.design.charges }}
+                    </div>
+
+                    <div class="qty">
+                        Rental Price : ₹ {{ item.design.charges }}
+                    </div>
+
+                    <a href="{% url 'view_design_details' item.design.id %}"
+                       class="btn btn-theme">
+
+                        View Details
+
+                    </a>
+
+                    <a href="{% url 'remove_cart_item' item.id %}"
+                       class="remove-btn">
+
+                        Remove Item
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="total-box">
+
+        <h4>Grand Total</h4>
+
+        <h2>
+             ₹ {{ grand_total }}
+        </h2>
+
+    </div>
+
+    {% else %}
+
+    <div class="empty-box">
+
+        <h2>Your Cart Is Empty</h2>
+
+        <p>Add beautiful ethnic outfits to your cart.</p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+</body>
+</html>

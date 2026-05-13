@@ -1,0 +1,300 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{% block title %}Designer Panel{% endblock %} | Ethnic Vault</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#f5f5f5;
+    overflow-x:hidden;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:280px;
+    min-height:100vh;
+    background:linear-gradient(180deg,#0f0f0f,#1c1c1c);
+    position:fixed;
+    left:0;
+    top:0;
+    padding:30px 20px;
+    color:white;
+    box-shadow:5px 0 25px rgba(0,0,0,0.08);
+    overflow:hidden;
+}
+
+/* GOLD CIRCLE EFFECT */
+
+.sidebar::before{
+    content:'';
+    position:absolute;
+    width:260px;
+    height:260px;
+    background:rgba(212,175,55,0.08);
+    border-radius:50%;
+    top:-80px;
+    left:-80px;
+    filter:blur(25px);
+}
+
+/* LOGO */
+
+.logo-section{
+    text-align:center;
+    margin-bottom:40px;
+    position:relative;
+    z-index:2;
+}
+
+.logo-section h2{
+    color:#d4af37;
+    font-weight:700;
+    margin-bottom:5px;
+}
+
+.logo-section p{
+    color:#bbb;
+    font-size:13px;
+}
+
+/* MENU */
+
+.sidebar-menu{
+    position:relative;
+    z-index:2;
+}
+
+.sidebar-menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+    color:#f5f5f5;
+    padding:14px 18px;
+    margin-bottom:12px;
+    border-radius:12px;
+    transition:0.3s;
+    font-size:15px;
+    font-weight:500;
+}
+
+.sidebar-menu a:hover{
+    background:#d4af37;
+    color:black;
+    transform:translateX(5px);
+}
+
+.sidebar-menu a i{
+    width:20px;
+    text-align:center;
+}
+
+/* ACTIVE LINK */
+
+.sidebar-menu .active{
+    background:#d4af37;
+    color:black;
+}
+
+/* LOGOUT BUTTON */
+
+.logout-btn{
+    margin-top:30px;
+    justify-content:center;
+    background:#d4af37;
+    color:black !important;
+    font-weight:600;
+}
+
+.logout-btn:hover{
+    background:#b8922f !important;
+}
+
+/* MAIN CONTENT */
+
+.main-content{
+    margin-left:280px;
+    min-height:100vh;
+    padding:35px;
+}
+
+/* TOP HEADER */
+
+.top-header{
+    background:white;
+    border-radius:18px;
+    padding:22px 30px;
+    margin-bottom:30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.05);
+}
+
+.top-header h4{
+    margin:0;
+    font-weight:700;
+    color:#111;
+}
+
+.top-header p{
+    margin:0;
+    color:#777;
+    font-size:14px;
+}
+
+/* USER BADGE */
+
+.user-badge{
+    background:#111;
+    color:#d4af37;
+    padding:10px 18px;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:991px){
+
+    .sidebar{
+        width:100%;
+        position:relative;
+        min-height:auto;
+    }
+
+    .main-content{
+        margin-left:0;
+        padding:20px;
+    }
+
+    .top-header{
+        flex-direction:column;
+        gap:15px;
+        text-align:center;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <!-- LOGO -->
+
+    <div class="logo-section">
+
+        <h2>Ethnic Vault</h2>
+
+        <p>Designer Dashboard</p>
+
+    </div>
+
+    <!-- MENU -->
+
+    <div class="sidebar-menu">
+
+        <a href="{% url 'designer_dashboard' %}">
+            <i class="fa fa-home"></i>
+            Dashboard
+        </a>
+
+        <a href="{% url 'uplod_designs' %}">
+            <i class="fa fa-upload"></i>
+            Upload Design
+        </a>
+
+        <a href="{% url 'my_design' %}">
+            <i class="fa-solid fa-shirt"></i>
+            My Designs
+        </a>
+
+        <a href="{% url 'profile_account' %}">
+            <i class="fa fa-user"></i>
+            Profile
+        </a>
+
+        <a href="{% url 'view_rental_request' %}">
+            <i class="fa fa-bell"></i>
+            Rental Requests
+        </a>
+
+        <a href="#">
+            <i class="fa fa-envelope"></i>
+            Notifications
+        </a>
+
+        <a href="{% url 'logout_view' %}" class="logout-btn">
+            <i class="fa fa-sign-out-alt"></i>
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+
+<div class="main-content">
+
+    <!-- TOP HEADER -->
+
+    <div class="top-header">
+
+        <div>
+            <h4>Designer Control Panel</h4>
+            <p>Manage your designs, rentals and profile professionally</p>
+        </div>
+
+        <div class="user-badge">
+            <i class="fa fa-user-circle"></i>
+            Designer Portal
+        </div>
+
+    </div>
+
+    <!-- PAGE CONTENT -->
+
+    {% block content %}
+    {% endblock %}
+
+</div>
+
+<!-- JS -->
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

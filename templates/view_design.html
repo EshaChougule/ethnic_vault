@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ethnic Vault | All Designs</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:'Poppins',sans-serif;
+        background-color:#FAF7F2;
+        background-image:
+        linear-gradient(rgba(250,247,242,0.88), rgba(250,247,242,0.88)),
+        url("{% static 'images/ethnic-pattern.png' %}");
+        background-size:320px;
+        background-repeat:repeat;
+        background-attachment:fixed;
+        color:#2B2B2B;
+        padding:35px;
+    }
+
+    /* PAGE TITLE */
+
+    .main-title{
+        text-align:center;
+        margin-bottom:35px;
+    }
+
+    .main-title h1{
+        font-family:'Playfair Display',serif;
+        font-size:48px;
+        color:#B68D40;
+        margin-bottom:10px;
+    }
+
+    .main-title p{
+        color:#666;
+        font-size:15px;
+    }
+
+    /* SECTION CARD */
+
+    .section-card{
+        background:rgba(255,255,255,0.93);
+        backdrop-filter:blur(6px);
+        border-radius:28px;
+        padding:30px;
+        margin-bottom:40px;
+        box-shadow:0 10px 35px rgba(0,0,0,0.08);
+        border:1px solid rgba(182,141,64,0.15);
+    }
+
+    /* SECTION HEADING */
+
+    .section-heading{
+        font-family:'Playfair Display',serif;
+        font-size:32px;
+        color:#2B2B2B;
+        margin-bottom:25px;
+        display:flex;
+        align-items:center;
+        gap:12px;
+    }
+
+    .section-heading i{
+        color:#B68D40;
+    }
+
+    /* TABLE */
+
+    .table-responsive{
+        border-radius:20px;
+        overflow:hidden;
+    }
+
+    .custom-table{
+        width:100%;
+        border-collapse:collapse;
+        background:white;
+        overflow:hidden;
+    }
+
+    .custom-table thead{
+        background:#111;
+        color:#F8F5EF;
+    }
+
+    .custom-table thead th{
+        padding:16px;
+        font-size:14px;
+        font-weight:600;
+        border:none;
+        white-space:nowrap;
+    }
+
+    .custom-table tbody td{
+        padding:16px;
+        font-size:14px;
+        vertical-align:middle;
+        border-bottom:1px solid rgba(0,0,0,0.06);
+        color:#444;
+    }
+
+    .custom-table tbody tr{
+        transition:0.3s ease;
+    }
+
+    .custom-table tbody tr:hover{
+        background:#FCF8F1;
+    }
+
+    /* IMAGES */
+
+    .design-images{
+        display:flex;
+        gap:10px;
+        flex-wrap:wrap;
+    }
+
+    .design-images img{
+        width:85px;
+        height:85px;
+        object-fit:cover;
+        border-radius:14px;
+        border:2px solid rgba(182,141,64,0.18);
+        transition:0.3s ease;
+        background:white;
+    }
+
+    .design-images img:hover{
+        transform:scale(1.05);
+    }
+
+    /* BUTTONS */
+
+    .action-btn{
+        display:inline-block;
+        text-decoration:none;
+        padding:9px 16px;
+        border-radius:30px;
+        font-size:13px;
+        font-weight:600;
+        margin-bottom:8px;
+        transition:0.3s ease;
+    }
+
+    .approve-btn{
+        background:#B68D40;
+        color:white;
+    }
+
+    .approve-btn:hover{
+        background:#C9A45A;
+        color:white;
+        text-decoration:none;
+        transform:translateY(-2px);
+    }
+
+    .disapprove-btn{
+        background:#1E1E1E;
+        color:white;
+    }
+
+    .disapprove-btn:hover{
+        background:#333;
+        color:white;
+        text-decoration:none;
+        transform:translateY(-2px);
+    }
+
+    /* EMPTY */
+
+    .empty-row{
+        text-align:center;
+        padding:30px !important;
+        color:#888 !important;
+        font-size:15px;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:992px){
+
+        body{
+            padding:18px;
+        }
+
+        .main-title h1{
+            font-size:38px;
+        }
+
+        .section-heading{
+            font-size:26px;
+        }
+
+        .custom-table{
+            min-width:1200px;
+        }
+
+    }
+
+    .back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+
+    background:#111827;
+    color:#d4af37;
+
+    padding:7px 13px;
+    margin-bottom:20px;
+
+    border-radius:25px;
+    border:1px solid rgba(212,175,55,0.25);
+
+    text-decoration:none;
+    font-size:12px;
+    font-weight:500;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+
+    transition:all 0.3s ease;
+}
+
+.back-btn:hover{
+    background:#d4af37;
+    color:#111827;
+
+    text-decoration:none;
+
+    transform:translateY(-2px);
+}
+
+.back-btn i{
+    font-size:11px;
+}
+
+    </style>
+
+</head>
+
+<body>
+    <a href="{% url 'admin_dashboard' %}" class="back-btn">
+        <i class="fa fa-arrow-left"></i> Back to Dashboard
+    </a>
+
+<!-- PAGE TITLE -->
+
+<div class="main-title">
+
+    <h1>Design Management</h1>
+
+    <p>
+        Review and manage all uploaded ethnic designs across the platform
+    </p>
+
+</div>
+
+<!-- PENDING DESIGNS -->
+
+<div class="section-card">
+
+    <div class="section-heading">
+        <i class="fa fa-clock-o"></i>
+        Pending Designs
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="custom-table">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Designer</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Charges</th>
+                    <th>Images</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% if pending_design %}
+
+                {% for s in pending_design %}
+
+                <tr>
+
+                    <td>{{ s.date }}</td>
+
+                    <td>{{ s.designer_name }}</td>
+
+                    <td>{{ s.designer_email }}</td>
+
+                    <td>{{ s.designer_contact }}</td>
+
+                    <td>{{ s.design_title }}</td>
+
+                    <td>{{ s.design_description }}</td>
+
+                    <td>₹ {{ s.charges }}</td>
+
+                    <td>
+
+                        <div class="design-images">
+
+                            {% if s.design_image1 %}
+                                <img src="{{ s.design_image1.url }}">
+                            {% endif %}
+
+                            {% if s.design_image2 %}
+                                <img src="{{ s.design_image2.url }}">
+                            {% endif %}
+
+                            {% if s.design_image3 %}
+                                <img src="{{ s.design_image3.url }}">
+                            {% endif %}
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'approve_design' s.id %}"
+                           class="action-btn approve-btn">
+                            Approve
+                        </a>
+
+                        <br>
+
+                        <a href="{% url 'disapprove_design' s.id %}"
+                           class="action-btn disapprove-btn">
+                            Disapprove
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <tr>
+                    <td colspan="9" class="empty-row">
+                        No Pending Designs Found
+                    </td>
+                </tr>
+
+            {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- APPROVED DESIGNS -->
+
+<div class="section-card">
+
+    <div class="section-heading">
+        <i class="fa fa-check-circle"></i>
+        Approved Designs
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="custom-table">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Designer</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Charges</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% if approved_design %}
+
+                {% for s in approved_design %}
+
+                <tr>
+
+                    <td>{{ s.date }}</td>
+
+                    <td>{{ s.designer_name }}</td>
+
+                    <td>{{ s.designer_email }}</td>
+
+                    <td>{{ s.designer_contact }}</td>
+
+                    <td>{{ s.design_title }}</td>
+
+                    <td>{{ s.design_description }}</td>
+
+                    <td>₹ {{ s.charges }}</td>
+
+                    <td>
+
+                        <a href="{% url 'disapprove_design' s.id %}"
+                           class="action-btn disapprove-btn">
+                            Disapprove
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <tr>
+                    <td colspan="8" class="empty-row">
+                        No Approved Designs Found
+                    </td>
+                </tr>
+
+            {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- DISAPPROVED DESIGNS -->
+
+<div class="section-card">
+
+    <div class="section-heading">
+        <i class="fa fa-times-circle"></i>
+        Disapproved Designs
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="custom-table">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Designer</th>
+                    <th>Email</th>
+                    <th>Contact</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Charges</th>
+                    <th>Images</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% if disapproved_design %}
+
+                {% for s in disapproved_design %}
+
+                <tr>
+
+                    <td>{{ s.date }}</td>
+
+                    <td>{{ s.designer_name }}</td>
+
+                    <td>{{ s.designer_email }}</td>
+
+                    <td>{{ s.designer_contact }}</td>
+
+                    <td>{{ s.design_title }}</td>
+
+                    <td>{{ s.design_description }}</td>
+
+                    <td>₹ {{ s.charges }}</td>
+
+                    <td>
+
+                        <div class="design-images">
+
+                            {% if s.design_image1 %}
+                                <img src="{{ s.design_image1.url }}">
+                            {% endif %}
+
+                            {% if s.design_image2 %}
+                                <img src="{{ s.design_image2.url }}">
+                            {% endif %}
+
+                            {% if s.design_image3 %}
+                                <img src="{{ s.design_image3.url }}">
+                            {% endif %}
+
+                        </div>
+
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'approve_design' s.id %}"
+                           class="action-btn approve-btn">
+                            Approve
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            {% else %}
+
+                <tr>
+                    <td colspan="9" class="empty-row">
+                        No Disapproved Designs Found
+                    </td>
+                </tr>
+
+            {% endif %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% if messages %}
+<script>
+
+    {% for message in messages %}
+        alert("{{ message }}")
+    {% endfor %}
+
+</script>
+{% endif %}
+
+</body>
+</html>

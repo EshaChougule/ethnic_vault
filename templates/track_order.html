@@ -1,0 +1,168 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Track Order | Ethnic Vault</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+    background:#F8F3EA;
+    font-family:'Poppins',sans-serif;
+    padding:50px;
+}
+
+.track-box{
+    background:white;
+    padding:40px;
+    border-radius:24px;
+    max-width:900px;
+    margin:auto;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.title{
+    font-size:36px;
+    font-weight:700;
+    margin-bottom:50px;
+    text-align:center;
+}
+
+.progress-container{
+    display:flex;
+    justify-content:space-between;
+    position:relative;
+    margin-top:60px;
+}
+
+.progress-container::before{
+    content:'';
+    position:absolute;
+    top:25px;
+    left:0;
+    width:100%;
+    height:5px;
+    background:#ddd;
+    z-index:1;
+}
+
+.step{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:25%;
+}
+
+.circle{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:#ddd;
+    margin:auto;
+    line-height:50px;
+    color:white;
+    font-weight:700;
+    font-size:18px;
+}
+
+.active .circle{
+    background:#C5A572;
+}
+
+.label{
+    margin-top:12px;
+    font-size:14px;
+    font-weight:600;
+}
+
+.order-details{
+    margin-top:50px;
+    background:#fafafa;
+    padding:25px;
+    border-radius:18px;
+}
+
+.order-details h4{
+    margin-bottom:15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="track-box">
+
+    <div class="title">
+        Track Your Rental
+    </div>
+
+    <div class="progress-container">
+
+        <div class="step active">
+            <div class="circle">✓</div>
+            <div class="label">Requested</div>
+        </div>
+
+        <div class="step {% if order.status == 'Approved' or order.status == 'Shipped' or order.status == 'Delivered' %}active{% endif %}">
+            <div class="circle">✓</div>
+            <div class="label">Approved</div>
+        </div>
+
+        <div class="step {% if order.status == 'Shipped' or order.status == 'Delivered' %}active{% endif %}">
+            <div class="circle">✓</div>
+            <div class="label">Shipped</div>
+        </div>
+
+        <div class="step {% if order.status == 'Delivered' %}active{% endif %}">
+            <div class="circle">✓</div>
+            <div class="label">Delivered</div>
+        </div>
+
+    </div>
+
+    <div class="order-details">
+
+        <h4>Order Details</h4>
+
+        <p>
+            <strong>Designer:</strong>
+            {{ order.designer_name }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ order.status }}
+        </p>
+
+        <p>
+            <strong>Rental Date:</strong>
+            {{ order.rental_from }}
+        </p>
+
+        <p>
+            <strong>Return Date:</strong>
+            {{ order.rental_date }}
+        </p>
+
+        <p>
+            <strong>Delivery Address:</strong>
+            {{ request.session.location }}
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

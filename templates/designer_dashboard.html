@@ -1,0 +1,887 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Designer Dashboard | Ethnic Vault</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#F7F3EC;
+
+    overflow-x:hidden;
+
+    position:relative;
+}
+
+/* BACKGROUND */
+
+body::before{
+
+    content:"";
+
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(247,243,236,0.95),
+    rgba(247,243,236,0.95)),
+
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+
+    z-index:-2;
+}
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    width:500px;
+    height:500px;
+
+    background:rgba(184,146,76,0.12);
+
+    border-radius:50%;
+
+    top:-180px;
+    right:-120px;
+
+    filter:blur(100px);
+
+    z-index:-1;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+
+    width:280px;
+    height:100vh;
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    background:
+    linear-gradient(180deg,#16120D,#1E1A14);
+
+    padding:30px 22px;
+
+    overflow-y:auto;
+
+    box-shadow:
+    5px 0 30px rgba(0,0,0,0.12);
+
+    z-index:10;
+}
+
+/* LOGO */
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:16px;
+
+    margin-bottom:40px;
+}
+
+.logo-icon{
+
+    width:58px;
+    height:58px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(135deg,#B8924C,#D8B56A);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+
+    font-size:24px;
+
+    box-shadow:
+    0 12px 30px rgba(184,146,76,0.25);
+}
+
+.logo h2{
+
+    margin:0;
+
+    color:#F8E7C2;
+
+    font-size:30px;
+
+    font-family:'Playfair Display',serif;
+}
+
+.logo span{
+
+    color:#C7A96B;
+
+    font-size:12px;
+
+    letter-spacing:2px;
+}
+
+/* PROFILE */
+
+.profile-box{
+
+    background:
+    rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    border-radius:28px;
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+    backdrop-filter:blur(10px);
+}
+
+.profile-box img{
+
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:4px solid #D8B56A;
+
+    margin-bottom:18px;
+}
+
+.profile-box h5{
+
+    color:white;
+
+    font-size:20px;
+
+    margin-bottom:6px;
+
+    font-weight:600;
+}
+
+.profile-box span{
+
+    color:#D8B56A;
+
+    font-size:14px;
+}
+
+/* MENU */
+
+.sidebar-menu{
+
+    margin-top:20px;
+}
+
+.sidebar-menu a{
+
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    text-decoration:none;
+
+    color:#F4F4F4;
+
+    padding:15px 18px;
+
+    border-radius:18px;
+
+    margin-bottom:14px;
+
+    transition:0.3s ease;
+
+    font-size:15px;
+
+    font-weight:500;
+}
+
+.sidebar-menu a:hover{
+
+    background:
+    linear-gradient(135deg,#B8924C,#D8B56A);
+
+    color:#111;
+
+    transform:translateX(5px);
+}
+
+.sidebar-menu i{
+
+    width:22px;
+
+    font-size:17px;
+}
+
+/* MAIN */
+
+.main-content{
+
+    margin-left:280px;
+
+    padding:40px;
+}
+
+/* HEADER */
+
+.top-header{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    margin-bottom:35px;
+}
+
+.dashboard-title h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:48px;
+
+    color:#1E1E1E;
+
+    margin-bottom:10px;
+}
+
+.dashboard-title p{
+
+    color:#777;
+
+    font-size:15px;
+}
+
+/* BUTTON */
+
+.quick-btn{
+
+    text-decoration:none;
+
+    background:#111;
+
+    color:#D8B56A;
+
+    padding:14px 24px;
+
+    border-radius:16px;
+
+    font-size:14px;
+    font-weight:600;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    transition:0.3s ease;
+
+    box-shadow:
+    0 10px 25px rgba(0,0,0,0.08);
+}
+
+.quick-btn:hover{
+
+    background:#B8924C;
+
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+/* STATS */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+
+    gap:22px;
+
+    margin-bottom:35px;
+}
+
+.stat-card{
+
+    background:
+    rgba(255,255,255,0.78);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:28px;
+
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,0.5);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.06);
+
+    transition:0.3s ease;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+}
+
+.stat-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:140px;
+    height:140px;
+
+    background:rgba(184,146,76,0.08);
+
+    border-radius:50%;
+
+    top:-60px;
+    right:-60px;
+}
+
+.stat-card i{
+
+    width:62px;
+    height:62px;
+
+    border-radius:18px;
+
+    background:
+    rgba(184,146,76,0.12);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#B8924C;
+
+    font-size:24px;
+
+    margin-bottom:18px;
+}
+
+.stat-card h6{
+
+    color:#777;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+}
+
+.stat-card h2{
+
+    color:#1E1E1E;
+
+    font-size:38px;
+
+    font-weight:700;
+}
+
+/* TABLE SECTION */
+
+.table-section{
+
+    background:
+    rgba(255,255,255,0.80);
+
+    backdrop-filter:blur(16px);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    margin-bottom:35px;
+
+    border:1px solid rgba(255,255,255,0.5);
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.06);
+}
+
+.table-section h4{
+
+    font-family:'Playfair Display',serif;
+
+    color:#1E1E1E;
+
+    margin-bottom:24px;
+
+    font-size:30px;
+}
+
+.table{
+
+    margin-bottom:0;
+}
+
+.table thead{
+
+    background:#111;
+
+    color:#D8B56A;
+}
+
+.table thead th{
+
+    border:none;
+
+    padding:18px;
+
+    font-weight:600;
+
+    font-size:14px;
+}
+
+.table tbody td{
+
+    padding:18px;
+
+    vertical-align:middle;
+
+    font-size:14px;
+}
+
+/* STATUS */
+
+.status-badge{
+
+    padding:8px 18px;
+
+    border-radius:40px;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.pending{
+
+    background:#FFF4D6;
+
+    color:#9A6B00;
+}
+
+.approved{
+
+    background:#DFF6E5;
+
+    color:#1D7A3C;
+}
+
+.disapproved{
+
+    background:#FFE1E1;
+
+    color:#A32020;
+}
+
+/* CHART */
+
+canvas{
+
+    max-height:320px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:100%;
+        height:auto;
+
+        position:relative;
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+        padding:25px;
+    }
+
+    .top-header{
+
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .dashboard-title h1{
+
+        font-size:38px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+
+        <div>
+            <h2>Ethnic Vault</h2>
+            <span>DESIGNER STUDIO</span>
+        </div>
+
+    </div>
+
+    <!-- PROFILE -->
+
+    <div class="profile-box">
+
+        {% if designer_name.designer_photo %}
+            <img src="{{ designer_name.designer_photo.url }}">
+        {% else %}
+            <img src="{% static 'images/default_user.png' %}">
+        {% endif %}
+
+        <h5>{{ designer_name.designer_name }}</h5>
+
+        <span>Fashion Designer</span>
+
+    </div>
+
+    <!-- MENU -->
+
+    <div class="sidebar-menu">
+
+        <a href="{% url 'designer_dashboard' %}">
+            <i class="fa-solid fa-house"></i>
+            Dashboard
+        </a>
+
+        <a href="{% url 'uplod_designs' %}">
+            <i class="fa-solid fa-cloud-arrow-up"></i>
+            Upload Design
+        </a>
+
+        <a href="{% url 'my_design' %}">
+            <i class="fa-solid fa-shirt"></i>
+            My Designs
+        </a>
+
+        <a href="{% url 'view_rental_request' %}">
+            <i class="fa-solid fa-bell"></i>
+            Rental Requests
+        </a>
+
+        <a href="{% url 'email' %}">
+            <i class="fa-solid fa-envelope"></i>
+            Notifications
+        </a>
+
+        <a href="{% url 'profile_account' %}">
+            <i class="fa-solid fa-user"></i>
+            Profile
+        </a>
+
+        <a href="{% url 'logout_view' %}">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-content">
+
+    <!-- HEADER -->
+
+    <div class="top-header">
+
+        <div class="dashboard-title">
+
+            <h1>Designer Dashboard</h1>
+
+            <p>
+                Welcome back! Manage your ethnic collections, rentals and notifications beautifully.
+            </p>
+
+        </div>
+
+        <a href="{% url 'uplod_designs' %}" class="quick-btn">
+
+            <i class="fa-solid fa-plus"></i>
+
+            Upload New Design
+
+        </a>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="stats-grid">
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-shirt"></i>
+
+            <h6>Total Designs</h6>
+
+            <h2>{{ total_designs }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-clock"></i>
+
+            <h6>Pending Designs</h6>
+
+            <h2>{{ pending_designs }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <i class="fa-solid fa-eye"></i>
+
+            <h6>Total Views</h6>
+
+            <h2>{{ total_views }}</h2>
+
+        </div>
+
+    </div>
+
+    <!-- MY DESIGNS -->
+
+    <div class="table-section">
+
+        <h4>My Uploaded Designs</h4>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Charges</th>
+                    <th>Date</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for d in recent_designs %}
+
+                <tr>
+
+                    <td>{{ d.id }}</td>
+
+                    <td>{{ d.design_title }}</td>
+
+                    <td>₹{{ d.charges }}</td>
+
+                    <td>{{ d.date }}</td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="4" class="text-center">
+                        No designs uploaded yet
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- RENTALS -->
+
+    <div class="table-section">
+
+        <h4>Recent Rental Requests</h4>
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+                    <th>User</th>
+                    <th>Rental Period</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for r in rentals %}
+
+                <tr>
+
+                    <td>
+                        {{ r.user_name }}
+                        <br>
+                        <small>{{ r.user_email }}</small>
+                    </td>
+
+                    <td>
+                        {{ r.rental_from }} → {{ r.rental_date }}
+                    </td>
+
+                    <td>
+                        ₹{{ r.total_charges }}
+                    </td>
+
+                    <td>
+
+                        {% if r.status == 'Pending' %}
+
+                            <span class="status-badge pending">
+                                Pending
+                            </span>
+
+                        {% elif r.status == 'Approved' %}
+
+                            <span class="status-badge approved">
+                                Approved
+                            </span>
+
+                        {% else %}
+
+                            <span class="status-badge disapproved">
+                                Disapproved
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="4" class="text-center">
+                        No rental requests
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <!-- CHART -->
+
+    <div class="table-section">
+
+        <h4>Upload Analytics</h4>
+
+        <canvas id="uploadsChart"></canvas>
+
+    </div>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('uploadsChart').getContext('2d');
+
+new Chart(ctx, {
+    type: 'line',
+
+    data: {
+
+        labels: {{ dates|safe }},
+
+        datasets: [{
+            label: 'Uploads',
+            data: {{ counts|safe }},
+            borderColor: '#B8924C',
+            backgroundColor: 'rgba(184,146,76,0.15)',
+            fill: true,
+            tension: 0.4
+        }]
+    }
+});
+
+</script>
+
+</body>
+</html>

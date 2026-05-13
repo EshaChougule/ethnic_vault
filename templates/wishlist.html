@@ -1,0 +1,422 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Wishlist | Ethnic Vault</title>
+
+<!-- Bootstrap -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    background-color:#FAF7F2;
+
+    background-image:
+    radial-gradient(rgba(197,165,114,0.08) 1px, transparent 1px),
+    radial-gradient(rgba(197,165,114,0.05) 1px, transparent 1px);
+
+    background-size:40px 40px;
+    background-position:0 0,20px 20px;
+
+    min-height:100vh;
+
+    color:#2B2B2B;
+}
+
+/* TOPBAR */
+
+.topbar{
+    display:flex;
+    align-items:center;
+
+    padding-top:30px;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    background:#111827;
+    color:#D8B56A;
+
+    padding:13px 22px;
+
+    border-radius:16px;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.back-btn:hover{
+    background:#D8B56A;
+    color:#fff;
+
+    text-decoration:none;
+
+    transform:translateY(-2px);
+}
+
+/* PAGE TITLE */
+
+.page-title{
+    font-family:'Playfair Display',serif;
+
+    font-size:52px;
+    font-weight:700;
+
+    color:#2B2B2B;
+
+    margin-top:35px;
+    margin-bottom:12px;
+}
+
+.page-subtitle{
+    color:#666;
+    font-size:15px;
+
+    margin-bottom:45px;
+}
+
+/* CARD */
+
+.wishlist-card{
+    background:#fff;
+
+    border:none;
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    transition:0.4s ease;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+
+    height:100%;
+}
+
+.wishlist-card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* IMAGE */
+
+.wishlist-img{
+    width:100%;
+    height:340px;
+
+    object-fit:cover;
+}
+
+/* CARD BODY */
+
+.card-body-custom{
+    padding:24px;
+}
+
+/* TITLE */
+
+.design-title{
+    font-family:'Playfair Display',serif;
+
+    font-size:24px;
+    font-weight:700;
+
+    color:#2B2B2B;
+
+    margin-bottom:10px;
+}
+
+/* PRICE */
+
+.design-price{
+    font-size:22px;
+    font-weight:700;
+
+    color:#C5A572;
+
+    margin-bottom:22px;
+}
+
+/* BUTTONS */
+
+.btn-custom{
+    width:100%;
+
+    border:none;
+
+    border-radius:16px;
+
+    padding:13px;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    margin-bottom:12px;
+}
+
+/* VIEW BUTTON */
+
+.btn-view{
+    background:#111827;
+    color:#D8B56A;
+}
+
+.btn-view:hover{
+    background:#D8B56A;
+    color:#fff;
+
+    transform:translateY(-2px);
+}
+
+/* REMOVE BUTTON */
+
+.btn-remove{
+    background:#C0392B;
+    color:white;
+}
+
+.btn-remove:hover{
+    background:#E74C3C;
+
+    transform:translateY(-2px);
+}
+
+/* EMPTY */
+
+.empty-box{
+    background:#fff;
+
+    padding:70px 30px;
+
+    border-radius:30px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.08);
+}
+
+.empty-box i{
+    font-size:70px;
+
+    color:#D8B56A;
+
+    margin-bottom:25px;
+}
+
+.empty-box h3{
+    font-family:'Playfair Display',serif;
+
+    font-size:42px;
+
+    margin-bottom:14px;
+}
+
+.empty-box p{
+    color:#777;
+
+    margin-bottom:30px;
+}
+
+/* SHOP BUTTON */
+
+.shop-btn{
+    display:inline-block;
+
+    background:#111827;
+    color:#D8B56A;
+
+    padding:14px 28px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:0.3s ease;
+}
+
+.shop-btn:hover{
+    background:#D8B56A;
+    color:white;
+
+    text-decoration:none;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .page-title{
+        font-size:40px;
+    }
+
+    .wishlist-img{
+        height:280px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <a href="{% url 'homepage' %}" class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back to Home
+
+        </a>
+
+    </div>
+
+    <!-- TITLE -->
+
+    <h1 class="page-title">
+        My Wishlist
+    </h1>
+
+    <p class="page-subtitle">
+        Your saved ethnic collections, ready for your next celebration ✨
+    </p>
+
+    <!-- PRODUCTS -->
+
+    <div class="row">
+
+        {% for w in items %}
+
+        <div class="col-lg-3 col-md-6 mb-4">
+
+            <div class="wishlist-card">
+
+                <img src="{{ w.design.design_image1.url }}"
+                     class="wishlist-img">
+
+                <div class="card-body-custom">
+
+                    <div class="design-title">
+                        {{ w.design.design_title }}
+                    </div>
+
+                    <div class="design-price">
+                        ₹{{ w.design.charges }}
+                    </div>
+
+                    <!-- VIEW DETAILS -->
+
+                    <a href="{% url 'view_design_details' w.design.id %}">
+
+                        <button class="btn-custom btn-view">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                            View Details
+
+                        </button>
+
+                    </a>
+
+                    <!-- REMOVE -->
+
+                    <a href="{% url 'remove_wishlist' w.id %}">
+
+                        <button class="btn-custom btn-remove">
+
+                            <i class="fa-solid fa-heart-crack"></i>
+
+                            Remove Wishlist
+
+                        </button>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <!-- EMPTY -->
+
+        <div class="col-12">
+
+            <div class="empty-box">
+
+                <i class="fa-regular fa-heart"></i>
+
+                <h3>
+                    Wishlist is Empty
+                </h3>
+
+                <p>
+                    Save your favorite ethnic outfits and access them anytime.
+                </p>
+
+                <a href="{% url 'homepage' %}" class="shop-btn">
+
+                    Explore Collections
+
+                </a>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+        
+
+    </div>
+
+</div>
+
+</body>
+</html>

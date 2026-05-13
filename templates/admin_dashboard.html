@@ -1,0 +1,578 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Admin Dashboard | Ethnic Vault</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --primary:#B68D40;
+    --primary-light:#D8B36A;
+    --dark:#1E1A17;
+    --sidebar:#181411;
+    --card:#ffffff;
+    --text:#2B2B2B;
+}
+
+/* ================= BODY ================= */
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    color:var(--text);
+
+    background-color:#FAF7F2;
+
+    background-image:
+    linear-gradient(rgba(250,247,242,0.84), rgba(250,247,242,0.84)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+    background-repeat:repeat;
+    background-attachment:fixed;
+
+    overflow-x:hidden;
+}
+
+/* ================= SIDEBAR ================= */
+
+#sidebar{
+    width:270px;
+    height:100vh;
+    position:fixed;
+    left:0;
+    top:0;
+
+    background:
+    linear-gradient(rgba(20,16,13,0.93), rgba(20,16,13,0.93)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:250px;
+
+    color:white;
+    padding:28px 22px;
+
+    overflow-y:auto;
+
+    box-shadow:5px 0 25px rgba(0,0,0,0.15);
+
+    z-index:999;
+}
+
+.sidebar-logo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.sidebar-logo h2{
+    font-family:'Playfair Display',serif;
+    color:var(--primary-light);
+    font-size:34px;
+    margin-bottom:6px;
+}
+
+.sidebar-logo p{
+    font-size:13px;
+    color:#d1d5db;
+    letter-spacing:1px;
+}
+
+.sidebar-link{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    padding:14px 16px;
+    margin-bottom:14px;
+
+    color:#f3f4f6;
+    text-decoration:none;
+
+    border-radius:16px;
+
+    transition:0.3s ease;
+
+    font-size:15px;
+    font-weight:500;
+}
+
+.sidebar-link i{
+    width:20px;
+    text-align:center;
+    font-size:17px;
+}
+
+.sidebar-link:hover{
+    background:rgba(182,141,64,0.18);
+    color:var(--primary-light);
+    transform:translateX(4px);
+}
+
+.logout{
+    background:#b91c1c;
+    color:white !important;
+    margin-top:25px;
+}
+
+.logout:hover{
+    background:#dc2626 !important;
+    color:white !important;
+}
+
+/* ================= CONTENT ================= */
+
+#content{
+    margin-left:270px;
+    padding:35px;
+}
+
+/* ================= HEADER ================= */
+
+.header-box{
+    padding:35px;
+    border-radius:28px;
+
+    background:
+    linear-gradient(rgba(255,255,255,0.92), rgba(255,255,255,0.92)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:240px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    border:1px solid rgba(182,141,64,0.15);
+}
+
+.header-box h2{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:8px;
+    color:#1f1f1f;
+}
+
+.header-box span{
+    color:var(--primary);
+}
+
+.header-box p{
+    color:#666;
+    margin:0;
+}
+
+/* ================= CARD GRID ================= */
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
+    margin-top:30px;
+}
+
+/* ================= STAT CARD ================= */
+
+.stat-card{
+    position:relative;
+
+    background:
+    linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:220px;
+
+    border-radius:24px;
+    padding:30px 22px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    overflow:hidden;
+
+    transition:0.35s ease;
+
+    border:1px solid rgba(182,141,64,0.12);
+}
+
+.stat-card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.12);
+}
+
+.stat-card::before{
+    content:"";
+    position:absolute;
+    top:-40px;
+    right:-40px;
+    width:120px;
+    height:120px;
+    background:rgba(182,141,64,0.10);
+    border-radius:50%;
+}
+
+.icon-box{
+    width:68px;
+    height:68px;
+
+    background:rgba(182,141,64,0.12);
+
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-bottom:18px;
+}
+
+.icon-box i{
+    font-size:30px;
+    color:var(--primary);
+}
+
+.stat-card h5{
+    font-size:15px;
+    color:#666;
+    margin-bottom:10px;
+    font-weight:500;
+}
+
+.stat-card h2{
+    font-size:34px;
+    font-weight:700;
+    margin:0;
+    color:#1f1f1f;
+}
+
+/* ================= CHART BOX ================= */
+
+.chart-box{
+    margin-top:35px;
+
+    background:
+    linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:220px;
+
+    padding:35px;
+
+    border-radius:28px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    border:1px solid rgba(182,141,64,0.12);
+}
+
+.chart-box h4{
+    font-family:'Playfair Display',serif;
+    margin-bottom:25px;
+    color:#1f1f1f;
+    font-size:32px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+    #sidebar{
+        width:100%;
+        height:auto;
+        position:relative;
+    }
+
+    #content{
+        margin-left:0;
+        padding:20px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .header-box{
+        padding:25px;
+    }
+
+    .header-box h2{
+        font-size:30px;
+    }
+
+    .chart-box h4{
+        font-size:26px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<div id="sidebar">
+
+    <div class="sidebar-logo">
+        <h2>Ethnic Vault</h2>
+        <p>ADMIN CONTROL PANEL</p>
+    </div>
+
+    <a href="#" class="sidebar-link">
+        <i class="fa fa-dashboard"></i>
+        Dashboard
+    </a>
+
+    <a href="{% url 'view_user' %}" class="sidebar-link">
+        <i class="fa fa-users"></i>
+        Users
+    </a>
+
+    <a href="{% url 'view_designer' %}" class="sidebar-link">
+        <i class="fa fa-user"></i>
+        Designers
+    </a>
+
+    <a href="{% url 'view_all_design' %}" class="sidebar-link">
+        <i class="fa fa-paint-brush"></i>
+        Designs
+    </a>
+
+    <a href="{% url 'view_all_rental' %}" class="sidebar-link">
+        <i class="fa fa-shopping-cart"></i>
+        Rentals
+    </a>
+
+    <a href="{% url 'report' %}" class="sidebar-link">
+        <i class="fa fa-file"></i>
+        Reports
+    </a>
+
+    <a href="{% url 'logout_view' %}" class="sidebar-link logout">
+        <i class="fa fa-sign-out"></i>
+        Logout
+    </a>
+
+</div>
+
+<!-- ================= CONTENT ================= -->
+
+<div id="content">
+
+    <!-- HEADER -->
+
+    <div class="header-box">
+
+        <h2>
+            Welcome Back,
+            <span>Admin</span>
+        </h2>
+
+        <p>
+            Dashboard overview of Ethnic Vault platform
+        </p>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="card-grid">
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-users"></i>
+            </div>
+
+            <h5>Total Users</h5>
+
+            <h2>{{ total_user }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-user"></i>
+            </div>
+
+            <h5>Designers</h5>
+
+            <h2>{{ designers }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-paint-brush"></i>
+            </div>
+
+            <h5>Total Designs</h5>
+
+            <h2>{{ total_design }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+
+            <h5>Total Rentals</h5>
+
+            <h2>{{ total_rentals }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-credit-card"></i>
+            </div>
+
+            <h5>Deposit Payments</h5>
+
+            <h2>{{ total_deposit_payments }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-money"></i>
+            </div>
+
+            <h5>Final Payments</h5>
+
+            <h2>{{ total_final_payments }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-clock-o"></i>
+            </div>
+
+            <h5>Pending Payments</h5>
+
+            <h2>{{ pending_payments }}</h2>
+
+        </div>
+
+        <div class="stat-card">
+
+            <div class="icon-box">
+                <i class="fa fa-check-circle"></i>
+            </div>
+
+            <h5>Successful Payments</h5>
+
+            <h2>{{ successful_payments }}</h2>
+
+        </div>
+
+    </div>
+
+    <!-- CHART -->
+
+    <div class="chart-box">
+
+        <h4>
+            Design Upload Trends
+        </h4>
+
+        <canvas id="designChart"></canvas>
+
+    </div>
+
+</div>
+
+<script>
+
+const ctx = document.getElementById('designChart').getContext('2d');
+
+new Chart(ctx,{
+
+    type:'line',
+
+    data:{
+
+        labels:{{ dates|safe }},
+
+        datasets:[{
+
+            label:'Uploads',
+
+            data:{{ counts|safe }},
+
+            borderColor:'#B68D40',
+
+            backgroundColor:'rgba(182,141,64,0.12)',
+
+            tension:0.4,
+
+            fill:true,
+
+            borderWidth:3,
+
+            pointRadius:4
+
+        }]
+    },
+
+    options:{
+
+        responsive:true,
+
+        plugins:{
+            legend:{
+                labels:{
+                    color:'#444'
+                }
+            }
+        },
+
+        scales:{
+
+            x:{
+                ticks:{
+                    color:'#555'
+                },
+                grid:{
+                    color:'rgba(0,0,0,0.05)'
+                }
+            },
+
+            y:{
+                beginAtZero:true,
+
+                ticks:{
+                    color:'#555'
+                },
+
+                grid:{
+                    color:'rgba(0,0,0,0.05)'
+                }
+            }
+
+        }
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

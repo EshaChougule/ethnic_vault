@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Rental Orders | Ethnic Vault</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(rgba(248,244,238,0.94),
+    rgba(248,244,238,0.94)),
+
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+    background-repeat:repeat;
+
+    min-height:100vh;
+
+    color:#2B2B2B;
+}
+
+/* TOP BAR */
+
+.topbar{
+
+    width:100%;
+
+    padding:28px 40px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    flex-wrap:wrap;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    background:#111827;
+    color:#D4AF37;
+
+    padding:12px 22px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+    border:1px solid rgba(212,175,55,0.20);
+
+    transition:0.3s ease;
+
+    box-shadow:0 8px 22px rgba(0,0,0,0.08);
+}
+
+.back-btn:hover{
+
+    background:#D4AF37;
+    color:#111827;
+
+    text-decoration:none;
+
+    transform:translateY(-2px);
+}
+
+/* LOGO */
+
+.logo-text{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:38px;
+    font-weight:700;
+
+    background:linear-gradient(45deg,#B68D40,#E8C97A,#6A3D1A);
+
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+
+    letter-spacing:1px;
+}
+
+/* MAIN */
+
+.main-container{
+
+    width:100%;
+
+    padding:10px 40px 60px;
+}
+
+/* PAGE HEADER */
+
+.page-header{
+
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+.page-header h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:52px;
+
+    color:#1E1E1E;
+
+    margin-bottom:12px;
+}
+
+.page-header p{
+
+    color:#777;
+
+    font-size:15px;
+
+    max-width:650px;
+
+    margin:auto;
+
+    line-height:1.9;
+}
+
+/* CARD */
+
+.order-card{
+
+    background:rgba(255,255,255,0.90);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    margin-bottom:30px;
+
+    border:1px solid rgba(212,175,55,0.10);
+
+    box-shadow:
+    0 18px 45px rgba(0,0,0,0.08);
+
+    transition:0.35s ease;
+
+    height:100%;
+}
+
+.order-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 24px 55px rgba(0,0,0,0.12);
+}
+
+/* IMAGE */
+
+.image-box{
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.image-box img{
+
+    width:100%;
+    height:320px;
+
+    object-fit:cover;
+
+    transition:0.4s ease;
+}
+
+.order-card:hover .image-box img{
+
+    transform:scale(1.04);
+}
+
+/* STATUS */
+
+.status-badge{
+
+    position:absolute;
+
+    top:18px;
+    right:18px;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:600;
+
+    color:white;
+
+    backdrop-filter:blur(8px);
+}
+
+.pending{
+    background:#E59A00;
+}
+
+.approved{
+    background:#2E8B57;
+}
+
+.rejected{
+    background:#B22222;
+}
+
+/* CARD CONTENT */
+
+.card-content{
+
+    padding:24px;
+}
+
+/* TITLE */
+
+.card-title{
+
+    font-size:24px;
+    font-weight:700;
+
+    color:#1E1E1E;
+
+    margin-bottom:18px;
+}
+
+/* INFO BOX */
+
+.info-box{
+
+    background:#FAF7F2;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    border:1px solid rgba(212,175,55,0.10);
+
+    margin-bottom:20px;
+}
+
+.info-item{
+
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:12px;
+
+    font-size:14px;
+}
+
+.info-item:last-child{
+    margin-bottom:0;
+}
+
+.info-label{
+
+    color:#777;
+    font-weight:500;
+}
+
+.info-value{
+
+    color:#222;
+    font-weight:600;
+}
+
+/* TIMELINE */
+
+.timeline{
+
+    margin-top:20px;
+
+    padding-top:10px;
+}
+
+/* STEP */
+
+.step{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    margin-bottom:14px;
+
+    font-size:14px;
+    font-weight:500;
+}
+
+.step i{
+
+    width:26px;
+    height:26px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:12px;
+}
+
+/* ACTIVE STEP */
+
+.active-step{
+
+    color:#2E8B57;
+}
+
+.active-step i{
+
+    background:#2E8B57;
+    color:white;
+}
+
+/* INACTIVE STEP */
+
+.inactive-step{
+
+    color:#AAA;
+}
+
+.inactive-step i{
+
+    background:#E5E5E5;
+    color:#999;
+}
+
+/* EMPTY */
+
+.empty-box{
+
+    background:rgba(255,255,255,0.90);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:30px;
+
+    padding:70px 30px;
+
+    text-align:center;
+
+    border:1px solid rgba(212,175,55,0.10);
+
+    box-shadow:
+    0 18px 45px rgba(0,0,0,0.08);
+}
+
+.empty-box i{
+
+    font-size:70px;
+
+    color:#D4AF37;
+
+    margin-bottom:22px;
+}
+
+.empty-box h3{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:38px;
+
+    color:#1E1E1E;
+
+    margin-bottom:12px;
+}
+
+.empty-box p{
+
+    color:#777;
+
+    font-size:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .topbar{
+
+        padding:22px 20px;
+
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .main-container{
+
+        padding:10px 20px 50px;
+    }
+
+    .page-header h1{
+
+        font-size:42px;
+    }
+}
+
+@media(max-width:768px){
+
+    .image-box img{
+
+        height:260px;
+    }
+
+    .page-header h1{
+
+        font-size:34px;
+    }
+
+    .logo-text{
+
+        font-size:30px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <a href="{% url 'user_dashboard' %}" class="back-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back to Dashboard
+
+    </a>
+
+    <div class="logo-text">
+        Ethnic Vault
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-container">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+        <h1>My Rental Orders</h1>
+
+        <p>
+            Track your bookings, approvals, and outfit rental journey beautifully through your Ethnic Vault account.
+        </p>
+
+    </div>
+
+    <!-- ORDERS -->
+
+    <div class="row">
+
+        {% for r in rent %}
+
+        <div class="col-lg-4 col-md-6 mb-4">
+
+            <div class="order-card">
+
+                <!-- IMAGE -->
+
+                <div class="image-box">
+
+                    <img src="{{ r.image_design1.url }}"
+                         alt="Rental Outfit">
+
+                    <!-- STATUS -->
+
+                    {% if r.status == "Pending" %}
+
+                        <div class="status-badge pending">
+                            Pending
+                        </div>
+
+                    {% elif r.status == "Approved" %}
+
+                        <div class="status-badge approved">
+                            Approved
+                        </div>
+
+                    {% else %}
+
+                        <div class="status-badge rejected">
+                            Rejected
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+                <!-- CONTENT -->
+
+                <div class="card-content">
+
+                    <div class="card-title">
+                        {{ r.designer_name }}
+                    </div>
+
+                    <!-- INFO -->
+
+                    <div class="info-box">
+
+                        <div class="info-item">
+
+                            <div class="info-label">
+                                Rental From
+                            </div>
+
+                            <div class="info-value">
+                                {{ r.rental_from }}
+                            </div>
+
+                        </div>
+
+                        <div class="info-item">
+
+                            <div class="info-label">
+                                Return Date
+                            </div>
+
+                            <div class="info-value">
+                                {{ r.rental_date }}
+                            </div>
+
+                        </div>
+
+                        <div class="info-item">
+
+                            <div class="info-label">
+                                Total Amount
+                            </div>
+
+                            <div class="info-value">
+                                ₹{{ r.total_charges }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- TIMELINE -->
+
+                    <div class="timeline">
+
+                        <div class="step active-step">
+
+                            <i class="fa fa-check"></i>
+
+                            Request Sent
+
+                        </div>
+
+                        <div class="step
+                        {% if r.status == 'Approved' %}
+                            active-step
+                        {% else %}
+                            inactive-step
+                        {% endif %}
+                        ">
+
+                            <i class="fa fa-check"></i>
+
+                            Booking Approved
+
+                        </div>
+
+                        <div class="step
+                        {% if r.status == 'Approved' %}
+                            active-step
+                        {% else %}
+                            inactive-step
+                        {% endif %}
+                        ">
+
+                            <i class="fa fa-check"></i>
+
+                            Outfit Ready To Wear
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <!-- EMPTY -->
+
+        <div class="col-12">
+
+            <div class="empty-box">
+
+                <i class="fa fa-shopping-bag"></i>
+
+                <h3>No Orders Yet</h3>
+
+                <p>
+                    Start exploring designer collections and rent your perfect ethnic outfit beautifully.
+                </p>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

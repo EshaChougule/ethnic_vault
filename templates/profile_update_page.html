@@ -1,0 +1,722 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Update Profile | Ethnic Vault</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background:
+    linear-gradient(rgba(255,248,240,0.92),rgba(255,248,240,0.92)),
+    url('{% static "images/ethnic-pattern.png" %}');
+    background-size:350px;
+    background-repeat:repeat;
+    background-attachment:fixed;
+    padding:30px 15px;
+    overflow-x:hidden;
+}
+
+/* SOFT BACKGROUND CIRCLES */
+
+.bg-shape{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(80px);
+    z-index:0;
+    opacity:0.18;
+}
+
+.shape1{
+    width:240px;
+    height:240px;
+    background:#d4af37;
+    top:-60px;
+    left:-60px;
+}
+
+.shape2{
+    width:220px;
+    height:220px;
+    background:#f3d8b6;
+    bottom:-60px;
+    right:-60px;
+}
+
+/* CONTAINER */
+
+.update-container{
+    max-width:900px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 20px;
+    margin-bottom:20px;
+    border-radius:40px;
+    text-decoration:none;
+    color:#7a5c2e;
+    background:rgba(255,255,255,0.75);
+    border:1px solid rgba(212,175,55,0.18);
+    backdrop-filter:blur(10px);
+    font-size:14px;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#d4af37;
+    color:#fff;
+    transform:translateX(-3px);
+}
+
+/* CARD */
+
+.update-card{
+    background:rgba(255,255,255,0.88);
+    backdrop-filter:blur(14px);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+    border:1px solid rgba(212,175,55,0.12);
+    animation:fadeIn 0.5s ease;
+}
+
+/* HEADER */
+
+.top-header{
+    background:linear-gradient(135deg,#111111,#1f1f1f,#2a2a2a);
+    padding:32px 38px;
+    border-bottom:1px solid rgba(212,175,55,0.18);
+    position:relative;
+    overflow:hidden;
+}
+
+.top-header::before{
+    content:'';
+    position:absolute;
+    width:280px;
+    height:280px;
+    background:rgba(212,175,55,0.10);
+    border-radius:50%;
+    top:-120px;
+    right:-90px;
+    filter:blur(15px);
+}
+
+.header-content{
+    position:relative;
+    z-index:2;
+}
+
+.header-content h2{
+    color:#d4af37;
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
+}
+
+.header-content p{
+    color:#dddddd;
+    font-size:14px;
+    margin:0;
+    font-weight:400;
+}
+
+/* FORM AREA */
+
+.form-area{
+    padding:35px;
+}
+
+/* PROFILE SECTION */
+
+.profile-section{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.profile-image-wrapper{
+    position:relative;
+    display:inline-block;
+}
+
+.profile-img{
+    width:150px;
+    height:150px;
+    object-fit:cover;
+    border-radius:50%;
+    border:4px solid #d4af37;
+    box-shadow:0 8px 20px rgba(212,175,55,0.18);
+    transition:0.3s;
+}
+
+.profile-img:hover{
+    transform:scale(1.02);
+}
+
+.camera-btn{
+    position:absolute;
+    bottom:5px;
+    right:5px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#d4af37;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    border:3px solid white;
+    transition:0.3s;
+}
+
+.camera-btn:hover{
+    transform:scale(1.05);
+}
+
+input[type=file]{
+    display:none;
+}
+
+/* INFO STRIP */
+
+.info-strip{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+    margin-bottom:28px;
+}
+
+.info-box{
+    background:#fffdf9;
+    border-radius:16px;
+    padding:18px;
+    text-align:center;
+    border:1px solid rgba(212,175,55,0.12);
+    transition:0.3s;
+}
+
+.info-box:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.05);
+}
+
+.info-box i{
+    font-size:22px;
+    color:#c59b3f;
+    margin-bottom:8px;
+}
+
+.info-box h6{
+    margin:0;
+    font-size:15px;
+    font-weight:600;
+    color:#4b3b24;
+}
+
+.info-box p{
+    margin-top:5px;
+    font-size:12px;
+    color:#8c7b67;
+}
+
+/* GRID */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:22px;
+}
+
+.full-width{
+    grid-column:span 2;
+}
+
+/* LABEL */
+
+.form-label{
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:7px;
+    color:#5c4c39;
+}
+
+/* INPUT */
+
+.input-group-custom{
+    position:relative;
+}
+
+.input-group-custom i{
+    position:absolute;
+    top:50%;
+    left:16px;
+    transform:translateY(-50%);
+    color:#b69a72;
+    font-size:14px;
+}
+
+.toggle-password{
+    left:auto !important;
+    right:16px;
+    cursor:pointer;
+}
+
+.form-control{
+    border-radius:14px;
+    border:1px solid #ece1d1;
+    padding:14px 16px 14px 45px;
+    background:#fff;
+    font-size:14px;
+    transition:0.3s;
+    box-shadow:none;
+}
+
+.form-control:focus{
+    border-color:#d4af37;
+    box-shadow:0 0 10px rgba(212,175,55,0.12);
+}
+
+textarea.form-control{
+    resize:none;
+    padding-top:15px;
+}
+
+/* BUTTON */
+
+.save-btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:14px;
+    margin-top:28px;
+    background:linear-gradient(135deg,#d4af37,#bb9033);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.save-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(212,175,55,0.20);
+}
+
+/* ALERT */
+
+.alert{
+    border-radius:12px;
+    font-size:14px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    body{
+        padding:18px 10px;
+    }
+
+    .top-header{
+        padding:25px;
+    }
+
+    .form-area{
+        padding:22px;
+    }
+
+    .header-content h2{
+        font-size:24px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full-width{
+        grid-column:span 1;
+    }
+
+    .info-strip{
+        grid-template-columns:1fr;
+    }
+
+    .profile-img{
+        width:130px;
+        height:130px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- SOFT SHAPES -->
+
+<div class="bg-shape shape1"></div>
+<div class="bg-shape shape2"></div>
+
+<div class="update-container">
+
+    <!-- BACK BUTTON -->
+
+    <a href="{% url 'profile_account' %}" class="back-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back to Profile
+
+    </a>
+
+    <!-- CARD -->
+
+    <div class="update-card">
+
+        <!-- HEADER -->
+
+        <div class="top-header">
+
+            <div class="header-content">
+
+                <h2>Update Your Profile</h2>
+
+                <p>
+                    Personalize your Ethnic Vault designer account beautifully.
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- FORM AREA -->
+
+        <div class="form-area">
+
+            <!-- MESSAGES -->
+
+            {% if messages %}
+                {% for message in messages %}
+
+                    <div class="alert alert-success mb-4">
+
+                        {{ message }}
+
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+
+            <!-- INFO STRIP -->
+
+            <div class="info-strip">
+
+                <div class="info-box">
+
+                    <i class="fa fa-user"></i>
+
+                    <h6>Professional Identity</h6>
+
+                    <p>Keep your designer profile updated</p>
+
+                </div>
+
+                <div class="info-box">
+
+                    <i class="fa fa-shield-heart"></i>
+
+                    <h6>Secure Information</h6>
+
+                    <p>Your account stays protected</p>
+
+                </div>
+
+                <div class="info-box">
+
+                    <i class="fa fa-wand-magic-sparkles"></i>
+
+                    <h6>Creative Presence</h6>
+
+                    <p>Showcase your designer personality</p>
+
+                </div>
+
+            </div>
+
+            <!-- FORM -->
+
+            <form action="{% url 'profile_update_page_code' %}"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <!-- PROFILE IMAGE -->
+
+                <div class="profile-section">
+
+                    <div class="profile-image-wrapper">
+
+                        <img src="{{ designer_profile.designer_photo.url }}"
+                             class="profile-img"
+                             alt="Profile">
+
+                        <label for="designer_photo" class="camera-btn">
+
+                            <i class="fa fa-camera"></i>
+
+                        </label>
+
+                    </div>
+
+                    <input type="file"
+                           name="designer_photo"
+                           id="designer_photo"
+                           accept="image/*">
+
+                </div>
+
+                <!-- GRID -->
+
+                <div class="form-grid">
+
+                    <!-- NAME -->
+
+                    <div>
+
+                        <label class="form-label">
+                            Full Name
+                        </label>
+
+                        <div class="input-group-custom">
+
+                            <i class="fa fa-user"></i>
+
+                            <input type="text"
+                                   name="designer_name"
+                                   value="{{ designer_profile.designer_name }}"
+                                   class="form-control"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONTACT -->
+
+                    <div>
+
+                        <label class="form-label">
+                            Contact Number
+                        </label>
+
+                        <div class="input-group-custom">
+
+                            <i class="fa fa-phone"></i>
+
+                            <input type="tel"
+                                   name="designer_contact"
+                                   value="{{ designer_profile.designer_contact }}"
+                                   class="form-control"
+                                   pattern="[6-9][0-9]{9}"
+                                   maxlength="10"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <!-- EMAIL -->
+
+                    <div>
+
+                        <label class="form-label">
+                            Email Address
+                        </label>
+
+                        <div class="input-group-custom">
+
+                            <i class="fa fa-envelope"></i>
+
+                            <input type="email"
+                                   value="{{ designer_profile.designer_email }}"
+                                   class="form-control"
+                                   disabled>
+
+                            <input type="hidden"
+                                   name="designer_email"
+                                   value="{{ designer_profile.designer_email }}">
+
+                        </div>
+
+                    </div>
+
+                    <!-- SPECIALIZATION -->
+
+                    <div>
+
+                        <label class="form-label">
+                            Specialization
+                        </label>
+
+                        <div class="input-group-custom">
+
+                            <i class="fa fa-pen-ruler"></i>
+
+                            <input type="text"
+                                   name="specialization"
+                                   value="{{ designer_profile.specialization }}"
+                                   class="form-control"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PASSWORD -->
+
+                    <div class="full-width">
+
+                        <label class="form-label">
+                            Password
+                        </label>
+
+                        <div class="input-group-custom">
+
+                            <i class="fa fa-lock"></i>
+
+                            <input type="password"
+                                   id="password"
+                                   name="password"
+                                   value="{{ designer_profile.designer_password }}"
+                                   class="form-control"
+
+                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+
+                                   title="Must contain uppercase, lowercase, number, special character and minimum 8 characters"
+
+                                   required>
+
+                            <i class="fa fa-eye toggle-password"
+                               onclick="togglePassword()"></i>
+
+                        </div>
+
+                    </div>
+
+                    <!-- BIO -->
+
+                    <div class="full-width">
+
+                        <label class="form-label">
+                            Designer Bio
+                        </label>
+
+                        <div class="input-group-custom">
+
+                            <textarea name="bio"
+                                      rows="5"
+                                      class="form-control"
+                                      required>{{ designer_profile.bio }}</textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="save-btn">
+
+                    <i class="fa fa-save"></i>
+
+                    Save Changes
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+function togglePassword(){
+
+    const passwordInput = document.getElementById('password');
+
+    const icon = document.querySelector('.toggle-password');
+
+    if(passwordInput.type === 'password'){
+
+        passwordInput.type = 'text';
+
+        icon.classList.remove('fa-eye');
+
+        icon.classList.add('fa-eye-slash');
+
+    }
+    else{
+
+        passwordInput.type = 'password';
+
+        icon.classList.remove('fa-eye-slash');
+
+        icon.classList.add('fa-eye');
+    }
+}
+
+</script>
+
+</body>
+</html>

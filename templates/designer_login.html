@@ -1,0 +1,599 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ethnic Vault | Designer Login</title>
+
+<!-- Fonts -->
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:30px;
+
+background-color:#F8F3EA;
+
+background-image:
+linear-gradient(rgba(248,243,234,0.90),
+rgba(248,243,234,0.90)),
+url("{% static 'images/ethnic-pattern.png' %}");
+
+background-size:320px;
+background-repeat:repeat;
+background-attachment:fixed;
+
+overflow:hidden;
+position:relative;
+}
+
+/* GLOW */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:380px;
+height:380px;
+
+background:rgba(184,146,76,0.14);
+
+border-radius:50%;
+
+top:-120px;
+left:-120px;
+
+filter:blur(80px);
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:320px;
+height:320px;
+
+background:rgba(184,146,76,0.10);
+
+border-radius:50%;
+
+bottom:-100px;
+right:-100px;
+
+filter:blur(80px);
+}
+
+/* MAIN CONTAINER */
+
+.login-container{
+
+width:100%;
+max-width:1120px;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+background:rgba(255,255,255,0.72);
+
+backdrop-filter:blur(16px);
+
+border-radius:34px;
+
+overflow:hidden;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,0.12);
+
+position:relative;
+z-index:2;
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+
+padding:70px 55px;
+
+background:
+linear-gradient(rgba(22,18,14,0.84),
+rgba(22,18,14,0.88)),
+url("{% static 'images/banner2.jpg' %}");
+
+background-size:cover;
+background-position:center;
+
+color:white;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+position:relative;
+}
+
+.left-panel::before{
+
+content:"";
+
+position:absolute;
+
+top:55px;
+left:55px;
+
+width:70px;
+height:3px;
+
+background:#B8924C;
+}
+
+/* BRAND */
+
+.brand-title{
+
+font-family:'Playfair Display',serif;
+
+font-size:58px;
+
+line-height:1.1;
+
+color:#F5DFC0;
+
+margin-bottom:18px;
+}
+
+.brand-text{
+
+font-size:15px;
+
+line-height:1.9;
+
+color:rgba(255,255,255,0.82);
+
+max-width:400px;
+}
+
+.designer-tag{
+
+display:inline-block;
+
+margin-top:28px;
+
+padding:10px 20px;
+
+background:rgba(184,146,76,0.16);
+
+border:1px solid rgba(255,255,255,0.10);
+
+border-radius:40px;
+
+font-size:12px;
+
+letter-spacing:1px;
+
+width:fit-content;
+
+backdrop-filter:blur(10px);
+
+color:#F5DFC0;
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+
+padding:60px 50px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:rgba(255,255,255,0.55);
+}
+
+/* LOGIN CARD */
+
+.login-card{
+
+width:100%;
+max-width:400px;
+}
+
+/* SMALL TEXT */
+
+.small-title{
+
+font-size:13px;
+
+font-weight:600;
+
+letter-spacing:2px;
+
+color:#B8924C;
+
+margin-bottom:10px;
+}
+
+/* MAIN TITLE */
+
+.login-title{
+
+font-family:'Playfair Display',serif;
+
+font-size:42px;
+
+color:#2B2B2B;
+
+margin-bottom:10px;
+}
+
+.login-subtitle{
+
+font-size:14px;
+
+line-height:1.7;
+
+color:#777;
+
+margin-bottom:30px;
+}
+
+/* FORM BOX */
+
+.form-box{
+
+background:rgba(255,255,255,0.92);
+
+padding:28px;
+
+border-radius:24px;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.06);
+
+border:1px solid rgba(184,146,76,0.10);
+}
+
+/* INPUT GROUP */
+
+.input-group{
+
+margin-bottom:18px;
+
+position:relative;
+}
+
+.input-group i{
+
+position:absolute;
+
+top:18px;
+left:16px;
+
+font-size:15px;
+
+color:#B8924C;
+}
+
+.input-group input{
+
+width:100%;
+
+height:55px;
+
+border:none;
+
+background:#FAF7F2;
+
+border-radius:14px;
+
+padding-left:46px;
+padding-right:15px;
+
+font-size:14px;
+
+transition:0.3s ease;
+
+color:#333;
+}
+
+.input-group input:focus{
+
+outline:none;
+
+background:white;
+
+box-shadow:
+0 0 0 4px rgba(184,146,76,0.14);
+}
+
+/* BUTTON */
+
+.login-btn{
+
+width:100%;
+
+height:56px;
+
+border:none;
+
+border-radius:16px;
+
+background:#B8924C;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+margin-top:8px;
+
+transition:0.3s ease;
+
+box-shadow:
+0 10px 25px rgba(184,146,76,0.28);
+}
+
+.login-btn:hover{
+
+background:#8A6A2F;
+
+transform:translateY(-2px);
+}
+
+/* LINKS */
+
+.extra-links{
+
+text-align:center;
+
+margin-top:22px;
+}
+
+.extra-links a{
+
+text-decoration:none;
+
+font-size:13px;
+
+font-weight:500;
+
+color:#B8924C;
+
+transition:0.3s;
+}
+
+.extra-links a:hover{
+
+color:#8A6A2F;
+
+text-decoration:none;
+}
+
+.divider{
+
+margin:0 8px;
+
+color:#bbb;
+}
+
+/* FOOTER */
+
+.footer-note{
+
+margin-top:22px;
+
+text-align:center;
+
+font-size:12px;
+
+color:#888;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+.login-container{
+grid-template-columns:1fr;
+}
+
+.left-panel{
+min-height:320px;
+}
+
+.brand-title{
+font-size:46px;
+}
+}
+
+@media(max-width:768px){
+
+body{
+padding:18px;
+}
+
+.left-panel,
+.right-panel{
+padding:40px 28px;
+}
+
+.brand-title{
+font-size:38px;
+}
+
+.login-title{
+font-size:34px;
+}
+
+.form-box{
+padding:22px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <!-- LEFT PANEL -->
+
+    <div class="left-panel">
+
+        <h1 class="brand-title">
+            Ethnic<br>
+            Vault
+        </h1>
+
+        <p class="brand-text">
+
+            Showcase your creations, manage bookings,
+            and grow your designer presence with elegance.
+
+        </p>
+
+        <div class="designer-tag">
+            DESIGNER PORTAL
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+
+    <div class="right-panel">
+
+        <div class="login-card">
+
+            <div class="small-title">
+                LOGIN
+            </div>
+
+            <h2 class="login-title">
+                Welcome Back
+            </h2>
+
+            <p class="login-subtitle">
+                Continue to your designer dashboard
+            </p>
+
+            <!-- FORM BOX -->
+
+            <div class="form-box">
+
+                <form method="POST"
+                      action="{% url 'designer_login_validation' %}">
+
+                    {% csrf_token %}
+
+                    <!-- EMAIL -->
+
+                    <div class="input-group">
+
+                        <i class="fa fa-envelope"></i>
+
+                        <input type="email"
+                               name="email"
+                               placeholder="Designer Email"
+                               required>
+
+                    </div>
+
+                    <!-- PASSWORD -->
+
+                    <div class="input-group">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input type="password"
+                               name="password"
+                               placeholder="Password"
+                               required>
+
+                    </div>
+
+                    <!-- BUTTON -->
+
+                    <button type="submit"
+                            class="login-btn">
+
+                        Login to Dashboard
+
+                    </button>
+
+                </form>
+
+            </div>
+
+            <!-- LINKS -->
+
+            <div class="extra-links">
+
+                <a href="{% url 'designer_register_page' %}">
+                    Create Account
+                </a>
+
+                <span class="divider">|</span>
+
+                <a href="{% url 'forgot_password_designer' %}">
+                    Forgot Password?
+                </a>
+
+            </div>
+
+            <div class="footer-note">
+                Ethnic Vault © 2026
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% if messages %}
+<script>
+{% for message in messages %}
+alert("{{ message }}");
+{% endfor %}
+</script>
+{% endif %}
+
+</body>
+</html>

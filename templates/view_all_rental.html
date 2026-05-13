@@ -1,0 +1,697 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Ethnic Vault - Rental Requests</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+/* ================= BODY ================= */
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    margin:0;
+    padding:35px;
+
+    background-color:#FAF7F2;
+
+    background-image:
+    linear-gradient(rgba(250,247,242,0.88), rgba(250,247,242,0.88)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+    background-repeat:repeat;
+    background-attachment:fixed;
+
+    color:#2B2B2B;
+}
+
+/* ================= PAGE HEADER ================= */
+
+.page-header{
+
+    background:
+    linear-gradient(rgba(255,255,255,0.94), rgba(255,255,255,0.94)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:240px;
+
+    border-radius:28px;
+
+    padding:35px;
+
+    margin-bottom:30px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+    border:1px solid rgba(182,141,64,0.15);
+}
+
+.page-header h2{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:42px;
+
+    margin-bottom:8px;
+
+    color:#1f1f1f;
+}
+
+.page-header span{
+    color:#B68D40;
+}
+
+.page-header p{
+
+    color:#777;
+
+    margin:0;
+
+    font-size:15px;
+}
+
+/* ================= TABLE CONTAINER ================= */
+
+.table-container{
+
+    background:
+    linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:220px;
+
+    border-radius:28px;
+
+    padding:28px;
+
+    overflow-x:auto;
+
+    box-shadow:0 12px 35px rgba(0,0,0,0.08);
+
+    border:1px solid rgba(182,141,64,0.12);
+}
+
+/* ================= TABLE ================= */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    min-width:1450px;
+}
+
+thead{
+
+    background:#B68D40;
+
+    color:white;
+}
+
+th{
+
+    padding:18px 16px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+    letter-spacing:0.4px;
+}
+
+td{
+
+    padding:18px 16px;
+
+    font-size:14px;
+
+    color:#444;
+
+    vertical-align:middle;
+}
+
+tbody tr{
+
+    border-bottom:1px solid rgba(0,0,0,0.06);
+
+    transition:0.3s ease;
+}
+
+tbody tr:hover{
+
+    background:rgba(182,141,64,0.08);
+
+    transform:scale(1.002);
+}
+
+/* ================= USER INFO ================= */
+
+.user-name{
+
+    font-weight:600;
+
+    color:#1f1f1f;
+
+    margin-bottom:4px;
+}
+
+.user-email{
+
+    color:#777;
+
+    font-size:12px;
+}
+
+/* ================= BADGES ================= */
+
+.status-badge{
+
+    display:inline-block;
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+/* STATUS */
+
+.pending{
+
+    background:#fff3cd;
+
+    color:#856404;
+}
+
+.approved{
+
+    background:#d1fae5;
+
+    color:#065f46;
+}
+
+.rejected{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+}
+
+/* PAYMENT */
+
+.payment-paid{
+
+    background:#d1fae5;
+
+    color:#065f46;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+.payment-pending{
+
+    background:#fee2e2;
+
+    color:#991b1b;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+/* ================= DESIGN IMAGES ================= */
+
+.design-images{
+
+    display:flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+}
+
+.design-img{
+
+    width:65px;
+
+    height:65px;
+
+    object-fit:cover;
+
+    border-radius:14px;
+
+    border:2px solid rgba(182,141,64,0.15);
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+
+    transition:0.3s ease;
+}
+
+.design-img:hover{
+
+    transform:scale(1.08);
+}
+
+/* ================= PROOF BUTTON ================= */
+
+.proof-link{
+
+    background:#111827;
+
+    color:#fff;
+
+    padding:9px 15px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    transition:0.3s ease;
+
+    display:inline-block;
+}
+
+.proof-link:hover{
+
+    background:#B68D40;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    transform:translateY(-2px);
+}
+
+/* ================= EMPTY ================= */
+
+.empty-row{
+
+    text-align:center;
+
+    padding:45px;
+
+    color:#777;
+
+    font-size:15px;
+}
+
+/* ================= BACK BUTTON ================= */
+
+.back-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    background:#111827;
+
+    color:#d4af37;
+
+    padding:7px 13px;
+
+    margin-bottom:20px;
+
+    border-radius:25px;
+
+    border:1px solid rgba(212,175,55,0.25);
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+
+    transition:all 0.3s ease;
+}
+
+.back-btn:hover{
+
+    background:#d4af37;
+
+    color:#111827;
+
+    text-decoration:none;
+
+    transform:translateY(-2px);
+}
+
+.back-btn i{
+
+    font-size:11px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    body{
+        padding:18px;
+    }
+
+    .page-header{
+        padding:25px;
+    }
+
+    .page-header h2{
+        font-size:30px;
+    }
+
+    .table-container{
+        padding:18px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- BACK BUTTON -->
+
+<a href="{% url 'admin_dashboard' %}" class="back-btn">
+    <i class="fa fa-arrow-left"></i>
+    Back to Dashboard
+</a>
+
+<!-- ================= HEADER ================= -->
+
+<div class="page-header">
+
+    <h2>
+        Rental
+        <span>Requests</span>
+    </h2>
+
+    <p>
+        Manage all bookings, rental transactions and customer requests
+    </p>
+
+</div>
+
+<!-- ================= TABLE ================= -->
+
+<div class="table-container">
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>User</th>
+
+                <th>Designer</th>
+
+                <th>Rental Dates</th>
+
+                <th>Total</th>
+
+                <th>Payment</th>
+
+                <th>Status</th>
+
+                <th>Return</th>
+
+                <th>Design Images</th>
+
+                <th>Payment Proof</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% if rent %}
+
+            {% for s in rent %}
+
+            <tr>
+
+                <!-- USER -->
+
+                <td>
+
+                    <div class="user-name">
+                        {{ s.user_name }}
+                    </div>
+
+                    <div class="user-email">
+                        {{ s.user_email }}
+                    </div>
+
+                </td>
+
+                <!-- DESIGNER -->
+
+                <td>
+
+                    <div class="user-name">
+                        {{ s.designer_name }}
+                    </div>
+
+                    <div class="user-email">
+                        {{ s.designer_email }}
+                    </div>
+
+                </td>
+
+                <!-- RENTAL DATES -->
+
+                <td>
+
+                    <strong>{{ s.rental_from }}</strong>
+
+                    <br>
+
+                    →
+
+                    <br>
+
+                    <strong>{{ s.rental_date }}</strong>
+
+                </td>
+
+                <!-- TOTAL -->
+
+                <td>
+
+                    <strong>
+                        ₹ {{ s.total_charges }}
+                    </strong>
+
+                </td>
+
+                <!-- PAYMENT -->
+
+                <td>
+
+                    {% if s.payment_status == "PAID" %}
+
+                        <span class="payment-paid">
+                            Paid
+                        </span>
+
+                    {% else %}
+
+                        <span class="payment-pending">
+                            Pending
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <!-- STATUS -->
+
+                <td>
+
+                    {% if s.status == "PENDING" %}
+
+                        <span class="status-badge pending">
+                            Pending
+                        </span>
+
+                    {% elif s.status == "Approved" or s.status == "APPROVED" %}
+
+                        <span class="status-badge approved">
+                            Approved
+                        </span>
+
+                    {% else %}
+
+                        <span class="status-badge rejected">
+                            Rejected
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <!-- RETURN STATUS -->
+
+                <td>
+
+                    {% if s.return_status == "RETURNED" %}
+
+                        <span class="status-badge approved">
+                            Returned
+                        </span>
+
+                    {% else %}
+
+                        <span class="status-badge pending">
+                            Not Returned
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <!-- DESIGN IMAGES -->
+
+                <td>
+
+                    <div class="design-images">
+
+                        {% if s.image_design1 %}
+                            <img src="{{ s.image_design1.url }}"
+                            class="design-img">
+                        {% endif %}
+
+                        {% if s.image_design2 %}
+                            <img src="{{ s.image_design2.url }}"
+                            class="design-img">
+                        {% endif %}
+
+                        {% if s.image_design3 %}
+                            <img src="{{ s.image_design3.url }}"
+                            class="design-img">
+                        {% endif %}
+
+                    </div>
+
+                </td>
+
+                <!-- PAYMENT PROOF -->
+
+                <td>
+
+                    {% if s.payment_screenshot %}
+
+                        <a href="{{ s.payment_screenshot.url }}"
+                        target="_blank"
+                        class="proof-link">
+
+                            <i class="fa fa-eye"></i>
+
+                            View Proof
+
+                        </a>
+
+                    {% else %}
+
+                        <span style="color:#888;">
+                            No Proof
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        {% else %}
+
+            <tr>
+
+                <td colspan="9" class="empty-row">
+
+                    <i class="fa fa-shopping-bag"
+                    style="font-size:34px; color:#B68D40;"></i>
+
+                    <br><br>
+
+                    No Rental Records Found
+
+                </td>
+
+            </tr>
+
+        {% endif %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- ================= ALERT ================= -->
+
+{% if messages %}
+
+<script>
+
+{% for message in messages %}
+
+alert("{{ message }}");
+
+{% endfor %}
+
+</script>
+
+{% endif %}
+
+</body>
+</html>

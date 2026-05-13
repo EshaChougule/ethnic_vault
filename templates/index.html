@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      {% load static %}
+      <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!--meta metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- site metas -->
+      <title>Ethnic Vault</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+      <!-- fevicon -->
+      <link rel="icon" href="{% static 'images/fevicon.png' %}">
+      <!-- Scrollbar Custom CSS -->
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <!-- fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+      <!-- font awesome -->
+      <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <!--  -->
+      <!-- owl stylesheets -->
+      <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+      <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+
+      <style>
+
+/* ================= RESET ================= */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+
+background-color:#F8F3EA;
+
+background-image:
+linear-gradient(rgba(248,243,234,0.78),
+rgba(248,243,234,0.78)),
+url("{% static 'images/ethnic-pattern.png' %}");
+
+background-size:320px;
+
+background-repeat:repeat;
+
+background-attachment:fixed;
+
+background-position:center;
+
+overflow-x:hidden;
+
+color:#2B2B2B;
+}
+
+/* ================= TOP RIBBON ================= */
+
+.top_ribbon{
+background:#111;
+padding:10px 0;
+}
+
+.ribbon_content{
+display:flex;
+justify-content:center;
+gap:35px;
+flex-wrap:wrap;
+}
+
+.ribbon_content a{
+color:#FAF7F2;
+font-size:14px;
+text-decoration:none;
+}
+
+.ribbon_content a:hover{
+color:#E0C08D;
+}
+
+/* ================= LOGO ================= */
+
+.logo_section{
+padding:25px 0 15px;
+text-align:center;
+background:white;
+}
+
+.logo_name{
+font-family:'Great Vibes',cursive;
+font-size:72px;
+color:#B8924C;
+margin-bottom:10px;
+}
+
+.logo_tagline{
+font-size:16px;
+color:#777;
+letter-spacing:1px;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar_section{
+background:rgba(255,255,255,0.92);
+backdrop-filter:blur(10px);
+padding:18px 0;
+box-shadow:0 4px 15px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:9999;
+}
+
+.nav_wrapper{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.toggle_icon img{
+width:30px;
+cursor:pointer;
+filter:
+brightness(0)
+saturate(100%)
+sepia(35%)
+hue-rotate(5deg)
+brightness(90%);
+}
+
+.category_btn{
+background:#111;
+color:white;
+padding:12px 22px;
+border:none;
+border-radius:30px;
+font-weight:500;
+}
+
+.search_box{
+display:flex;
+flex:1;
+max-width:500px;
+background:#f3f3f3;
+border-radius:40px;
+overflow:hidden;
+}
+
+.search_box input{
+width:100%;
+padding:12px 18px;
+border:none;
+outline:none;
+background:#f8f8f8;
+border-radius:30px;
+font-size:14px;
+}
+
+.search_box button{
+border:none;
+background:#B8924C;
+color:white;
+padding:0 22px;
+}
+
+.nav_right{
+display:flex;
+align-items:center;
+gap:22px;
+}
+
+.nav_right a{
+text-decoration:none;
+color:#222;
+font-weight:500;
+}
+
+.nav_right a:hover{
+color:#B8924C;
+}
+
+/* ================= SIDE NAV ================= */
+
+.sidenav{
+height:auto;
+max-height:85vh;
+width:0;
+position:fixed;
+z-index:999999;
+top:85px;
+left:15px;
+background:#1E1A14;
+overflow-x:hidden;
+padding-top:20px;
+padding-bottom:20px;
+transition:0.4s ease;
+border-radius:22px;
+box-shadow:0 10px 35px rgba(0,0,0,0.28);
+}
+
+.sidenav a{
+padding:12px 28px;
+text-decoration:none;
+font-size:16px;
+color:#FAF7F2;
+display:block;
+transition:0.3s;
+white-space:nowrap;
+}
+
+.sidenav a:hover{
+color:#E0C08D;
+}
+
+.closebtn{
+position:absolute;
+top:5px;
+right:18px;
+font-size:30px;
+}
+
+/* ================= HERO ================= */
+
+.hero_banner{
+width:100%;
+position:relative;
+z-index:1;
+overflow:hidden;
+}
+
+.banner_slide{
+height:82vh;
+background-size:cover;
+background-position:center;
+background-repeat:no-repeat;
+position:relative;
+will-change:transform;
+transform:translateZ(0);
+backface-visibility:hidden;
+}
+
+.carousel-inner{
+overflow:hidden;
+}
+
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active{
+display:block;
+}
+
+.banner_overlay{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.08);
+}
+
+.banner_content{
+position:absolute;
+top:50%;
+left:10%;
+transform:translateY(-50%);
+z-index:2;
+max-width:600px;
+}
+
+.banner_content h1{
+font-family:'Playfair Display',serif;
+font-size:82px;
+line-height:1.1;
+color:#FAF7F2;
+font-weight:700;
+letter-spacing:2px;
+text-shadow:2px 4px 18px rgba(0,0,0,0.25);
+animation:fadeUp 1.5s ease;
+}
+
+.banner_content h1 span{
+font-family:'Great Vibes',cursive;
+font-size:95px;
+font-weight:400;
+color:#f8e7c2;
+display:block;
+margin-bottom:10px;
+}
+
+.carousel-item{
+position:relative;
+z-index:1;
+}
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* ================= COLLECTION ================= */
+
+.fashion_section{
+padding:70px 0;
+}
+
+.fashion_taital{
+font-family:'Playfair Display',serif;
+font-size:42px;
+color:#2B2B2B;
+text-align:center;
+margin-bottom:50px;
+position:relative;
+}
+
+.product_card{
+background:#fff;
+border-radius:20px;
+padding:15px;
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
+overflow:hidden;
+position:relative;
+transition:0.4s ease;
+height:100%;
+}
+
+.product_card:hover{
+transform:translateY(-8px);
+}
+
+.image_wrapper{
+position:relative;
+overflow:hidden;
+border-radius:14px;
+}
+
+.image_wrapper img{
+width:100%;
+height:320px;
+object-fit:cover;
+}
+
+.overlay_buttons{
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.4);
+display:flex;
+align-items:center;
+justify-content:center;
+opacity:0;
+transition:0.4s;
+}
+
+.image_wrapper:hover .overlay_buttons{
+opacity:1;
+}
+
+.overlay_buttons a{
+background:white;
+padding:10px 18px;
+border-radius:30px;
+text-decoration:none;
+color:#111;
+font-weight:600;
+}
+
+.shirt_text{
+font-size:20px;
+margin-top:18px;
+font-weight:600;
+}
+
+.price_text{
+font-size:18px;
+color:#B8924C;
+font-weight:700;
+}
+
+.wishlist_icon{
+position:absolute;
+top:18px;
+right:18px;
+z-index:2;
+background:white;
+width:38px;
+height:38px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#111;
+text-decoration:none;
+}
+
+/* ================= WORKS ================= */
+
+.works_section{
+padding:80px 0;
+background:#FAF7F2;
+}
+
+.works_title{
+font-size:50px;
+margin-bottom:15px;
+font-family:'Playfair Display',serif;
+}
+
+.works_subtitle{
+color:#777;
+margin-bottom:50px;
+}
+
+.step{
+padding:25px;
+}
+
+.step_icon{
+width:90px;
+height:90px;
+background:#B8924C;
+margin:auto;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
+color:white;
+margin-bottom:25px;
+}
+
+/* ================= FOOTER ================= */
+
+.footer_section{
+background:#1E1A14;
+padding:70px 0;
+color:#ddd;
+}
+
+.footer_section h3,
+.footer_section h4{
+color:#E0C08D;
+margin-bottom:20px;
+}
+
+.footer_section ul{
+list-style:none;
+padding:0;
+}
+
+.footer_section ul li{
+margin-bottom:10px;
+}
+
+.footer_section a{
+color:#ddd;
+text-decoration:none;
+}
+
+.footer_section a:hover{
+color:#E0C08D;
+}
+
+.copyright_section{
+background:#15120E;
+padding:15px;
+text-align:center;
+color:#aaa;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:992px){
+
+.banner_content h1{
+font-size:50px;
+}
+
+.nav_wrapper{
+justify-content:center;
+}
+
+.search_box{
+max-width:100%;
+}
+
+}
+
+@media(max-width:768px){
+
+.logo_name{
+font-size:52px;
+}
+
+.banner_slide{
+height:65vh;
+}
+
+.banner_content{
+left:5%;
+}
+
+.banner_content h1{
+font-size:38px;
+}
+
+.fashion_taital,
+.works_title{
+font-size:34px;
+}
+
+.nav_right{
+gap:14px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+}
+
+.profile_menu{
+border:none;
+border-radius:14px;
+padding:10px;
+box-shadow:0 10px 30px rgba(0,0,0,0.12);
+}
+
+.profile_menu .dropdown-item{
+padding:10px 18px;
+border-radius:10px;
+font-size:14px;
+}
+
+.profile_menu .dropdown-item:hover{
+background:#F8F3EA;
+color:#B8924C;
+}
+
+/* ================= CART BUTTON ================= */
+
+.cart_btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    background: #B8924C;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    transition: 0.3s ease;
+}
+
+.cart_btn i {
+    font-size: 16px;
+}
+
+.cart_btn:hover {
+    background: #8c6a2d;
+    color: white;
+    transform: translateY(-2px);
+}
+
+</style>
+
+</head>
+<body>
+
+<!-- ================= TOP RIBBON ================= -->
+
+<div class="top_ribbon">
+    <div class="container ribbon_content">
+        <a href="#">Best Sellers</a>
+        <a href="#">New Releases</a>
+        <a href="#">Today's Deals</a>
+        <a href="#">Customer Service</a>
+    </div>
+</div>
+
+<!-- ================= LOGO ================= -->
+
+<div class="logo_section">
+    <div class="container text-center">
+        <h1 class="logo_name">Ethnic Vault</h1>
+        <p class="logo_tagline">Your dream look, without the full price</p>
+    </div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar_section">
+
+    <div class="container nav_wrapper">
+
+        <!-- SIDE MENU -->
+
+        <div class="menu_left">
+
+            <span class="toggle_icon" onclick="openNav()">
+                <img src="{% static 'images/toggle-icon.png' %}">
+            </span>
+
+            <div id="mySidenav" class="sidenav">
+
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                <a href="{% url 'homepage' %}">Home</a>
+                <a href="#">Offers</a>
+                <a href="#">Track Order</a>
+
+                {% if request.session.role == 'user' %}
+
+                <a href="{% url 'user_dashboard' %}">
+                    Profile
+                </a>
+
+                <a href="{% url 'logout_view' %}">
+                    Logout
+                </a>
+
+                {% else %}
+
+                <a href="{% url 'user_login' %}">
+                    User Login
+                </a>
+
+                <a href="{% url 'user_register_page' %}">
+                    Sign Up
+                </a>
+
+                {% endif %}
+
+                <a href="{% url 'designer_login' %}">Designer Login</a>
+
+                <a href="{% url 'admin_login' %}">Admin Login</a>
+
+            </div>
+        </div>
+
+        <!-- CATEGORY -->
+
+        <div class="dropdown">
+
+            <button class="category_btn dropdown-toggle" data-toggle="dropdown">
+                Collections
+            </button>
+
+            <div class="dropdown-menu category_menu">
+
+                <h6 class="dropdown-header">Her Collection</h6>
+
+                <a class="dropdown-item" href="{% url 'lehenga' %}">
+                    Lehenga
+                </a>
+
+                <a class="dropdown-item" href="{% url 'saree' %}">
+                    Saree
+                </a>
+
+                <a class="dropdown-item" href="{% url 'chaniya' %}">
+                    Chaniya Choli
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <h6 class="dropdown-header">His Collection</h6>
+
+                <a class="dropdown-item" href="{% url 'sherwani' %}">
+                    Sherwani
+                </a>
+
+                <a class="dropdown-item" href="{% url 'kurta' %}">
+                    Kurta
+                </a>
+
+                <a class="dropdown-item" href="{% url 'tuxedo' %}">
+                    Tuxedo
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <h6 class="dropdown-header">Kids Collection</h6>
+
+                <a class="dropdown-item" href="{% url 'boys' %}">
+                    Boys Wear
+                </a>
+
+                <a class="dropdown-item" href="{% url 'girls' %}">
+                    Girls Wear
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <h6 class="dropdown-header">Accessories</h6>
+
+                <a class="dropdown-item" href="{% url 'menAccessories' %}">
+                    Men Accessories
+                </a>
+
+                <a class="dropdown-item" href="{% url 'womenAccessories' %}">
+                    Women Accessories
+                </a>
+
+                <div class="dropdown-divider"></div>
+
+                <h6 class="dropdown-header">Footwear</h6>
+
+                <a class="dropdown-item" href="{% url 'menfootwear' %}">
+                    Men Footwear
+                </a>
+
+                <a class="dropdown-item" href="{% url 'womenfootwear' %}">
+                    Women Footwear
+                </a>
+
+            </div>
+        </div>
+
+        <!-- SEARCH -->
+
+        <div class="search_box">
+
+            <input type="text"
+                   placeholder="Search outfits, jewellery, footwear...">
+
+            <button>
+                <i class="fa fa-search"></i>
+            </button>
+
+        </div>
+
+        <!-- RIGHT -->
+
+        <div class="nav_right">
+
+            <a href="{% url 'view_cart' %}"
+                class="btn btn-dark">
+                Cart
+            </a>
+
+            <a href="{% url 'view_wishlist' %}">
+                <i class="fa fa-heart"></i>
+                Wishlist
+            </a>
+            
+
+            {% if request.session.role == 'user' %}
+
+            <div class="dropdown">
+
+                <a class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    style="cursor:pointer;">
+
+                    <i class="fa fa-user-circle"></i>
+
+                    Hello, {{ request.session.user_name }}
+
+                </a>
+
+                <div class="dropdown-menu profile_menu">
+
+                    <a class="dropdown-item"
+                        href="{% url 'user_dashboard' %}">
+                        Dashboard
+                    </a>
+
+                    <a class="dropdown-item"
+                        href="{% url 'logout_view' %}">
+                        Logout
+                    </a>
+
+                </div>
+
+            </div>
+
+            {% else %}
+
+            <a href="{% url 'user_login' %}">
+                <i class="fa fa-user"></i>
+                Login
+            </a>
+
+            {% endif %}
+
+        </div>
+    </div>
+
+</nav>
+
+<!-- ================= HERO BANNER ================= -->
+
+<section class="hero_banner">
+
+    <div id="my_slider"
+    class="carousel slide"
+    data-ride="carousel"
+    data-interval="4000">
+        <div class="carousel-inner">
+
+            <!-- BANNER 1 -->
+
+            <div class="carousel-item active banner_slide"
+                 style="background-image:url('{% static 'images/banner.jpeg' %}')">
+
+                <div class="banner_overlay"></div>
+
+                <div class="banner_content">
+
+                    <h1>
+                        Rent It.<br>
+                        Wear It.<br>
+                        Return It.
+                    </h1>
+
+                </div>
+
+            </div>
+
+            <!-- BANNER 2 -->
+
+            <div class="carousel-item banner_slide"
+                 style="background-image:url('{% static 'images/banner1.jpeg' %}')">
+
+                <div class="banner_overlay"></div>
+
+                <div class="banner_content">
+
+                    <h1>
+                        Royal Wedding<br>
+                        Collection
+                    </h1>
+
+                </div>
+
+            </div>
+
+            <!-- BANNER 3 -->
+
+            <div class="carousel-item banner_slide"
+                 style="background-image:url('{% static 'images/banner2.jpeg' %}')">
+
+                <div class="banner_overlay"></div>
+
+                <div class="banner_content">
+
+                    <h1>
+                        Style Beyond<br>
+                        Ownership
+                    </h1>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= HER COLLECTION ================= -->
+
+<div class="fashion_section">
+
+    <div class="container">
+
+        <h1 class="fashion_taital">
+            Her Collection
+        </h1>
+
+        <div class="row">
+
+            {% for d in her_data %}
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                <div class="product_card">
+
+                    <a href="{% url 'add_to_wishlist' d.id %}"
+                        class="wishlist_icon">
+
+                        <i class="fa fa-heart-o"></i>
+
+                    </a>
+
+                    <div class="image_wrapper">
+
+                        <img src="{{ d.design_image1.url }}">
+
+                        <div class="overlay_buttons">
+
+                            <a href="{% url 'view_design_details' d.id %}">
+                                View Details
+                            </a>
+                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to Cart
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <h4 class="shirt_text">
+                        {{ d.design_title }}
+                    </h4>
+
+                    <p class="price_text">
+                        ₹{{ d.charges }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= HIS COLLECTION ================= -->
+
+<div class="fashion_section">
+
+    <div class="container">
+
+        <h1 class="fashion_taital">
+            His Collection
+        </h1>
+
+        <div class="row">
+
+            {% for d in his_data %}
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                <div class="product_card">
+
+                    <a href="{% url 'add_to_wishlist' d.id %}"
+                        class="wishlist_icon">
+
+                        <i class="fa fa-heart-o"></i>
+
+                    </a>
+
+                    <div class="image_wrapper">
+
+                        <img src="{{ d.design_image1.url }}">
+
+                        <div class="overlay_buttons">
+
+                            <a href="{% url 'view_design_details' d.id %}">
+                                View Details
+                            </a>
+                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to Cart
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <h4 class="shirt_text">
+                        {{ d.design_title }}
+                    </h4>
+
+                    <p class="price_text">
+                        ₹{{ d.charges }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= KIDS COLLECTION ================= -->
+
+<div class="fashion_section">
+
+    <div class="container">
+
+        <h1 class="fashion_taital">
+            Kids Collection
+        </h1>
+
+        <div class="row">
+
+            {% for d in kids_data %}
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                <div class="product_card">
+
+                    <a href="{% url 'add_to_wishlist' d.id %}"
+                        class="wishlist_icon">
+
+                        <i class="fa fa-heart-o"></i>
+
+                    </a>
+
+                    <div class="image_wrapper">
+
+                        <img src="{{ d.design_image1.url }}">
+
+                        <div class="overlay_buttons">
+
+                            <a href="{% url 'view_design_details' d.id %}">
+                                View Details
+                            </a>
+                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to Cart
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <h4 class="shirt_text">
+                        {{ d.design_title }}
+                    </h4>
+
+                    <p class="price_text">
+                        ₹{{ d.charges }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= ACCESSORIES ================= -->
+
+<div class="fashion_section">
+
+    <div class="container">
+
+        <h1 class="fashion_taital">
+            Accessories
+        </h1>
+
+        <div class="row">
+
+            {% for d in accessories_data %}
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                <div class="product_card">
+
+                    <a href="{% url 'add_to_wishlist' d.id %}"
+                        class="wishlist_icon">
+
+                        <i class="fa fa-heart-o"></i>
+
+                    </a>
+
+                    <div class="image_wrapper">
+
+                        <img src="{{ d.design_image1.url }}">
+
+                        <div class="overlay_buttons">
+
+                            <a href="{% url 'view_design_details' d.id %}">
+                                View Details
+                            </a>
+                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to Cart
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <h4 class="shirt_text">
+                        {{ d.design_title }}
+                    </h4>
+
+                    <p class="price_text">
+                        ₹{{ d.charges }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= FOOTWEAR ================= -->
+
+<div class="fashion_section">
+
+    <div class="container">
+
+        <h1 class="fashion_taital">
+            Footwear
+        </h1>
+
+        <div class="row">
+
+            {% for d in footwear_data %}
+
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+                <div class="product_card">
+
+                    <a href="{% url 'add_to_wishlist' d.id %}"
+                        class="wishlist_icon">
+
+                        <i class="fa fa-heart-o"></i>
+
+                    </a>
+
+                    <div class="image_wrapper">
+
+                        <img src="{{ d.design_image1.url }}">
+
+                        <div class="overlay_buttons">
+
+                            <a href="{% url 'view_design_details' d.id %}">
+                                View Details
+                            </a>
+                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
+                                <i class="fa fa-shopping-cart"></i>
+                                Add to Cart
+                            </a>
+                        </div>
+
+                    </div>
+
+                    <h4 class="shirt_text">
+                        {{ d.design_title }}
+                    </h4>
+
+                    <p class="price_text">
+                        ₹{{ d.charges }}
+                    </p>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<div class="works_section">
+
+    <div class="container text-center">
+
+        <h2 class="works_title">
+            How Ethnic Vault Works ?
+        </h2>
+
+        <p class="works_subtitle">
+            Simple steps to rent your perfect outfit
+        </p>
+
+        <div class="row mt-5">
+
+            <div class="col-md-3 step">
+
+                <div class="step_icon">
+                    <i class="fa fa-shopping-bag"></i>
+                </div>
+
+                <h4>Select Outfit</h4>
+
+                <p>
+                    Browse and choose from our premium ethnic collection.
+                </p>
+
+            </div>
+
+            <div class="col-md-3 step">
+
+                <div class="step_icon">
+                    <i class="fa fa-calendar"></i>
+                </div>
+
+                <h4>Book It</h4>
+
+                <p>
+                    Select your date and place your rental order easily.
+                </p>
+
+            </div>
+
+            <div class="col-md-3 step">
+
+                <div class="step_icon">
+                    <i class="fa fa-star"></i>
+                </div>
+
+                <h4>Wear & Shine</h4>
+
+                <p>
+                    Look stunning and enjoy your special occasion.
+                </p>
+
+            </div>
+
+            <div class="col-md-3 step">
+
+                <div class="step_icon">
+                    <i class="fa fa-refresh"></i>
+                </div>
+
+                <h4>Return It</h4>
+
+                <p>
+                    Easy return process with pickup at your doorstep.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<div class="footer_section">
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6">
+
+                <h3>Ethnic Vault</h3>
+
+                <p>Rent | Style | Return</p>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <h4>Quick Links</h4>
+
+                <ul>
+
+                    <li><a href="#">Home</a></li>
+
+                    <li><a href="#">Her Collection</a></li>
+
+                    <li><a href="#">His Collection</a></li>
+
+                    <li><a href="#">Kids Collection</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <h4>Help</h4>
+
+                <ul>
+
+                    <li><a href="#">Contact Us</a></li>
+
+                    <li><a href="#">FAQs</a></li>
+
+                    <li><a href="#">Terms & Conditions</a></li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6">
+
+                <h4>Contact</h4>
+
+                <p>Email: ethnicvaultrentals@gmail.com</p>
+
+                <p>Phone: +91 255297391</p>
+
+                <div>
+
+                    <a href="#">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+
+                    <a href="#">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ================= COPYRIGHT ================= -->
+
+<div class="copyright_section">
+
+    <div class="container">
+
+        <p>
+            © 2026 Ethnic Vault. All Rights Reserved.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "260px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+</script>
+
+{% if messages %}
+<script>
+{% for message in messages %}
+alert("{{ message }}");
+{% endfor %}
+</script>
+{% endif %}
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rental Requests | Ethnic Vault</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:
+        linear-gradient(rgba(248,244,236,0.94),rgba(248,244,236,0.94)),
+        url('/static/images/ethnic-pattern.png');
+    background-size:180px;
+    background-repeat:repeat;
+    background-attachment:fixed;
+    min-height:100vh;
+    color:#2b2b2b;
+}
+
+/* TOP BAR */
+
+.top-bar{
+    width:100%;
+    padding:20px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.back-btn{
+    background:#111827;
+    color:#d4af37;
+    padding:12px 22px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+    border:1px solid rgba(212,175,55,0.3);
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.back-btn:hover{
+    background:#d4af37;
+    color:#111827;
+    transform:translateY(-2px);
+}
+
+.back-btn i{
+    margin-right:8px;
+}
+
+.portal-badge{
+    background:#111827;
+    color:#d4af37;
+    padding:12px 22px;
+    border-radius:50px;
+    font-weight:600;
+    font-size:14px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+/* MAIN */
+
+.request-section{
+    width:95%;
+    max-width:1450px;
+    margin:auto;
+    padding:10px 10px 50px;
+}
+
+/* HEADER */
+
+.header-box{
+    background:rgba(255,255,255,0.92);
+    border-radius:28px;
+    padding:35px;
+    margin-bottom:35px;
+    border:1px solid rgba(212,175,55,0.18);
+    box-shadow:0 15px 40px rgba(0,0,0,0.06);
+    backdrop-filter:blur(8px);
+}
+
+.request-title{
+    font-size:38px;
+    font-weight:700;
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.request-subtitle{
+    color:#777;
+    font-size:15px;
+}
+
+/* GRID */
+
+.request-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:28px;
+}
+
+/* CARD */
+
+.request-card{
+    background:rgba(255,255,255,0.95);
+    border-radius:28px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    border:1px solid rgba(212,175,55,0.14);
+    transition:0.35s;
+    backdrop-filter:blur(8px);
+}
+
+.request-card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px rgba(0,0,0,0.10);
+}
+
+/* IMAGE */
+
+.image-box{
+    padding:18px 18px 0;
+}
+
+.request-img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    border-radius:18px;
+}
+
+/* CONTENT */
+
+.card-content{
+    padding:20px;
+}
+
+.user-name{
+    font-size:24px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.request-date{
+    color:#777;
+    font-size:14px;
+    margin-bottom:14px;
+}
+
+/* STATUS */
+
+.status-badge{
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.pending{
+    background:#fff3cd;
+    color:#856404;
+}
+
+.approved{
+    background:#d4edda;
+    color:#155724;
+}
+
+.rejected{
+    background:#f8d7da;
+    color:#721c24;
+}
+
+/* BUTTON */
+
+.view-btn{
+    width:100%;
+    border:none;
+    padding:14px;
+    border-radius:16px;
+    background:linear-gradient(135deg,#d4af37,#b8922f);
+    color:white;
+    font-weight:600;
+    font-size:15px;
+    transition:0.3s;
+}
+
+.view-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 25px rgba(212,175,55,0.3);
+}
+
+/* MODAL */
+
+.modal-content{
+    border:none;
+    border-radius:28px;
+    overflow:hidden;
+    background:#fffdf8;
+}
+
+.modal-header{
+    background:linear-gradient(135deg,#111827,#1f2937);
+    padding:22px 28px;
+    border:none;
+}
+
+.modal-title{
+    color:#d4af37;
+    font-size:26px;
+    font-weight:700;
+}
+
+.btn-close{
+    filter:invert(1);
+}
+
+.modal-body{
+    padding:28px;
+}
+
+/* DETAIL BOX */
+
+.detail-box{
+    background:#f8f3ea;
+    border-radius:22px;
+    padding:22px;
+    margin-bottom:22px;
+    border:1px solid rgba(212,175,55,0.12);
+}
+
+.detail-box h5{
+    color:#111827;
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:18px;
+}
+
+.detail-box strong{
+    color:#111827;
+}
+
+/* DESIGN IMAGES */
+
+.design-images{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.detail-img{
+    width:75px;
+    height:75px;
+    object-fit:cover;
+    border-radius:14px;
+    border:2px solid rgba(212,175,55,0.15);
+}
+
+/* PAYMENT */
+
+.payment-proof{
+    width:100%;
+    max-height:300px;
+    object-fit:contain;
+    border-radius:18px;
+    background:white;
+    padding:10px;
+}
+
+/* FOOTER */
+
+.modal-footer{
+    border:none;
+    padding:0 28px 28px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+/* ACTION BUTTONS */
+
+.action-btn{
+    text-decoration:none;
+    border:none;
+    padding:12px 24px;
+    border-radius:14px;
+    color:white;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.action-btn:hover{
+    transform:translateY(-2px);
+    color:white;
+}
+
+.approve-btn{
+    background:#198754;
+}
+
+.reject-btn{
+    background:#dc3545;
+}
+
+/* EMPTY */
+
+.empty-state{
+    background:white;
+    border-radius:24px;
+    padding:60px 30px;
+    text-align:center;
+    color:#777;
+    font-size:18px;
+    border:1px solid rgba(212,175,55,0.12);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .top-bar{
+        padding:18px;
+        gap:15px;
+    }
+
+    .request-title{
+        font-size:30px;
+    }
+
+    .header-box{
+        padding:25px;
+    }
+
+    .modal-body{
+        padding:18px;
+    }
+
+    .modal-footer{
+        padding:0 18px 20px;
+    }
+
+    .detail-img{
+        width:75px;
+        height:75px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+    <a href="{% url 'designer_dashboard' %}" class="back-btn">
+        <i class="fa fa-arrow-left"></i>
+        Back to Dashboard
+    </a>
+
+    <div class="portal-badge">
+        <i class="fa fa-crown"></i>
+        Designer Portal
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="request-section">
+
+    <!-- HEADER -->
+
+    <div class="header-box">
+
+        <h2 class="request-title">
+            Rental Requests
+        </h2>
+
+        <div class="request-subtitle">
+            Manage all customer rental requests, approvals and bookings beautifully.
+        </div>
+
+    </div>
+
+    <!-- GRID -->
+
+    <div class="request-grid">
+
+        {% for s in rent %}
+
+        <div class="request-card">
+
+            <div class="image-box">
+
+                {% if s.image_design1 %}
+                    <img src="{{ s.image_design1.url }}"
+                         class="request-img">
+                {% endif %}
+
+            </div>
+
+            <div class="card-content">
+
+                <div class="user-name">
+                    {{ s.user_name }}
+                </div>
+
+                <div class="request-date">
+                    Requested on {{ s.date }}
+                </div>
+
+                {% if s.status == 'Pending' %}
+
+                    <span class="status-badge pending">
+                        Pending
+                    </span>
+
+                {% elif s.status == 'Approved' %}
+
+                    <span class="status-badge approved">
+                        Approved
+                    </span>
+
+                {% else %}
+
+                    <span class="status-badge rejected">
+                        Rejected
+                    </span>
+
+                {% endif %}
+
+                <button class="view-btn"
+                        data-bs-toggle="modal"
+                        data-bs-target="#requestModal{{ s.id }}">
+
+                    <i class="fa fa-eye"></i>
+                    View Details
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- MODAL -->
+
+        <div class="modal fade"
+             id="requestModal{{ s.id }}"
+             tabindex="-1">
+
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+
+                <div class="modal-content">
+
+                    <!-- HEADER -->
+
+                    <div class="modal-header">
+
+                        <h5 class="modal-title">
+                            Rental Details
+                        </h5>
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal">
+                        </button>
+
+                    </div>
+
+                    <!-- BODY -->
+
+                    <div class="modal-body">
+
+                        <!-- USER DETAILS -->
+
+                        <div class="detail-box">
+
+                            <h5>User Details</h5>
+
+                            <strong>Name:</strong>
+                            {{ s.user_name }} <br><br>
+
+                            <strong>Email:</strong>
+                            {{ s.user_email }} <br><br>
+
+                            <strong>Contact:</strong>
+                            {{ s.user_contact }}
+
+                        </div>
+
+                        <!-- RENT INFO -->
+
+                        <div class="detail-box">
+
+                            <h5>Rental Information</h5>
+
+                            <strong>Rental From:</strong>
+                            {{ s.rental_from }} <br><br>
+
+                            <strong>Return Date:</strong>
+                            {{ s.rental_date }} <br><br>
+
+                            <strong>Total Charges:</strong>
+                            ₹{{ s.total_charges }} <br><br>
+
+                            <strong>Deposit Paid:</strong>
+                            ₹{{ s.deposit_amount }} <br><br>
+
+                            <strong>Remaining Amount:</strong>
+                            ₹{{ s.remaining_amount }}
+
+                        </div>
+
+                        <!-- DESIGN IMAGES -->
+
+                        <div class="detail-box">
+
+                            <h5>Design Images</h5>
+
+                            <div class="design-images">
+
+                                {% if s.image_design1 %}
+                                    <img src="{{ s.image_design1.url }}"
+                                         class="detail-img">
+                                {% endif %}
+
+                                {% if s.image_design2 %}
+                                    <img src="{{ s.image_design2.url }}"
+                                         class="detail-img">
+                                {% endif %}
+
+                                {% if s.image_design3 %}
+                                    <img src="{{ s.image_design3.url }}"
+                                         class="detail-img">
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                        <!-- PAYMENT -->
+
+                        <div class="detail-box">
+
+                            <h5>Payment Screenshot</h5>
+
+                            {% if s.payment_screenshot %}
+
+                                <img src="{{ s.payment_screenshot.url }}"
+                                     class="payment-proof">
+
+                            {% else %}
+
+                                <p>No screenshot uploaded.</p>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                    <!-- FOOTER -->
+
+                    <div class="modal-footer">
+
+                        {% if s.status == 'Pending' %}
+
+                            <a href="{% url 'approve_rental_request' s.id %}"
+                               class="action-btn approve-btn">
+
+                                Approve
+
+                            </a>
+
+                            <a href="{% url 'disapprove_rental_request' s.id %}"
+                               class="action-btn reject-btn">
+
+                                Reject
+
+                            </a>
+
+                        {% else %}
+
+                            <span style="font-weight:600;color:#777;">
+                                Action Already Taken
+                            </span>
+
+                        {% endif %}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% empty %}
+
+        <div class="empty-state">
+
+            <i class="fa fa-box-open"
+               style="font-size:45px;color:#d4af37;margin-bottom:15px;"></i>
+
+            <br>
+
+            No Rental Requests Yet
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+<!-- BOOTSTRAP JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

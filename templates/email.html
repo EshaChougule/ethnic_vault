@@ -1,0 +1,264 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Send Notification | Ethnic Vault</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(rgba(255,248,240,0.94),rgba(255,248,240,0.94)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:cover;
+    min-height:100vh;
+}
+
+/* TOPBAR */
+
+.topbar{
+    background:#111;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    font-size:32px;
+    font-weight:700;
+}
+
+.back-btn{
+    text-decoration:none;
+    color:#f5deb3;
+    border:1px solid #d4af37;
+    padding:10px 20px;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#d4af37;
+    color:#111;
+}
+
+/* CONTAINER */
+
+.mail-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:60px 20px;
+}
+
+.mail-card{
+    width:100%;
+    max-width:750px;
+    background:white;
+    border-radius:30px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    border:1px solid #ecd9b0;
+}
+
+/* HEADER */
+
+.mail-header{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.mail-header h2{
+    font-family:'Cinzel',serif;
+    color:#111;
+    font-size:38px;
+}
+
+.mail-header p{
+    color:#777;
+    margin-top:10px;
+}
+
+/* FORM */
+
+.form-label{
+    font-weight:600;
+    color:#5c3b07;
+    margin-bottom:8px;
+}
+
+.form-control{
+    border-radius:14px;
+    padding:14px;
+    border:1px solid #ddd;
+    box-shadow:none !important;
+}
+
+.form-control:focus{
+    border-color:#d4af37;
+}
+
+/* BUTTON */
+
+.send-btn{
+    width:100%;
+    border:none;
+    padding:15px;
+    border-radius:14px;
+    background:linear-gradient(135deg,#c58b32,#e8b96c);
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    margin-top:10px;
+    transition:0.3s;
+}
+
+.send-btn:hover{
+    transform:translateY(-2px);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <a href="{% url 'designer_dashboard' %}" class="back-btn">
+        <i class="fa fa-arrow-left"></i>
+        Back to Dashboard
+    </a>
+
+    <div class="logo">
+        Ethnic Vault
+    </div>
+
+</div>
+<!-- FORM -->
+
+<div class="mail-wrapper">
+
+    <div class="mail-card">
+
+        <div class="mail-header">
+
+            <h2>
+                <i class="fa fa-envelope"></i>
+                Send Notification
+            </h2>
+
+            <p>
+                Send rental reminders, due date updates or important messages.
+            </p>
+
+        </div>
+
+        <form action="{% url 'send_email' %}" method="POST">
+
+            {% csrf_token %}
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Full Name
+                </label>
+
+                <input type="text"
+                       name="fullname"
+                       class="form-control"
+                       placeholder="Enter customer name"
+                       required>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Email Address
+                </label>
+
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Enter customer email"
+                       required>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Subject
+                </label>
+
+                <input type="text"
+                       name="subject"
+                       class="form-control"
+                       placeholder="Enter email subject"
+                       required>
+
+            </div>
+
+            <div class="mb-4">
+
+                <label class="form-label">
+                    Message
+                </label>
+
+                <textarea name="message"
+                          rows="5"
+                          class="form-control"
+                          placeholder="Write your message here..."
+                          required></textarea>
+
+            </div>
+
+            <button type="submit" class="send-btn">
+
+                <i class="fa fa-paper-plane"></i>
+                Send Notification
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% if messages %}
+<script>
+{% for message in messages %}
+alert("{{ message }}");
+{% endfor %}
+</script>
+{% endif %}
+
+</body>
+</html>

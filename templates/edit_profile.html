@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Edit Profile | Ethnic Vault</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+
+    body{
+        font-family:'Poppins',sans-serif;
+        min-height:100vh;
+
+        background-color:#F8F4EE;
+
+        background-image:
+        linear-gradient(rgba(248,244,238,0.94), rgba(248,244,238,0.94)),
+        url("{% static 'images/ethnic-pattern.png' %}");
+
+        background-size:320px;
+        background-repeat:repeat;
+
+        overflow-x:hidden;
+    }
+
+    /* TOP BAR */
+
+    .topbar{
+        width:100%;
+        padding:25px 45px;
+
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+    }
+
+    .back-btn{
+        display:inline-flex;
+        align-items:center;
+        gap:10px;
+
+        background:#111827;
+        color:#D4AF37;
+
+        padding:12px 22px;
+
+        border-radius:40px;
+
+        text-decoration:none;
+        font-size:14px;
+        font-weight:600;
+
+        border:1px solid rgba(212,175,55,0.20);
+
+        transition:0.3s ease;
+
+        box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .back-btn:hover{
+        background:#D4AF37;
+        color:#111827;
+
+        text-decoration:none;
+
+        transform:translateY(-2px);
+    }
+
+    /* MAIN */
+
+    .main-container{
+        width:100%;
+        min-height:calc(100vh - 90px);
+
+        display:flex;
+        justify-content:center;
+        align-items:center;
+
+        padding:20px;
+    }
+
+    /* CARD */
+
+    .profile-card{
+        width:100%;
+        max-width:780px;
+
+        background:rgba(255,255,255,0.90);
+
+        backdrop-filter:blur(14px);
+
+        border-radius:35px;
+
+        padding:50px;
+
+        box-shadow:
+        0 20px 60px rgba(0,0,0,0.10);
+
+        border:1px solid rgba(212,175,55,0.12);
+
+        position:relative;
+
+        overflow:hidden;
+    }
+
+    .profile-card::before{
+        content:"";
+
+        position:absolute;
+
+        width:280px;
+        height:280px;
+
+        background:rgba(212,175,55,0.08);
+
+        border-radius:50%;
+
+        top:-120px;
+        right:-100px;
+
+        filter:blur(30px);
+    }
+
+    /* TITLE */
+
+    .profile-title{
+        text-align:center;
+        margin-bottom:35px;
+
+        position:relative;
+        z-index:2;
+    }
+
+    .profile-title h1{
+        font-family:'Playfair Display',serif;
+        font-size:48px;
+        color:#1E1E1E;
+        margin-bottom:10px;
+    }
+
+    .profile-title p{
+        color:#777;
+        font-size:15px;
+    }
+
+    /* PROFILE IMAGE */
+
+    .profile-section{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+
+        margin-bottom:35px;
+
+        position:relative;
+        z-index:2;
+    }
+
+    .profile-avatar{
+        width:130px;
+        height:130px;
+
+        border-radius:50%;
+
+        overflow:hidden;
+
+        border:4px solid #D4AF37;
+
+        box-shadow:
+        0 10px 30px rgba(0,0,0,0.10);
+
+        margin-bottom:18px;
+
+        background:#f4f4f4;
+
+        display:flex;
+        align-items:center;
+        justify-content:center;
+    }
+
+    .profile-avatar img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+    }
+
+    .default-icon{
+        font-size:55px;
+        color:#D4AF37;
+    }
+
+    .change-photo-btn{
+        background:#D4AF37;
+        color:white;
+
+        border:none;
+
+        padding:11px 24px;
+
+        border-radius:30px;
+
+        font-size:14px;
+        font-weight:600;
+
+        cursor:pointer;
+
+        transition:0.3s ease;
+    }
+
+    .change-photo-btn:hover{
+        background:#B68D40;
+        transform:translateY(-2px);
+    }
+
+    .file-input{
+        display:none;
+    }
+
+    /* FORM */
+
+    .form-group{
+        margin-bottom:22px;
+
+        position:relative;
+        z-index:2;
+    }
+
+    .form-group label{
+        font-size:14px;
+        font-weight:600;
+        color:#444;
+
+        margin-bottom:8px;
+
+        display:block;
+    }
+
+    .form-control{
+        height:56px;
+
+        border:none;
+
+        background:#F7F4EF;
+
+        border-radius:18px;
+
+        padding:0 18px;
+
+        font-size:14px;
+
+        box-shadow:none;
+
+        transition:0.3s ease;
+    }
+
+    .form-control:focus{
+        background:#fff;
+
+        border:1px solid #D4AF37;
+
+        box-shadow:
+        0 0 0 4px rgba(212,175,55,0.12);
+    }
+
+    /* PASSWORD */
+
+    .password-box{
+        position:relative;
+    }
+
+    .toggle-password{
+        position:absolute;
+
+        right:18px;
+        top:50%;
+
+        transform:translateY(-50%);
+
+        cursor:pointer;
+
+        color:#888;
+        font-size:16px;
+    }
+
+    /* BUTTON */
+
+    .save-btn{
+        width:100%;
+
+        height:58px;
+
+        border:none;
+
+        border-radius:20px;
+
+        background:linear-gradient(135deg,#B68D40,#D4AF37);
+
+        color:white;
+
+        font-size:16px;
+        font-weight:600;
+
+        margin-top:10px;
+
+        transition:0.3s ease;
+
+        box-shadow:
+        0 10px 25px rgba(212,175,55,0.20);
+    }
+
+    .save-btn:hover{
+        transform:translateY(-2px);
+
+        background:linear-gradient(135deg,#9D7933,#C9A227);
+    }
+
+    /* MOBILE */
+
+    @media(max-width:768px){
+
+        .topbar{
+            padding:20px;
+        }
+
+        .profile-card{
+            padding:35px 24px;
+            border-radius:28px;
+        }
+
+        .profile-title h1{
+            font-size:38px;
+        }
+
+        .profile-avatar{
+            width:110px;
+            height:110px;
+        }
+
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <a href="{% url 'user_profile' %}" class="back-btn">
+        <i class="fa fa-arrow-left"></i>
+        Back to Profile
+    </a>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-container">
+
+    <div class="profile-card">
+
+        <!-- TITLE -->
+
+        <div class="profile-title">
+
+            <h1>Edit Profile</h1>
+
+            <p>
+                Update your account details and personalize your Ethnic Vault profile beautifully.
+            </p>
+
+        </div>
+
+        <!-- FORM -->
+
+        <form action="{% url 'edit_profile_code' %}"
+              method="POST"
+              enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <!-- PROFILE IMAGE -->
+
+            <div class="profile-section">
+
+                <div class="profile-avatar">
+
+                    {% if user_profile.profile_picture %}
+                        <img src="{{ user_profile.profile_picture.url }}" alt="Profile">
+                    {% else %}
+                        <i class="fa fa-user default-icon"></i>
+                    {% endif %}
+
+                </div>
+
+                <label for="profileUpload" class="change-photo-btn">
+                    <i class="fa fa-camera"></i>
+                    Change Profile Photo
+                </label>
+
+                <input type="file"
+                       name="profile_picture"
+                       id="profileUpload"
+                       class="file-input">
+
+            </div>
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <input type="text"
+                       class="form-control"
+                       value="{{ user_profile.user_name }}"
+                       name="user_name"
+                       required>
+
+                <input type="hidden"
+                       value="{{ user_profile.user_email }}"
+                       name="email">
+
+            </div>
+
+            <!-- CONTACT -->
+
+            <div class="form-group">
+
+                <label>Contact Number</label>
+
+                <input type="tel"
+                       class="form-control"
+                       maxlength="10"
+                       pattern="[6-9][0-9]{9}"
+                       value="{{ user_profile.user_contact }}"
+                       name="contact"
+                       required>
+
+            </div>
+
+            <!-- LOCATION -->
+
+            <div class="form-group">
+
+                <label>Location</label>
+
+                <input type="text"
+                       class="form-control"
+                       value="{{ user_profile.location }}"
+                       name="location"
+                       required>
+
+            </div>
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label>Password</label>
+
+                <div class="password-box">
+
+                    <input type="password"
+                           class="form-control"
+                           value="{{ user_profile.user_password }}"
+                           name="password"
+                           id="passwordField"
+
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+
+                           title="Password must contain: One Uppercase, One Lowercase, One Digit, One Special Character, min 8 chars"
+
+                           required>
+
+                    <span class="toggle-password"
+                          onclick="togglePassword()">
+
+                        <i class="fa fa-eye" id="eyeIcon"></i>
+
+                    </span>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit" class="save-btn">
+
+                <i class="fa fa-save"></i>
+
+                Save Changes
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+<!-- PASSWORD TOGGLE -->
+
+<script>
+
+function togglePassword(){
+
+    let passwordField =
+    document.getElementById("passwordField");
+
+    let eyeIcon =
+    document.getElementById("eyeIcon");
+
+    if(passwordField.type === "password"){
+
+        passwordField.type = "text";
+
+        eyeIcon.classList.remove("fa-eye");
+
+        eyeIcon.classList.add("fa-eye-slash");
+
+    }
+
+    else{
+
+        passwordField.type = "password";
+
+        eyeIcon.classList.remove("fa-eye-slash");
+
+        eyeIcon.classList.add("fa-eye");
+
+    }
+
+}
+
+</script>
+
+<!-- ALERT -->
+
+{% if messages %}
+
+<script>
+
+{% for message in messages %}
+
+alert("{{ message }}");
+
+{% endfor %}
+
+</script>
+
+{% endif %}
+
+</body>
+</html>

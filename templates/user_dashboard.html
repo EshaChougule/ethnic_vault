@@ -1,0 +1,675 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ethnic Vault | User Dashboard</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+
+    background:
+    linear-gradient(rgba(248,244,236,0.95),
+    rgba(248,244,236,0.95)),
+
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+    background-repeat:repeat;
+
+    color:#2B2B2B;
+
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+.top-header{
+    padding:22px 0;
+
+    background:rgba(255,255,255,0.72);
+
+    backdrop-filter:blur(10px);
+
+    border-bottom:1px solid rgba(184,146,76,0.12);
+
+    position:sticky;
+    top:0;
+    z-index:999;
+}
+
+.logo-text{
+    font-family:'Playfair Display',serif;
+
+    font-size:38px;
+    font-weight:700;
+
+    color:#B8924C;
+}
+
+/* MAIN LAYOUT */
+
+.main-wrapper{
+    padding:35px 20px 50px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    background:rgba(255,255,255,0.82);
+
+    backdrop-filter:blur(16px);
+
+    border-radius:30px;
+
+    padding:35px 28px;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.07);
+
+    border:1px solid rgba(184,146,76,0.12);
+
+    position:sticky;
+    top:110px;
+}
+
+/* PROFILE */
+
+.profile-box{
+    text-align:center;
+
+    margin-bottom:35px;
+}
+
+.profile-avatar{
+    width:110px;
+    height:110px;
+
+    border-radius:50%;
+
+    margin:auto;
+    margin-bottom:18px;
+
+    background:
+    linear-gradient(135deg,#B8924C,#D8B56A);
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:42px;
+    font-weight:700;
+
+    box-shadow:
+    0 12px 30px rgba(184,146,76,0.28);
+}
+
+.profile-box h4{
+    font-family:'Playfair Display',serif;
+
+    color:#1E1E1E;
+
+    margin-bottom:6px;
+}
+
+.profile-box p{
+    color:#8A6A2F;
+
+    font-size:14px;
+}
+
+/* SIDEBAR LINKS */
+
+.sidebar-links{
+    margin-top:20px;
+}
+
+.sidebar-links a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+
+    text-decoration:none;
+
+    padding:15px 18px;
+
+    margin-bottom:14px;
+
+    border-radius:16px;
+
+    font-size:15px;
+    font-weight:500;
+
+    color:#444;
+
+    transition:0.3s ease;
+
+    background:#FAF7F2;
+
+    border:1px solid rgba(184,146,76,0.08);
+}
+
+.sidebar-links a:hover{
+    background:#B8924C;
+
+    color:white;
+
+    transform:translateX(4px);
+}
+
+.sidebar-links i{
+    width:18px;
+}
+
+/* LOGOUT BUTTON */
+
+.logout-btn{
+    background:#111827 !important;
+
+    color:#D8B56A !important;
+}
+
+.logout-btn:hover{
+    background:#B8924C !important;
+
+    color:white !important;
+}
+
+/* PAGE HEADER */
+
+.page-banner{
+    background:
+    linear-gradient(rgba(20,18,14,0.82),
+    rgba(20,18,14,0.88)),
+
+    url("{% static 'images/banner1.jpeg' %}");
+
+    background-size:cover;
+    background-position:center;
+
+    border-radius:32px;
+
+    padding:55px;
+
+    margin-bottom:35px;
+
+    overflow:hidden;
+
+    position:relative;
+
+    box-shadow:
+    0 18px 50px rgba(0,0,0,0.12);
+}
+
+.page-banner::before{
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    border-radius:50%;
+
+    background:rgba(212,175,55,0.10);
+
+    top:-120px;
+    right:-100px;
+
+    filter:blur(20px);
+}
+
+.page-banner h1{
+    font-family:'Playfair Display',serif;
+
+    font-size:58px;
+
+    color:#F8E7C2;
+
+    margin-bottom:12px;
+
+    position:relative;
+    z-index:2;
+}
+
+.page-banner p{
+    color:rgba(255,255,255,0.82);
+
+    font-size:15px;
+
+    line-height:1.9;
+
+    max-width:650px;
+
+    position:relative;
+    z-index:2;
+}
+
+/* SECTION TITLE */
+
+.section-title{
+    font-family:'Playfair Display',serif;
+
+    font-size:34px;
+
+    color:#1E1E1E;
+
+    margin-bottom:28px;
+}
+
+/* PRODUCT CARD */
+
+.design-card{
+    background:rgba(255,255,255,0.86);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    margin-bottom:28px;
+
+    transition:0.35s ease;
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,0.07);
+
+    border:1px solid rgba(184,146,76,0.10);
+}
+
+.design-card:hover{
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 18px 45px rgba(0,0,0,0.12);
+}
+
+/* IMAGE */
+
+.design-image{
+    width:100%;
+    height:320px;
+
+    object-fit:cover;
+}
+
+/* CONTENT */
+
+.design-content{
+    padding:22px;
+}
+
+.design-title{
+    font-size:22px;
+    font-weight:700;
+
+    color:#1E1E1E;
+
+    margin-bottom:10px;
+}
+
+.design-price{
+    color:#B8924C;
+
+    font-size:24px;
+    font-weight:700;
+}
+
+/* RENTAL BOX */
+
+.rental-box{
+    background:rgba(255,255,255,0.86);
+
+    backdrop-filter:blur(10px);
+
+    border-radius:30px;
+
+    padding:32px;
+
+    margin-top:25px;
+
+    box-shadow:
+    0 12px 35px rgba(0,0,0,0.07);
+
+    border:1px solid rgba(184,146,76,0.10);
+}
+
+/* RENTAL CARD */
+
+.rental-card{
+    background:#FAF7F2;
+
+    border-radius:22px;
+
+    padding:22px;
+
+    margin-bottom:20px;
+
+    border:1px solid rgba(184,146,76,0.08);
+
+    transition:0.3s ease;
+}
+
+.rental-card:hover{
+    transform:translateY(-3px);
+}
+
+.rental-card p{
+    margin-bottom:10px;
+
+    font-size:14px;
+
+    color:#555;
+}
+
+/* STATUS */
+
+.status{
+    padding:7px 15px;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:600;
+}
+
+.pending{
+    background:#FFF3CD;
+    color:#856404;
+}
+
+.approved{
+    background:#D4EDDA;
+    color:#155724;
+}
+
+.rejected{
+    background:#F8D7DA;
+    color:#721C24;
+}
+
+/* EMPTY */
+
+.empty-text{
+    color:#888;
+
+    font-size:15px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .sidebar{
+        position:relative;
+        top:0;
+
+        margin-bottom:30px;
+    }
+
+    .page-banner{
+        padding:40px 28px;
+    }
+
+    .page-banner h1{
+        font-size:42px;
+    }
+}
+
+@media(max-width:768px){
+
+    .design-image{
+        height:260px;
+    }
+
+    .page-banner h1{
+        font-size:36px;
+    }
+
+    .section-title{
+        font-size:28px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="top-header">
+
+    <div class="container d-flex justify-content-between align-items-center">
+
+        <div class="logo-text">
+            Ethnic Vault
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container-fluid main-wrapper">
+
+    <div class="row">
+
+        <!-- SIDEBAR -->
+
+        <div class="col-lg-3">
+
+            <div class="sidebar">
+
+                <!-- PROFILE -->
+
+                <div class="profile-box">
+
+                    <div class="profile-avatar">
+                        {{ profile.user_name|slice:":1"|upper }}
+                    </div>
+
+                    <h4>{{ profile.user_name }}</h4>
+
+                    <p>Ethnic Vault Member</p>
+
+                </div>
+
+                <!-- LINKS -->
+
+                <div class="sidebar-links">
+
+                    <a href="{% url 'user_profile' %}">
+
+                        <i class="fa fa-user"></i>
+
+                        Profile
+
+                    </a>
+
+                    <a href="{% url 'view_my_rental_application' %}">
+
+                        <i class="fa fa-shopping-bag"></i>
+
+                        My Bookings
+
+                    </a>
+
+                    <a href="{% url 'logout_view' %}"
+                       class="logout-btn">
+
+                        <i class="fa fa-sign-out"></i>
+
+                        Logout
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- MAIN CONTENT -->
+
+        <div class="col-lg-9">
+
+            <!-- BANNER -->
+
+            <div class="page-banner">
+
+                <h1>Welcome Back</h1>
+
+                <p>
+                    Explore your personalized ethnic fashion dashboard,
+                    discover premium collections, and track all your outfit bookings beautifully.
+                </p>
+
+            </div>
+
+            <!-- COLLECTIONS -->
+
+            <h2 class="section-title">
+                Recommended Collection
+            </h2>
+
+            <div class="row">
+
+                {% for d in design %}
+
+                <div class="col-lg-4 col-md-6">
+
+                    <div class="design-card">
+
+                        <img src="/media/{{ d.design_image1 }}"
+                             class="design-image">
+
+                        <div class="design-content">
+
+                            <div class="design-title">
+                                {{ d.design_title }}
+                            </div>
+
+                            <div class="design-price">
+                                ₹{{ d.charges }}
+                                <span style="font-size:14px;color:#777;">
+                                    / day
+                                </span>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <!-- RENTAL STATUS -->
+
+            <div class="rental-box">
+
+                <h2 class="section-title">
+                    My Rental Status
+                </h2>
+
+                {% if rentals %}
+
+                    {% for r in rentals %}
+
+                    <div class="rental-card">
+
+                        <p>
+                            <b>Design ID:</b>
+                            {{ r.design_id }}
+                        </p>
+
+                        <p>
+                            <b>Total Charges:</b>
+                            ₹{{ r.total_charges }}
+                        </p>
+
+                        <p>
+                            <b>Deposit Paid:</b>
+                            ₹{{ r.deposit_amount }}
+                        </p>
+
+                        <p>
+                            <b>Remaining Amount:</b>
+                            ₹{{ r.remaining_amount }}
+                        </p>
+
+                        <p>
+
+                            <b>Status:</b>
+
+                            {% if r.status == "Pending" %}
+
+                                <span class="status pending">
+                                    Pending
+                                </span>
+
+                            {% elif r.status == "Approved" %}
+
+                                <span class="status approved">
+                                    Approved
+                                </span>
+
+                            {% else %}
+
+                                <span class="status rejected">
+                                    Rejected
+                                </span>
+
+                            {% endif %}
+
+                        </p>
+
+                    </div>
+
+                    {% endfor %}
+
+                {% else %}
+
+                    <p class="empty-text">
+                        No rental bookings yet
+                    </p>
+
+                {% endif %}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

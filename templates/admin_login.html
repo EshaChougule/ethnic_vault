@@ -1,0 +1,520 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ethnic Vault | Admin Login</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+min-height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+padding:40px 20px;
+
+background-color:#F8F3EA;
+
+background-image:
+linear-gradient(rgba(248,243,234,0.84),
+rgba(248,243,234,0.84)),
+url("{% static 'images/ethnic-pattern.png' %}");
+
+background-size:320px;
+
+background-repeat:repeat;
+
+background-attachment:fixed;
+
+overflow:hidden;
+position:relative;
+}
+
+/* GOLD GLOW */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:420px;
+height:420px;
+
+background:rgba(184,146,76,0.14);
+
+border-radius:50%;
+
+top:-120px;
+left:-100px;
+
+filter:blur(80px);
+
+z-index:0;
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:350px;
+height:350px;
+
+background:rgba(184,146,76,0.10);
+
+border-radius:50%;
+
+bottom:-120px;
+right:-100px;
+
+filter:blur(80px);
+
+z-index:0;
+}
+
+/* LOGIN CONTAINER */
+
+.login-container{
+
+width:100%;
+max-width:1180px;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+
+background:rgba(255,255,255,0.72);
+
+backdrop-filter:blur(16px);
+
+border-radius:34px;
+
+overflow:hidden;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,0.12);
+
+position:relative;
+
+z-index:2;
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+
+padding:70px 60px;
+
+background:
+linear-gradient(rgba(24,20,15,0.82),
+rgba(24,20,15,0.88)),
+url("{% static 'images/banner1.jpeg' %}");
+
+background-size:cover;
+background-position:center;
+
+color:white;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+position:relative;
+}
+
+/* GOLD LINE */
+
+.left-panel::before{
+
+content:"";
+
+position:absolute;
+
+top:60px;
+left:60px;
+
+width:70px;
+height:3px;
+
+background:#B8924C;
+}
+
+/* BRAND */
+
+.brand-name{
+
+font-family:'Playfair Display',serif;
+
+font-size:58px;
+
+line-height:1.1;
+
+margin-bottom:18px;
+
+color:#F8E7C2;
+}
+
+.brand-text{
+
+font-size:15px;
+
+line-height:1.9;
+
+max-width:420px;
+
+color:rgba(255,255,255,0.82);
+}
+
+.admin-tag{
+
+display:inline-block;
+
+margin-top:28px;
+
+padding:10px 20px;
+
+background:rgba(184,146,76,0.18);
+
+border:1px solid rgba(255,255,255,0.12);
+
+border-radius:40px;
+
+font-size:13px;
+
+letter-spacing:1px;
+
+width:fit-content;
+
+backdrop-filter:blur(10px);
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+
+padding:70px 55px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:rgba(255,255,255,0.55);
+}
+
+/* LOGIN CARD */
+
+.login-card{
+
+width:100%;
+max-width:400px;
+}
+
+/* SMALL TITLE */
+
+.small-title{
+
+font-size:14px;
+
+letter-spacing:2px;
+
+font-weight:600;
+
+color:#B8924C;
+
+margin-bottom:10px;
+}
+
+/* MAIN TITLE */
+
+.login-title{
+
+font-family:'Playfair Display',serif;
+
+font-size:44px;
+
+color:#2B2B2B;
+
+margin-bottom:12px;
+}
+
+.login-subtitle{
+
+font-size:14px;
+
+line-height:1.8;
+
+color:#777;
+
+margin-bottom:35px;
+}
+
+/* INPUTS */
+
+.input-group{
+
+margin-bottom:20px;
+}
+
+.input-group label{
+
+display:block;
+
+font-size:14px;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+color:#444;
+}
+
+.input-group input{
+
+width:100%;
+
+height:54px;
+
+border:none;
+
+background:#fff;
+
+border-radius:16px;
+
+padding:0 18px;
+
+font-size:14px;
+
+box-shadow:
+0 4px 15px rgba(0,0,0,0.04);
+
+transition:0.3s ease;
+}
+
+.input-group input:focus{
+
+outline:none;
+
+box-shadow:
+0 0 0 4px rgba(184,146,76,0.16);
+
+border:1px solid #B8924C;
+}
+
+/* BUTTON */
+
+.login-btn{
+
+width:100%;
+
+height:56px;
+
+border:none;
+
+border-radius:18px;
+
+background:#B8924C;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+letter-spacing:0.5px;
+
+margin-top:10px;
+
+transition:0.3s ease;
+
+box-shadow:
+0 10px 25px rgba(184,146,76,0.28);
+}
+
+.login-btn:hover{
+
+background:#8A6A2F;
+
+transform:translateY(-2px);
+}
+
+/* FOOT NOTE */
+
+.footer-note{
+
+text-align:center;
+
+margin-top:25px;
+
+font-size:13px;
+
+color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+.login-container{
+
+grid-template-columns:1fr;
+}
+
+.left-panel{
+
+min-height:320px;
+}
+
+.brand-name{
+
+font-size:46px;
+}
+}
+
+@media(max-width:768px){
+
+.left-panel,
+.right-panel{
+
+padding:45px 28px;
+}
+
+.login-title{
+
+font-size:36px;
+}
+
+.brand-name{
+
+font-size:38px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="login-container">
+
+    <!-- LEFT PANEL -->
+
+    <div class="left-panel">
+
+        <h1 class="brand-name">
+            Ethnic<br>
+            Vault
+        </h1>
+
+        <p class="brand-text">
+
+            Access the premium administration portal to manage rentals,
+            users, designers, collections, approvals, and the complete
+            Ethnic Vault ecosystem with elegance and control.
+
+        </p>
+
+        <div class="admin-tag">
+            ADMIN CONTROL PANEL
+        </div>
+
+    </div>
+
+    <!-- RIGHT PANEL -->
+
+    <div class="right-panel">
+
+        <div class="login-card">
+
+            <div class="small-title">
+                SECURE LOGIN
+            </div>
+
+            <h2 class="login-title">
+                Welcome Back
+            </h2>
+
+            <p class="login-subtitle">
+                Please login to continue to the Ethnic Vault admin dashboard.
+            </p>
+
+            <form method="POST"
+                  action="{% url 'admin_login_validation' %}">
+
+                {% csrf_token %}
+
+                <div class="input-group">
+
+                    <label>
+                        Admin Email
+                    </label>
+
+                    <input type="email"
+                           name="email"
+                           placeholder="Enter your admin email"
+                           required>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>
+                        Password
+                    </label>
+
+                    <input type="password"
+                           name="password"
+                           placeholder="Enter your password"
+                           required>
+
+                </div>
+
+                <button type="submit"
+                        class="login-btn">
+
+                    Login to Dashboard
+
+                </button>
+
+            </form>
+
+            <div class="footer-note">
+                Ethnic Vault © 2026
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% if messages %}
+<script>
+{% for message in messages %}
+alert("{{ message }}");
+{% endfor %}
+</script>
+{% endif %}
+
+</body>
+</html>

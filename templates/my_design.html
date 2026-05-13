@@ -1,0 +1,788 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Designs | Ethnic Vault</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#F7F3EC;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(247,243,236,0.94),
+    rgba(247,243,236,0.94)),
+
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+
+    width:450px;
+    height:450px;
+
+    background:rgba(184,146,76,0.12);
+
+    border-radius:50%;
+
+    top:-140px;
+    right:-120px;
+
+    filter:blur(90px);
+
+    z-index:-1;
+}
+
+/* TOPBAR */
+
+.topbar{
+    width:100%;
+    padding:22px 60px;
+
+    display:flex;
+    align-items:center;
+    gap:20px;
+
+    position:relative;
+    z-index:5;
+}
+
+/* BRAND */
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.brand-icon{
+    width:52px;
+    height:52px;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#B8924C,#D8B56A);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-size:22px;
+
+    box-shadow:0 10px 25px rgba(184,146,76,0.28);
+}
+
+.brand h2{
+    margin:0;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:32px;
+
+    color:#1E1E1E;
+}
+
+.brand span{
+    font-size:13px;
+    color:#8B6B34;
+    letter-spacing:1px;
+}
+
+/* DASHBOARD BUTTON */
+
+.dashboard-btn{
+    text-decoration:none;
+
+    background:#111;
+
+    color:#D8B56A;
+
+    padding:13px 22px;
+
+    border-radius:14px;
+
+    font-size:14px;
+    font-weight:600;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    transition:0.3s ease;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+    order:-1;
+}
+
+.dashboard-btn:hover{
+    background:#B8924C;
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+/* PAGE */
+
+.page-container{
+    max-width:1400px;
+    margin:auto;
+    padding:10px 30px 60px;
+}
+
+/* PAGE HEADER */
+
+.page-header{
+    margin-bottom:35px;
+
+    background:
+    linear-gradient(rgba(22,18,12,0.84),
+    rgba(22,18,12,0.88)),
+
+    url("{% static 'images/banner1.jpeg' %}");
+
+    background-size:cover;
+    background-position:center;
+
+    border-radius:30px;
+
+    padding:55px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    color:white;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.12);
+}
+
+.page-header::before{
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    background:rgba(184,146,76,0.14);
+
+    border-radius:50%;
+
+    top:-120px;
+    right:-80px;
+
+    filter:blur(20px);
+}
+
+.page-header h1{
+    font-family:'Playfair Display',serif;
+
+    font-size:54px;
+
+    color:#F8E7C2;
+
+    margin-bottom:12px;
+
+    position:relative;
+    z-index:2;
+}
+
+.page-header p{
+    font-size:15px;
+
+    line-height:1.8;
+
+    color:rgba(255,255,255,0.84);
+
+    max-width:650px;
+
+    position:relative;
+    z-index:2;
+}
+
+.page-tag{
+    display:inline-block;
+
+    margin-top:22px;
+
+    padding:10px 22px;
+
+    background:rgba(184,146,76,0.16);
+
+    border:1px solid rgba(255,255,255,0.10);
+
+    border-radius:40px;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    backdrop-filter:blur(10px);
+
+    position:relative;
+    z-index:2;
+}
+
+/* ALERT */
+
+.alert{
+    border:none;
+
+    border-radius:16px;
+
+    background:#EAF8EE;
+
+    color:#207245;
+
+    padding:16px 20px;
+
+    font-size:14px;
+
+    margin-bottom:25px;
+}
+
+/* GRID */
+
+.product-grid{
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(320px,1fr));
+
+    gap:28px;
+}
+
+/* CARD */
+
+.product-card{
+    background:rgba(255,255,255,0.82);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    transition:0.35s ease;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.08);
+
+    position:relative;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 20px 55px rgba(0,0,0,0.14);
+}
+
+/* IMAGE */
+
+.image-wrapper{
+    position:relative;
+    overflow:hidden;
+}
+
+.product-image{
+    width:100%;
+    height:350px;
+
+    object-fit:cover;
+
+    transition:0.5s ease;
+}
+
+.product-card:hover .product-image{
+    transform:scale(1.05);
+}
+
+/* STATUS */
+
+.status-badge{
+    position:absolute;
+
+    top:18px;
+    right:18px;
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:12px;
+    font-weight:600;
+
+    backdrop-filter:blur(10px);
+
+    background:rgba(0,0,0,0.55);
+
+    color:#F8E7C2;
+
+    border:1px solid rgba(255,255,255,0.10);
+}
+
+/* DETAILS */
+
+.product-details{
+    padding:24px;
+}
+
+.product-title{
+    font-size:22px;
+    font-weight:700;
+
+    color:#1E1E1E;
+
+    margin-bottom:10px;
+}
+
+.product-desc{
+    font-size:14px;
+
+    color:#666;
+
+    line-height:1.8;
+
+    margin-bottom:18px;
+
+    height:75px;
+
+    overflow:hidden;
+}
+
+/* PRICE */
+
+.product-price{
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#B8924C;
+
+    margin-bottom:18px;
+}
+
+.product-price span{
+    font-size:14px;
+    color:#777;
+    font-weight:500;
+}
+
+/* META */
+
+.product-meta{
+    background:#FAF7F2;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    margin-bottom:22px;
+
+    border:1px solid rgba(184,146,76,0.10);
+}
+
+.meta-item{
+    display:flex;
+    justify-content:space-between;
+
+    margin-bottom:10px;
+
+    font-size:14px;
+}
+
+.meta-item:last-child{
+    margin-bottom:0;
+}
+
+.meta-label{
+    color:#777;
+    font-weight:500;
+}
+
+.meta-value{
+    color:#222;
+    font-weight:600;
+}
+
+/* BUTTONS */
+
+.btn-group-custom{
+    display:flex;
+    gap:12px;
+}
+
+.edit-btn,
+.delete-btn{
+    flex:1;
+
+    height:50px;
+
+    border:none;
+
+    border-radius:14px;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+
+    text-decoration:none;
+}
+
+.edit-btn{
+    background:#B8924C;
+    color:white;
+
+    box-shadow:
+    0 10px 25px rgba(184,146,76,0.25);
+}
+
+.edit-btn:hover{
+    background:#8A6A2F;
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+.delete-btn{
+    background:#111;
+    color:white;
+}
+
+.delete-btn:hover{
+    background:#8B1E1E;
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+/* EMPTY */
+
+.empty-box{
+    background:white;
+
+    border-radius:28px;
+
+    padding:70px 30px;
+
+    text-align:center;
+
+    box-shadow:
+    0 15px 40px rgba(0,0,0,0.06);
+}
+
+.empty-box i{
+    font-size:60px;
+
+    color:#B8924C;
+
+    margin-bottom:20px;
+}
+
+.empty-box h3{
+    font-size:28px;
+
+    margin-bottom:10px;
+
+    color:#222;
+}
+
+.empty-box p{
+    color:#777;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .topbar{
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+    }
+
+    .page-container{
+        padding:10px 18px 50px;
+    }
+
+    .page-header{
+        padding:40px 28px;
+    }
+
+    .page-header h1{
+        font-size:42px;
+    }
+}
+
+@media(max-width:768px){
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+
+    .btn-group-custom{
+        flex-direction:column;
+    }
+
+    .page-header h1{
+        font-size:36px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+
+<div class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+
+        <div>
+            <h2>Ethnic Vault</h2>
+            <span>DESIGNER STUDIO</span>
+        </div>
+
+    </div>
+
+    <a href="{% url 'designer_dashboard' %}" class="dashboard-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Dashboard
+
+    </a>
+
+</div>
+
+<!-- PAGE -->
+
+<div class="page-container">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+        <h1>My Designs</h1>
+
+        <p>
+            Manage, update, and showcase your uploaded ethnic collections beautifully through your designer portfolio.
+        </p>
+
+        <div class="page-tag">
+            ETHNIC VAULT • DESIGNER COLLECTION
+        </div>
+
+    </div>
+
+    <!-- ALERT -->
+
+    {% if messages %}
+        {% for message in messages %}
+
+            <div class="alert">
+                {{ message }}
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+    <!-- GRID -->
+
+    {% if design %}
+
+    <div class="product-grid">
+
+        {% for d in design %}
+
+        <div class="product-card">
+
+            <!-- IMAGE -->
+
+            <div class="image-wrapper">
+
+                <img src="{{ d.design_image1.url }}"
+                     class="product-image"
+                     alt="Design">
+
+                <div class="status-badge">
+                    {{ d.status }}
+                </div>
+
+            </div>
+
+            <!-- DETAILS -->
+
+            <div class="product-details">
+
+                <div class="product-title">
+                    {{ d.design_title }}
+                </div>
+
+                <div class="product-desc">
+                    {{ d.design_description }}
+                </div>
+
+                <div class="product-price">
+                    ₹{{ d.chagres }}
+
+                    <span>/ day</span>
+                </div>
+
+                <!-- META -->
+
+                <div class="product-meta">
+
+                    <div class="meta-item">
+
+                        <div class="meta-label">
+                            Designer
+                        </div>
+
+                        <div class="meta-value">
+                            {{ d.designer_name }}
+                        </div>
+
+                    </div>
+
+                    <div class="meta-item">
+
+                        <div class="meta-label">
+                            Date
+                        </div>
+
+                        <div class="meta-value">
+                            {{ d.date }}
+                        </div>
+
+                    </div>
+
+                    <div class="meta-item">
+
+                        <div class="meta-label">
+                            Remarks
+                        </div>
+
+                        <div class="meta-value">
+                            {{ d.remarks }}
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- BUTTONS -->
+
+                <div class="btn-group-custom">
+
+                    <a href="{% url 'update_design_code' d.id %}"
+                       class="edit-btn">
+
+                        <i class="fa-solid fa-pen"></i>
+
+                        Edit
+
+                    </a>
+
+                    <a href="{% url 'delete_design' d.id %}"
+                       class="delete-btn">
+
+                        <i class="fa-solid fa-trash"></i>
+
+                        Delete
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% else %}
+
+    <!-- EMPTY -->
+
+    <div class="empty-box">
+
+        <i class="fa-solid fa-shirt"></i>
+
+        <h3>No Designs Yet</h3>
+
+        <p>
+            Start uploading your ethnic creations and build your premium designer portfolio.
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% if messages %}
+<script>
+
+{% for message in messages %}
+alert("{{ message }}");
+{% endfor %}
+
+</script>
+{% endif %}
+
+</body>
+</html>

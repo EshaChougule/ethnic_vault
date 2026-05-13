@@ -1,0 +1,772 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ethnic Vault | Designer Registration</title>
+
+<!-- Fonts -->
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background-color:#F8F3EA;
+
+background-image:
+linear-gradient(rgba(248,243,234,0.90),
+rgba(248,243,234,0.90)),
+url("{% static 'images/ethnic-pattern.png' %}");
+
+background-size:320px;
+background-repeat:repeat;
+background-attachment:fixed;
+
+min-height:100vh;
+
+display:flex;
+
+overflow-x:hidden;
+
+position:relative;
+}
+
+/* GOLD GLOW */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:380px;
+height:380px;
+
+background:rgba(184,146,76,0.12);
+
+border-radius:50%;
+
+top:-120px;
+left:-100px;
+
+filter:blur(80px);
+
+z-index:0;
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:320px;
+height:320px;
+
+background:rgba(184,146,76,0.10);
+
+border-radius:50%;
+
+bottom:-100px;
+right:-100px;
+
+filter:blur(80px);
+
+z-index:0;
+}
+
+/* LEFT PANEL */
+
+.left-panel{
+
+width:42%;
+
+position:fixed;
+
+height:100vh;
+
+padding:70px 55px;
+
+background:
+linear-gradient(rgba(20,18,14,0.84),
+rgba(20,18,14,0.88)),
+url("{% static 'images/banner2.jpg' %}");
+
+background-size:cover;
+background-position:center;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+color:white;
+
+z-index:2;
+}
+
+.left-panel::before{
+
+content:"";
+
+position:absolute;
+
+top:60px;
+left:55px;
+
+width:75px;
+height:3px;
+
+background:#B8924C;
+}
+
+/* BRAND */
+
+.brand-title{
+
+font-family:'Playfair Display',serif;
+
+font-size:58px;
+
+line-height:1.1;
+
+color:#F5DFC0;
+
+margin-bottom:18px;
+}
+
+.brand-text{
+
+font-size:15px;
+
+line-height:1.9;
+
+max-width:420px;
+
+color:rgba(255,255,255,0.82);
+}
+
+.portal-badge{
+
+display:inline-block;
+
+margin-top:28px;
+
+padding:10px 20px;
+
+background:rgba(184,146,76,0.16);
+
+border:1px solid rgba(255,255,255,0.10);
+
+border-radius:40px;
+
+font-size:12px;
+
+letter-spacing:1px;
+
+width:fit-content;
+
+backdrop-filter:blur(10px);
+
+color:#F5DFC0;
+}
+
+/* RIGHT PANEL */
+
+.right-panel{
+
+margin-left:42%;
+
+width:58%;
+
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:50px 30px;
+
+position:relative;
+
+z-index:2;
+}
+
+/* REGISTER CARD */
+
+.register-card{
+
+width:100%;
+max-width:760px;
+
+background:rgba(255,255,255,0.74);
+
+backdrop-filter:blur(16px);
+
+border-radius:32px;
+
+padding:45px;
+
+box-shadow:
+0 20px 60px rgba(0,0,0,0.10);
+
+border:1px solid rgba(184,146,76,0.12);
+}
+
+/* SMALL TITLE */
+
+.small-title{
+
+font-size:13px;
+
+font-weight:600;
+
+letter-spacing:2px;
+
+color:#B8924C;
+
+margin-bottom:10px;
+}
+
+/* MAIN TITLE */
+
+.main-title{
+
+font-family:'Playfair Display',serif;
+
+font-size:42px;
+
+color:#2B2B2B;
+
+margin-bottom:10px;
+}
+
+.sub-text{
+
+font-size:14px;
+
+line-height:1.8;
+
+color:#777;
+
+margin-bottom:35px;
+}
+
+/* FORM GRID */
+
+.form-grid{
+
+display:grid;
+
+grid-template-columns:1fr 1fr;
+
+gap:22px;
+}
+
+.full-width{
+grid-column:span 2;
+}
+
+/* LABEL */
+
+label{
+
+display:block;
+
+font-size:13px;
+
+font-weight:600;
+
+margin-bottom:8px;
+
+color:#444;
+}
+
+/* INPUT WRAP */
+
+.input-wrap{
+
+position:relative;
+}
+
+.input-wrap i{
+
+position:absolute;
+
+top:18px;
+left:15px;
+
+color:#B8924C;
+
+font-size:14px;
+}
+
+/* INPUTS */
+
+input,
+textarea,
+select{
+
+width:100%;
+
+border:none;
+
+background:#FAF7F2;
+
+border-radius:16px;
+
+padding:15px 15px 15px 44px;
+
+font-size:14px;
+
+transition:0.3s ease;
+
+color:#333;
+}
+
+textarea{
+resize:none;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+
+outline:none;
+
+background:white;
+
+box-shadow:
+0 0 0 4px rgba(184,146,76,0.14);
+}
+
+/* FILE INPUT */
+
+.file-input{
+
+padding-left:15px !important;
+}
+
+/* BUTTON */
+
+.register-btn{
+
+width:100%;
+
+height:58px;
+
+border:none;
+
+border-radius:18px;
+
+background:#B8924C;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+margin-top:28px;
+
+transition:0.3s ease;
+
+box-shadow:
+0 10px 25px rgba(184,146,76,0.26);
+}
+
+.register-btn:hover{
+
+background:#8A6A2F;
+
+transform:translateY(-2px);
+}
+
+/* LOGIN LINK */
+
+.bottom-link{
+
+text-align:center;
+
+margin-top:24px;
+
+font-size:14px;
+
+color:#666;
+}
+
+.bottom-link a{
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#B8924C;
+
+margin-left:5px;
+}
+
+.bottom-link a:hover{
+
+color:#8A6A2F;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+body{
+flex-direction:column;
+}
+
+.left-panel{
+
+position:relative;
+
+width:100%;
+
+height:320px;
+}
+
+.right-panel{
+
+margin-left:0;
+
+width:100%;
+
+padding:30px 18px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.full-width{
+grid-column:span 1;
+}
+
+.brand-title{
+font-size:44px;
+}
+}
+
+@media(max-width:768px){
+
+.left-panel,
+.right-panel{
+padding:35px 22px;
+}
+
+.register-card{
+padding:30px 22px;
+}
+
+.main-title{
+font-size:34px;
+}
+
+.brand-title{
+font-size:38px;
+}
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- LEFT PANEL -->
+
+<div class="left-panel">
+
+    <h1 class="brand-title">
+        Ethnic<br>
+        Vault
+    </h1>
+
+    <p class="brand-text">
+
+        Become a part of Ethnic Vault and showcase your creativity,
+        designer collections, and traditional fashion to a wider audience.
+
+    </p>
+
+    <div class="portal-badge">
+        DESIGNER REGISTRATION
+    </div>
+
+</div>
+
+<!-- RIGHT PANEL -->
+
+<div class="right-panel">
+
+    <div class="register-card">
+
+        <div class="small-title">
+            CREATE ACCOUNT
+        </div>
+
+        <h2 class="main-title">
+            Join as Designer
+        </h2>
+
+        <p class="sub-text">
+            Start your journey with Ethnic Vault
+        </p>
+
+        <form action="{% url 'designer_register_code' %}"
+              method="POST"
+              enctype="multipart/form-data"
+              onsubmit="return Validate()">
+
+            {% csrf_token %}
+
+            <div class="form-grid">
+
+                <!-- NAME -->
+
+                <div>
+
+                    <label>Full Name</label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa fa-user"></i>
+
+                        <input type="text"
+                               name="name"
+                               placeholder="Enter your full name"
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- EMAIL -->
+
+                <div>
+
+                    <label>Email Address</label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa fa-envelope"></i>
+
+                        <input type="email"
+                               name="email"
+                               placeholder="Enter your email"
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- CONTACT -->
+
+                <div>
+
+                    <label>Contact Number</label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa fa-phone"></i>
+
+                        <input type="tel"
+                               name="contact"
+                               maxlength="10"
+                               pattern="[6-9][0-9]{9}"
+                               placeholder="Enter contact number"
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- PROFILE -->
+
+                <div>
+
+                    <label>Profile Picture</label>
+
+                    <input type="file"
+                           name="file"
+                           class="file-input"
+                           accept="image/*"
+                           required>
+
+                </div>
+
+                <!-- BIO -->
+
+                <div class="full-width">
+
+                    <label>Designer Bio</label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa fa-pencil"></i>
+
+                        <textarea name="bio"
+                                  rows="4"
+                                  placeholder="Tell users about your creativity and designs"></textarea>
+
+                    </div>
+
+                </div>
+
+                <!-- SPECIALIZATION -->
+
+                <div>
+
+                    <label>Specialization</label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa fa-star"></i>
+
+                        <select name="specialization" required>
+
+                            <option value="">
+                                Select Specialization
+                            </option>
+
+                            <option value="Dresses">
+                                Dresses
+                            </option>
+
+                            <option value="Jewelry">
+                                Jewelry
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div></div>
+
+                <!-- PASSWORD -->
+
+                <div>
+
+                    <label>Password</label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input type="password"
+                               name="password"
+                               id="password1"
+                               placeholder="Create password"
+                               required
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}">
+
+                    </div>
+
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div>
+
+                    <label>Confirm Password</label>
+
+                    <div class="input-wrap">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input type="password"
+                               name="confirm_password"
+                               id="password2"
+                               placeholder="Confirm password"
+                               required>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="register-btn">
+
+                Register as Designer
+
+            </button>
+
+        </form>
+
+        <!-- LOGIN LINK -->
+
+        <div class="bottom-link">
+
+            Already have an account?
+
+            <a href="{% url 'designer_login' %}">
+                Login Here
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% if messages %}
+<script>
+{% for message in messages %}
+alert("{{ message }}");
+{% endfor %}
+</script>
+{% endif %}
+
+<script>
+
+function Validate(){
+
+    var password = document.getElementById('password1').value;
+
+    var confirm_password = document.getElementById('password2').value;
+
+    if(password != confirm_password){
+
+        alert('Passwords are not matching');
+
+        return false;
+    }
+
+    return true;
+}
+
+</script>
+
+</body>
+</html>

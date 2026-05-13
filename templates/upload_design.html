@@ -1,0 +1,922 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Upload Design | Ethnic Vault</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#F7F3EC;
+    min-height:100vh;
+    overflow-x:hidden;
+    position:relative;
+}
+
+/* BACKGROUND */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+
+    background:
+    linear-gradient(rgba(247,243,236,0.94),
+    rgba(247,243,236,0.94)),
+
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+    opacity:1;
+    z-index:-2;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+
+    width:450px;
+    height:450px;
+
+    background:rgba(184,146,76,0.12);
+
+    border-radius:50%;
+
+    top:-150px;
+    right:-120px;
+
+    filter:blur(90px);
+
+    z-index:-1;
+}
+
+/* TOP BAR */
+
+.topbar{
+    width:100%;
+    padding:22px 60px;
+
+    display:flex;
+    justify-content:flex-start;
+    align-items:center;
+    gap:20px;
+
+    position:relative;
+    z-index:5;
+}
+
+.brand{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.brand-icon{
+
+    width:50px;
+    height:50px;
+
+    border-radius:14px;
+
+    background:linear-gradient(135deg,#B8924C,#D8B56A);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:white;
+    font-size:22px;
+
+    box-shadow:0 10px 25px rgba(184,146,76,0.28);
+}
+
+.brand h2{
+
+    margin:0;
+
+    font-family:'Playfair Display',serif;
+
+    font-size:32px;
+
+    color:#1E1E1E;
+}
+
+.brand span{
+
+    font-size:13px;
+    color:#8B6B34;
+    letter-spacing:1px;
+}
+
+.dashboard-btn{
+
+    text-decoration:none;
+
+    background:#111;
+
+    color:#D8B56A;
+
+    padding:13px 22px;
+
+    border-radius:14px;
+
+    font-size:14px;
+    font-weight:600;
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    transition:0.3s ease;
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+.dashboard-btn:hover{
+
+    background:#B8924C;
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+/* MAIN */
+
+.upload-wrapper{
+
+    padding:10px 20px 60px 20px;
+}
+
+/* CARD */
+
+.upload-card{
+
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+
+    background:rgba(255,255,255,0.76);
+
+    backdrop-filter:blur(18px);
+
+    border-radius:34px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.10);
+
+    border:1px solid rgba(255,255,255,0.5);
+
+    animation:fadeIn 0.7s ease;
+}
+
+/* HEADER */
+
+.upload-header{
+
+    padding:55px 60px;
+
+    background:
+    linear-gradient(rgba(22,18,12,0.86),
+    rgba(22,18,12,0.90)),
+
+    url("{% static 'images/banner1.jpeg' %}");
+
+    background-size:cover;
+    background-position:center;
+
+    position:relative;
+
+    color:white;
+}
+
+.upload-header::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+    height:320px;
+
+    background:rgba(184,146,76,0.16);
+
+    border-radius:50%;
+
+    right:-100px;
+    top:-100px;
+
+    filter:blur(20px);
+}
+
+.upload-header h1{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:52px;
+
+    color:#F8E7C2;
+
+    margin-bottom:14px;
+
+    position:relative;
+    z-index:2;
+}
+
+.upload-header p{
+
+    font-size:15px;
+
+    color:rgba(255,255,255,0.84);
+
+    line-height:1.8;
+
+    max-width:650px;
+
+    position:relative;
+    z-index:2;
+}
+
+.upload-tag{
+
+    display:inline-block;
+
+    margin-top:24px;
+
+    padding:10px 20px;
+
+    background:rgba(184,146,76,0.18);
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    border-radius:40px;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+
+    backdrop-filter:blur(10px);
+
+    position:relative;
+    z-index:2;
+}
+
+/* BODY */
+
+.upload-body{
+
+    padding:50px;
+}
+
+/* SUCCESS */
+
+.alert{
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#EAF8EE;
+
+    color:#207245;
+
+    padding:16px 20px;
+
+    font-size:14px;
+
+    margin-bottom:28px;
+}
+
+/* INFO STRIP */
+
+.info-strip{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:35px;
+}
+
+.info-box{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:25px;
+
+    text-align:center;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.04);
+
+    transition:0.3s ease;
+}
+
+.info-box:hover{
+
+    transform:translateY(-5px);
+}
+
+.info-box i{
+
+    width:60px;
+    height:60px;
+
+    border-radius:50%;
+
+    background:rgba(184,146,76,0.12);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin:auto auto 14px auto;
+
+    color:#B8924C;
+
+    font-size:24px;
+}
+
+.info-box h6{
+
+    font-size:16px;
+    font-weight:700;
+
+    margin-bottom:6px;
+
+    color:#222;
+}
+
+.info-box p{
+
+    font-size:13px;
+
+    color:#777;
+
+    margin:0;
+}
+
+/* SECTION */
+
+.section-title{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#1E1E1E;
+
+    margin-bottom:25px;
+}
+
+/* GRID */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:24px;
+}
+
+.full-width{
+    grid-column:span 2;
+}
+
+/* LABEL */
+
+label{
+
+    display:block;
+
+    margin-bottom:9px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#333;
+}
+
+/* INPUT */
+
+.form-control,
+.form-select{
+
+    width:100%;
+
+    height:56px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:white;
+
+    padding:0 18px;
+
+    font-size:14px;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,0.04);
+
+    transition:0.3s ease;
+
+    margin-bottom:8px;
+}
+
+textarea.form-control{
+
+    height:auto;
+
+    padding:18px;
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    outline:none;
+
+    box-shadow:
+    0 0 0 4px rgba(184,146,76,0.16);
+
+    border:1px solid #B8924C;
+}
+
+/* FILE */
+
+.file-box{
+
+    background:#fff;
+
+    border:2px dashed rgba(184,146,76,0.45);
+
+    border-radius:18px;
+
+    padding:16px;
+
+    transition:0.3s ease;
+
+    margin-bottom:20px;
+}
+
+.file-box:hover{
+
+    background:#FFFCF6;
+
+    border-color:#B8924C;
+}
+
+.file-box input{
+
+    border:none !important;
+    box-shadow:none !important;
+    background:transparent !important;
+}
+
+/* CHECKBOX */
+
+.checkbox-box{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    height:56px;
+
+    display:flex;
+    align-items:center;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,0.04);
+}
+
+.checkbox-box input{
+
+    margin-right:10px;
+
+    accent-color:#B8924C;
+}
+
+/* BUTTON */
+
+.upload-btn{
+
+    width:100%;
+
+    height:60px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:#B8924C;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    letter-spacing:0.5px;
+
+    margin-top:15px;
+
+    transition:0.3s ease;
+
+    box-shadow:
+    0 12px 30px rgba(184,146,76,0.28);
+}
+
+.upload-btn:hover{
+
+    background:#8A6A2F;
+
+    transform:translateY(-2px);
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .info-strip{
+        grid-template-columns:1fr;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full-width{
+        grid-column:span 1;
+    }
+
+    .upload-header,
+    .upload-body{
+        padding:35px 28px;
+    }
+
+    .upload-header h1{
+        font-size:40px;
+    }
+
+    .topbar{
+        padding:20px;
+        flex-direction:column;
+        gap:18px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+
+    <a href="{% url 'designer_dashboard' %}" class="dashboard-btn">
+
+        <i class="fa-solid fa-arrow-left"></i>
+
+        Back to Dashboard
+
+    </a>
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            <i class="fa-solid fa-crown"></i>
+        </div>
+
+        <div>
+            <h2>Ethnic Vault</h2>
+            <span>DESIGNER STUDIO</span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="upload-wrapper">
+
+    <div class="upload-card">
+
+        <!-- HEADER -->
+
+        <div class="upload-header">
+
+            <h1>Upload New Design</h1>
+
+            <p>
+                Showcase your latest ethnic creation and make it available for premium rentals.
+            </p>
+
+            <div class="upload-tag">
+                ETHNIC VAULT • DESIGNER PORTAL
+            </div>
+
+        </div>
+
+        <!-- BODY -->
+
+        <div class="upload-body">
+
+            <!-- ALERT -->
+
+            {% if messages %}
+                {% for message in messages %}
+
+                    <div class="alert">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+            {% endif %}
+
+            <!-- INFO -->
+
+            <div class="info-strip">
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <h6>Premium Showcase</h6>
+
+                    <p>Present your designs beautifully</p>
+
+                </div>
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-images"></i>
+
+                    <h6>Multiple Angles</h6>
+
+                    <p>Upload front, side & back views</p>
+
+                </div>
+
+                <div class="info-box">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    <h6>Reach More Users</h6>
+
+                    <p>Increase rentals and visibility</p>
+
+                </div>
+
+            </div>
+
+            <!-- FORM -->
+
+            <form action="{% url 'upload_design' %}"
+                  method="POST"
+                  enctype="multipart/form-data">
+
+                {% csrf_token %}
+
+                <input type="hidden"
+                       name="designer_name"
+                       value="{{ designer_profile.designer_name }}">
+
+                <input type="hidden"
+                       name="designer_email"
+                       value="{{ designer_profile.designer_email }}">
+
+                <input type="hidden"
+                       name="designer_contact"
+                       value="{{ designer_profile.designer_contact }}">
+
+                <div class="section-title">
+                    Design Details
+                </div>
+
+                <div class="form-grid">
+
+                    <!-- TITLE -->
+
+                    <div>
+
+                        <label>Design Title</label>
+
+                        <input type="text"
+                               name="design_title"
+                               class="form-control"
+                               placeholder="Enter design title"
+                               required>
+
+                    </div>
+
+                    <!-- CATEGORY -->
+
+                    <div>
+
+                        <label>Select Category</label>
+
+                        <select name="category"
+                                class="form-select"
+                                required>
+
+                            <option value="">Choose Category</option>
+
+                            <optgroup label="Her Collection">
+                                <option value="Lehenga">Lehenga</option>
+                                <option value="Saree">Saree</option>
+                                <option value="Chaniya">Chaniya Choli</option>
+                            </optgroup>
+
+                            <optgroup label="His Collection">
+                                <option value="Sherwani">Sherwani</option>
+                                <option value="Kurta">Kurta</option>
+                                <option value="Tuxedo">Tuxedo</option>
+                            </optgroup>
+
+                            <optgroup label="Kids Collection">
+                                <option value="Boys">Boys Wear</option>
+                                <option value="Girls">Girls Wear</option>
+                            </optgroup>
+
+                            <optgroup label="Accessories">
+                                <option value="Men Accessories">Men Accessories</option>
+                                <option value="Women Accessories">Women Accessories</option>
+                            </optgroup>
+
+                            <optgroup label="Footwear">
+                                <option value="Men Footwear">Men Footwear</option>
+                                <option value="Women Footwear">Women Footwear</option>
+                            </optgroup>
+
+                        </select>
+
+                    </div>
+
+                    <!-- DESCRIPTION -->
+
+                    <div class="full-width">
+
+                        <label>Description</label>
+
+                        <textarea name="design_description"
+                                  class="form-control"
+                                  rows="4"
+                                  placeholder="Describe your design..."
+                                  required></textarea>
+
+                    </div>
+
+                    <!-- CHARGES -->
+
+                    <div>
+
+                        <label>Rental Charges (₹)</label>
+
+                        <input type="number"
+                               step="0.01"
+                               name="charges"
+                               class="form-control"
+                               placeholder="Enter rental amount"
+                               required>
+
+                    </div>
+
+                    <!-- HOMEPAGE -->
+
+                    <div>
+
+                        <label>Homepage Feature</label>
+
+                        <div class="checkbox-box">
+
+                            <input type="checkbox"
+                                   name="show_on_homepage">
+
+                            Show this design on homepage
+
+                        </div>
+
+                    </div>
+
+                    <!-- REMARKS -->
+
+                    <div class="full-width">
+
+                        <label>Remarks</label>
+
+                        <textarea name="remarks"
+                                  class="form-control"
+                                  rows="3"
+                                  placeholder="Optional remarks..."></textarea>
+
+                    </div>
+
+                </div>
+
+                <!-- IMAGES -->
+
+                <div class="section-title mt-4">
+                    Upload Design Images
+                </div>
+
+                <label>Front View Image</label>
+
+                <div class="file-box">
+
+                    <input type="file"
+                           name="design_image1"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                <label>Side View Image</label>
+
+                <div class="file-box">
+
+                    <input type="file"
+                           name="design_image2"
+                           class="form-control">
+
+                </div>
+
+                <label>Back View Image</label>
+
+                <div class="file-box">
+
+                    <input type="file"
+                           name="design_image3"
+                           class="form-control">
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit"
+                        class="upload-btn">
+
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+
+                    Upload Design
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
