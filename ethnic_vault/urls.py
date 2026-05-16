@@ -100,6 +100,9 @@ urlpatterns = [
     path('track_order/<int:id>/', views.track_order, name='track_order'),
     path('shipped_order/<int:id>/', views.shipped_order, name='shipped_order'),
     path('delivered_order/<int:id>/', views.delivered_order, name='delivered_order'),
+    path('add_homepage_design/<int:id>', views.add_homepage_design, name='add_homepage_design'),
+    path('remove_homepage_design/<int:id>', views.remove_homepage_design, name='remove_homepage_design'),
+    path('reset_homepage_designs/',views.reset_homepage_designs,name='reset_homepage_designs'),
     path('update_design_code_details/<int:id>/',views.update_design_code_details,name="update_design_code_details")
 ]
 if settings.DEBUG:

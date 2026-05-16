@@ -10,31 +10,207 @@ from .models import designs, wishlist
 
 def homepage(request):
 
-    her_data = designs.objects.filter(category__in=["Lehenga", "Saree", "Chaniya"])
-    his_data = designs.objects.filter(category__in=["Sherwani", "Kurta", "Tuxedo"])
-    kids_data = designs.objects.filter(category__in=["Boys", "Girls"])
-    accessories_data = designs.objects.filter(category__in=["Men Accessories", "Women Accessories"])
-    footwear_data = designs.objects.filter(category__in=["Men Footwear", "Women Footwear"])
+    her_data = designs.objects.filter(
+        category__in=['Lehenga', 'Saree', 'Chaniya'],
+        status='Approved',
+        show_on_homepage=True
+    )
+
+    his_data = designs.objects.filter(
+        category__in=['Sherwani', 'Kurta', 'Tuxedo'],
+        status='Approved',
+        show_on_homepage=True
+    )
+
+    kids_data = designs.objects.filter(
+        category__in=['Boys', 'Girls'],
+        status='Approved',
+        show_on_homepage=True
+    )
+
+    accessories_data = designs.objects.filter(
+        category__in=['Men Accessories', 'Women Accessories'],
+        status='Approved',
+        show_on_homepage=True
+    )
+
+    footwear_data = designs.objects.filter(
+        category__in=['Men Footwear', 'Women Footwear'],
+        status='Approved',
+        show_on_homepage=True
+    )
 
     wishlist_ids = []
 
-    if 'email' in request.session:
-        email = request.session.get('email')
+    if request.session.get('role') == 'user':
 
-        wishlist_ids = wishlist.objects.filter(
-            user_email=email
-        ).values_list('design_id', flat=True)
+        user_email = request.session.get('email')
+
+        wishlist_items = wishlist.objects.filter(
+            user_email=user_email
+        )
+
+        wishlist_ids = wishlist_items.values_list(
+            'design_id',
+            flat=True
+        )
 
     context = {
+
         'her_data': her_data,
         'his_data': his_data,
         'kids_data': kids_data,
         'accessories_data': accessories_data,
         'footwear_data': footwear_data,
-        'wishlist_ids': list(wishlist_ids),
+        'wishlist_ids': wishlist_ids,
+
     }
 
-    return render(request, "index.html", context)
+    return render(request, 'index.html', context)
+
+def reset_homepage_designs(request):
+
+    designs.objects.update(show_on_homepage=False)
+
+    messages.success(
+        request,
+        "All homepage designs reset successfully"
+    )
+
+    return redirect("view_all_design")
+def add_homepage_design(request, id):
+
+    design = designs.objects.get(id=id)
+
+    # =========================
+    # HER COLLECTION
+    # =========================
+    her_categories = [
+        'Lehenga',
+        'Saree',
+        'Chaniya'
+    ]
+
+    # =========================
+    # HIS COLLECTION
+    # =========================
+    his_categories = [
+        'Sherwani',
+        'Kurta',
+        'Tuxedo'
+    ]
+
+    # =========================
+    # KIDS COLLECTION
+    # =========================
+    kids_categories = [
+        'Boys',
+        'Girls'
+    ]
+
+    # =========================
+    # ACCESSORIES
+    # =========================
+    accessories_categories = [
+        'Men Accessories',
+        'Women Accessories'
+    ]
+
+    # =========================
+    # FOOTWEAR
+    # =========================
+    footwear_categories = [
+        'Men Footwear',
+        'Women Footwear'
+    ]
+
+    # =========================
+    # CHECK WHICH GROUP
+    # =========================
+
+    if design.category in her_categories:
+
+        count = designs.objects.filter(
+            category__in=her_categories,
+            show_on_homepage=True
+        ).count()
+
+        collection_name = "Her Collection"
+
+    elif design.category in his_categories:
+
+        count = designs.objects.filter(
+            category__in=his_categories,
+            show_on_homepage=True
+        ).count()
+
+        collection_name = "His Collection"
+
+    elif design.category in kids_categories:
+
+        count = designs.objects.filter(
+            category__in=kids_categories,
+            show_on_homepage=True
+        ).count()
+
+        collection_name = "Kids Collection"
+
+    elif design.category in accessories_categories:
+
+        count = designs.objects.filter(
+            category__in=accessories_categories,
+            show_on_homepage=True
+        ).count()
+
+        collection_name = "Accessories Collection"
+
+    elif design.category in footwear_categories:
+
+        count = designs.objects.filter(
+            category__in=footwear_categories,
+            show_on_homepage=True
+        ).count()
+
+        collection_name = "Footwear Collection"
+
+    else:
+
+        count = 0
+        collection_name = "Collection"
+
+    # =========================
+    # LIMIT CHECK
+    # =========================
+
+    if count >= 4:
+
+        messages.error(
+            request,
+            f"Only 4 homepage designs allowed in {collection_name}. Remove one first."
+        )
+
+    else:
+
+        design.show_on_homepage = True
+        design.save()
+
+        messages.success(
+            request,
+            "Design added to homepage successfully"
+        )
+
+    return redirect("view_all_design")
+
+def remove_homepage_design(request,id):
+
+    design = designs.objects.get(id=id)
+
+    design.show_on_homepage = False
+    design.save()
+
+    messages.success(request,"Design removed from homepage")
+
+    return redirect('view_all_design')
 
 def admin_login(request):
     return render(request,"admin_login.html")
@@ -82,7 +258,7 @@ def user_login_validation(request):
                 request.session['location'] = user_login.location
                 request.session['role'] = 'user'
 
-                next_url = request.GET.get('next')
+                next_url = request.POST.get('next')
 
                 if next_url:
                     return redirect(next_url)
@@ -476,7 +652,6 @@ def upload_design(request):
         design_image2 = request.FILES.get("design_image2")
         design_image3 = request.FILES.get("design_image3")
 
-        show_on_homepage = request.POST.get('show_on_homepage')
         # ✅ SAVE TO DATABASE
         designs.objects.create(
             designer_name=designer_name,
@@ -491,7 +666,6 @@ def upload_design(request):
             charges=charges,
             remarks=remarks,
 
-            show_on_homepage=True if show_on_homepage else False   # ⭐ ADD THIS
         )
 
         return redirect('uplod_designs')  # or wherever you want
@@ -955,7 +1129,7 @@ def add_to_wishlist(request, id):
 
         messages.success(request, "Added to wishlist ❤️")
 
-    return redirect("view_wishlist")
+    return redirect(request.META.get('HTTP_REFERER'))
 
 def view_wishlist(request):
 
@@ -974,7 +1148,13 @@ def view_wishlist(request):
 
 def remove_wishlist(request, id):
 
-    item = get_object_or_404(wishlist, id=id)
+    user_email = request.session.get('email')
+
+    item = get_object_or_404(
+        wishlist,
+        id=id,
+        user_email=user_email
+    )
 
     item.delete()
 
@@ -1113,7 +1293,7 @@ def add_to_cart(request, id):
         messages.success(request, "Added to cart 🛒")
 
     # RETURN TO SAME PAGE
-    return redirect(request.META.get('HTTP_REFERER'))
+    return redirect("view_cart")
 # =========================
 # VIEW CART
 # =========================
@@ -1131,7 +1311,7 @@ def view_cart(request):
 
     items = cart_obj.items.all()
 
-    total = sum(item.design.charges for item in items)
+    total = sum(item.design.charges * item.quantity for item in items)
 
     return render(request, "cart.html", {
         "items": items,

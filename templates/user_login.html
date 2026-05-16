@@ -621,6 +621,8 @@ body::after{
 
                 {% csrf_token %}
 
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+
                 <!-- EMAIL -->
 
                 <div class="input-group-custom">
