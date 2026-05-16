@@ -880,7 +880,7 @@ def rent_cloth_code(request):
             image_design2=design.design_image2,
             image_design3=design.design_image3,
 
-            status="PENDING",
+            status="Pending",
             payment_status="PAID",
             return_status="Not Returned"
         )
@@ -1245,7 +1245,7 @@ def rent_now(request, design_id):
             image_design3=design.design_image3,
 
             status="Pending",
-            payment_status="PENDING"
+            payment_status="Pending"
         )
 
         return redirect('upload_deposit', rent.id)
@@ -1385,10 +1385,21 @@ def track_order(request, id):
     if 'email' not in request.session:
         return redirect("user_login")
 
-    order = rent_cloths.objects.get(id=id)
+    order = get_object_or_404(
+        rent_cloths,
+        id=id,
+        user_email=request.session.get('email')
+    )
+
+    payments = rental_payment.objects.filter(
+        rent=order
+    ).order_by('-created_at')
 
     return render(request, "track_order.html", {
-        'order': order
+
+        'order': order,
+        'payments': payments
+
     })
 
 def shipped_order(request, id):
