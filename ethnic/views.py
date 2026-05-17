@@ -801,9 +801,22 @@ def search_design_price(request):
 
     return render(request,"search_design_price.html",{'search_design': designs_query})
 
-def view_design_details(request,id):
+def view_design_details(request, id):
     design = designs.objects.get(id=id)
-    return render(request,"view_design_details.html",{'design':design})
+
+    reviews = Review.objects.filter(
+        design=design,
+        status="APPROVED"
+    ).order_by('-created_at')
+
+    return render(
+        request,
+        "view_design_details.html",
+        {
+            'design': design,
+            'reviews': reviews
+        }
+    )
 
 def print_design(request,id):
     design = designs.objects.get(id=id)
@@ -848,16 +861,31 @@ from django.shortcuts import redirect
 
 def rent_cloth_code(request):
 
-    # LOGIN CHECK
     if request.session.get('role') != 'user':
-
         return redirect('/user_login/')
 
     if request.method == "POST":
 
         design_id = request.POST.get("id")
-
         design = designs.objects.get(id=design_id)
+
+        # USER SAFE DATA FROM SESSION
+        user_email = request.session.get('email')
+        user_obj = user.objects.get(user_email=user_email)
+
+        # DATE CALCULATION (SERVER SIDE)
+        from datetime import datetime
+
+        start = request.POST.get("rental_from")
+        end = request.POST.get("return_date")
+
+        start_date = datetime.strptime(start, "%Y-%m-%d")
+        end_date = datetime.strptime(end, "%Y-%m-%d")
+
+        days = (end_date - start_date).days
+        total_charges = days * float(design.charges)
+
+        deposit_amount = total_charges * 0.25
 
         rent = rent_cloths.objects.create(
 
@@ -865,14 +893,15 @@ def rent_cloth_code(request):
             designer_email=design.designer_email,
             designer_contact=design.designer_contact,
 
-            user_name=request.POST.get("name"),
-            user_email=request.POST.get("email"),
-            user_contact=request.POST.get("contact"),
+            user_name=user_obj.user_name,
+            user_email=user_obj.user_email,
+            user_contact=user_obj.user_contact,
 
-            rental_from=request.POST.get("rental_from"),
-            rental_date=request.POST.get("return_date"),
 
-            total_charges=float(request.POST.get("total_charges")),
+            rental_from=start,
+            rental_date=end,
+
+            total_charges=total_charges,
 
             design_id=design.id,
 
@@ -885,25 +914,20 @@ def rent_cloth_code(request):
             return_status="Not Returned"
         )
 
-        # PAYMENT SCREENSHOT
         screenshot = request.FILES.get("payment_screenshot")
 
         rental_payment.objects.create(
 
             rent=rent,
-
             payment_type="DEPOSIT",
-
-            amount=float(request.POST.get("total_charges")) * 0.25,
-
+            amount=deposit_amount,
             payment_status="SUCCESS",
-
             payment_screenshot=screenshot
         )
 
         messages.success(
             request,
-            "Your booking request has been sent successfully. Please wait for designer approval."
+            "Booking successful! Waiting for designer approval."
         )
 
         return redirect("homepage")
@@ -1406,16 +1430,61 @@ def track_order(request, id):
         user_email=request.session.get('email')
     )
 
-    payments = rental_payment.objects.filter(
-        rent=order
-    ).order_by('-created_at')
+    payments = rental_payment.objects.filter(rent=order)
+
+    # -----------------------------
+    # RENTAL TIMELINE LOGIC
+    # -----------------------------
+    if order.status == "Pending":
+        progress = 0
+
+    elif order.status == "Approved":
+        progress = 25
+
+    elif order.status == "Shipped":
+        progress = 50
+
+    elif order.status == "Delivered":
+        progress = 75
+
+        # FINAL STEP CHECK
+        if order.return_status == "RETURNED":
+            progress = 100
+
+    else:
+        progress = 0
+
+    # -----------------------------
+    # PENALTY CALCULATION
+    # -----------------------------
+    penalty = calculate_penalty(order)
 
     return render(request, "track_order.html", {
 
         'order': order,
-        'payments': payments
+        'payments': payments,
+        'progress': progress,
+        'penalty': penalty
 
     })
+
+def cancel_order(request, id):
+
+    order = get_object_or_404(
+        rent_cloths,
+        id=id,
+        user_email=request.session.get('email')
+    )
+
+    if order.status in ["Pending", "Approved"]:
+        order.status = "Cancelled"
+        order.save()
+        messages.success(request, "Order cancelled successfully")
+
+    else:
+        messages.error(request, "Cannot cancel after shipping")
+
+    return redirect("track_order", id=id)
 
 def shipped_order(request, id):
 
@@ -1436,3 +1505,134 @@ def delivered_order(request, id):
     order.save()
 
     return redirect("view_rental_request")
+
+def return_request(request, id):
+
+    order = get_object_or_404(
+        rent_cloths,
+        id=id,
+        user_email=request.session.get('email')
+    )
+
+    if order.status == "Delivered" and order.return_status == "Not Returned":
+        order.return_status = "Return Requested"
+        order.save()
+        messages.success(request, "Return request sent")
+
+    return redirect("track_order", id=id)
+
+from datetime import date
+
+def calculate_penalty(order):
+
+    if order.status != "Delivered":
+        return 0
+
+    try:
+        return_date = datetime.strptime(order.rental_date, "%Y-%m-%d").date()
+    except:
+        return 0
+
+    today = date.today()
+
+    if today > return_date:
+
+        late_days = (today - return_date).days
+
+        penalty_per_day = order.total_charges * 0.05  # 5% per day
+
+        return late_days * penalty_per_day
+
+    return 0
+
+from django.shortcuts import redirect
+from django.contrib import messages
+from .models import designs, Review, user
+
+
+def add_review(request, id):
+
+    if request.method == "POST":
+
+        # SESSION EMAIL
+        user_email = request.session.get('email')
+
+        # LOGIN CHECK
+        if not user_email:
+
+            messages.error(request, "Please login first")
+
+            return redirect('/user_login/')
+
+        try:
+
+            # USER DATA
+            userdata = user.objects.get(user_email=user_email)
+
+            # DESIGN DATA
+            design_data = designs.objects.get(id=id)
+
+            # FORM DATA
+            rating = request.POST.get('rating')
+
+            review_message = request.POST.get('review_message')
+
+            review_image = request.FILES.get('review_image')
+
+            # SAVE REVIEW
+            Review.objects.create(
+
+                design=design_data,
+
+                user_name=userdata.user_name,
+
+                user_email=userdata.user_email,
+
+                rating=rating,
+
+                review_message=review_message,
+
+                review_image=review_image
+            )
+
+            # SUCCESS MESSAGE
+            messages.success(request, "Review Submitted Successfully")
+
+            return redirect('/view_design_details/' + str(id))
+
+        except Exception as e:
+
+            print("REVIEW ERROR:", e)
+
+            messages.error(request, str(e))
+
+            return redirect('/view_design_details/' + str(id))
+
+    return redirect('/view_design_details/' + str(id))
+
+from .models import Review
+
+def view_reviews(request):
+
+    reviews = Review.objects.all().order_by('-created_at')
+
+    context = {
+        'reviews': reviews
+    }
+
+    return render(request, 'admin_view_reviews.html', context)
+
+from django.shortcuts import get_object_or_404, redirect
+from .models import Review
+
+def approve_review(request, id):
+    review = get_object_or_404(Review, id=id)
+    review.status = "APPROVED"
+    review.save()
+    return redirect('view_reviews')
+
+def reject_review(request, id):
+    review = get_object_or_404(Review, id=id)
+    review.status = "REJECTED"
+    review.save()
+    return redirect('view_reviews')

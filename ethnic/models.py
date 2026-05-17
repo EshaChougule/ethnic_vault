@@ -272,3 +272,32 @@ class cart_item(models.Model):
     def __str__(self):
 
         return f"{self.design.design_title} - {self.cart.user_email}"
+    
+class Review(models.Model):
+
+
+    design = models.ForeignKey(
+        designs,
+        on_delete=models.CASCADE
+    )
+
+    user_name = models.CharField(max_length=100)
+
+    user_email = models.EmailField()
+
+    rating = models.IntegerField(default=5)
+
+    review_message = models.TextField()
+
+    review_image = models.ImageField(
+        upload_to='review_images/',
+        null=True,
+        blank=True
+    )
+
+    status = models.CharField(max_length=20, default='PENDING')
+
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.user_name

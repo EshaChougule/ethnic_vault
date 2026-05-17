@@ -28,8 +28,8 @@ body{
     font-family:'Poppins',sans-serif;
 
     background:
-    linear-gradient(rgba(248,244,236,0.95),
-    rgba(248,244,236,0.95)),
+    linear-gradient(rgba(248,244,236,0.96),
+    rgba(248,244,236,0.96)),
 
     url("{% static 'images/ethnic-pattern.png' %}");
 
@@ -44,13 +44,14 @@ body{
 /* HEADER */
 
 .top-header{
-    padding:22px 0;
 
-    background:rgba(255,255,255,0.72);
+    background:rgba(255,255,255,0.75);
 
-    backdrop-filter:blur(10px);
+    backdrop-filter:blur(12px);
 
     border-bottom:1px solid rgba(184,146,76,0.12);
+
+    padding:20px 0;
 
     position:sticky;
     top:0;
@@ -58,6 +59,7 @@ body{
 }
 
 .logo-text{
+
     font-family:'Playfair Display',serif;
 
     font-size:38px;
@@ -66,7 +68,7 @@ body{
     color:#B8924C;
 }
 
-/* MAIN LAYOUT */
+/* MAIN */
 
 .main-wrapper{
     padding:35px 20px 50px;
@@ -75,9 +77,10 @@ body{
 /* SIDEBAR */
 
 .sidebar{
-    background:rgba(255,255,255,0.82);
 
-    backdrop-filter:blur(16px);
+    background:rgba(255,255,255,0.85);
+
+    backdrop-filter:blur(15px);
 
     border-radius:30px;
 
@@ -86,7 +89,7 @@ body{
     box-shadow:
     0 15px 40px rgba(0,0,0,0.07);
 
-    border:1px solid rgba(184,146,76,0.12);
+    border:1px solid rgba(184,146,76,0.10);
 
     position:sticky;
     top:110px;
@@ -96,44 +99,45 @@ body{
 
 .profile-box{
     text-align:center;
-
     margin-bottom:35px;
 }
 
 .profile-avatar{
+
     width:110px;
     height:110px;
 
     border-radius:50%;
 
-    margin:auto;
-    margin-bottom:18px;
-
     background:
     linear-gradient(135deg,#B8924C,#D8B56A);
-
-    color:white;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
+    color:white;
+
     font-size:42px;
     font-weight:700;
 
+    margin:auto auto 18px;
+
     box-shadow:
-    0 12px 30px rgba(184,146,76,0.28);
+    0 12px 30px rgba(184,146,76,0.25);
 }
 
 .profile-box h4{
+
     font-family:'Playfair Display',serif;
 
-    color:#1E1E1E;
-
     margin-bottom:6px;
+
+    color:#1E1E1E;
 }
 
 .profile-box p{
+
     color:#8A6A2F;
 
     font-size:14px;
@@ -141,11 +145,8 @@ body{
 
 /* SIDEBAR LINKS */
 
-.sidebar-links{
-    margin-top:20px;
-}
-
 .sidebar-links a{
+
     display:flex;
     align-items:center;
     gap:12px;
@@ -158,19 +159,20 @@ body{
 
     border-radius:16px;
 
-    font-size:15px;
-    font-weight:500;
-
-    color:#444;
-
-    transition:0.3s ease;
-
     background:#FAF7F2;
 
     border:1px solid rgba(184,146,76,0.08);
+
+    color:#444;
+
+    font-size:15px;
+    font-weight:500;
+
+    transition:0.3s ease;
 }
 
 .sidebar-links a:hover{
+
     background:#B8924C;
 
     color:white;
@@ -178,30 +180,27 @@ body{
     transform:translateX(4px);
 }
 
-.sidebar-links i{
-    width:18px;
-}
-
-/* LOGOUT BUTTON */
-
 .logout-btn{
+
     background:#111827 !important;
 
     color:#D8B56A !important;
 }
 
 .logout-btn:hover{
+
     background:#B8924C !important;
 
     color:white !important;
 }
 
-/* PAGE HEADER */
+/* BANNER */
 
 .page-banner{
+
     background:
-    linear-gradient(rgba(20,18,14,0.82),
-    rgba(20,18,14,0.88)),
+    linear-gradient(rgba(18,18,18,0.82),
+    rgba(18,18,18,0.88)),
 
     url("{% static 'images/banner1.jpeg' %}");
 
@@ -214,36 +213,36 @@ body{
 
     margin-bottom:35px;
 
-    overflow:hidden;
-
     position:relative;
+
+    overflow:hidden;
 
     box-shadow:
     0 18px 50px rgba(0,0,0,0.12);
 }
 
 .page-banner::before{
+
     content:"";
 
     position:absolute;
 
-    width:320px;
-    height:320px;
+    width:300px;
+    height:300px;
 
     border-radius:50%;
 
-    background:rgba(212,175,55,0.10);
+    background:rgba(212,175,55,0.08);
 
-    top:-120px;
+    top:-100px;
     right:-100px;
-
-    filter:blur(20px);
 }
 
 .page-banner h1{
+
     font-family:'Playfair Display',serif;
 
-    font-size:58px;
+    font-size:56px;
 
     color:#F8E7C2;
 
@@ -254,93 +253,95 @@ body{
 }
 
 .page-banner p{
+
     color:rgba(255,255,255,0.82);
 
-    font-size:15px;
+    max-width:650px;
 
     line-height:1.9;
-
-    max-width:650px;
 
     position:relative;
     z-index:2;
 }
 
-/* SECTION TITLE */
+/* STATS */
 
-.section-title{
-    font-family:'Playfair Display',serif;
+.stats-grid{
 
-    font-size:34px;
+    display:grid;
 
-    color:#1E1E1E;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
 
-    margin-bottom:28px;
+    gap:22px;
+
+    margin-bottom:35px;
 }
 
-/* PRODUCT CARD */
+.stat-card{
 
-.design-card{
-    background:rgba(255,255,255,0.86);
+    background:rgba(255,255,255,0.88);
+
+    border-radius:26px;
+
+    padding:28px;
 
     backdrop-filter:blur(10px);
 
-    border-radius:28px;
-
-    overflow:hidden;
-
-    margin-bottom:28px;
-
-    transition:0.35s ease;
-
     box-shadow:
-    0 12px 35px rgba(0,0,0,0.07);
+    0 12px 35px rgba(0,0,0,0.06);
 
     border:1px solid rgba(184,146,76,0.10);
+
+    transition:0.3s ease;
 }
 
-.design-card:hover{
-    transform:translateY(-6px);
+.stat-card:hover{
 
-    box-shadow:
-    0 18px 45px rgba(0,0,0,0.12);
+    transform:translateY(-4px);
 }
 
-/* IMAGE */
+.stat-icon{
 
-.design-image{
-    width:100%;
-    height:320px;
+    width:60px;
+    height:60px;
 
-    object-fit:cover;
+    border-radius:18px;
+
+    background:#FAF3E3;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#B8924C;
+
+    font-size:26px;
+
+    margin-bottom:18px;
 }
 
-/* CONTENT */
+.stat-title{
 
-.design-content{
-    padding:22px;
+    font-size:14px;
+
+    color:#777;
+
+    margin-bottom:6px;
 }
 
-.design-title{
-    font-size:22px;
+.stat-number{
+
+    font-size:34px;
     font-weight:700;
 
     color:#1E1E1E;
-
-    margin-bottom:10px;
 }
 
-.design-price{
-    color:#B8924C;
+/* SECTION */
 
-    font-size:24px;
-    font-weight:700;
-}
+.section-box{
 
-/* RENTAL BOX */
-
-.rental-box{
-    background:rgba(255,255,255,0.86);
+    background:rgba(255,255,255,0.88);
 
     backdrop-filter:blur(10px);
 
@@ -348,46 +349,69 @@ body{
 
     padding:32px;
 
-    margin-top:25px;
+    margin-bottom:30px;
 
     box-shadow:
-    0 12px 35px rgba(0,0,0,0.07);
+    0 12px 35px rgba(0,0,0,0.06);
 
     border:1px solid rgba(184,146,76,0.10);
 }
 
-/* RENTAL CARD */
+.section-title{
 
-.rental-card{
+    font-family:'Playfair Display',serif;
+
+    font-size:34px;
+
+    margin-bottom:28px;
+
+    color:#1E1E1E;
+}
+
+/* ORDER CARD */
+
+.order-card{
+
     background:#FAF7F2;
 
-    border-radius:22px;
+    border-radius:24px;
 
     padding:22px;
 
-    margin-bottom:20px;
+    margin-bottom:22px;
 
     border:1px solid rgba(184,146,76,0.08);
 
     transition:0.3s ease;
 }
 
-.rental-card:hover{
+.order-card:hover{
+
     transform:translateY(-3px);
 }
 
-.rental-card p{
-    margin-bottom:10px;
+.order-top{
 
-    font-size:14px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    color:#555;
+    flex-wrap:wrap;
+
+    margin-bottom:18px;
 }
 
-/* STATUS */
+.order-id{
+
+    font-size:20px;
+    font-weight:700;
+
+    color:#1E1E1E;
+}
 
 .status{
-    padding:7px 15px;
+
+    padding:7px 16px;
 
     border-radius:30px;
 
@@ -405,17 +429,122 @@ body{
     color:#155724;
 }
 
+.shipped{
+    background:#CCE5FF;
+    color:#004085;
+}
+
+.delivered{
+    background:#D1ECF1;
+    color:#0C5460;
+}
+
+.returned{
+    background:#E2E3E5;
+    color:#383D41;
+}
+
 .rejected{
     background:#F8D7DA;
     color:#721C24;
 }
 
-/* EMPTY */
+/* DETAILS */
 
-.empty-text{
+.order-details{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+
+    gap:18px;
+
+    margin-bottom:20px;
+}
+
+.detail-box{
+
+    background:white;
+
+    border-radius:16px;
+
+    padding:16px;
+
+    border:1px solid rgba(184,146,76,0.08);
+}
+
+.detail-box h6{
+
+    font-size:13px;
+
     color:#888;
 
+    margin-bottom:8px;
+}
+
+.detail-box p{
+
+    margin:0;
+
     font-size:15px;
+    font-weight:600;
+
+    color:#1E1E1E;
+}
+
+/* BUTTONS */
+
+.action-btn{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:16px;
+
+    background:#111827;
+
+    color:#D8B56A;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:0.3s ease;
+}
+
+.action-btn:hover{
+
+    background:#B8924C;
+
+    color:white;
+
+    text-decoration:none;
+
+    transform:translateY(-2px);
+}
+
+/* EMPTY */
+
+.empty-box{
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:#777;
+}
+
+.empty-box i{
+
+    font-size:60px;
+
+    color:#B8924C;
+
+    margin-bottom:20px;
 }
 
 /* RESPONSIVE */
@@ -425,7 +554,6 @@ body{
     .sidebar{
         position:relative;
         top:0;
-
         margin-bottom:30px;
     }
 
@@ -440,16 +568,16 @@ body{
 
 @media(max-width:768px){
 
-    .design-image{
-        height:260px;
+    .section-title{
+        font-size:28px;
     }
 
     .page-banner h1{
         font-size:36px;
     }
 
-    .section-title{
-        font-size:28px;
+    .logo-text{
+        font-size:30px;
     }
 }
 
@@ -485,8 +613,6 @@ body{
 
             <div class="sidebar">
 
-                <!-- PROFILE -->
-
                 <div class="profile-box">
 
                     <div class="profile-avatar">
@@ -495,37 +621,35 @@ body{
 
                     <h4>{{ profile.user_name }}</h4>
 
-                    <p>Ethnic Vault Member</p>
+                    <p>Premium Rental Member</p>
 
                 </div>
 
-                <!-- LINKS -->
-
                 <div class="sidebar-links">
 
+                    <!-- BACK TO HOMEPAGE BUTTON -->
+
+                    <a href="{% url 'homepage' %}">
+
+                        <i class="fa fa-home"></i>
+
+                        Back To Homepage
+
+                    </a>
+
                     <a href="{% url 'user_profile' %}">
-
                         <i class="fa fa-user"></i>
-
-                        Profile
-
+                        My Profile
                     </a>
 
                     <a href="{% url 'view_my_rental_application' %}">
-
                         <i class="fa fa-shopping-bag"></i>
-
-                        My Bookings
-
+                        My Orders
                     </a>
 
-                    <a href="{% url 'logout_view' %}"
-                       class="logout-btn">
-
+                    <a href="{% url 'logout_view' %}" class="logout-btn">
                         <i class="fa fa-sign-out"></i>
-
                         Logout
-
                     </a>
 
                 </div>
@@ -545,89 +669,101 @@ body{
                 <h1>Welcome Back</h1>
 
                 <p>
-                    Explore your personalized ethnic fashion dashboard,
-                    discover premium collections, and track all your outfit bookings beautifully.
+                    Manage your rental journey, track all bookings,
+                    monitor deliveries, and stay updated with your outfit status beautifully.
                 </p>
 
             </div>
 
-            <!-- COLLECTIONS -->
+            <!-- STATS -->
 
-            <h2 class="section-title">
-                Recommended Collection
-            </h2>
+            <div class="stats-grid">
 
-            <div class="row">
+                <div class="stat-card">
 
-                {% for d in design %}
+                    <div class="stat-icon">
+                        <i class="fa fa-shopping-bag"></i>
+                    </div>
 
-                <div class="col-lg-4 col-md-6">
+                    <div class="stat-title">
+                        Total Orders
+                    </div>
 
-                    <div class="design-card">
-
-                        <img src="/media/{{ d.design_image1 }}"
-                             class="design-image">
-
-                        <div class="design-content">
-
-                            <div class="design-title">
-                                {{ d.design_title }}
-                            </div>
-
-                            <div class="design-price">
-                                ₹{{ d.charges }}
-                                <span style="font-size:14px;color:#777;">
-                                    / day
-                                </span>
-                            </div>
-
-                        </div>
-
+                    <div class="stat-number">
+                        {{ rentals|length }}
                     </div>
 
                 </div>
 
-                {% endfor %}
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa fa-check-circle"></i>
+                    </div>
+
+                    <div class="stat-title">
+                        Approved Orders
+                    </div>
+
+                    <div class="stat-number">
+                        {{ approved_count }}
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa fa-truck"></i>
+                    </div>
+
+                    <div class="stat-title">
+                        Active Rentals
+                    </div>
+
+                    <div class="stat-number">
+                        {{ active_count }}
+                    </div>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        <i class="fa fa-undo"></i>
+                    </div>
+
+                    <div class="stat-title">
+                        Returned Orders
+                    </div>
+
+                    <div class="stat-number">
+                        {{ returned_count }}
+                    </div>
+
+                </div>
 
             </div>
 
-            <!-- RENTAL STATUS -->
+            <!-- RECENT ORDERS -->
 
-            <div class="rental-box">
+            <div class="section-box">
 
                 <h2 class="section-title">
-                    My Rental Status
+                    Recent Rental Orders
                 </h2>
 
                 {% if rentals %}
 
                     {% for r in rentals %}
 
-                    <div class="rental-card">
+                    <div class="order-card">
 
-                        <p>
-                            <b>Design ID:</b>
-                            {{ r.design_id }}
-                        </p>
+                        <div class="order-top">
 
-                        <p>
-                            <b>Total Charges:</b>
-                            ₹{{ r.total_charges }}
-                        </p>
-
-                        <p>
-                            <b>Deposit Paid:</b>
-                            ₹{{ r.deposit_amount }}
-                        </p>
-
-                        <p>
-                            <b>Remaining Amount:</b>
-                            ₹{{ r.remaining_amount }}
-                        </p>
-
-                        <p>
-
-                            <b>Status:</b>
+                            <div class="order-id">
+                                Order #EVR{{ r.id }}
+                            </div>
 
                             {% if r.status == "Pending" %}
 
@@ -641,6 +777,24 @@ body{
                                     Approved
                                 </span>
 
+                            {% elif r.status == "Shipped" %}
+
+                                <span class="status shipped">
+                                    Shipped
+                                </span>
+
+                            {% elif r.status == "Delivered" %}
+
+                                <span class="status delivered">
+                                    Delivered
+                                </span>
+
+                            {% elif r.return_status == "Returned" %}
+
+                                <span class="status returned">
+                                    Returned
+                                </span>
+
                             {% else %}
 
                                 <span class="status rejected">
@@ -649,7 +803,51 @@ body{
 
                             {% endif %}
 
-                        </p>
+                        </div>
+
+                        <div class="order-details">
+
+                            <div class="detail-box">
+
+                                <h6>Designer</h6>
+
+                                <p>{{ r.designer_name }}</p>
+
+                            </div>
+
+                            <div class="detail-box">
+
+                                <h6>Rental Date</h6>
+
+                                <p>{{ r.rental_from }}</p>
+
+                            </div>
+
+                            <div class="detail-box">
+
+                                <h6>Return Date</h6>
+
+                                <p>{{ r.rental_date }}</p>
+
+                            </div>
+
+                            <div class="detail-box">
+
+                                <h6>Total Amount</h6>
+
+                                <p>₹{{ r.total_charges }}</p>
+
+                            </div>
+
+                        </div>
+
+                        <a href="{% url 'track_order' r.id %}" class="action-btn">
+
+                            <i class="fa fa-map-marker"></i>
+
+                            Track Order
+
+                        </a>
 
                     </div>
 
@@ -657,9 +855,17 @@ body{
 
                 {% else %}
 
-                    <p class="empty-text">
-                        No rental bookings yet
-                    </p>
+                    <div class="empty-box">
+
+                        <i class="fa fa-shopping-bag"></i>
+
+                        <h4>No Orders Yet</h4>
+
+                        <p>
+                            Your rental bookings will appear here beautifully.
+                        </p>
+
+                    </div>
 
                 {% endif %}
 

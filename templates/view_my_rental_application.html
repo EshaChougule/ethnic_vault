@@ -13,7 +13,7 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
@@ -33,12 +33,11 @@ body{
     font-family:'Poppins',sans-serif;
 
     background:
-    linear-gradient(rgba(248,244,238,0.94),
-    rgba(248,244,238,0.94)),
-
+    linear-gradient(rgba(248,244,238,0.95),
+    rgba(248,244,238,0.95)),
     url("{% static 'images/ethnic-pattern.png' %}");
 
-    background-size:320px;
+    background-size:300px;
     background-repeat:repeat;
 
     min-height:100vh;
@@ -46,7 +45,7 @@ body{
     color:#2B2B2B;
 }
 
-/* TOP BAR */
+/* TOPBAR */
 
 .topbar{
 
@@ -72,20 +71,20 @@ body{
     background:#111827;
     color:#D4AF37;
 
-    padding:12px 22px;
+    padding:12px 24px;
 
-    border-radius:40px;
+    border-radius:50px;
 
     text-decoration:none;
 
     font-size:14px;
     font-weight:600;
 
-    border:1px solid rgba(212,175,55,0.20);
-
     transition:0.3s ease;
 
-    box-shadow:0 8px 22px rgba(0,0,0,0.08);
+    border:1px solid rgba(212,175,55,0.20);
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
 }
 
 .back-btn:hover{
@@ -104,15 +103,13 @@ body{
 
     font-family:'Playfair Display',serif;
 
-    font-size:38px;
+    font-size:40px;
     font-weight:700;
 
     background:linear-gradient(45deg,#B68D40,#E8C97A,#6A3D1A);
 
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
-
-    letter-spacing:1px;
 }
 
 /* MAIN */
@@ -130,18 +127,18 @@ body{
 
     text-align:center;
 
-    margin-bottom:40px;
+    margin-bottom:45px;
 }
 
 .page-header h1{
 
     font-family:'Playfair Display',serif;
 
-    font-size:52px;
+    font-size:56px;
+
+    margin-bottom:14px;
 
     color:#1E1E1E;
-
-    margin-bottom:12px;
 }
 
 .page-header p{
@@ -150,26 +147,26 @@ body{
 
     font-size:15px;
 
-    max-width:650px;
+    max-width:700px;
 
     margin:auto;
 
-    line-height:1.9;
+    line-height:1.8;
 }
 
-/* CARD */
+/* ORDER CARD */
 
 .order-card{
 
-    background:rgba(255,255,255,0.90);
+    background:rgba(255,255,255,0.92);
 
     backdrop-filter:blur(14px);
 
-    border-radius:30px;
+    border-radius:32px;
 
     overflow:hidden;
 
-    margin-bottom:30px;
+    margin-bottom:35px;
 
     border:1px solid rgba(212,175,55,0.10);
 
@@ -194,14 +191,12 @@ body{
 .image-box{
 
     position:relative;
-
-    overflow:hidden;
 }
 
 .image-box img{
 
     width:100%;
-    height:320px;
+    height:340px;
 
     object-fit:cover;
 
@@ -213,7 +208,7 @@ body{
     transform:scale(1.04);
 }
 
-/* STATUS */
+/* STATUS BADGE */
 
 .status-badge{
 
@@ -222,7 +217,7 @@ body{
     top:18px;
     right:18px;
 
-    padding:8px 18px;
+    padding:9px 18px;
 
     border-radius:30px;
 
@@ -230,16 +225,28 @@ body{
     font-weight:600;
 
     color:white;
-
-    backdrop-filter:blur(8px);
 }
+
+/* STATUS COLORS */
 
 .pending{
     background:#E59A00;
 }
 
 .approved{
-    background:#2E8B57;
+    background:#198754;
+}
+
+.shipped{
+    background:#0D6EFD;
+}
+
+.delivered{
+    background:#17A2B8;
+}
+
+.returned{
+    background:#6C757D;
 }
 
 .rejected{
@@ -250,19 +257,19 @@ body{
 
 .card-content{
 
-    padding:24px;
+    padding:28px;
 }
 
-/* TITLE */
+/* DESIGNER NAME */
 
 .card-title{
 
-    font-size:24px;
+    font-size:28px;
     font-weight:700;
 
-    color:#1E1E1E;
+    color:#111827;
 
-    margin-bottom:18px;
+    margin-bottom:20px;
 }
 
 /* INFO BOX */
@@ -271,21 +278,22 @@ body{
 
     background:#FAF7F2;
 
-    border-radius:18px;
+    border-radius:22px;
 
-    padding:18px;
+    padding:20px;
 
     border:1px solid rgba(212,175,55,0.10);
 
-    margin-bottom:20px;
+    margin-bottom:24px;
 }
 
 .info-item{
 
     display:flex;
     justify-content:space-between;
+    align-items:center;
 
-    margin-bottom:12px;
+    margin-bottom:16px;
 
     font-size:14px;
 }
@@ -302,84 +310,61 @@ body{
 
 .info-value{
 
-    color:#222;
-    font-weight:600;
+    color:#111827;
+    font-weight:700;
 }
 
-/* TIMELINE */
+/* BUTTON */
 
-.timeline{
+.track-btn{
 
-    margin-top:20px;
-
-    padding-top:10px;
-}
-
-/* STEP */
-
-.step{
-
-    display:flex;
-    align-items:center;
-    gap:12px;
-
-    margin-bottom:14px;
-
-    font-size:14px;
-    font-weight:500;
-}
-
-.step i{
-
-    width:26px;
-    height:26px;
-
-    border-radius:50%;
+    width:100%;
 
     display:flex;
     align-items:center;
     justify-content:center;
+    gap:10px;
 
-    font-size:12px;
+    padding:15px;
+
+    border-radius:18px;
+
+    background:linear-gradient(135deg,#111827,#1F2937);
+
+    color:#D4AF37;
+
+    text-decoration:none;
+
+    font-size:15px;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    border:none;
 }
 
-/* ACTIVE STEP */
+.track-btn:hover{
 
-.active-step{
+    background:linear-gradient(135deg,#D4AF37,#B68D40);
 
-    color:#2E8B57;
-}
+    color:#111827;
 
-.active-step i{
+    text-decoration:none;
 
-    background:#2E8B57;
-    color:white;
-}
+    transform:translateY(-2px);
 
-/* INACTIVE STEP */
-
-.inactive-step{
-
-    color:#AAA;
-}
-
-.inactive-step i{
-
-    background:#E5E5E5;
-    color:#999;
+    box-shadow:0 12px 25px rgba(212,175,55,0.25);
 }
 
 /* EMPTY */
 
 .empty-box{
 
-    background:rgba(255,255,255,0.90);
+    background:rgba(255,255,255,0.92);
 
-    backdrop-filter:blur(14px);
+    border-radius:32px;
 
-    border-radius:30px;
-
-    padding:70px 30px;
+    padding:80px 30px;
 
     text-align:center;
 
@@ -395,18 +380,18 @@ body{
 
     color:#D4AF37;
 
-    margin-bottom:22px;
+    margin-bottom:24px;
 }
 
 .empty-box h3{
 
     font-family:'Playfair Display',serif;
 
-    font-size:38px;
-
-    color:#1E1E1E;
+    font-size:40px;
 
     margin-bottom:12px;
+
+    color:#111827;
 }
 
 .empty-box p{
@@ -435,7 +420,7 @@ body{
 
     .page-header h1{
 
-        font-size:42px;
+        font-size:44px;
     }
 }
 
@@ -443,17 +428,17 @@ body{
 
     .image-box img{
 
-        height:260px;
+        height:270px;
     }
 
     .page-header h1{
 
-        font-size:34px;
+        font-size:36px;
     }
 
     .logo-text{
 
-        font-size:30px;
+        font-size:32px;
     }
 }
 
@@ -492,7 +477,7 @@ body{
         <h1>My Rental Orders</h1>
 
         <p>
-            Track your bookings, approvals, and outfit rental journey beautifully through your Ethnic Vault account.
+            View and manage all your designer outfit bookings beautifully in one luxurious place.
         </p>
 
     </div>
@@ -516,16 +501,34 @@ body{
 
                     <!-- STATUS -->
 
-                    {% if r.status == "Pending" %}
+                    {% if r.return_status == 'Returned' %}
 
-                        <div class="status-badge pending">
-                            Pending
+                        <div class="status-badge returned">
+                            Returned
                         </div>
 
-                    {% elif r.status == "Approved" %}
+                    {% elif r.status == 'Delivered' %}
+
+                        <div class="status-badge delivered">
+                            Delivered
+                        </div>
+
+                    {% elif r.status == 'Shipped' %}
+
+                        <div class="status-badge shipped">
+                            Shipped
+                        </div>
+
+                    {% elif r.status == 'Approved' %}
 
                         <div class="status-badge approved">
                             Approved
+                        </div>
+
+                    {% elif r.status == 'Pending' %}
+
+                        <div class="status-badge pending">
+                            Pending
                         </div>
 
                     {% else %}
@@ -588,47 +591,15 @@ body{
 
                     </div>
 
-                    <!-- TIMELINE -->
+                    <!-- TRACK BUTTON -->
 
-                    <div class="timeline">
+                    <a href="{% url 'track_order' r.id %}" class="track-btn">
 
-                        <div class="step active-step">
+                        <i class="fa fa-map-marker"></i>
 
-                            <i class="fa fa-check"></i>
+                        Track Order
 
-                            Request Sent
-
-                        </div>
-
-                        <div class="step
-                        {% if r.status == 'Approved' %}
-                            active-step
-                        {% else %}
-                            inactive-step
-                        {% endif %}
-                        ">
-
-                            <i class="fa fa-check"></i>
-
-                            Booking Approved
-
-                        </div>
-
-                        <div class="step
-                        {% if r.status == 'Approved' %}
-                            active-step
-                        {% else %}
-                            inactive-step
-                        {% endif %}
-                        ">
-
-                            <i class="fa fa-check"></i>
-
-                            Outfit Ready To Wear
-
-                        </div>
-
-                    </div>
+                    </a>
 
                 </div>
 
@@ -637,8 +608,6 @@ body{
         </div>
 
         {% empty %}
-
-        <!-- EMPTY -->
 
         <div class="col-12">
 
@@ -649,7 +618,7 @@ body{
                 <h3>No Orders Yet</h3>
 
                 <p>
-                    Start exploring designer collections and rent your perfect ethnic outfit beautifully.
+                    Start exploring premium designer collections and rent your perfect ethnic outfit beautifully.
                 </p>
 
             </div>

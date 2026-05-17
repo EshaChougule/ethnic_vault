@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>All Reviews | Admin</title>
+
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+body{
+    font-family:Poppins;
+    background:#FAF7F2;
+}
+
+.container{
+    padding:30px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.badge-pending{background:orange;color:white;padding:5px 10px;border-radius:10px;}
+.badge-approved{background:green;color:white;padding:5px 10px;border-radius:10px;}
+.badge-rejected{background:red;color:white;padding:5px 10px;border-radius:10px;}
+
+.btn-approve{
+    background:green;
+    color:white;
+    padding:6px 12px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.btn-reject{
+    background:red;
+    color:white;
+    padding:6px 12px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+img{
+    width:120px;
+    border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>All Reviews (Admin Panel)</h2>
+
+{% for review in reviews %}
+
+<div class="card">
+
+    <h4>{{ review.user_name }}</h4>
+
+    <p><b>Email:</b> {{ review.user_email }}</p>
+
+    <p><b>Design:</b> {{ review.design.design_title }}</p>
+
+    <p><b>Rating:</b> {{ review.rating }}</p>
+
+    <p>{{ review.review_message }}</p>
+
+    {% if review.review_image %}
+        <img src="{{ review.review_image.url }}">
+    {% endif %}
+
+    <p>
+        Status:
+        {% if review.status == "APPROVED" %}
+            <span class="badge-approved">APPROVED</span>
+        {% elif review.status == "REJECTED" %}
+            <span class="badge-rejected">REJECTED</span>
+        {% else %}
+            <span class="badge-pending">PENDING</span>
+        {% endif %}
+    </p>
+
+    <a href="{% url 'approve_review' review.id %}" class="btn-approve">Approve</a>
+    <a href="{% url 'reject_review' review.id %}" class="btn-reject">Reject</a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

@@ -103,6 +103,12 @@ urlpatterns = [
     path('add_homepage_design/<int:id>', views.add_homepage_design, name='add_homepage_design'),
     path('remove_homepage_design/<int:id>', views.remove_homepage_design, name='remove_homepage_design'),
     path('reset_homepage_designs/',views.reset_homepage_designs,name='reset_homepage_designs'),
+    path('cancel_order/<int:id>/', views.cancel_order, name='cancel_order'),
+    path('return_request/<int:id>/', views.return_request, name='return_request'),
+    path('add_review/<int:id>/', views.add_review, name='add_review'),
+    path('view_reviews/', views.view_reviews, name='view_reviews'),
+    path('approve_review/<int:id>/', views.approve_review, name='approve_review'),
+    path('reject_review/<int:id>/', views.reject_review, name='reject_review'),
     path('update_design_code_details/<int:id>/',views.update_design_code_details,name="update_design_code_details")
 ]
 if settings.DEBUG:

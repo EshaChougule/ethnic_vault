@@ -1,16 +1,25 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    {% load static %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ design.design_title }} | Ethnic Wear Rentals</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700&display=swap" rel="stylesheet">
-    <style>
+<title>{{ design.design_title }} | Ethnic Wear Rentals</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
 
 body{
 font-family:'Poppins',sans-serif;
@@ -26,40 +35,41 @@ color:#2B2B2B;
 /* HEADER */
 
 .header{
-padding:20px 0;
-background:transparent;
+padding:25px 0;
 }
 
 /* BACK BUTTON */
 
 .btn-back{
-background:#C5A572;
-color:white;
-padding:10px 22px;
-border-radius:30px;
+background:#111827;
+color:#D4AF37;
+padding:12px 24px;
+border-radius:40px;
 text-decoration:none;
 font-size:14px;
-font-weight:500;
-border:none;
+font-weight:600;
 transition:0.3s ease;
-display:inline-block;
+display:inline-flex;
+align-items:center;
+gap:10px;
 }
 
 .btn-back:hover{
-background:#E0C08D;
-color:white;
+background:#D4AF37;
+color:#111827;
 text-decoration:none;
+transform:translateY(-2px);
 }
 
 /* MAIN CARD */
 
 .detail-card{
 border:none;
-border-radius:25px;
+border-radius:30px;
 background:#fff;
-padding:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
-margin-top:20px;
+padding:30px;
+box-shadow:0 12px 35px rgba(0,0,0,0.08);
+margin-top:10px;
 overflow:hidden;
 }
 
@@ -69,7 +79,7 @@ overflow:hidden;
 width:100%;
 height:420px;
 object-fit:cover;
-border-radius:18px;
+border-radius:22px;
 background:#f8f8f8;
 transition:0.4s ease;
 }
@@ -81,9 +91,9 @@ transform:scale(1.03);
 /* TITLE */
 
 .design-title{
-font-family:'Playfair Display',serif;
 font-size:42px;
-margin-bottom:8px;
+font-weight:700;
+margin-bottom:10px;
 color:#2B2B2B;
 }
 
@@ -98,10 +108,10 @@ margin-bottom:20px;
 /* PRICE */
 
 .price-tag{
-font-size:34px;
+font-size:36px;
 font-weight:700;
 color:#C5A572;
-margin-bottom:20px;
+margin-bottom:22px;
 }
 
 /* DESCRIPTION */
@@ -115,33 +125,144 @@ color:#555;
 /* INFO BOX */
 
 .info-box{
-background:#fafafa;
-padding:18px;
-border-radius:16px;
+background:#FAF7F2;
+padding:22px;
+border-radius:20px;
 margin-top:25px;
+border:1px solid rgba(197,165,114,0.12);
 }
 
 .info-box p{
-margin-bottom:10px;
+margin-bottom:12px;
 font-size:14px;
 }
 
 /* RENT BUTTON */
 
 .rent-btn{
+display:inline-block;
 background:#C5A572;
 color:white;
-padding:14px 35px;
+padding:15px 36px;
 border:none;
-border-radius:35px;
+border-radius:40px;
 font-size:16px;
 font-weight:600;
-margin-top:25px;
+margin-top:28px;
 transition:0.3s ease;
+text-decoration:none;
 }
 
 .rent-btn:hover{
 background:#E0C08D;
+color:white;
+text-decoration:none;
+transform:translateY(-2px);
+}
+
+/* REVIEW SECTION */
+
+.review-section{
+margin-top:40px;
+}
+
+.review-title{
+font-size:32px;
+font-weight:700;
+margin-bottom:25px;
+color:#2B2B2B;
+}
+
+.review-form{
+background:#FAF7F2;
+padding:25px;
+border-radius:24px;
+margin-bottom:35px;
+border:1px solid rgba(197,165,114,0.12);
+}
+
+.form-control{
+border-radius:14px;
+padding:12px 16px;
+border:1px solid #ddd;
+margin-bottom:18px;
+box-shadow:none !important;
+}
+
+.submit-review{
+background:#111827;
+color:#D4AF37;
+border:none;
+padding:14px 28px;
+border-radius:35px;
+font-weight:600;
+transition:0.3s ease;
+}
+
+.submit-review:hover{
+background:#D4AF37;
+color:#111827;
+}
+
+/* REVIEW CARD */
+
+.review-card{
+background:white;
+padding:24px;
+border-radius:22px;
+margin-bottom:22px;
+box-shadow:0 8px 25px rgba(0,0,0,0.06);
+border:1px solid rgba(197,165,114,0.10);
+}
+
+.review-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+margin-bottom:12px;
+}
+
+.review-user{
+font-size:18px;
+font-weight:700;
+color:#2B2B2B;
+}
+
+.review-date{
+font-size:13px;
+color:#999;
+}
+
+.stars{
+color:#D4AF37;
+font-size:18px;
+margin-bottom:12px;
+}
+
+.review-message{
+font-size:15px;
+line-height:1.8;
+color:#555;
+}
+
+.review-image{
+width:140px;
+height:140px;
+object-fit:cover;
+border-radius:18px;
+margin-top:18px;
+}
+
+/* EMPTY */
+
+.empty-review{
+background:#fff;
+padding:35px;
+border-radius:24px;
+text-align:center;
+color:#777;
+border:1px solid rgba(197,165,114,0.10);
 }
 
 /* MOBILE */
@@ -149,7 +270,7 @@ background:#E0C08D;
 @media(max-width:768px){
 
 .detail-img{
-height:300px;
+height:280px;
 margin-bottom:15px;
 }
 
@@ -158,95 +279,248 @@ font-size:30px;
 }
 
 .price-tag{
+font-size:28px;
+}
+
+.review-title{
 font-size:26px;
 }
 
 }
 
 </style>
-</head>
-<body>
 
-<!-- Header -->
+</head>
+
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                alert("{{ message }}");
+            </script>
+        {% endfor %}
+    {% endif %}
+
+<!-- HEADER -->
+
 <div class="container header">
+
     <a href="{% url 'user_dashboard' %}" class="btn-back">
-        <i class="fa fa-arrow-left"></i> Back
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back to Dashboard
+
     </a>
+
 </div>
+
+<!-- MAIN -->
 
 <div class="container">
+
     <div class="card detail-card">
 
-      <div class="row gx-3 mb-4">
-    {% if design.design_image1 %}
-    <div class="col-md-4 col-12 mb-3 mb-md-0">
-        <img src="/media/{{ design.design_image1 }}" class="img-fluid detail-img">
-    </div>
-    {% endif %}
+        <!-- IMAGES -->
 
-    {% if design.design_image2 %}
-    <div class="col-md-4 col-12 mb-3 mb-md-0">
-        <img src="/media/{{ design.design_image2 }}" class="img-fluid detail-img">
-    </div>
-    {% endif %}
+        <div class="row gx-3 mb-4">
 
-    {% if design.design_image3 %}
-    <div class="col-md-4 col-12 mb-3 mb-md-0">
-        <img src="/media/{{ design.design_image3 }}" class="img-fluid detail-img">
-    </div>
-    {% endif %}
-</div>
+            {% if design.design_image1 %}
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+                <img src="/media/{{ design.design_image1 }}" class="img-fluid detail-img">
+            </div>
+            {% endif %}
 
-        <!-- Details -->
+            {% if design.design_image2 %}
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+                <img src="/media/{{ design.design_image2 }}" class="img-fluid detail-img">
+            </div>
+            {% endif %}
+
+            {% if design.design_image3 %}
+            <div class="col-md-4 col-12 mb-3 mb-md-0">
+                <img src="/media/{{ design.design_image3 }}" class="img-fluid detail-img">
+            </div>
+            {% endif %}
+
+        </div>
+
+        <!-- DETAILS -->
+
         <div class="card-body">
+
             <h2 class="design-title">
-            {{ design.design_title }}
+                {{ design.design_title }}
             </h2>
+
             <p class="designer-name">
-            Designed by {{ design.designer_name }}
+                Designed by {{ design.designer_name }}
             </p>
-           
 
             <div class="price-tag">
-            ₹{{ design.charges }} <span style="font-size:18px;">/ Day</span>
+                ₹{{ design.charges }}
+                <span style="font-size:18px;">/ Day</span>
             </div>
 
             <p class="description">
-            {{ design.design_description }}
+                {{ design.design_description }}
             </p>
 
             <div class="info-box">
 
                 <p>
-                <strong>Designer Contact:</strong>
-                {{ design.designer_contact }}
+                    <strong>Designer Contact:</strong>
+                    {{ design.designer_contact }}
                 </p>
 
                 <p>
-                <strong>Email:</strong>
-                {{ design.designer_email }}
+                    <strong>Email:</strong>
+                    {{ design.designer_email }}
                 </p>
 
                 <p>
-                <strong>Date Added:</strong>
-                {{ design.date }}
+                    <strong>Date Added:</strong>
+                    {{ design.date }}
                 </p>
 
                 <p>
-                <strong>Status:</strong>
-                {{ design.status }}
+                    <strong>Status:</strong>
+                    {{ design.status }}
                 </p>
 
             </div>
 
-            <a href="{% url 'rent_cloth' design.id %}" class="rent-btn"">Rent Now</a>
-            
+            <a href="{% url 'rent_cloth' design.id %}" class="rent-btn">
+
+                Rent Now
+
+            </a>
+
+            <!-- REVIEW SECTION -->
+
+            <div class="review-section">
+
+                <h2 class="review-title">
+                    Customer Reviews
+                </h2>
+
+                <!-- REVIEW FORM -->
+
+                <form method="POST"
+                      enctype="multipart/form-data"
+                      action="{% url 'add_review' design.id %}"
+                      class="review-form">
+
+                    {% csrf_token %}
+
+                    <label><strong>Rating</strong></label>
+
+                    <select name="rating" class="form-control" required>
+
+                        <option value="">Select Rating</option>
+
+                        <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                        <option value="4">⭐⭐⭐⭐ Very Good</option>
+                        <option value="3">⭐⭐⭐ Good</option>
+                        <option value="2">⭐⭐ Average</option>
+                        <option value="1">⭐ Poor</option>
+
+                    </select>
+
+                    <label><strong>Your Review</strong></label>
+
+                    <textarea name="review_message"
+                              rows="5"
+                              class="form-control"
+                              placeholder="Write your experience here..."
+                              required></textarea>
+
+                    <label><strong>Upload Image (Optional)</strong></label>
+
+                    <input type="file"
+                           name="review_image"
+                           class="form-control">
+
+                    <button type="submit"
+                            class="submit-review">
+
+                        Submit Review
+
+                    </button>
+
+                </form>
+
+                <!-- ALL REVIEWS -->
+
+                {% for review in reviews %}
+
+                <div class="review-card">
+
+                    <div class="review-top">
+
+                        <div class="review-user">
+                            {{ review.user_name }}
+                        </div>
+
+                        <div class="review-date">
+                            {{ review.created_at }}
+                        </div>
+
+                    </div>
+
+                    <div class="stars">
+
+                        {% if review.rating == 1 %}
+                            ⭐
+                        {% elif review.rating == 2 %}
+                            ⭐⭐
+                        {% elif review.rating == 3 %}
+                            ⭐⭐⭐
+                        {% elif review.rating == 4 %}
+                            ⭐⭐⭐⭐
+                        {% else %}
+                            ⭐⭐⭐⭐⭐
+                        {% endif %}
+
+                    </div>
+
+                    <div class="review-message">
+                        {{ review.review_message }}
+                    </div>
+
+                    {% if review.review_image %}
+
+                        <img src="{{ review.review_image.url }}"
+                             class="review-image">
+
+                    {% endif %}
+
+                </div>
+
+                {% empty %}
+
+                <div class="empty-review">
+
+                    <h5>No Reviews Yet</h5>
+
+                    <p>
+                        Be the first customer to review this outfit.
+                    </p>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
         </div>
 
     </div>
+
 </div>
 
 <!-- Bootstrap JS -->
+
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
 </body>
