@@ -922,14 +922,29 @@ def view_my_rental_application(request):
     })
         
 def view_rental_request(request):
+
     if 'email' not in request.session:
         return redirect("homepage")
 
     email = request.session.get('email')
-    rent = rent_cloths.objects.filter(designer_email=email)
+
+    rent_list = rent_cloths.objects.filter(designer_email=email)
+
+    for r in rent_list:
+
+        deposit = rental_payment.objects.filter(
+            rent=r,
+            payment_type="DEPOSIT",
+            payment_status="SUCCESS"
+        ).first()
+
+        r.deposit_amount = deposit.amount if deposit else 0
+        r.payment_screenshot = deposit.payment_screenshot if deposit else None
+
+        r.remaining_amount = r.total_charges - r.deposit_amount
 
     return render(request, "view_rental_request.html", {
-        'rent': rent
+        'rent': rent_list
     })
 
 
