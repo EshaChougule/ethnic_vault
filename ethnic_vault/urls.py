@@ -113,6 +113,7 @@ urlpatterns = [
     path('faq/', views.faq_page, name='faq_page'),
     path('rental-guidelines/', views.rental_guidelines_page, name='rental_guidelines_page'),
     path('offers/', views.offers_page, name='offers_page'),
+    path('new-arrivals/', views.new_arrivals, name='new_arrivals'),
     path('update_design_code_details/<int:id>/',views.update_design_code_details,name="update_design_code_details")
 ]
 if settings.DEBUG:

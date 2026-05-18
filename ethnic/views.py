@@ -1657,3 +1657,21 @@ def offers_page(request):
 
 def rental_guidelines_page(request):
     return render(request, 'rental_guidelines.html')
+
+def new_arrivals(request):
+
+    latest_designs = designs.objects.filter(
+        status='Approved'
+    ).order_by('-id')[:20]
+
+    context = {
+
+        'latest_designs': latest_designs
+
+    }
+
+    return render(
+        request,
+        'new_arrivals.html',
+        context
+    )

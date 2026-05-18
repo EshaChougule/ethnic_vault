@@ -62,7 +62,178 @@ overflow-x:hidden;
 color:#2B2B2B;
 }
 
+/* ================= LUXURY TOP RIBBON ================= */
 
+.top_ribbon{
+
+width:100%;
+
+position:relative;
+
+z-index:999;
+
+margin:0;
+
+padding:0;
+}
+
+.ribbon_container{
+
+width:100%;
+
+background:
+linear-gradient(
+135deg,
+#1B1712,
+#2B241C,
+#1B1712
+);
+
+padding:16px 40px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+gap:22px;
+
+flex-wrap:wrap;
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.16);
+
+border-bottom:1px solid rgba(224,192,141,0.12);
+
+position:relative;
+
+overflow:hidden;
+}
+
+/* GOLD GLOW EFFECT */
+
+.ribbon_container::before{
+
+content:"";
+
+position:absolute;
+
+width:260px;
+height:260px;
+
+background:rgba(224,192,141,0.08);
+
+border-radius:50%;
+
+top:-140px;
+left:-120px;
+
+filter:blur(60px);
+}
+
+.ribbon_container::after{
+
+content:"";
+
+position:absolute;
+
+width:240px;
+height:240px;
+
+background:rgba(184,146,76,0.08);
+
+border-radius:50%;
+
+bottom:-140px;
+right:-120px;
+
+filter:blur(60px);
+}
+
+/* LINKS */
+
+.ribbon_link{
+
+text-decoration:none;
+
+color:#F8F3EA;
+
+font-size:14px;
+
+font-weight:500;
+
+padding:10px 22px;
+
+border-radius:30px;
+
+transition:0.35s ease;
+
+position:relative;
+
+z-index:2;
+
+letter-spacing:0.5px;
+
+border:1px solid transparent;
+}
+
+/* HOVER EFFECT */
+
+.ribbon_link:hover{
+
+background:rgba(224,192,141,0.12);
+
+border:1px solid rgba(224,192,141,0.22);
+
+color:#E0C08D;
+
+transform:translateY(-2px);
+
+text-decoration:none;
+}
+
+/* SPECIAL HIGHLIGHT BUTTON */
+
+.ribbon_highlight{
+
+background:#B8924C;
+
+color:white !important;
+
+font-weight:600;
+
+padding:11px 26px;
+
+box-shadow:0 6px 18px rgba(184,146,76,0.35);
+}
+
+.ribbon_highlight:hover{
+
+background:#8c6a2d;
+
+color:white !important;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.ribbon_container{
+
+padding:14px 10px;
+
+gap:10px;
+}
+
+.ribbon_link{
+
+padding:8px 14px;
+
+font-size:13px;
+}
+
+}
 /* ================= LOGO SECTION ================= */
 
 .logo_section{
@@ -292,13 +463,98 @@ white-space:nowrap;
 color:#E0C08D;
 }
 
-.closebtn{
-position:absolute;
-top:5px;
-right:18px;
-font-size:30px;
+/* ================= SIDE MENU IMPROVED ================= */
+
+.side_menu_title{
+
+font-family:'Playfair Display',serif;
+
+font-size:28px;
+
+color:#E0C08D;
+
+text-align:center;
+
+margin-bottom:25px;
+
+padding-bottom:18px;
+
+border-bottom:1px solid rgba(255,255,255,0.08);
+
+letter-spacing:1px;
 }
 
+.sidenav a i{
+
+margin-right:12px;
+
+font-size:15px;
+
+width:20px;
+}
+
+.sidenav a{
+
+font-weight:500;
+
+border-radius:12px;
+
+margin:4px 12px;
+
+transition:0.3s ease;
+}
+
+.sidenav a:hover{
+
+background:rgba(224,192,141,0.08);
+
+padding-left:34px;
+}
+
+.closebtn{
+
+color:white !important;
+}
+
+.closebtn{
+
+position:absolute;
+
+top:14px;
+
+right:18px;
+
+font-size:28px !important;
+
+color:#E0C08D !important;
+
+z-index:999999;
+
+width:36px;
+
+height:36px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+border-radius:50%;
+
+background:rgba(255,255,255,0.05);
+
+transition:background 0.3s ease,color 0.3s ease;
+}
+
+.closebtn:hover{
+
+background:rgba(224,192,141,0.12);
+
+color:white !important;
+
+text-decoration:none;
+}
 /* ================= HERO ================= */
 
 .hero_banner{
@@ -878,13 +1134,118 @@ letter-spacing:0.5px;
 
 border-top:1px solid rgba(255,255,255,0.05);
 }
+
+/* ================= SEARCH AUTO SUGGEST ================= */
+
+.search_wrapper{
+position:relative;
+flex:1;
+max-width:500px;
+}
+
+.search_input{
+width:100%;
+padding:13px 20px;
+border:none;
+outline:none;
+border-radius:40px;
+background:#f3f3f3;
+font-size:14px;
+box-shadow:0 3px 10px rgba(0,0,0,0.04);
+}
+
+.suggestions_box{
+
+position:absolute;
+
+top:105%;
+
+left:0;
+
+width:100%;
+
+background:white;
+
+border-radius:18px;
+
+overflow:hidden;
+
+box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+z-index:99999;
+
+display:none;
+}
+
+.suggestion_item{
+
+padding:14px 18px;
+
+cursor:pointer;
+
+transition:0.3s ease;
+
+font-size:14px;
+
+border-bottom:1px solid #f2f2f2;
+}
+
+.suggestion_item:hover{
+
+background:#F8F3EA;
+
+color:#B8924C;
+}
+
 </style>
 
 </head>
 <body>
 
+<!-- ================= LUXURY RIBBON ================= -->
 
+<div class="top_ribbon">
 
+    <div class="ribbon_container">
+
+        <a href="{% url 'new_arrivals' %}"
+           class="ribbon_link ribbon_highlight">
+
+            ✨ New Arrivals
+
+        </a>
+
+        <a href="{% url 'offers_page' %}"
+           class="ribbon_link">
+
+            Offers
+
+        </a>
+
+        <a href="{% url 'rental_guidelines_page' %}"
+           class="ribbon_link">
+
+            Rental Guidelines
+
+        </a>
+
+        <a href="{% url 'faq_page' %}"
+           class="ribbon_link">
+
+            FAQs
+
+        </a>
+
+        <a href="{% url 'terms_conditions' %}"
+           class="ribbon_link">
+
+            Terms & Conditions
+
+        </a>
+
+    </div>
+
+</div>
 <!-- ================= LOGO ================= -->
 
 <div class="logo_section">
@@ -910,37 +1271,79 @@ border-top:1px solid rgba(255,255,255,0.05);
 
             <div id="mySidenav" class="sidenav">
 
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
-                <a href="{% url 'homepage' %}">Home</a>
-                <a href="{% url 'offers_page' %}">Offers</a>
-                <a href="#">Track Order</a>
+                <!-- MENU TITLE -->
+
+                <div class="side_menu_title">
+
+                    Ethnic Vault
+
+                    <a href="javascript:void(0)"
+                        class="closebtn"
+                        onclick="closeNav()">
+
+                        &times;
+
+                    </a>
+
+                </div>
+
+                <!-- MAIN LINKS -->
+
+                <a href="{% url 'homepage' %}">
+                    <i class="fa fa-home"></i>
+                    Home
+                </a>
 
                 {% if request.session.role == 'user' %}
 
                 <a href="{% url 'user_dashboard' %}">
+
+                    <i class="fa fa-user-circle"></i>
+
                     Profile
+
                 </a>
 
+                {% endif %}
+
+                <a href="{% url 'designer_login' %}">
+
+                    <i class="fa fa-diamond"></i>
+
+                    Designer Login
+
+                </a>
+
+                <a href="{% url 'admin_login' %}">
+
+                    <i class="fa fa-lock"></i>
+
+                    Admin Login
+
+                </a>
+
+                {% if request.session.role == 'user' %}
+
                 <a href="{% url 'logout_view' %}">
+
+                    <i class="fa fa-sign-out"></i>
+
                     Logout
+
                 </a>
 
                 {% else %}
 
                 <a href="{% url 'user_login' %}">
-                    User Login
-                </a>
 
-                <a href="{% url 'user_register_page' %}">
-                    Sign Up
+                    <i class="fa fa-user"></i>
+
+                    User Login
+
                 </a>
 
                 {% endif %}
-
-                <a href="{% url 'designer_login' %}">Designer Login</a>
-
-                <a href="{% url 'admin_login' %}">Admin Login</a>
 
             </div>
         </div>
@@ -1026,14 +1429,14 @@ border-top:1px solid rgba(255,255,255,0.05);
 
         <!-- SEARCH -->
 
-        <div class="search_box">
+        <div class="search_wrapper">
 
             <input type="text"
-                   placeholder="Search outfits, jewellery, footwear...">
+                    id="searchInput"
+                    class="search_input"
+                    placeholder="Search collections...">
 
-            <button>
-                <i class="fa fa-search"></i>
-            </button>
+            <div id="suggestionsBox" class="suggestions_box"></div>
 
         </div>
 
@@ -1814,6 +2217,7 @@ border-top:1px solid rgba(255,255,255,0.05);
 <!-- ================= JAVASCRIPT ================= -->
 
 <script>
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "260px";
 }
@@ -1821,6 +2225,167 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
+
+/* ================= SEARCH AUTO SUGGEST ================= */
+
+const searchInput = document.getElementById("searchInput");
+
+const suggestionsBox = document.getElementById("suggestionsBox");
+
+/* COLLECTION DATA */
+
+const collections = [
+
+{
+name: "Lehenga",
+url: "{% url 'lehenga' %}"
+},
+
+{
+name: "Saree",
+url: "{% url 'saree' %}"
+},
+
+{
+name: "Chaniya Choli",
+url: "{% url 'chaniya' %}"
+},
+
+{
+name: "Sherwani",
+url: "{% url 'sherwani' %}"
+},
+
+{
+name: "Kurta",
+url: "{% url 'kurta' %}"
+},
+
+{
+name: "Tuxedo",
+url: "{% url 'tuxedo' %}"
+},
+
+{
+name: "Boys Wear",
+url: "{% url 'boys' %}"
+},
+
+{
+name: "Girls Wear",
+url: "{% url 'girls' %}"
+},
+
+{
+name: "Men Accessories",
+url: "{% url 'menAccessories' %}"
+},
+
+{
+name: "Women Accessories",
+url: "{% url 'womenAccessories' %}"
+},
+
+{
+name: "Men Footwear",
+url: "{% url 'menfootwear' %}"
+},
+
+{
+name: "Women Footwear",
+url: "{% url 'womenfootwear' %}"
+}
+
+];
+
+/* INPUT SEARCH */
+
+searchInput.addEventListener("input", function(){
+
+const value = this.value.toLowerCase();
+
+suggestionsBox.innerHTML = "";
+
+if(value === ""){
+
+suggestionsBox.style.display = "none";
+
+return;
+
+}
+
+const filtered = collections.filter(item =>
+item.name.toLowerCase().includes(value)
+);
+
+if(filtered.length > 0){
+
+suggestionsBox.style.display = "block";
+
+filtered.forEach(item => {
+
+const div = document.createElement("div");
+
+div.classList.add("suggestion_item");
+
+div.innerText = item.name;
+
+/* CLICK REDIRECT */
+
+div.onclick = function(){
+
+window.location.href = item.url;
+
+};
+
+suggestionsBox.appendChild(div);
+
+});
+
+}else{
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
+
+/* ENTER BUTTON REDIRECT */
+
+searchInput.addEventListener("keypress", function(e){
+
+if(e.key === "Enter"){
+
+e.preventDefault();
+
+const value = this.value.toLowerCase();
+
+const matched = collections.find(item =>
+item.name.toLowerCase().includes(value)
+);
+
+if(matched){
+
+window.location.href = matched.url;
+
+}
+
+}
+
+});
+
+/* CLICK OUTSIDE */
+
+document.addEventListener("click", function(e){
+
+if(!document.querySelector(".search_wrapper").contains(e.target)){
+
+suggestionsBox.style.display = "none";
+
+}
+
+});
+
 </script>
 
 {% if messages %}
