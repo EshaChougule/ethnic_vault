@@ -1641,3 +1641,19 @@ def delete_review(request, id):
     review = Review.objects.get(id=id)
     review.delete()
     return redirect('view_reviews')
+
+from django.shortcuts import render
+
+
+def terms_conditions(request):
+    return render(request, 'terms_conditions.html')
+
+def faq_page(request):
+    return render(request, 'faq.html')
+
+def offers_page(request):
+    return render(request,'offers.html')
+
+
+def rental_guidelines_page(request):
+    return render(request, 'rental_guidelines.html')

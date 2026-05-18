@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Exclusive Offers | Ethnic Vault</title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            font-family:'Poppins',sans-serif;
+            background-color:#F8F3EA;
+
+            background-image:
+            linear-gradient(rgba(248,243,234,0.92),
+            rgba(248,243,234,0.92)),
+            url("{% static 'images/ethnic-pattern.png' %}");
+
+            background-size:320px;
+            background-repeat:repeat;
+            background-attachment:fixed;
+
+            color:#2B2B2B;
+        }
+
+        /* ================= TOP SECTION ================= */
+
+        .top_section{
+            padding:30px 50px 0;
+        }
+
+        .back_btn{
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+            text-decoration:none;
+            background:#111;
+            color:white;
+            padding:12px 24px;
+            border-radius:40px;
+            transition:0.3s ease;
+            font-size:15px;
+            font-weight:500;
+            box-shadow:0 6px 15px rgba(0,0,0,0.08);
+        }
+
+        .back_btn:hover{
+            background:#B8924C;
+            color:white;
+            text-decoration:none;
+            transform:translateY(-2px);
+        }
+
+        /* ================= HERO SECTION ================= */
+
+        .hero_section{
+            padding:60px 20px 80px;
+        }
+
+        .hero_container{
+            max-width:1300px;
+            margin:auto;
+            min-height:520px;
+            border-radius:35px;
+            overflow:hidden;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.50),
+            rgba(0,0,0,0.50)),
+            url("{% static 'images/banner1.jpeg' %}");
+
+            background-size:cover;
+            background-position:center;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            text-align:center;
+
+            box-shadow:0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .hero_content{
+            padding:50px;
+            color:white;
+        }
+
+        .offer_tag{
+            display:inline-block;
+            background:#B8924C;
+            padding:12px 26px;
+            border-radius:40px;
+            margin-bottom:25px;
+            font-size:14px;
+            font-weight:600;
+            letter-spacing:1px;
+        }
+
+        .hero_content h1{
+            font-family:'Playfair Display',serif;
+            font-size:72px;
+            line-height:1.2;
+            margin-bottom:20px;
+        }
+
+        .hero_content h1 span{
+            display:block;
+            font-family:'Great Vibes',cursive;
+            font-size:92px;
+            color:#F8E7C2;
+            margin-bottom:10px;
+        }
+
+        .hero_content p{
+            max-width:760px;
+            margin:auto;
+            line-height:2;
+            font-size:16px;
+            color:#f1f1f1;
+        }
+
+        /* ================= SECTION TITLE ================= */
+
+        .section_title{
+            text-align:center;
+            margin-bottom:60px;
+        }
+
+        .section_title h2{
+            font-family:'Playfair Display',serif;
+            font-size:52px;
+            margin-bottom:15px;
+            color:#2B2B2B;
+        }
+
+        .section_title p{
+            color:#666;
+            font-size:16px;
+        }
+
+        /* ================= OFFERS GRID ================= */
+
+        .offers_section{
+            padding:20px 20px 90px;
+        }
+
+        .offers_grid{
+            max-width:1300px;
+            margin:auto;
+
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+            gap:35px;
+        }
+
+        .offer_card{
+            background:white;
+            border-radius:28px;
+            overflow:hidden;
+            position:relative;
+            box-shadow:0 10px 30px rgba(0,0,0,0.08);
+            transition:0.4s ease;
+        }
+
+        .offer_card:hover{
+            transform:translateY(-8px);
+        }
+
+        .offer_image{
+            height:260px;
+            overflow:hidden;
+        }
+
+        .offer_image img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            transition:0.5s ease;
+        }
+
+        .offer_card:hover img{
+            transform:scale(1.08);
+        }
+
+        .discount_badge{
+            position:absolute;
+            top:18px;
+            right:18px;
+            background:#B8924C;
+            color:white;
+            padding:10px 18px;
+            border-radius:30px;
+            font-size:14px;
+            font-weight:600;
+            box-shadow:0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .offer_content{
+            padding:30px;
+        }
+
+        .offer_content h3{
+            font-size:28px;
+            margin-bottom:15px;
+            color:#222;
+        }
+
+        .offer_content p{
+            color:#666;
+            line-height:1.9;
+            margin-bottom:20px;
+        }
+
+        .offer_details{
+            background:#F8F3EA;
+            padding:18px;
+            border-radius:16px;
+            margin-bottom:22px;
+            border-left:5px solid #B8924C;
+        }
+
+        .offer_details h4{
+            color:#B8924C;
+            margin-bottom:8px;
+            font-size:20px;
+        }
+
+        .offer_details span{
+            display:block;
+            color:#666;
+            margin-bottom:6px;
+            font-size:14px;
+        }
+
+        .offer_btn{
+            display:inline-block;
+            text-decoration:none;
+            background:#111;
+            color:white;
+            padding:12px 24px;
+            border-radius:30px;
+            transition:0.3s ease;
+            font-weight:500;
+        }
+
+        .offer_btn:hover{
+            background:#B8924C;
+            color:white;
+            text-decoration:none;
+        }
+
+        /* ================= SPECIAL BANNER ================= */
+
+        .special_banner{
+            max-width:1300px;
+            margin:90px auto 0;
+
+            background:
+            linear-gradient(rgba(0,0,0,0.65),
+            rgba(0,0,0,0.65)),
+            url("{% static 'images/banner2.jpeg' %}");
+
+            background-size:cover;
+            background-position:center;
+
+            border-radius:35px;
+            text-align:center;
+            padding:90px 50px;
+
+            color:white;
+
+            box-shadow:0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .special_banner h2{
+            font-family:'Playfair Display',serif;
+            font-size:58px;
+            margin-bottom:20px;
+        }
+
+        .special_banner p{
+            max-width:850px;
+            margin:auto;
+            line-height:2;
+            color:#eee;
+            margin-bottom:30px;
+        }
+
+        .limited_offer{
+            display:inline-block;
+            background:#B8924C;
+            padding:14px 32px;
+            border-radius:40px;
+            font-weight:600;
+            letter-spacing:1px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:768px){
+
+            .hero_content h1{
+                font-size:42px;
+            }
+
+            .hero_content h1 span{
+                font-size:56px;
+            }
+
+            .section_title h2{
+                font-size:38px;
+            }
+
+            .special_banner h2{
+                font-size:40px;
+            }
+
+            .top_section{
+                padding:25px 20px 0;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= BACK BUTTON ================= -->
+
+<div class="top_section">
+
+    <a href="{% url 'homepage' %}" class="back_btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back to Home
+
+    </a>
+
+</div>
+
+<!-- ================= HERO SECTION ================= -->
+
+<section class="hero_section">
+
+    <div class="hero_container">
+
+        <div class="hero_content">
+
+            <div class="offer_tag">
+                ETHNIC VAULT EXCLUSIVE DEALS
+            </div>
+
+            <h1>
+
+                <span>Luxury Offers</span>
+
+                Designed For Every Celebration
+
+            </h1>
+
+            <p>
+                Explore exclusive discounts across lehengas, sarees,
+                sherwanis, tuxedos, accessories, footwear and kids collections.
+                Enjoy premium ethnic fashion rentals at special seasonal prices.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= OFFERS SECTION ================= -->
+
+<section class="offers_section">
+
+    <div class="section_title">
+
+        <h2>Trending Rental Offers</h2>
+
+        <p>
+            Limited-time rental deals crafted specially for weddings,
+            receptions, festivals and family celebrations.
+        </p>
+
+    </div>
+
+    <div class="offers_grid">
+
+        <!-- HER COLLECTION -->
+
+        <div class="offer_card">
+
+            <div class="discount_badge">
+                20% OFF
+            </div>
+
+            <div class="offer_image">
+
+                <img src="{% static 'images/banner.jpeg' %}">
+
+            </div>
+
+            <div class="offer_content">
+
+                <h3>Her Collection Offer</h3>
+
+                <p>
+                    Rent any 2 outfits from Lehenga, Saree or Chaniya Choli
+                    collections and enjoy special festive discounts.
+                </p>
+
+                <div class="offer_details">
+
+                    <h4>Use Code : HER20</h4>
+
+                    <span>Valid on minimum 2 outfit rentals</span>
+
+                    <span>Offer valid till 31 December</span>
+
+                </div>
+
+                <a href="{% url 'lehenga' %}" class="offer_btn">
+                    Explore Collection
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- HIS COLLECTION -->
+
+        <div class="offer_card">
+
+            <div class="discount_badge">
+                ₹500 OFF
+            </div>
+
+            <div class="offer_image">
+
+                <img src="{% static 'images/banner1.jpeg' %}">
+
+            </div>
+
+            <div class="offer_content">
+
+                <h3>His Collection Deal</h3>
+
+                <p>
+                    Rent Sherwani, Kurta or Tuxedo collections
+                    together and receive flat ₹500 OFF on rentals.
+                </p>
+
+                <div class="offer_details">
+
+                    <h4>Use Code : ROYAL500</h4>
+
+                    <span>Applicable on rentals above ₹3000</span>
+
+                    <span>Limited wedding season offer</span>
+
+                </div>
+
+                <a href="{% url 'sherwani' %}" class="offer_btn">
+                    View Styles
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- KIDS COLLECTION -->
+
+        <div class="offer_card">
+
+            <div class="discount_badge">
+                FAMILY DEAL
+            </div>
+
+            <div class="offer_image">
+
+                <img src="{% static 'images/banner2.jpeg' %}">
+
+            </div>
+
+            <div class="offer_content">
+
+                <h3>Kids Collection Offer</h3>
+
+                <p>
+                    Rent Boys Wear or Girls Wear collections
+                    for family functions and get exciting festive offers.
+                </p>
+
+                <div class="offer_details">
+
+                    <h4>Use Code : KIDS15</h4>
+
+                    <span>15% OFF on kids rentals</span>
+
+                    <span>Festival season special</span>
+
+                </div>
+
+                <a href="{% url 'boys' %}" class="offer_btn">
+                    Shop Kids Wear
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- ACCESSORIES -->
+
+        <div class="offer_card">
+
+            <div class="discount_badge">
+                FREE ACCESSORY
+            </div>
+
+            <div class="offer_image">
+
+                <img src="{% static 'images/banner.jpeg' %}">
+
+            </div>
+
+            <div class="offer_content">
+
+                <h3>Accessories Offer</h3>
+
+                <p>
+                    Rent premium Women or Men Accessories
+                    with ethnic outfits and unlock special combo offers.
+                </p>
+
+                <div class="offer_details">
+
+                    <h4>Use Code : STYLEFREE</h4>
+
+                    <span>Free accessory on selected rentals</span>
+
+                    <span>Applicable on festive collections</span>
+
+                </div>
+
+                <a href="{% url 'womenAccessories' %}" class="offer_btn">
+                    Explore Accessories
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTWEAR -->
+
+        <div class="offer_card">
+
+            <div class="discount_badge">
+                BUY 2 RENTALS
+            </div>
+
+            <div class="offer_image">
+
+                <img src="{% static 'images/banner1.jpeg' %}">
+
+            </div>
+
+            <div class="offer_content">
+
+                <h3>Footwear Collection</h3>
+
+                <p>
+                    Rent Men or Women Footwear collections
+                    with outfits and enjoy combo rental discounts.
+                </p>
+
+                <div class="offer_details">
+
+                    <h4>Use Code : WALKINSTYLE</h4>
+
+                    <span>10% OFF on combo rentals</span>
+
+                    <span>Offer valid for limited time</span>
+
+                </div>
+
+                <a href="{% url 'womenfootwear' %}" class="offer_btn">
+                    View Footwear
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- NEW USER -->
+
+        <div class="offer_card">
+
+            <div class="discount_badge">
+                NEW USER
+            </div>
+
+            <div class="offer_image">
+
+                <img src="{% static 'images/banner2.jpeg' %}">
+
+            </div>
+
+            <div class="offer_content">
+
+                <h3>First Rental Offer</h3>
+
+                <p>
+                    New users can enjoy special discounts on their
+                    very first rental booking at Ethnic Vault.
+                </p>
+
+                <div class="offer_details">
+
+                    <h4>Use Code : ETHNIC10</h4>
+
+                    <span>10% OFF on first booking</span>
+
+                    <span>Applicable once per user</span>
+
+                </div>
+
+                <a href="{% url 'homepage' %}" class="offer_btn">
+                    Start Renting
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= SPECIAL BANNER ================= -->
+
+    <div class="special_banner">
+
+        <h2>
+            Wedding & Festival Season Sale
+        </h2>
+
+        <p>
+            Celebrate every occasion in style with Ethnic Vault’s luxury
+            rental collections. From elegant sarees and bridal lehengas
+            to sherwanis, tuxedos, kids wear, accessories and footwear —
+            discover premium ethnic fashion without purchasing expensive outfits.
+        </p>
+
+        <div class="limited_offer">
+            LIMITED TIME SEASONAL OFFERS
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>

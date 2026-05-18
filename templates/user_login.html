@@ -9,14 +9,22 @@
 
 <title>Ethnic Vault | User Login</title>
 
+<!-- GOOGLE FONTS -->
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- BOOTSTRAP -->
+
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- FONT AWESOME -->
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
+
+/* ================= RESET ================= */
 
 *{
     margin:0;
@@ -24,7 +32,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     box-sizing:border-box;
 }
 
+/* ================= BODY ================= */
+
 body{
+
     font-family:'Poppins',sans-serif;
 
     min-height:100vh;
@@ -33,25 +44,28 @@ body{
     align-items:center;
     justify-content:center;
 
-    padding:30px;
+    padding:40px 20px;
 
-    background:
-    linear-gradient(rgba(248,244,236,0.94),
-    rgba(248,244,236,0.94)),
+    background-color:#F8F3EA;
 
+    background-image:
+    linear-gradient(rgba(248,243,234,0.90),
+    rgba(248,243,234,0.90)),
     url("{% static 'images/ethnic-pattern.png' %}");
 
     background-size:320px;
     background-repeat:repeat;
-
-    position:relative;
+    background-attachment:fixed;
 
     overflow-x:hidden;
+
+    position:relative;
 }
 
-/* BACKGROUND GLOW */
+/* ================= BACKGROUND GLOW ================= */
 
 body::before{
+
     content:"";
 
     position:absolute;
@@ -59,17 +73,18 @@ body::before{
     width:320px;
     height:320px;
 
-    background:rgba(184,146,76,0.14);
+    background:rgba(184,146,76,0.16);
 
     border-radius:50%;
 
     top:-100px;
-    left:-80px;
+    left:-100px;
 
     filter:blur(90px);
 }
 
 body::after{
+
     content:"";
 
     position:absolute;
@@ -77,57 +92,56 @@ body::after{
     width:260px;
     height:260px;
 
-    background:rgba(212,175,55,0.10);
+    background:rgba(212,175,55,0.12);
 
     border-radius:50%;
 
-    bottom:-80px;
-    right:-60px;
+    bottom:-90px;
+    right:-70px;
 
-    filter:blur(80px);
+    filter:blur(90px);
 }
 
-/* MAIN BOX */
+/* ================= MAIN WRAPPER ================= */
 
-.login-wrapper{
+.login_wrapper{
+
     width:100%;
-    max-width:1220px;
+    max-width:1250px;
 
-    min-height:680px;
+    min-height:720px;
 
     display:grid;
-    grid-template-columns:1fr 0.9fr;
+    grid-template-columns:1fr 0.95fr;
 
-    background:rgba(255,255,255,0.78);
+    background:rgba(255,255,255,0.88);
 
     backdrop-filter:blur(14px);
 
-    border-radius:34px;
+    border-radius:36px;
 
     overflow:hidden;
 
     box-shadow:
     0 20px 60px rgba(0,0,0,0.10);
 
-    border:1px solid rgba(184,146,76,0.12);
-
     position:relative;
 
-    z-index:2;
+    z-index:5;
 }
 
-/* LEFT PANEL */
+/* ================= LEFT PANEL ================= */
 
-.left-panel{
+.left_panel{
+
     position:relative;
 
     padding:70px 65px;
 
     background:
-    linear-gradient(rgba(20,18,14,0.84),
-    rgba(20,18,14,0.90)),
-
-    url("{% static 'images/banner1.jpeg' %}");
+    linear-gradient(rgba(17,17,17,0.72),
+    rgba(17,17,17,0.82)),
+    url("{% static 'images/banner2.jpeg' %}");
 
     background-size:cover;
     background-position:center;
@@ -137,90 +151,102 @@ body::after{
     justify-content:center;
 }
 
-/* SMALL BACK BUTTON */
+/* ================= BACK BUTTON ================= */
 
-.back-btn{
+.back_btn{
+
     position:absolute;
 
-    top:22px;
-    left:22px;
+    top:24px;
+    left:24px;
 
-    display:flex;
+    display:inline-flex;
     align-items:center;
-    gap:7px;
+    gap:10px;
 
-    background:rgba(17,24,39,0.92);
+    background:rgba(17,17,17,0.92);
 
-    color:#D8B56A;
+    color:#E0C08D;
 
-    padding:9px 16px;
+    padding:11px 18px;
 
-    border-radius:30px;
+    border-radius:40px;
 
     text-decoration:none;
 
-    font-size:12px;
+    font-size:13px;
     font-weight:600;
-
-    border:1px solid rgba(212,175,55,0.15);
 
     transition:0.3s ease;
 
-    z-index:10;
+    border:1px solid rgba(255,255,255,0.08);
 }
 
-.back-btn:hover{
-    background:#D8B56A;
+.back_btn:hover{
 
-    color:#111827;
+    background:#B8924C;
+
+    color:white;
 
     text-decoration:none;
 
     transform:translateY(-2px);
 }
 
-/* BRAND TAG */
+/* ================= BRAND CONTENT ================= */
 
-.brand-tag{
+.brand_badge{
+
     display:inline-block;
 
     width:max-content;
 
-    padding:10px 20px;
+    padding:10px 22px;
 
     border-radius:40px;
 
-    background:rgba(212,175,55,0.14);
+    background:rgba(224,192,141,0.16);
 
     border:1px solid rgba(255,255,255,0.08);
 
     color:#F8E7C2;
 
     font-size:12px;
-    letter-spacing:1px;
     font-weight:600;
+    letter-spacing:1px;
 
     margin-bottom:28px;
 }
 
-/* TITLE */
+.brand_title{
 
-.brand-title{
     font-family:'Playfair Display',serif;
 
-    font-size:64px;
+    font-size:70px;
 
     line-height:1.1;
 
-    color:#D8B56A;
+    color:white;
 
     margin-bottom:18px;
 }
 
-/* DESC */
+.brand_title span{
 
-.brand-desc{
-    color:rgba(255,255,255,0.82);
+    font-family:'Great Vibes',cursive;
+
+    font-size:88px;
+
+    color:#F8E7C2;
+
+    display:block;
+
+    margin-bottom:10px;
+}
+
+.brand_desc{
+
+    color:rgba(255,255,255,0.84);
 
     font-size:15px;
 
@@ -229,66 +255,74 @@ body::after{
     max-width:520px;
 }
 
-/* FEATURES */
+/* ================= FEATURES ================= */
 
-.feature-list{
-    margin-top:38px;
+.feature_list{
+
+    margin-top:42px;
 }
 
-.feature-item{
+.feature_item{
+
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:15px;
 
     margin-bottom:18px;
 
-    color:#fff;
+    color:white;
 
     font-size:14px;
 }
 
-.feature-icon{
-    width:42px;
-    height:42px;
+.feature_icon{
 
-    border-radius:12px;
+    width:46px;
+    height:46px;
 
-    background:rgba(212,175,55,0.16);
+    border-radius:14px;
+
+    background:rgba(224,192,141,0.14);
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    color:#D8B56A;
+    color:#E0C08D;
 
-    font-size:15px;
+    font-size:16px;
 }
 
-/* RIGHT PANEL */
+/* ================= RIGHT PANEL ================= */
 
-.right-panel{
+.right_panel{
+
+    background:white;
+
     display:flex;
     align-items:center;
     justify-content:center;
 
-    padding:55px 40px;
+    padding:60px 40px;
 }
 
-/* LOGIN CARD */
+/* ================= LOGIN CARD ================= */
 
-.login-card{
+.login_card{
+
     width:100%;
-    max-width:400px;
+    max-width:420px;
 }
 
-/* LOGIN BADGE */
+/* ================= BADGE ================= */
 
-.login-badge{
+.login_badge{
+
     display:inline-block;
 
-    background:#111827;
+    background:#111;
 
-    color:#D8B56A;
+    color:#E0C08D;
 
     padding:8px 18px;
 
@@ -298,43 +332,45 @@ body::after{
     font-weight:600;
     letter-spacing:1px;
 
-    margin-bottom:20px;
+    margin-bottom:22px;
 }
 
-/* HEADING */
+/* ================= HEADINGS ================= */
 
-.login-card h2{
+.login_card h2{
+
     font-family:'Playfair Display',serif;
 
-    font-size:46px;
+    font-size:48px;
 
-    color:#1E1E1E;
+    color:#222;
 
-    margin-bottom:10px;
+    margin-bottom:12px;
 }
 
-/* SUBTEXT */
-
 .subtext{
+
     color:#777;
 
     font-size:14px;
 
-    line-height:1.8;
+    line-height:1.9;
 
-    margin-bottom:32px;
+    margin-bottom:34px;
 }
 
-/* INPUT GROUP */
+/* ================= INPUTS ================= */
 
-.input-group-custom{
-    margin-bottom:20px;
+.input_group{
+
+    margin-bottom:22px;
 }
 
-.input-group-custom label{
+.input_group label{
+
     display:block;
 
-    margin-bottom:9px;
+    margin-bottom:10px;
 
     font-size:14px;
     font-weight:600;
@@ -342,13 +378,13 @@ body::after{
     color:#444;
 }
 
-/* INPUT WRAPPER */
+.input_wrapper{
 
-.input-wrapper{
     position:relative;
 }
 
-.input-wrapper i{
+.input_wrapper i{
+
     position:absolute;
 
     left:18px;
@@ -361,18 +397,19 @@ body::after{
     font-size:14px;
 }
 
-.input-wrapper input{
+.input_wrapper input{
+
     width:100%;
 
-    height:56px;
+    height:58px;
 
     border:none;
 
     border-radius:16px;
 
-    background:#fff;
+    background:#fafafa;
 
-    padding-left:48px;
+    padding-left:50px;
     padding-right:18px;
 
     font-size:14px;
@@ -380,30 +417,31 @@ body::after{
     border:1px solid rgba(184,146,76,0.14);
 
     transition:0.3s ease;
-
-    box-shadow:
-    0 8px 22px rgba(0,0,0,0.04);
 }
 
-.input-wrapper input:focus{
+.input_wrapper input:focus{
+
     outline:none;
 
     border:1px solid #B8924C;
+
+    background:white;
 
     box-shadow:
     0 0 0 4px rgba(184,146,76,0.12);
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 
-.login-btn{
+.login_btn{
+
     width:100%;
 
-    height:56px;
+    height:58px;
 
     border:none;
 
-    border-radius:16px;
+    border-radius:18px;
 
     background:
     linear-gradient(135deg,#B8924C,#D8B56A);
@@ -418,26 +456,29 @@ body::after{
     transition:0.3s ease;
 
     box-shadow:
-    0 12px 28px rgba(184,146,76,0.28);
+    0 14px 30px rgba(184,146,76,0.28);
 }
 
-.login-btn:hover{
+.login_btn:hover{
+
     transform:translateY(-2px);
 }
 
-/* DIVIDER */
+/* ================= DIVIDER ================= */
 
 .divider{
+
     display:flex;
     align-items:center;
 
     gap:14px;
 
-    margin:28px 0;
+    margin:32px 0;
 }
 
 .divider::before,
 .divider::after{
+
     content:"";
 
     flex:1;
@@ -448,85 +489,104 @@ body::after{
 }
 
 .divider span{
+
     color:#999;
 
     font-size:12px;
+
+    letter-spacing:1px;
 }
 
-/* LINKS */
+/* ================= LINKS ================= */
 
-.extra-links{
+.extra_links{
+
     text-align:center;
 }
 
-.extra-links p{
+.extra_links p{
+
     font-size:14px;
 
     color:#666;
 
-    margin-bottom:12px;
+    margin-bottom:14px;
 }
 
-.extra-links a{
+.extra_links a{
+
     color:#B8924C;
 
     font-weight:600;
 
     text-decoration:none;
+
+    transition:0.3s ease;
 }
 
-.extra-links a:hover{
+.extra_links a:hover{
+
     color:#8A6A2F;
 }
 
-/* MOBILE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:992px){
+
+    .login_wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .left_panel{
+        min-height:430px;
+        padding:70px 35px 50px;
+    }
+
+    .right_panel{
+        padding:50px 25px;
+    }
+
+    .brand_title{
+        font-size:50px;
+    }
+
+    .brand_title span{
+        font-size:64px;
+    }
+
+    .login_card h2{
+        font-size:40px;
+    }
+
+}
+
+@media(max-width:576px){
 
     body{
         padding:18px;
     }
 
-    .login-wrapper{
-        grid-template-columns:1fr;
+    .left_panel{
+        padding:65px 28px 45px;
     }
 
-    .left-panel{
-        min-height:420px;
-        padding:65px 35px 45px;
+    .brand_title{
+        font-size:42px;
     }
 
-    .right-panel{
-        padding:45px 25px;
+    .brand_title span{
+        font-size:56px;
     }
 
-    .brand-title{
-        font-size:46px;
+    .login_card h2{
+        font-size:34px;
     }
 
-    .login-card h2{
-        font-size:38px;
-    }
-}
-
-@media(max-width:576px){
-
-    .brand-title{
-        font-size:40px;
-    }
-
-    .left-panel{
-        padding:60px 28px 40px;
-    }
-
-    .login-card{
-        max-width:100%;
-    }
-
-    .back-btn{
+    .back_btn{
         top:18px;
         left:18px;
     }
+
 }
 
 </style>
@@ -535,62 +595,78 @@ body::after{
 
 <body>
 
-<div class="login-wrapper">
+<div class="login_wrapper">
 
-    <!-- LEFT PANEL -->
+    <!-- ================= LEFT PANEL ================= -->
 
-    <div class="left-panel">
+    <div class="left_panel">
 
         <!-- BACK BUTTON -->
 
-        <a href="/" class="back-btn">
+        <a href="{% url 'homepage' %}" class="back_btn">
 
             <i class="fa-solid fa-arrow-left"></i>
 
-            Back
+            Back to Home
 
         </a>
 
-        <div class="brand-tag">
-            ETHNIC FASHION RENTALS
+        <!-- BRAND -->
+
+        <div class="brand_badge">
+            PREMIUM ETHNIC RENTALS
         </div>
 
-        <div class="brand-title">
-            Ethnic <br> Vault
+        <div class="brand_title">
+
+            <span>Ethnic Vault</span>
+
+            Welcome Back
+
         </div>
 
-        <div class="brand-desc">
-            Discover premium ethnic fashion collections crafted for weddings,
-            festive celebrations, and timeless traditional elegance.
-            Rent luxurious designer outfits beautifully and effortlessly.
+        <div class="brand_desc">
+
+            Discover luxurious ethnic collections crafted for weddings,
+            festive celebrations and unforgettable moments.
+            Rent elegant fashion with comfort, style and affordability.
+
         </div>
 
-        <div class="feature-list">
+        <!-- FEATURES -->
 
-            <div class="feature-item">
+        <div class="feature_list">
 
-                <div class="feature-icon">
+            <div class="feature_item">
+
+                <div class="feature_icon">
+
                     <i class="fa-solid fa-crown"></i>
+
                 </div>
 
                 Premium Designer Collections
 
             </div>
 
-            <div class="feature-item">
+            <div class="feature_item">
 
-                <div class="feature-icon">
+                <div class="feature_icon">
+
                     <i class="fa-solid fa-shirt"></i>
+
                 </div>
 
-                Elegant Ethnic Wear Rentals
+                Elegant Traditional Wear Rentals
 
             </div>
 
-            <div class="feature-item">
+            <div class="feature_item">
 
-                <div class="feature-icon">
+                <div class="feature_icon">
+
                     <i class="fa-solid fa-gem"></i>
+
                 </div>
 
                 Luxury Fashion Experience
@@ -601,35 +677,42 @@ body::after{
 
     </div>
 
-    <!-- RIGHT PANEL -->
+    <!-- ================= RIGHT PANEL ================= -->
 
-    <div class="right-panel">
+    <div class="right_panel">
 
-        <div class="login-card">
+        <div class="login_card">
 
-            <div class="login-badge">
+            <div class="login_badge">
                 USER LOGIN
             </div>
 
-            <h2>Welcome Back</h2>
+            <h2>Login Account</h2>
 
             <p class="subtext">
-                Login to continue exploring beautiful ethnic collections and rent your perfect outfit.
+
+                Login to continue exploring premium ethnic collections
+                and book your dream outfit for every celebration.
+
             </p>
+
+            <!-- LOGIN FORM -->
 
             <form action="{% url 'user_login_validation' %}?next={{ request.GET.next }}" method="POST">
 
                 {% csrf_token %}
 
-                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                <input type="hidden"
+                       name="next"
+                       value="{{ request.GET.next }}">
 
                 <!-- EMAIL -->
 
-                <div class="input-group-custom">
+                <div class="input_group">
 
                     <label>Email Address</label>
 
-                    <div class="input-wrapper">
+                    <div class="input_wrapper">
 
                         <i class="fa-solid fa-envelope"></i>
 
@@ -644,11 +727,11 @@ body::after{
 
                 <!-- PASSWORD -->
 
-                <div class="input-group-custom">
+                <div class="input_group">
 
                     <label>Password</label>
 
-                    <div class="input-wrapper">
+                    <div class="input_wrapper">
 
                         <i class="fa-solid fa-lock"></i>
 
@@ -663,7 +746,7 @@ body::after{
 
                 <!-- BUTTON -->
 
-                <button type="submit" class="login-btn">
+                <button type="submit" class="login_btn">
 
                     Login Now
 
@@ -671,26 +754,40 @@ body::after{
 
             </form>
 
+            <!-- DIVIDER -->
+
             <div class="divider">
+
                 <span>ETHNIC VAULT</span>
+
             </div>
 
             <!-- LINKS -->
 
-            <div class="extra-links">
+            <div class="extra_links">
 
                 <p>
+
                     New User?
+
                     <a href="{% url 'user_register_page' %}">
+
                         Create Account
+
                     </a>
+
                 </p>
 
                 <p>
+
                     Forgot Password?
+
                     <a href="{% url 'forgot_password_user' %}">
+
                         Recover Here
+
                     </a>
+
                 </p>
 
             </div>
@@ -701,14 +798,20 @@ body::after{
 
 </div>
 
+<!-- ================= ALERT MESSAGES ================= -->
+
 {% if messages %}
+
 <script>
 
 {% for message in messages %}
+
 alert("{{ message }}");
+
 {% endfor %}
 
 </script>
+
 {% endif %}
 
 </body>

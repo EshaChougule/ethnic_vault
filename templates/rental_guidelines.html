@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Rental Guidelines | Ethnic Vault
+    </title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family:'Poppins',sans-serif;
+
+            background-color:#F8F3EA;
+
+            background-image:
+            linear-gradient(rgba(248,243,234,0.90),
+            rgba(248,243,234,0.90)),
+            url("{% static 'images/ethnic-pattern.png' %}");
+
+            background-repeat:repeat;
+            background-size:320px;
+
+            min-height:100vh;
+
+            padding:40px 20px;
+
+            color:#2B2B2B;
+        }
+
+        /* ================= TOP BAR ================= */
+
+        .top_bar{
+
+            max-width:1100px;
+            margin:auto;
+            margin-bottom:25px;
+
+        }
+
+        .back_btn{
+
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+
+            background:#1E1A14;
+
+            color:white;
+
+            text-decoration:none;
+
+            padding:12px 24px;
+
+            border-radius:40px;
+
+            font-size:15px;
+            font-weight:500;
+
+            transition:0.3s ease;
+
+            box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+        }
+
+        .back_btn:hover{
+
+            background:#B8924C;
+
+            color:white;
+
+            transform:translateY(-2px);
+
+        }
+
+        /* ================= MAIN CONTAINER ================= */
+
+        .guideline_container{
+
+            max-width:1100px;
+
+            margin:auto;
+
+            background:rgba(255,255,255,0.95);
+
+            backdrop-filter:blur(10px);
+
+            border-radius:30px;
+
+            padding:60px;
+
+            position:relative;
+
+            overflow:hidden;
+
+            box-shadow:0 18px 45px rgba(0,0,0,0.10);
+
+        }
+
+        /* TOP GOLDEN LINE */
+
+        .guideline_container::before{
+
+            content:"";
+
+            position:absolute;
+
+            top:0;
+            left:0;
+
+            width:100%;
+            height:8px;
+
+            background:linear-gradient(
+            to right,
+            #B8924C,
+            #E7D0A0,
+            #B8924C
+            );
+
+        }
+
+        /* ================= HEADER ================= */
+
+        .heading_section{
+
+            text-align:center;
+
+            margin-bottom:55px;
+
+        }
+
+        .small_title{
+
+            font-family:'Great Vibes',cursive;
+
+            font-size:52px;
+
+            color:#B8924C;
+
+            margin-bottom:10px;
+
+        }
+
+        .main_title{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:54px;
+
+            color:#1E1A14;
+
+            margin-bottom:18px;
+
+        }
+
+        .subtitle{
+
+            max-width:760px;
+
+            margin:auto;
+
+            color:#777;
+
+            line-height:1.9;
+
+            font-size:16px;
+
+        }
+
+        /* ================= GUIDELINE CARDS ================= */
+
+        .guideline_card{
+
+            background:#fff;
+
+            border-radius:24px;
+
+            padding:28px 30px;
+
+            margin-bottom:28px;
+
+            display:flex;
+            align-items:flex-start;
+            gap:22px;
+
+            box-shadow:0 10px 28px rgba(0,0,0,0.05);
+
+            transition:0.4s ease;
+
+            border-left:6px solid #B8924C;
+
+        }
+
+        .guideline_card:hover{
+
+            transform:translateY(-5px);
+
+            box-shadow:0 18px 40px rgba(0,0,0,0.08);
+
+        }
+
+        .guideline_icon{
+
+            width:60px;
+            height:60px;
+
+            border-radius:50%;
+
+            background:#B8924C;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            color:white;
+
+            font-size:24px;
+
+            flex-shrink:0;
+
+        }
+
+        .guideline_content h3{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:26px;
+
+            color:#1E1A14;
+
+            margin-bottom:12px;
+
+        }
+
+        .guideline_content p{
+
+            color:#666;
+
+            line-height:2;
+
+            font-size:15px;
+
+        }
+
+        /* ================= FINAL NOTE ================= */
+
+        .final_note{
+
+            margin-top:45px;
+
+            padding:35px;
+
+            border-radius:24px;
+
+            background:#FBF7F0;
+
+            border:1px solid #E8DCC8;
+
+            text-align:center;
+
+        }
+
+        .final_note h3{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:32px;
+
+            color:#B8924C;
+
+            margin-bottom:15px;
+
+        }
+
+        .final_note p{
+
+            color:#666;
+
+            line-height:2;
+
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:768px){
+
+            .guideline_container{
+
+                padding:35px 22px;
+
+            }
+
+            .main_title{
+
+                font-size:38px;
+
+            }
+
+            .small_title{
+
+                font-size:42px;
+
+            }
+
+            .guideline_card{
+
+                flex-direction:column;
+                align-items:flex-start;
+
+            }
+
+            .guideline_content h3{
+
+                font-size:22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top_bar">
+
+    <a href="{% url 'homepage' %}"
+       class="back_btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back to Homepage
+
+    </a>
+
+</div>
+
+<!-- ================= MAIN CONTAINER ================= -->
+
+<div class="guideline_container">
+
+    <!-- HEADER -->
+
+    <div class="heading_section">
+
+        <h2 class="small_title">
+            Ethnic Vault
+        </h2>
+
+        <h1 class="main_title">
+            Rental Guidelines
+        </h1>
+
+        <p class="subtitle">
+
+            To ensure a smooth and elegant rental experience,
+            please follow these important rental guidelines while
+            booking and using outfits from Ethnic Vault.
+
+        </p>
+
+    </div>
+
+    <!-- GUIDELINE 1 -->
+
+    <div class="guideline_card">
+
+        <div class="guideline_icon">
+            <i class="fa fa-shopping-bag"></i>
+        </div>
+
+        <div class="guideline_content">
+
+            <h3>
+                Choose Carefully
+            </h3>
+
+            <p>
+
+                Select your preferred outfit carefully before placing the order.
+                Check outfit images, category, and rental details properly.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- GUIDELINE 2 -->
+
+    <div class="guideline_card">
+
+        <div class="guideline_icon">
+            <i class="fa fa-calendar"></i>
+        </div>
+
+        <div class="guideline_content">
+
+            <h3>
+                Verify Rental Duration
+            </h3>
+
+            <p>
+
+                Confirm your rental dates correctly before booking.
+                Rental duration and return timeline should be followed strictly.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- GUIDELINE 3 -->
+
+    <div class="guideline_card">
+
+        <div class="guideline_icon">
+            <i class="fa fa-shield"></i>
+        </div>
+
+        <div class="guideline_content">
+
+            <h3>
+                Maintain Outfit Quality
+            </h3>
+
+            <p>
+
+                Keep the rented outfit clean, safe, and protected from damage,
+                stains, or tearing during the rental period.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- GUIDELINE 4 -->
+
+    <div class="guideline_card">
+
+        <div class="guideline_icon">
+            <i class="fa fa-refresh"></i>
+        </div>
+
+        <div class="guideline_content">
+
+            <h3>
+                Return On Time
+            </h3>
+
+            <p>
+
+                Products should be returned within the specified return date
+                to avoid late return issues or additional penalties.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- GUIDELINE 5 -->
+
+    <div class="guideline_card">
+
+        <div class="guideline_icon">
+            <i class="fa fa-phone"></i>
+        </div>
+
+        <div class="guideline_content">
+
+            <h3>
+                Contact Support
+            </h3>
+
+            <p>
+
+                For delivery help, size concerns, or rental support,
+                users may contact the Ethnic Vault support team anytime.
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- FINAL NOTE -->
+
+    <div class="final_note">
+
+        <h3>
+            Thank You For Choosing Ethnic Vault
+        </h3>
+
+        <p>
+
+            We are committed to making your ethnic fashion experience
+            stylish, affordable, and memorable.
+            Follow these guidelines to enjoy a seamless rental journey.
+
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

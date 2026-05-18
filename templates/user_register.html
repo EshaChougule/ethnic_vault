@@ -3,17 +3,28 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ethnic Vault - User Register</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- GOOGLE FONTS -->
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- BOOTSTRAP -->
+
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!-- FONT AWESOME -->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <style>
 
-/* RESET */
+/* ================= RESET ================= */
+
 *{
     margin:0;
     padding:0;
@@ -22,226 +33,433 @@
 
 body{
     font-family:'Poppins',sans-serif;
-    height:100vh;
-    display:flex;
-    overflow:hidden;
-    background:#f5f5f5;
+
+    background-color:#F8F3EA;
+
+    background-image:
+    linear-gradient(rgba(248,243,234,0.92),
+    rgba(248,243,234,0.92)),
+    url("{% static 'images/ethnic-pattern.png' %}");
+
+    background-size:320px;
+    background-repeat:repeat;
+    background-attachment:fixed;
+
+    min-height:100vh;
+    overflow-x:hidden;
 }
 
-/* LEFT PANEL (same as login for consistency) */
+/* ================= MAIN WRAPPER ================= */
 
-.left-panel{
-    flex:1;
-    background:linear-gradient(135deg,#0f0f0f,#1c1c1c);
-    position:relative;
+.main_wrapper{
+    width:100%;
+    min-height:100vh;
     display:flex;
-    flex-direction:column;
-    justify-content:center;
+}
+
+/* ================= LEFT PANEL ================= */
+
+.left_panel{
+    width:50%;
+    position:relative;
+
+    background:
+    linear-gradient(rgba(0,0,0,0.70),
+    rgba(0,0,0,0.70)),
+    url("{% static 'images/banner1.jpeg' %}");
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
     align-items:center;
-    color:white;
+    justify-content:center;
+
+    padding:50px;
+
     overflow:hidden;
 }
 
-.left-panel::before{
+/* GOLD GLOW */
+
+.left_panel::before{
     content:"";
     position:absolute;
-    width:320px;
-    height:320px;
-    background:rgba(212,175,55,0.15);
+    width:380px;
+    height:380px;
     border-radius:50%;
-    top:8%;
-    left:15%;
-    filter:blur(70px);
+    background:rgba(184,146,76,0.18);
+    top:-100px;
+    left:-100px;
+    filter:blur(50px);
 }
 
-.left-panel::after{
+.left_panel::after{
     content:"";
     position:absolute;
-    width:250px;
-    height:250px;
-    background:rgba(212,175,55,0.08);
+    width:280px;
+    height:280px;
     border-radius:50%;
-    bottom:10%;
-    right:15%;
-    filter:blur(60px);
+    background:rgba(224,192,141,0.15);
+    bottom:-80px;
+    right:-60px;
+    filter:blur(50px);
 }
 
-.brand-content{
+/* BACK BUTTON */
+
+.back_btn{
+    position:absolute;
+    top:35px;
+    left:35px;
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    text-decoration:none;
+
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.18);
+
+    color:white;
+
+    padding:12px 22px;
+    border-radius:40px;
+
+    backdrop-filter:blur(8px);
+
+    transition:0.3s ease;
+
+    z-index:20;
+
+    font-size:14px;
+    font-weight:500;
+}
+
+.back_btn:hover{
+    background:#B8924C;
+    color:white;
+    text-decoration:none;
+    transform:translateY(-2px);
+}
+
+/* BRAND CONTENT */
+
+.brand_content{
     position:relative;
-    z-index:2;
+    z-index:10;
     text-align:center;
-    max-width:500px;
-    padding:20px;
+    max-width:520px;
+    color:white;
 }
 
-.brand-badge{
+.brand_badge{
     display:inline-block;
-    padding:6px 18px;
-    background:#d4af37;
-    color:#111;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:600;
+
+    background:#B8924C;
+
+    color:white;
+
+    padding:10px 24px;
+
+    border-radius:40px;
+
+    font-size:13px;
     letter-spacing:1px;
-    margin-bottom:20px;
+    font-weight:600;
+
+    margin-bottom:25px;
 }
 
-.brand-content h1{
-    font-size:52px;
-    font-weight:700;
-    color:#d4af37;
+.brand_content h1{
+    font-family:'Great Vibes',cursive;
+    font-size:92px;
+    color:#F8E7C2;
     margin-bottom:10px;
 }
 
-.brand-content p{
-    color:rgba(255,255,255,0.75);
-    font-size:15px;
-    line-height:28px;
+.brand_content h2{
+    font-family:'Playfair Display',serif;
+    font-size:48px;
+    line-height:1.3;
+    margin-bottom:25px;
 }
 
-/* RIGHT PANEL */
+.brand_content p{
+    color:#eee;
+    line-height:2;
+    font-size:16px;
+}
 
-.right-panel{
-    flex:1;
+/* FEATURES */
+
+.feature_list{
+    margin-top:40px;
+
     display:flex;
+    flex-wrap:wrap;
     justify-content:center;
+    gap:18px;
+}
+
+.feature_box{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.15);
+
+    padding:14px 20px;
+
+    border-radius:18px;
+
+    backdrop-filter:blur(10px);
+
+    font-size:14px;
+    color:#fff;
+}
+
+.feature_box i{
+    color:#E0C08D;
+    margin-right:8px;
+}
+
+/* ================= RIGHT PANEL ================= */
+
+.right_panel{
+    width:50%;
+    display:flex;
     align-items:center;
-    padding:20px;
-    background:#f8f8f8;
+    justify-content:center;
+
+    padding:50px 30px;
 }
 
 /* REGISTER CARD */
 
-.register-card{
-    width:420px;
+.register_card{
+    width:100%;
+    max-width:500px;
+
     background:rgba(255,255,255,0.92);
-    backdrop-filter:blur(10px);
-    border-radius:24px;
-    padding:40px;
-    box-shadow:0 25px 50px rgba(0,0,0,0.08);
-    border:1px solid rgba(212,175,55,0.12);
-    animation:fadeIn 0.7s ease;
+
+    border-radius:35px;
+
+    padding:45px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 20px 50px rgba(0,0,0,0.10);
+
+    border:1px solid rgba(184,146,76,0.12);
+
+    animation:fadeUp 0.8s ease;
 }
 
-@keyframes fadeIn{
+@keyframes fadeUp{
     from{
         opacity:0;
-        transform:translateY(20px);
+        transform:translateY(40px);
     }
+
     to{
         opacity:1;
         transform:translateY(0);
     }
 }
 
-.user-badge{
+/* TOP */
+
+.form_badge{
     display:inline-block;
+
     background:#111;
-    color:#d4af37;
+    color:#E0C08D;
+
+    padding:8px 18px;
+
+    border-radius:30px;
+
     font-size:12px;
     font-weight:600;
-    padding:6px 16px;
-    border-radius:30px;
-    margin-bottom:18px;
+    letter-spacing:1px;
+
+    margin-bottom:20px;
 }
 
-.register-card h2{
-    font-size:32px;
-    font-weight:700;
-    color:#111;
-    margin-bottom:6px;
+.register_card h3{
+    font-family:'Playfair Display',serif;
+    font-size:42px;
+    color:#222;
+
+    margin-bottom:10px;
 }
 
 .subtext{
-    font-size:14px;
     color:#777;
-    margin-bottom:22px;
+    line-height:1.8;
+    margin-bottom:30px;
+    font-size:15px;
 }
 
 /* INPUTS */
 
-.input-group{
-    margin-bottom:14px;
+.input_group{
+    margin-bottom:18px;
 }
 
-.input-group input,
-.input-group select{
-    width:100%;
-    padding:13px 14px;
-    border-radius:12px;
-    border:1px solid #ddd;
+.input_group label{
+    display:block;
+    margin-bottom:8px;
+
+    color:#333;
+
     font-size:14px;
-    background:#fff;
-    transition:0.3s;
+    font-weight:500;
 }
 
-.input-group input:focus,
-.input-group select:focus{
+.input_box{
+    position:relative;
+}
+
+.input_box i{
+    position:absolute;
+    left:16px;
+    top:50%;
+    transform:translateY(-50%);
+
+    color:#B8924C;
+    font-size:15px;
+}
+
+.input_group input,
+.input_group textarea{
+    width:100%;
+
+    padding:15px 18px 15px 48px;
+
+    border-radius:16px;
+
+    border:1px solid #ddd;
+
+    background:#fff;
+
+    font-size:14px;
+
+    transition:0.3s ease;
+}
+
+.input_group textarea{
+    resize:none;
+    min-height:110px;
+}
+
+.input_group input:focus,
+.input_group textarea:focus{
     outline:none;
-    border-color:#d4af37;
-    box-shadow:0 0 0 4px rgba(212,175,55,0.12);
+
+    border-color:#B8924C;
+
+    box-shadow:0 0 0 4px rgba(184,146,76,0.12);
 }
 
 /* BUTTON */
 
-.register-btn{
+.register_btn{
     width:100%;
+
     border:none;
-    background:#d4af37;
+
+    background:#B8924C;
+
     color:white;
-    padding:14px;
-    border-radius:12px;
+
+    padding:16px;
+
+    border-radius:18px;
+
     font-size:15px;
     font-weight:600;
-    transition:0.3s;
-    margin-top:8px;
+
+    transition:0.3s ease;
+
+    margin-top:10px;
 }
 
-.register-btn:hover{
-    background:#b8922f;
+.register_btn:hover{
+    background:#8C6A2D;
     transform:translateY(-2px);
 }
 
-/* LINKS */
+/* LOGIN LINK */
 
-.extra-links{
-    margin-top:18px;
+.bottom_text{
     text-align:center;
-}
+    margin-top:25px;
 
-.extra-links p{
     font-size:14px;
     color:#666;
 }
 
-.extra-links a{
-    color:#b8922f;
+.bottom_text a{
+    color:#B8924C;
     text-decoration:none;
     font-weight:600;
 }
 
-/* MOBILE */
+.bottom_text a:hover{
+    text-decoration:underline;
+}
 
-@media(max-width:900px){
+/* ================= RESPONSIVE ================= */
 
-    body{
+@media(max-width:992px){
+
+    .main_wrapper{
         flex-direction:column;
-        overflow:auto;
     }
 
-    .left-panel{
-        min-height:280px;
-    }
-
-    .brand-content h1{
-        font-size:40px;
-    }
-
-    .register-card{
+    .left_panel,
+    .right_panel{
         width:100%;
-        max-width:420px;
-        padding:30px 22px;
     }
+
+    .left_panel{
+        min-height:500px;
+    }
+
+    .brand_content h1{
+        font-size:70px;
+    }
+
+    .brand_content h2{
+        font-size:38px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .register_card{
+        padding:35px 25px;
+    }
+
+    .brand_content h1{
+        font-size:60px;
+    }
+
+    .brand_content h2{
+        font-size:30px;
+    }
+
+    .register_card h3{
+        font-size:34px;
+    }
+
+    .back_btn{
+        top:20px;
+        left:20px;
+        padding:10px 18px;
+    }
+
 }
 
 </style>
@@ -250,120 +468,267 @@ body{
 
 <body>
 
-<!-- LEFT PANEL -->
-<div class="left-panel">
+<div class="main_wrapper">
 
-    <div class="brand-content">
+    <!-- ================= LEFT PANEL ================= -->
 
-        <div class="brand-badge">
-            ETHNIC FASHION RENTALS
-        </div>
+    <div class="left_panel">
 
-        <h1>Ethnic Vault</h1>
+        <!-- BACK BUTTON -->
 
-        <p>
-            Join Ethnic Vault and explore premium designer outfits on rent.
-            Create your account and start your fashion journey today.
-        </p>
+        <a href="{% url 'user_login' %}" class="back_btn">
 
-    </div>
+            <i class="fa fa-arrow-left"></i>
 
-</div>
+            Back to Login
 
-<!-- RIGHT PANEL -->
-<div class="right-panel">
+        </a>
 
-    <div class="register-card">
+        <!-- BRAND CONTENT -->
 
-        <div class="user-badge">
-            USER REGISTER
-        </div>
+        <div class="brand_content">
 
-        <h2>Create Account</h2>
-
-        <p class="subtext">
-            Fill in your details to get started.
-        </p>
-
-        <form action="{% url 'user_register_code' %}" method="POST" onsubmit="return Validate()">
-            {% csrf_token %}
-
-            <div class="input-group">
-                <input type="text" name="name" placeholder="Full Name" required>
+            <div class="brand_badge">
+                PREMIUM ETHNIC RENTALS
             </div>
 
-            <div class="input-group">
-                <input type="email" name="email" placeholder="Email Address" required>
-            </div>
+            <h1>
+                Ethnic Vault
+            </h1>
 
-            <div class="input-group">
-                <input type="tel" name="contact"
-                       placeholder="Contact Number"
-                       maxlength="10"
-                       pattern="[6-9][0-9]{9}" required>
-            </div>
+            <h2>
+                Style Every Celebration
+                With Elegance
+            </h2>
 
-            <div class="input-group">
-                <input type="password" id="password1" name="password"
-                       placeholder="Password"
-                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
-                       required>
-            </div>
-
-            <div class="input-group">
-                <input type="password" id="password2" name="confirm_password"
-                       placeholder="Confirm Password"
-                       required>
-            </div>
-
-            <div class="input-group">
-
-                <textarea name="location"
-                        rows="4"
-                        placeholder="Enter Full Delivery Address"
-                        required
-                        style="
-                        width:100%;
-                        padding:14px;
-                        border-radius:12px;
-                        border:1px solid #ddd;
-                        font-size:14px;
-                        resize:none;
-                        background:#fff;"></textarea>
-
-</div>
-
-            <button type="submit" class="register-btn">
-                Create Account
-            </button>
-
-        </form>
-
-        <div class="extra-links">
             <p>
-                Already have an account?
-                <a href="{% url 'user_login' %}">Login</a>
+                Create your Ethnic Vault account and discover premium
+                designer outfits for weddings, festivals, receptions,
+                parties and unforgettable moments — without purchasing
+                expensive fashion.
             </p>
+
+            <!-- FEATURES -->
+
+            <div class="feature_list">
+
+                <div class="feature_box">
+                    <i class="fa fa-diamond"></i>
+                    Premium Collections
+                </div>
+
+                <div class="feature_box">
+                    <i class="fa fa-heart"></i>
+                    Wishlist Your Favorites
+                </div>
+
+                <div class="feature_box">
+                    <i class="fa fa-shopping-bag"></i>
+                    Easy Rental Process
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= RIGHT PANEL ================= -->
+
+    <div class="right_panel">
+
+        <div class="register_card">
+
+            <div class="form_badge">
+                USER REGISTRATION
+            </div>
+
+            <h3>
+                Create Account
+            </h3>
+
+            <p class="subtext">
+                Fill your details below and begin your luxury ethnic
+                fashion rental journey with Ethnic Vault.
+            </p>
+
+            <!-- FORM -->
+
+            <form action="{% url 'user_register_code' %}"
+                  method="POST"
+                  onsubmit="return Validate()">
+
+                {% csrf_token %}
+
+                <!-- FULL NAME -->
+
+                <div class="input_group">
+
+                    <label>Full Name</label>
+
+                    <div class="input_box">
+
+                        <i class="fa fa-user"></i>
+
+                        <input type="text"
+                               name="name"
+                               placeholder="Enter your full name"
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- EMAIL -->
+
+                <div class="input_group">
+
+                    <label>Email Address</label>
+
+                    <div class="input_box">
+
+                        <i class="fa fa-envelope"></i>
+
+                        <input type="email"
+                               name="email"
+                               placeholder="Enter your email"
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- CONTACT -->
+
+                <div class="input_group">
+
+                    <label>Contact Number</label>
+
+                    <div class="input_box">
+
+                        <i class="fa fa-phone"></i>
+
+                        <input type="tel"
+                               name="contact"
+                               placeholder="Enter contact number"
+                               maxlength="10"
+                               pattern="[6-9][0-9]{9}"
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- PASSWORD -->
+
+                <div class="input_group">
+
+                    <label>Password</label>
+
+                    <div class="input_box">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input type="password"
+                               id="password1"
+                               name="password"
+
+                               placeholder="Create strong password"
+
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}"
+
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="input_group">
+
+                    <label>Confirm Password</label>
+
+                    <div class="input_box">
+
+                        <i class="fa fa-lock"></i>
+
+                        <input type="password"
+                               id="password2"
+                               name="confirm_password"
+
+                               placeholder="Re-enter password"
+
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- ADDRESS -->
+
+                <div class="input_group">
+
+                    <label>Delivery Address</label>
+
+                    <div class="input_box">
+
+                        <i class="fa fa-map-marker"></i>
+
+                        <textarea name="location"
+                                  placeholder="Enter your complete delivery address"
+                                  required></textarea>
+
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="register_btn">
+
+                    Create My Account
+
+                </button>
+
+            </form>
+
+            <!-- LOGIN LINK -->
+
+            <div class="bottom_text">
+
+                Already have an account?
+
+                <a href="{% url 'user_login' %}">
+                    Login Here
+                </a>
+
+            </div>
+
         </div>
 
     </div>
 
 </div>
 
-<!-- VALIDATION + STATES -->
+<!-- ================= VALIDATION ================= -->
+
 <script>
 
 function Validate(){
+
     let p1 = document.getElementById("password1").value;
     let p2 = document.getElementById("password2").value;
 
     if(p1 !== p2){
+
         alert("Passwords do not match");
+
         return false;
     }
+
     return true;
 }
-
 
 </script>
 

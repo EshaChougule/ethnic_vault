@@ -62,49 +62,119 @@ overflow-x:hidden;
 color:#2B2B2B;
 }
 
-/* ================= TOP RIBBON ================= */
 
-.top_ribbon{
-background:#111;
-padding:10px 0;
-}
-
-.ribbon_content{
-display:flex;
-justify-content:center;
-gap:35px;
-flex-wrap:wrap;
-}
-
-.ribbon_content a{
-color:#FAF7F2;
-font-size:14px;
-text-decoration:none;
-}
-
-.ribbon_content a:hover{
-color:#E0C08D;
-}
-
-/* ================= LOGO ================= */
+/* ================= LOGO SECTION ================= */
 
 .logo_section{
-padding:25px 0 15px;
+
+padding:32px 0 26px;
+
 text-align:center;
-background:white;
+
+position:relative;
+
+background:
+linear-gradient(rgba(255,255,255,0.95),
+rgba(255,255,255,0.95)),
+
+url("{% static 'images/ethnic-pattern.png' %}");
+
+background-size:280px;
+
+border-bottom:1px solid rgba(184,146,76,0.12);
+
+overflow:hidden;
 }
+
+/* GOLD GLOW */
+
+.logo_section::before{
+
+content:"";
+
+position:absolute;
+
+width:280px;
+height:280px;
+
+background:rgba(184,146,76,0.08);
+
+border-radius:50%;
+
+top:-140px;
+left:-80px;
+
+filter:blur(60px);
+}
+
+.logo_section::after{
+
+content:"";
+
+position:absolute;
+
+width:220px;
+height:220px;
+
+background:rgba(224,192,141,0.08);
+
+border-radius:50%;
+
+bottom:-100px;
+right:-50px;
+
+filter:blur(60px);
+}
+
+/* LOGO */
 
 .logo_name{
+
 font-family:'Great Vibes',cursive;
-font-size:72px;
+
+font-size:74px;
+
 color:#B8924C;
-margin-bottom:10px;
+
+margin-bottom:8px;
+
+position:relative;
+
+z-index:2;
 }
 
+/* TAGLINE */
+
 .logo_tagline{
-font-size:16px;
-color:#777;
+
+font-size:15px;
+
+color:#666;
+
 letter-spacing:1px;
+
+position:relative;
+
+z-index:2;
+}
+
+/* SMALL LUXURY LINE */
+
+.logo_tagline::before,
+.logo_tagline::after{
+
+content:"";
+
+display:inline-block;
+
+width:55px;
+height:1px;
+
+background:#D8B56A;
+
+margin:0 12px;
+
+vertical-align:middle;
 }
 
 /* ================= NAVBAR ================= */
@@ -440,43 +510,118 @@ color:white;
 margin-bottom:25px;
 }
 
-/* ================= FOOTER ================= */
 
-.footer_section{
-background:#1E1A14;
-padding:70px 0;
-color:#ddd;
-}
+/* ================= NEW FOOTER ================= */
 
-.footer_section h3,
-.footer_section h4{
+.footer_logo{
+font-family:'Great Vibes',cursive;
+font-size:42px;
 color:#E0C08D;
-margin-bottom:20px;
+margin-bottom:15px;
 }
 
-.footer_section ul{
+.footer_desc{
+font-size:14px;
+line-height:1.8;
+color:#ccc;
+margin-bottom:15px;
+}
+
+.footer_tagline{
+color:#B8924C;
+font-weight:600;
+letter-spacing:1px;
+}
+
+.footer_links{
 list-style:none;
 padding:0;
 }
 
-.footer_section ul li{
-margin-bottom:10px;
+.footer_links li{
+margin-bottom:12px;
 }
 
-.footer_section a{
+.footer_links a{
 color:#ddd;
+text-decoration:none;
+transition:0.3s ease;
+font-size:15px;
+}
+
+.footer_links a:hover{
+color:#E0C08D;
+padding-left:5px;
+}
+
+.contact_text{
+font-size:14px;
+margin-bottom:15px;
+color:#ddd;
+}
+
+.contact_text i{
+color:#B8924C;
+margin-right:10px;
+}
+
+.social_icons{
+display:flex;
+gap:12px;
+}
+
+.social_icons a{
+width:42px;
+height:42px;
+border-radius:50%;
+background:#2B241C;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#E0C08D;
+font-size:18px;
+transition:0.3s ease;
 text-decoration:none;
 }
 
-.footer_section a:hover{
-color:#E0C08D;
+.social_icons a:hover{
+transform:translateY(-4px);
+background:#B8924C;
+color:white;
 }
 
-.copyright_section{
-background:#15120E;
-padding:15px;
-text-align:center;
-color:#aaa;
+.newsletter_title{
+font-size:14px;
+margin-bottom:12px;
+color:#ddd;
+}
+
+.newsletter_input{
+display:flex;
+overflow:hidden;
+border-radius:30px;
+background:#fff;
+}
+
+.newsletter_input input{
+flex:1;
+border:none;
+outline:none;
+padding:12px 15px;
+font-size:14px;
+}
+
+.newsletter_input button{
+border:none;
+background:#B8924C;
+color:white;
+padding:0 18px;
+font-size:14px;
+font-weight:600;
+}
+
+.newsletter_input button:hover{
+background:#8c6a2d;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -573,23 +718,172 @@ color:#B8924C;
     transform: translateY(-2px);
 }
 
+.navbar_section{
+background:rgba(255,255,255,0.82);
+backdrop-filter:blur(16px);
+padding:16px 0;
+box-shadow:0 8px 30px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:9999;
+border-bottom:1px solid rgba(184,146,76,0.08);
+}
+.hero_subtitle{
+color:rgba(255,255,255,0.88);
+font-size:16px;
+line-height:1.9;
+margin-top:18px;
+max-width:500px;
+}
+
+.hero_btn{
+display:inline-block;
+margin-top:28px;
+padding:14px 32px;
+background:#B8924C;
+color:white;
+text-decoration:none;
+border-radius:40px;
+font-weight:600;
+transition:0.3s ease;
+}
+
+.hero_btn:hover{
+background:#8c6a2d;
+transform:translateY(-3px);
+color:white;
+}
+
+.section_badge{
+text-align:center;
+color:#B8924C;
+font-size:13px;
+letter-spacing:2px;
+font-weight:600;
+margin-bottom:12px;
+}
+
+.product_card::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:4px;
+background:linear-gradient(to right,#B8924C,#E0C08D);
+}
+
+.nav_right a,
+.sidenav a,
+.dropdown-item{
+transition:0.3s ease;
+}
+
+/* PROFILE ICON */
+
+.profile_circle{
+
+width:40px;
+height:40px;
+
+border-radius:50%;
+
+background:#E0C08D;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+color:#111;
+
+font-size:16px;
+
+flex-shrink:0;
+}
+
+/* ================= FOOTER ================= */
+
+.footer_section{
+
+background:
+linear-gradient(rgba(17,17,17,0.96),
+rgba(17,17,17,0.96)),
+
+url("{% static 'images/ethnic-pattern.png' %}");
+
+background-size:260px;
+
+padding:75px 0 65px;
+
+color:#ddd;
+
+position:relative;
+
+overflow:hidden;
+}
+
+/* GOLD EFFECT */
+
+.footer_section::before{
+
+content:"";
+
+position:absolute;
+
+width:320px;
+height:320px;
+
+background:rgba(184,146,76,0.08);
+
+border-radius:50%;
+
+top:-120px;
+left:-100px;
+
+filter:blur(70px);
+}
+
+.footer_section::after{
+
+content:"";
+
+position:absolute;
+
+width:260px;
+height:260px;
+
+background:rgba(224,192,141,0.06);
+
+border-radius:50%;
+
+bottom:-120px;
+right:-100px;
+
+filter:blur(70px);
+}
+
+.copyright_section{
+
+background:#0E0C09;
+
+padding:18px;
+
+text-align:center;
+
+color:#b9b9b9;
+
+font-size:14px;
+
+letter-spacing:0.5px;
+
+border-top:1px solid rgba(255,255,255,0.05);
+}
 </style>
 
 </head>
 <body>
 
 
-
-<!-- ================= TOP RIBBON ================= -->
-
-<div class="top_ribbon">
-    <div class="container ribbon_content">
-        <a href="#">Best Sellers</a>
-        <a href="#">New Releases</a>
-        <a href="#">Today's Deals</a>
-        <a href="#">Customer Service</a>
-    </div>
-</div>
 
 <!-- ================= LOGO ================= -->
 
@@ -619,7 +913,7 @@ color:#B8924C;
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
                 <a href="{% url 'homepage' %}">Home</a>
-                <a href="#">Offers</a>
+                <a href="{% url 'offers_page' %}">Offers</a>
                 <a href="#">Track Order</a>
 
                 {% if request.session.role == 'user' %}
@@ -745,59 +1039,78 @@ color:#B8924C;
 
         <!-- RIGHT -->
 
-        <div class="nav_right">
+        <!-- RIGHT -->
 
-            <a href="{% url 'view_cart' %}"
-                class="btn btn-dark">
-                Cart
-            </a>
+<div class="nav_right">
 
-            <a href="{% url 'view_wishlist' %}">
-                <i class="fa fa-heart"></i>
-                Wishlist
-            </a>
-            
+    <!-- CART -->
 
-            {% if request.session.role == 'user' %}
+    <a href="{% url 'view_cart' %}" class="nav_icon_btn">
 
-            <div class="dropdown">
+        <i class="fa fa-shopping-bag"></i>
 
-                <a class="dropdown-toggle"
-                    data-toggle="dropdown"
-                    style="cursor:pointer;">
+        <span>Cart</span>
 
-                    <i class="fa fa-user-circle"></i>
+    </a>
 
-                    Hello, {{ request.session.user_name }}
+    <!-- WISHLIST -->
 
-                </a>
+    <a href="{% url 'view_wishlist' %}" class="nav_icon_btn">
 
-                <div class="dropdown-menu profile_menu">
+        <i class="fa fa-heart"></i>
 
-                    <a class="dropdown-item"
-                        href="{% url 'user_dashboard' %}">
-                        Dashboard
-                    </a>
+        <span>Wishlist</span>
 
-                    <a class="dropdown-item"
-                        href="{% url 'logout_view' %}">
-                        Logout
-                    </a>
+    </a>
 
-                </div>
+    <!-- USER PROFILE -->
+
+    {% if request.session.role == 'user' %}
+
+    <div class="dropdown">
+
+        <a class="user_profile_btn dropdown-toggle"
+           data-toggle="dropdown">
+
+            <div class="profile_circle">
+
+                <i class="fa fa-user"></i>
 
             </div>
 
-            {% else %}
+            <span>
+                Hello, {{ request.session.user_name }}
+            </span>
 
-            <a href="{% url 'user_login' %}">
-                <i class="fa fa-user"></i>
-                Login
+        </a>
+
+        <div class="dropdown-menu profile_menu">
+
+            <a class="dropdown-item"
+               href="{% url 'user_dashboard' %}">
+
+                <i class="fa fa-user-circle"></i>
+
+                Dashboard
+
             </a>
 
-            {% endif %}
+            <a class="dropdown-item"
+               href="{% url 'logout_view' %}">
+
+                <i class="fa fa-sign-out"></i>
+
+                Logout
+
+            </a>
 
         </div>
+
+    </div>
+
+    {% endif %}
+
+</div>
     </div>
 
 </nav>
@@ -826,6 +1139,14 @@ color:#B8924C;
                         Wear It.<br>
                         Return It.
                     </h1>
+                    <p class="hero_subtitle">
+                        Premium designer ethnic wear for weddings,
+                        festive celebrations and unforgettable moments.
+                    </p>
+
+                    <a href="#collections" class="hero_btn">
+                        Explore Collection
+                    </a>
 
                 </div>
 
@@ -878,6 +1199,10 @@ color:#B8924C;
 <div class="fashion_section">
 
     <div class="container">
+
+        <div class="section_badge">
+            PREMIUM COLLECTION
+        </div>
 
         <h1 class="fashion_taital">
             Her Collection
@@ -951,6 +1276,10 @@ color:#B8924C;
 
     <div class="container">
 
+        <div class="section_badge">
+            PREMIUM COLLECTION
+        </div>
+
         <h1 class="fashion_taital">
             His Collection
         </h1>
@@ -1022,6 +1351,10 @@ color:#B8924C;
 <div class="fashion_section">
 
     <div class="container">
+
+        <div class="section_badge">
+            PREMIUM COLLECTION
+        </div>
 
         <h1 class="fashion_taital">
             Kids Collection
@@ -1095,6 +1428,10 @@ color:#B8924C;
 
     <div class="container">
 
+        <div class="section_badge">
+            PREMIUM COLLECTION
+        </div>
+
         <h1 class="fashion_taital">
             Accessories
         </h1>
@@ -1166,6 +1503,10 @@ color:#B8924C;
 <div class="fashion_section">
 
     <div class="container">
+
+        <div class="section_badge">
+            PREMIUM COLLECTION
+        </div>
 
         <h1 class="fashion_taital">
             Footwear
@@ -1310,6 +1651,7 @@ color:#B8924C;
 
 </div>
 
+
 <!-- ================= FOOTER ================= -->
 
 <div class="footer_section">
@@ -1318,64 +1660,130 @@ color:#B8924C;
 
         <div class="row">
 
-            <div class="col-lg-3 col-md-6">
+            <!-- BRAND -->
 
-                <h3>Ethnic Vault</h3>
+            <div class="col-lg-3 col-md-6 mb-4">
 
-                <p>Rent | Style | Return</p>
+                <h3 class="footer_logo">
+                    Ethnic Vault
+                </h3>
+
+                <p class="footer_desc">
+                    India's modern ethnic rental platform for weddings,
+                    festivals, parties and unforgettable occasions.
+                </p>
+
+                <p class="footer_tagline">
+                    Rent • Style • Return
+                </p>
 
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <!-- COLLECTION LINKS -->
 
-                <h4>Quick Links</h4>
+            <div class="col-lg-3 col-md-6 mb-4">
 
-                <ul>
+                <h4>Collections</h4>
 
-                    <li><a href="#">Home</a></li>
+                <ul class="footer_links">
 
-                    <li><a href="#">Her Collection</a></li>
+                    <li><a href="{% url 'homepage' %}">Home</a></li>
 
-                    <li><a href="#">His Collection</a></li>
+                    <li><a href="{% url 'lehenga' %}">Her Collection</a></li>
 
-                    <li><a href="#">Kids Collection</a></li>
+                    <li><a href="{% url 'sherwani' %}">His Collection</a></li>
+
+                    <li><a href="{% url 'boys' %}">Kids Collection</a></li>
+
+                    <li><a href="{% url 'womenAccessories' %}">Accessories</a></li>
+
+                    <li><a href="{% url 'womenfootwear' %}">Footwear</a></li>
 
                 </ul>
 
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <!-- SUPPORT -->
 
-                <h4>Help</h4>
+            <div class="col-lg-3 col-md-6 mb-4">
 
-                <ul>
+                <h4>Customer Support</h4>
 
-                    <li><a href="#">Contact Us</a></li>
+                <ul class="footer_links">
 
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="{% url 'faq_page' %}">FAQs</a></li>
 
-                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+
+                    <li><a href="{% url 'rental_guidelines_page' %}">Rental Guidelines</a></li>
 
                 </ul>
 
+                <!-- NEWSLETTER -->
+
+                <div class="newsletter_box mt-4">
+
+                    <p class="newsletter_title">
+                        Subscribe for latest arrivals
+                    </p>
+
+                    <div class="newsletter_input">
+
+                        <input type="email"
+                               placeholder="Enter Email">
+
+                        <button>
+                            Subscribe
+                        </button>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="col-lg-3 col-md-6">
+            <!-- CONTACT -->
+
+            <div class="col-lg-3 col-md-6 mb-4">
 
                 <h4>Contact</h4>
 
-                <p>Email: ethnicvaultrentals@gmail.com</p>
+                <p class="contact_text">
+                    <i class="fa fa-phone"></i>
+                    +91 9876543210
+                </p>
 
-                <p>Phone: +91 255297391</p>
+                <p class="contact_text">
+                    <i class="fa fa-envelope"></i>
+                    ethnicvault@gmail.com
+                </p>
 
-                <div>
+                <p class="contact_text">
+                    <i class="fa fa-map-marker"></i>
+                    Belagavi, Karnataka
+                </p>
 
-                    <a href="#">
+                <!-- SOCIAL ICONS -->
+
+                <div class="social_icons mt-4">
+
+                    <a href="https://instagram.com/srushti__31.12"
+                       target="_blank">
+
                         <i class="fa fa-instagram"></i>
+
                     </a>
 
                     <a href="#">
+
                         <i class="fa fa-facebook"></i>
+
+                    </a>
+
+                    <a href="#">
+
+                        <i class="fa fa-twitter"></i>
+
                     </a>
 
                 </div>
@@ -1395,7 +1803,8 @@ color:#B8924C;
     <div class="container">
 
         <p>
-            © 2026 Ethnic Vault. All Rights Reserved.
+            © 2026 Ethnic Vault.
+            Designed with elegance for modern ethnic fashion rentals.
         </p>
 
     </div>

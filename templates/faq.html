@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        FAQs | Ethnic Vault
+    </title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family:'Poppins',sans-serif;
+
+            background-color:#F8F3EA;
+
+            background-image:
+            linear-gradient(rgba(248,243,234,0.90),
+            rgba(248,243,234,0.90)),
+            url("{% static 'images/ethnic-pattern.png' %}");
+
+            background-repeat:repeat;
+            background-size:320px;
+
+            min-height:100vh;
+
+            padding:40px 20px;
+
+            color:#2B2B2B;
+        }
+
+        /* ================= BACK BUTTON ================= */
+
+        .top_bar{
+
+            max-width:1100px;
+            margin:auto;
+            margin-bottom:25px;
+
+        }
+
+        .back_btn{
+
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+
+            text-decoration:none;
+
+            background:#1E1A14;
+
+            color:#fff;
+
+            padding:12px 22px;
+
+            border-radius:40px;
+
+            font-size:15px;
+            font-weight:500;
+
+            transition:0.3s ease;
+
+            box-shadow:0 8px 20px rgba(0,0,0,0.08);
+
+        }
+
+        .back_btn:hover{
+
+            background:#B8924C;
+            color:white;
+
+            transform:translateY(-2px);
+
+        }
+
+        /* ================= MAIN CONTAINER ================= */
+
+        .faq_container{
+
+            max-width:1100px;
+
+            margin:auto;
+
+            background:rgba(255,255,255,0.94);
+
+            backdrop-filter:blur(10px);
+
+            border-radius:30px;
+
+            padding:60px;
+
+            box-shadow:0 15px 40px rgba(0,0,0,0.10);
+
+            position:relative;
+
+            overflow:hidden;
+
+        }
+
+        /* GOLDEN TOP BORDER */
+
+        .faq_container::before{
+
+            content:"";
+
+            position:absolute;
+
+            top:0;
+            left:0;
+
+            width:100%;
+            height:8px;
+
+            background:linear-gradient(
+            to right,
+            #B8924C,
+            #E8D2A9,
+            #B8924C
+            );
+
+        }
+
+        /* ================= HEADING ================= */
+
+        .heading_section{
+
+            text-align:center;
+
+            margin-bottom:55px;
+
+        }
+
+        .small_title{
+
+            font-family:'Great Vibes',cursive;
+
+            font-size:52px;
+
+            color:#B8924C;
+
+            margin-bottom:8px;
+
+        }
+
+        .main_title{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:52px;
+
+            color:#1E1A14;
+
+            margin-bottom:18px;
+
+        }
+
+        .subtitle{
+
+            max-width:720px;
+
+            margin:auto;
+
+            color:#777;
+
+            line-height:1.9;
+
+            font-size:16px;
+
+        }
+
+        /* ================= FAQ CARDS ================= */
+
+        .faq_card{
+
+            background:#fff;
+
+            border-radius:22px;
+
+            padding:28px 30px;
+
+            margin-bottom:28px;
+
+            box-shadow:0 10px 25px rgba(0,0,0,0.05);
+
+            transition:0.4s ease;
+
+            border-left:6px solid #B8924C;
+
+        }
+
+        .faq_card:hover{
+
+            transform:translateY(-5px);
+
+            box-shadow:0 18px 35px rgba(0,0,0,0.08);
+
+        }
+
+        .faq_question{
+
+            display:flex;
+            align-items:center;
+            gap:15px;
+
+            margin-bottom:15px;
+
+        }
+
+        .faq_icon{
+
+            width:48px;
+            height:48px;
+
+            border-radius:50%;
+
+            background:#B8924C;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            color:white;
+
+            font-size:18px;
+
+            flex-shrink:0;
+
+        }
+
+        .faq_question h3{
+
+            font-size:22px;
+
+            color:#1E1A14;
+
+            font-weight:600;
+
+        }
+
+        .faq_answer{
+
+            color:#666;
+
+            line-height:2;
+
+            font-size:15px;
+
+            padding-left:65px;
+
+        }
+
+        /* ================= BOTTOM QUOTE ================= */
+
+        .bottom_note{
+
+            margin-top:50px;
+
+            text-align:center;
+
+            padding:30px;
+
+            border-radius:22px;
+
+            background:#FBF7F0;
+
+            border:1px solid #E8DCC8;
+
+        }
+
+        .bottom_note h4{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:28px;
+
+            color:#B8924C;
+
+            margin-bottom:12px;
+
+        }
+
+        .bottom_note p{
+
+            color:#666;
+
+            line-height:1.9;
+
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:768px){
+
+            .faq_container{
+
+                padding:35px 22px;
+
+            }
+
+            .main_title{
+
+                font-size:38px;
+
+            }
+
+            .small_title{
+
+                font-size:42px;
+
+            }
+
+            .faq_question h3{
+
+                font-size:18px;
+
+            }
+
+            .faq_answer{
+
+                padding-left:0;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top_bar">
+
+    <a href="{% url 'homepage' %}" class="back_btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back to Homepage
+
+    </a>
+
+</div>
+
+<!-- ================= FAQ CONTAINER ================= -->
+
+<div class="faq_container">
+
+    <!-- HEADING -->
+
+    <div class="heading_section">
+
+        <h2 class="small_title">
+            Ethnic Vault
+        </h2>
+
+        <h1 class="main_title">
+            Frequently Asked Questions
+        </h1>
+
+        <p class="subtitle">
+
+            We understand that renting outfits online can bring a few questions.
+            Here are some common queries to help you enjoy a smooth and elegant
+            rental experience with Ethnic Vault.
+
+        </p>
+
+    </div>
+
+    <!-- FAQ 1 -->
+
+    <div class="faq_card">
+
+        <div class="faq_question">
+
+            <div class="faq_icon">
+                <i class="fa fa-shopping-bag"></i>
+            </div>
+
+            <h3>
+                How does Ethnic Vault work?
+            </h3>
+
+        </div>
+
+        <div class="faq_answer">
+
+            Users can browse our premium ethnic collections,
+            choose their preferred outfit, select rental dates,
+            place the booking, wear the outfit for their special occasion,
+            and return it after usage.
+
+        </div>
+
+    </div>
+
+    <!-- FAQ 2 -->
+
+    <div class="faq_card">
+
+        <div class="faq_question">
+
+            <div class="faq_icon">
+                <i class="fa fa-truck"></i>
+            </div>
+
+            <h3>
+                Do you provide doorstep delivery?
+            </h3>
+
+        </div>
+
+        <div class="faq_answer">
+
+            Yes, doorstep delivery services are available in selected areas.
+            Delivery availability depends on your location and order timing.
+
+        </div>
+
+    </div>
+
+    <!-- FAQ 3 -->
+
+    <div class="faq_card">
+
+        <div class="faq_question">
+
+            <div class="faq_icon">
+                <i class="fa fa-warning"></i>
+            </div>
+
+            <h3>
+                What happens if the outfit gets damaged?
+            </h3>
+
+        </div>
+
+        <div class="faq_answer">
+
+            Minor wear and tear are manageable.
+            However, severe damages, stains, or loss of accessories
+            may result in additional penalty charges.
+
+        </div>
+
+    </div>
+
+    <!-- FAQ 4 -->
+
+    <div class="faq_card">
+
+        <div class="faq_question">
+
+            <div class="faq_icon">
+                <i class="fa fa-times-circle"></i>
+            </div>
+
+            <h3>
+                Can I cancel my order?
+            </h3>
+
+        </div>
+
+        <div class="faq_answer">
+
+            Yes, cancellations are possible before dispatch confirmation.
+            Once the outfit has been dispatched,
+            cancellation or refund may not be available.
+
+        </div>
+
+    </div>
+
+    <!-- FAQ 5 -->
+
+    <div class="faq_card">
+
+        <div class="faq_question">
+
+            <div class="faq_icon">
+                <i class="fa fa-refresh"></i>
+            </div>
+
+            <h3>
+                How do I return the rented outfit?
+            </h3>
+
+        </div>
+
+        <div class="faq_answer">
+
+            Users can return the outfit on the specified return date.
+            Pickup arrangements may also be provided depending on the location.
+
+        </div>
+
+    </div>
+
+    <!-- BOTTOM NOTE -->
+
+    <div class="bottom_note">
+
+        <h4>
+            Still Have Questions?
+        </h4>
+
+        <p>
+
+            Our Ethnic Vault support team is always ready to assist you.
+            Feel free to contact us for booking support, delivery details,
+            sizing help, or rental guidance.
+
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

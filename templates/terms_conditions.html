@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    {% load static %}
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Terms & Conditions | Ethnic Vault
+    </title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            font-family:'Poppins',sans-serif;
+
+            background-color:#F8F3EA;
+
+            background-image:
+            linear-gradient(rgba(248,243,234,0.90),
+            rgba(248,243,234,0.90)),
+            url("{% static 'images/ethnic-pattern.png' %}");
+
+            background-repeat:repeat;
+            background-size:320px;
+
+            min-height:100vh;
+
+            padding:40px 20px;
+
+            color:#2B2B2B;
+        }
+
+        /* ================= TOP BAR ================= */
+
+        .top_bar{
+
+            max-width:1150px;
+            margin:auto;
+            margin-bottom:25px;
+
+        }
+
+        .back_btn{
+
+            display:inline-flex;
+            align-items:center;
+            gap:10px;
+
+            background:#1E1A14;
+
+            color:white;
+
+            text-decoration:none;
+
+            padding:12px 24px;
+
+            border-radius:40px;
+
+            font-size:15px;
+            font-weight:500;
+
+            transition:0.3s ease;
+
+            box-shadow:0 10px 25px rgba(0,0,0,0.08);
+
+        }
+
+        .back_btn:hover{
+
+            background:#B8924C;
+
+            color:white;
+
+            transform:translateY(-2px);
+
+        }
+
+        /* ================= MAIN CONTAINER ================= */
+
+        .terms_container{
+
+            max-width:1150px;
+
+            margin:auto;
+
+            background:rgba(255,255,255,0.95);
+
+            backdrop-filter:blur(10px);
+
+            border-radius:30px;
+
+            padding:60px;
+
+            position:relative;
+
+            overflow:hidden;
+
+            box-shadow:0 18px 45px rgba(0,0,0,0.10);
+
+        }
+
+        /* TOP GOLDEN BAR */
+
+        .terms_container::before{
+
+            content:"";
+
+            position:absolute;
+
+            top:0;
+            left:0;
+
+            width:100%;
+            height:8px;
+
+            background:linear-gradient(
+            to right,
+            #B8924C,
+            #E7D0A0,
+            #B8924C
+            );
+
+        }
+
+        /* ================= HEADER ================= */
+
+        .heading_section{
+
+            text-align:center;
+
+            margin-bottom:55px;
+
+        }
+
+        .small_title{
+
+            font-family:'Great Vibes',cursive;
+
+            font-size:52px;
+
+            color:#B8924C;
+
+            margin-bottom:10px;
+
+        }
+
+        .main_title{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:54px;
+
+            color:#1E1A14;
+
+            margin-bottom:18px;
+
+        }
+
+        .subtitle{
+
+            max-width:780px;
+
+            margin:auto;
+
+            color:#777;
+
+            line-height:1.9;
+
+            font-size:16px;
+
+        }
+
+        /* ================= SECTION BOX ================= */
+
+        .terms_box{
+
+            background:#fff;
+
+            border-radius:24px;
+
+            padding:35px;
+
+            margin-bottom:30px;
+
+            box-shadow:0 10px 30px rgba(0,0,0,0.05);
+
+            border-left:6px solid #B8924C;
+
+            transition:0.4s ease;
+
+        }
+
+        .terms_box:hover{
+
+            transform:translateY(-5px);
+
+            box-shadow:0 18px 40px rgba(0,0,0,0.08);
+
+        }
+
+        .terms_box h2{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:30px;
+
+            color:#1E1A14;
+
+            margin-bottom:20px;
+
+            display:flex;
+            align-items:center;
+            gap:14px;
+
+        }
+
+        .terms_box h2 i{
+
+            color:#B8924C;
+
+            font-size:24px;
+
+        }
+
+        .terms_box p{
+
+            color:#666;
+
+            line-height:2;
+
+            font-size:15px;
+
+            margin-bottom:15px;
+
+        }
+
+        .terms_box ul{
+
+            padding-left:20px;
+
+        }
+
+        .terms_box ul li{
+
+            margin-bottom:15px;
+
+            color:#555;
+
+            line-height:1.9;
+
+        }
+
+        /* ================= CONTACT BOX ================= */
+
+        .contact_box{
+
+            text-align:center;
+
+            margin-top:40px;
+
+            padding:35px;
+
+            border-radius:24px;
+
+            background:#FBF7F0;
+
+            border:1px solid #E8DCC8;
+
+        }
+
+        .contact_box h3{
+
+            font-family:'Playfair Display',serif;
+
+            font-size:32px;
+
+            color:#B8924C;
+
+            margin-bottom:15px;
+
+        }
+
+        .contact_box p{
+
+            color:#666;
+
+            line-height:2;
+
+        }
+
+        .contact_box strong{
+
+            color:#1E1A14;
+
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media(max-width:768px){
+
+            .terms_container{
+
+                padding:35px 22px;
+
+            }
+
+            .main_title{
+
+                font-size:38px;
+
+            }
+
+            .small_title{
+
+                font-size:42px;
+
+            }
+
+            .terms_box{
+
+                padding:25px;
+
+            }
+
+            .terms_box h2{
+
+                font-size:24px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- ================= TOP BAR ================= -->
+
+<div class="top_bar">
+
+    <a href="{% url 'homepage' %}"
+       class="back_btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back to Homepage
+
+    </a>
+
+</div>
+
+<!-- ================= MAIN CONTAINER ================= -->
+
+<div class="terms_container">
+
+    <!-- HEADER -->
+
+    <div class="heading_section">
+
+        <h2 class="small_title">
+            Ethnic Vault
+        </h2>
+
+        <h1 class="main_title">
+            Terms & Conditions
+        </h1>
+
+        <p class="subtitle">
+
+            These Terms & Conditions outline the rules, responsibilities,
+            and policies for using the Ethnic Vault rental platform.
+            By accessing our website and placing rental bookings,
+            users agree to follow the conditions mentioned below.
+
+        </p>
+
+    </div>
+
+    <!-- SECTION 1 -->
+
+    <div class="terms_box">
+
+        <h2>
+            <i class="fa fa-user"></i>
+            User Eligibility
+        </h2>
+
+        <ul>
+
+            <li>
+                Users must provide valid personal and contact information while registering.
+            </li>
+
+            <li>
+                Users should use the platform responsibly and ethically.
+            </li>
+
+            <li>
+                Fake accounts or misleading information may result in account restriction.
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- SECTION 2 -->
+
+    <div class="terms_box">
+
+        <h2>
+            <i class="fa fa-shopping-bag"></i>
+            Booking & Rental Policy
+        </h2>
+
+        <ul>
+
+            <li>
+                Orders are confirmed only after admin approval.
+            </li>
+
+            <li>
+                Users must provide correct contact information during booking.
+            </li>
+
+            <li>
+                Outfit availability depends on existing bookings.
+            </li>
+
+            <li>
+                Rental duration must be followed strictly by the user.
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- SECTION 3 -->
+
+    <div class="terms_box">
+
+        <h2>
+            <i class="fa fa-warning"></i>
+            Damage Policy
+        </h2>
+
+        <ul>
+
+            <li>
+                Minor wear after usage is acceptable.
+            </li>
+
+            <li>
+                Heavy damage, stains, tears, or missing accessories may result in penalty charges.
+            </li>
+
+            <li>
+                Users are responsible for maintaining outfit quality during the rental period.
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- SECTION 4 -->
+
+    <div class="terms_box">
+
+        <h2>
+            <i class="fa fa-times-circle"></i>
+            Cancellation Policy
+        </h2>
+
+        <ul>
+
+            <li>
+                Orders cancelled before confirmation may be accepted.
+            </li>
+
+            <li>
+                Confirmed bookings may not be refundable.
+            </li>
+
+            <li>
+                Ethnic Vault reserves the right to cancel suspicious bookings.
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- SECTION 5 -->
+
+    <div class="terms_box">
+
+        <h2>
+            <i class="fa fa-shield"></i>
+            Privacy & Security
+        </h2>
+
+        <ul>
+
+            <li>
+                User information is stored securely within the system.
+            </li>
+
+            <li>
+                Personal information will not be shared with unauthorized third parties.
+            </li>
+
+            <li>
+                Data collected is used only for rental and delivery purposes.
+            </li>
+
+        </ul>
+
+    </div>
+
+    <!-- CONTACT BOX -->
+
+    <div class="contact_box">
+
+        <h3>
+            Need Assistance?
+        </h3>
+
+        <p>
+
+            For support, booking help, or rental-related queries,
+            feel free to contact the Ethnic Vault team.
+
+        </p>
+
+        <p>
+
+            <strong>Email:</strong>
+            ethnicvault@gmail.com
+
+            <br><br>
+
+            <strong>Phone:</strong>
+            +91 9876543210
+
+        </p>
+
+    </div>
+
+</div>
+
+</body>
+</html>

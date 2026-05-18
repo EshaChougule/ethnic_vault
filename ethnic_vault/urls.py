@@ -109,6 +109,10 @@ urlpatterns = [
     path('view_reviews/', views.view_reviews, name='view_reviews'),
     path('approve_review/<int:id>/', views.approve_review, name='approve_review'),
     path('reject_review/<int:id>/', views.reject_review, name='reject_review'),
+    path('terms-conditions/', views.terms_conditions, name='terms_conditions'),
+    path('faq/', views.faq_page, name='faq_page'),
+    path('rental-guidelines/', views.rental_guidelines_page, name='rental_guidelines_page'),
+    path('offers/', views.offers_page, name='offers_page'),
     path('update_design_code_details/<int:id>/',views.update_design_code_details,name="update_design_code_details")
 ]
 if settings.DEBUG:
