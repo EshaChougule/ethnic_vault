@@ -1636,3 +1636,8 @@ def reject_review(request, id):
     review.status = "REJECTED"
     review.save()
     return redirect('view_reviews')
+
+def delete_review(request, id):
+    review = Review.objects.get(id=id)
+    review.delete()
+    return redirect('view_reviews')
