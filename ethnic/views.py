@@ -848,8 +848,20 @@ def edit_profile_code(request):
     
 from .models import designs
 from django.shortcuts import get_object_or_404
+
 def rent_cloth(request, id):
+
     design = get_object_or_404(designs, id=id)
+
+    # CHECK AVAILABILITY
+    if not design.is_available:
+
+        messages.error(
+            request,
+            "This outfit is currently unavailable."
+        )
+
+        return redirect("view_design_details", id=id)
 
     return render(request, "rent_cloth.html", {
         'design': design
@@ -913,6 +925,10 @@ def rent_cloth_code(request):
             payment_status="PAID",
             return_status="Not Returned"
         )
+
+        # MAKE DESIGN UNAVAILABLE
+        design.is_available = False
+        design.save()
 
         screenshot = request.FILES.get("payment_screenshot")
 
@@ -1042,7 +1058,10 @@ def rent_check_banner(request):
         return redirect('homepage')  # or dashboard if you want
     
 def saree(request):
-    data = designs.objects.filter(category="Saree")
+    data = designs.objects.filter(
+    category="Saree",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Saree"
@@ -1050,7 +1069,10 @@ def saree(request):
 
 
 def lehenga(request):
-    data = designs.objects.filter(category="Lehenga")
+    data = designs.objects.filter(
+    category="Lehenga",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Lehenga"
@@ -1058,7 +1080,10 @@ def lehenga(request):
 
 
 def chaniya(request):
-    data = designs.objects.filter(category="Chaniya")
+    data = designs.objects.filter(
+    category="Chaniya",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Chaniya"
@@ -1066,7 +1091,10 @@ def chaniya(request):
 
 
 def sherwani(request):
-    data = designs.objects.filter(category="Sherwani")
+    data = designs.objects.filter(
+    category="Sherwani",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Sherwani"
@@ -1074,7 +1102,10 @@ def sherwani(request):
 
 
 def kurta(request):
-    data = designs.objects.filter(category="Kurta")
+    data = designs.objects.filter(
+    category="Kurta",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Kurta"
@@ -1082,7 +1113,10 @@ def kurta(request):
 
 
 def tuxedo(request):
-    data = designs.objects.filter(category="Tuxedo")
+    data = designs.objects.filter(
+    category="Tuxedo",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Tuxedo"
@@ -1090,7 +1124,10 @@ def tuxedo(request):
 
 
 def boys(request):
-    data = designs.objects.filter(category="Boys")
+    data = designs.objects.filter(
+    category="Boys",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Boys Wear"
@@ -1098,7 +1135,10 @@ def boys(request):
 
 
 def girls(request):
-    data = designs.objects.filter(category="Girls")
+    data = designs.objects.filter(
+    category="Girls",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Girls Wear"
@@ -1106,7 +1146,10 @@ def girls(request):
 
 
 def menAccessories(request):
-    data = designs.objects.filter(category="Men Accessories")
+    data = designs.objects.filter(
+    category="Men Accesso",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Men Accessories"
@@ -1114,7 +1157,10 @@ def menAccessories(request):
 
 
 def womenAccessories(request):
-    data = designs.objects.filter(category="Women Accessories")
+    data = designs.objects.filter(
+    category="Women Accessories",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Women Accessories"
@@ -1122,7 +1168,10 @@ def womenAccessories(request):
 
 
 def menfootwear(request):
-    data = designs.objects.filter(category="Men Footwear")
+    data = designs.objects.filter(
+    category="Men Footwear",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Men Footwear"
@@ -1130,7 +1179,10 @@ def menfootwear(request):
 
 
 def womenfootwear(request):
-    data = designs.objects.filter(category="Women Footwear")
+    data = designs.objects.filter(
+    category="Women Footwear",
+    status='Approved'
+)
     return render(request, "category_base.html", {
         "design": data,
         "category_name": "Women Footwear"
@@ -1250,6 +1302,12 @@ def return_payment(request, rent_id):
         # UPDATE RETURN STATUS
         rent.return_status = "RETURNED"
         rent.save()
+
+        # MAKE DESIGN AVAILABLE AGAIN
+        design_obj = designs.objects.get(id=rent.design_id)
+
+        design_obj.is_available = True
+        design_obj.save()
 
         return redirect("designer_dashboard")
 
