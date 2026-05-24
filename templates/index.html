@@ -521,9 +521,9 @@ color:white !important;
 
 position:absolute;
 
-top:14px;
+top:-8px;;
 
-right:18px;
+right:10px;
 
 font-size:28px !important;
 
@@ -586,36 +586,72 @@ display:block;
 .banner_overlay{
 position:absolute;
 inset:0;
-background:rgba(0,0,0,0.08);
-}
-
-.banner_content{
-position:absolute;
-top:50%;
-left:10%;
-transform:translateY(-50%);
-z-index:2;
-max-width:600px;
+background:
+linear-gradient(
+90deg,
+rgba(255,255,255,0.08),
+rgba(255,255,255,0.02)
+);
 }
 
 .banner_content h1{
+
 font-family:'Playfair Display',serif;
-font-size:82px;
-line-height:1.1;
-color:#FAF7F2;
-font-weight:700;
-letter-spacing:2px;
-text-shadow:2px 4px 18px rgba(0,0,0,0.25);
-animation:fadeUp 1.5s ease;
+
+font-size:48px;
+
+line-height:1.3;
+
+color:#ffffff;
+
+font-weight:600;
+
+letter-spacing:1px;
+
+text-shadow:
+0 4px 18px rgba(0,0,0,0.45);
+
+max-width:500px;
+
 }
 
+/* SMALL GOLD TEXT */
+
 .banner_content h1 span{
+
 font-family:'Great Vibes',cursive;
-font-size:95px;
+
+font-size:52px;
+
 font-weight:400;
-color:#f8e7c2;
+
+color:#F6D89C;
+
 display:block;
+
 margin-bottom:10px;
+
+letter-spacing:2px;
+
+}
+
+/* SUBTITLE */
+
+.hero_subtitle{
+
+color:rgba(255,255,255,0.92);
+
+font-size:15px;
+
+line-height:1.8;
+
+margin-top:14px;
+
+max-width:420px;
+
+text-shadow:
+0 2px 8px rgba(0,0,0,0.35);
+
 }
 
 .carousel-item{
@@ -637,16 +673,27 @@ transform:translateY(0);
 /* ================= COLLECTION ================= */
 
 .fashion_section{
-padding:70px 0;
+padding:45px 0 20px;
 }
 
 .fashion_taital{
+
 font-family:'Playfair Display',serif;
-font-size:42px;
+
+font-size:58px;
+
+font-weight:700;
+
 color:#2B2B2B;
+
 text-align:center;
-margin-bottom:50px;
+
+margin-bottom:28px;
+
 position:relative;
+
+letter-spacing:1px;
+
 }
 
 .product_card{
@@ -689,8 +736,13 @@ z-index:2;
 /* HOVER */
 
 .product_card:hover{
-transform:translateY(-6px);
-box-shadow:0 10px 20px rgba(0,0,0,0.08);
+
+transform:
+translateY(-10px)
+scale(1.01);
+
+box-shadow:
+0 18px 40px rgba(0,0,0,0.12);
 }
 
 .product_card:hover::before{
@@ -743,48 +795,82 @@ transform:scale(1.08);
 }
 
 .overlay_buttons{
+
 position:absolute;
 bottom:18px;
 left:50%;
 transform:translateX(-50%);
+
 display:flex;
+flex-direction:column;
+
 gap:10px;
+
+width:85%;
+
 opacity:0;
+
 transition:0.4s ease;
 }
 
 .image_wrapper:hover .overlay_buttons{
+
 opacity:1;
-bottom:25px;
+bottom:24px;
 }
 
 .overlay_buttons a{
+
 text-decoration:none;
-padding:10px 16px;
-border-radius:30px;
-font-size:12px;
+
+padding:13px 18px;
+
+border-radius:14px;
+
+font-size:13px;
+
 font-weight:600;
+
 letter-spacing:0.5px;
-backdrop-filter:blur(10px);
+
+text-align:center;
+
 transition:0.3s ease;
+
+width:100%;
 }
 
-/* DETAILS BUTTON */
+/* VIEW DETAILS */
 
 .overlay_buttons a:first-child{
-background:rgba(255,255,255,0.9);
+
+background:rgba(255,255,255,0.92);
+
 color:#111;
+
+backdrop-filter:blur(10px);
 }
 
-/* CART BUTTON */
+/* ADD TO CART */
 
 .overlay_buttons a:last-child{
-background:#B8924C;
+
+background:linear-gradient(
+135deg,
+#B8924C,
+#D8B56A
+);
+
 color:white;
+
+box-shadow:0 8px 18px rgba(184,146,76,0.3);
 }
 
+/* HOVER */
+
 .overlay_buttons a:hover{
-transform:translateY(-3px);
+
+transform:translateY(-2px) scale(1.02);
 }
 
 .shirt_text{
@@ -1127,21 +1213,45 @@ max-width:500px;
 }
 
 .hero_btn{
+
 display:inline-block;
-margin-top:28px;
-padding:14px 32px;
-background:#B8924C;
+
+margin-top:24px;
+
+padding:12px 28px;
+
+background:rgba(255,255,255,0.16);
+
+border:1px solid rgba(255,255,255,0.35);
+
+backdrop-filter:blur(8px);
+
 color:white;
+
 text-decoration:none;
+
 border-radius:40px;
-font-weight:600;
-transition:0.3s ease;
+
+font-weight:500;
+
+font-size:14px;
+
+letter-spacing:1px;
+
+transition:0.35s ease;
+
 }
 
 .hero_btn:hover{
-background:#8c6a2d;
+
+background:#B8924C;
+
+border-color:#B8924C;
+
 transform:translateY(-3px);
+
 color:white;
+
 }
 
 .section_badge{
@@ -1275,6 +1385,43 @@ border-top:1px solid rgba(255,255,255,0.05);
 position:relative;
 flex:1;
 max-width:500px;
+}
+.search_bar_box{
+
+display:flex;
+
+align-items:center;
+
+background:#f3f3f3;
+
+border-radius:40px;
+
+overflow:hidden;
+
+box-shadow:0 3px 10px rgba(0,0,0,0.04);
+
+}
+
+.search_bar_box button{
+
+border:none;
+
+background:#B8924C;
+
+color:white;
+
+padding:0 22px;
+
+height:48px;
+
+transition:0.3s ease;
+
+}
+
+.search_bar_box button:hover{
+
+background:#8c6a2d;
+
 }
 
 .search_input{
@@ -1572,7 +1719,7 @@ transform:translateY(-30px);
 width:140px;
 height:2px;
 
-margin:20px auto 60px;
+margin:10px auto 25px;
 
 background:
 linear-gradient(
@@ -1591,8 +1738,12 @@ opacity:0.7;
 .section_badge{
 opacity:1;
 transform:none;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
 transition:0.4s ease;
 }
+
 .active_reveal{
 opacity:1 !important;
 transform:translateY(0) !important;
@@ -1615,6 +1766,37 @@ scroll-behavior:smooth;
 .step,
 .banner_slide{
 contain:layout paint;
+}
+
+.category_menu{
+
+border:none;
+
+border-radius:20px;
+
+padding:14px;
+
+box-shadow:0 15px 35px rgba(0,0,0,0.08);
+
+margin-top:14px;
+}
+
+.category_menu .dropdown-item{
+
+padding:10px 16px;
+
+border-radius:12px;
+
+transition:0.3s ease;
+}
+
+.category_menu .dropdown-item:hover{
+
+background:#F8F3EA;
+
+color:#B8924C;
+
+padding-left:20px;
 }
 </style>
 
@@ -1875,18 +2057,28 @@ contain:layout paint;
 
         <div class="search_wrapper">
 
-            <input type="text"
+            <div class="search_bar_box">
+
+                <input type="text"
                     id="searchInput"
                     class="search_input"
                     placeholder="Search collections...">
 
-            <div id="suggestionsBox" class="suggestions_box"></div>
+            <button id="searchBtn">
+
+                <i class="fa fa-search"></i>
+
+            </button>
 
         </div>
 
+        <div id="suggestionsBox"
+            class="suggestions_box">
+        </div>
+
+    </div>
         <!-- RIGHT -->
 
-        <!-- RIGHT -->
 
 <div class="nav_right">
 
@@ -1969,7 +2161,7 @@ contain:layout paint;
     <div id="my_slider"
     class="carousel slide"
     data-ride="carousel"
-    data-interval="4000">
+    data-interval="6000">
         <div class="carousel-inner">
 
             <!-- BANNER 1 -->
@@ -1981,18 +2173,24 @@ contain:layout paint;
 
                 <div class="banner_content">
 
-                    <h1>
-                        Rent It.<br>
-                        Wear It.<br>
-                        Return It.
+                    <h1 class="hero_title">
+
+                        <span>Ethnic Vault</span>
+
+                        Rent • Style • Return
+
                     </h1>
                     <p class="hero_subtitle">
                         Premium designer ethnic wear for weddings,
                         festive celebrations and unforgettable moments.
                     </p>
 
-                    <a href="#collections" class="hero_btn">
-                        Explore Collection
+                    <a href="javascript:void(0)"
+                        class="hero_btn"
+                        id="exploreBtn">
+
+                        Explore Collections
+
                     </a>
 
                 </div>
@@ -2008,10 +2206,26 @@ contain:layout paint;
 
                 <div class="banner_content">
 
-                    <h1>
-                        Royal Wedding<br>
-                        Collection
+                    <h1 class="hero_title">
+
+                        <span>Wedding Luxury</span>
+
+                        Crafted For Grand Celebrations
+
                     </h1>
+
+                    <p class="hero_subtitle">
+
+                        Designer outfits curated for weddings,
+                        receptions and unforgettable memories.
+
+                    </p>
+                    <a href="javascript:void(0)"
+                        class="hero_btn">
+
+                        Explore Collections
+
+                    </a>
 
                 </div>
 
@@ -2026,10 +2240,26 @@ contain:layout paint;
 
                 <div class="banner_content">
 
-                    <h1>
-                        Style Beyond<br>
-                        Ownership
+                    <h1 class="hero_title">
+
+                        <span>Luxury Fashion</span>
+
+                            Wear Royalty Without Buying
+
                     </h1>
+
+                    <p class="hero_subtitle">
+
+                        Experience premium ethnic fashion
+                        at a fraction of the original price.
+
+                    </p>
+                    <a href="javascript:void(0)"
+                        class="hero_btn">
+
+                        Explore Collections
+
+                    </a>
 
                 </div>
 
@@ -2712,6 +2942,17 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
 
+
+/* OPEN COLLECTION DROPDOWN */
+
+document.getElementById("exploreBtn").addEventListener("click", function(){
+
+const dropdownToggle =
+document.querySelector(".category_btn");
+
+dropdownToggle.click();
+
+});
 /* ================= SEARCH AUTO SUGGEST ================= */
 
 const searchInput = document.getElementById("searchInput");
@@ -2793,6 +3034,7 @@ searchInput.addEventListener("input", function(){
 clearTimeout(searchTimeout);
 
 searchTimeout = setTimeout(() => {
+
 const value = this.value.toLowerCase();
 
 suggestionsBox.innerHTML = "";
@@ -2821,8 +3063,6 @@ div.classList.add("suggestion_item");
 
 div.innerText = item.name;
 
-/* CLICK REDIRECT */
-
 div.onclick = function(){
 
 window.location.href = item.url;
@@ -2838,6 +3078,8 @@ suggestionsBox.appendChild(div);
 suggestionsBox.style.display = "none";
 
 }
+
+},300);
 
 });
 
@@ -2862,6 +3104,29 @@ window.location.href = matched.url;
 }
 
 }
+
+});
+
+/* ================= HERO BUTTON DROPDOWN ================= */
+
+document.querySelectorAll(".hero_btn").forEach(button => {
+
+button.addEventListener("click", function(e){
+
+e.preventDefault();
+
+const dropdownBtn = document.querySelector(".category_btn");
+
+dropdownBtn.click();
+
+/* smooth scroll to navbar */
+
+document.querySelector(".navbar_section")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+});
 
 });
 
@@ -2906,9 +3171,9 @@ setTimeout(function(){
 
 splash.remove();
 
-},1000);
-
 },1200);
+
+},3000); // stays for 3 seconds
 
 });
 </script>
