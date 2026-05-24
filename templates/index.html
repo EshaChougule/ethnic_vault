@@ -652,18 +652,82 @@ position:relative;
 }
 
 .product_card{
-background:#fff;
-border-radius:20px;
-padding:15px;
-box-shadow:0 8px 25px rgba(0,0,0,0.06);
+background:rgba(255,255,255,0.72);
+backdrop-filter:blur(14px);
+border-radius:28px;
+padding:14px;
 overflow:hidden;
 position:relative;
-transition:0.4s ease;
+transition:0.5s ease;
 height:100%;
+border:1px solid rgba(255,255,255,0.5);
+
+box-shadow:
+0 10px 35px rgba(0,0,0,0.06);
 }
 
+/* TOP GOLD SHINE */
+
+.product_card::before{
+content:"";
+position:absolute;
+top:0;
+left:-120%;
+width:70%;
+height:100%;
+background:
+linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.55),
+transparent
+);
+
+transform:skewX(-25deg);
+transition:0.8s;
+z-index:2;
+}
+
+/* HOVER */
+
 .product_card:hover{
-transform:translateY(-8px);
+transform:
+translateY(-12px)
+scale(1.01);
+
+box-shadow:
+0 18px 45px rgba(0,0,0,0.12);
+}
+
+.product_card:hover::before{
+left:140%;
+}
+
+/* ================= RENTED PRODUCT EFFECT ================= */
+
+.unavailable_card{
+opacity:0.6;
+filter:grayscale(40%);
+position:relative;
+}
+
+.unavailable_overlay{
+position:absolute;
+top:15px;
+left:15px;
+background:#111;
+color:white;
+padding:8px 16px;
+border-radius:30px;
+font-size:12px;
+font-weight:600;
+z-index:5;
+letter-spacing:1px;
+}
+
+.disabled_btn{
+pointer-events:none;
+opacity:0.5;
 }
 
 .image_wrapper{
@@ -674,32 +738,59 @@ border-radius:14px;
 
 .image_wrapper img{
 width:100%;
-height:320px;
+height:360px;
 object-fit:cover;
+border-radius:18px;
+transition:0.6s ease;
+}
+
+.product_card:hover .image_wrapper img{
+transform:scale(1.08);
 }
 
 .overlay_buttons{
 position:absolute;
-inset:0;
-background:rgba(0,0,0,0.4);
+bottom:18px;
+left:50%;
+transform:translateX(-50%);
 display:flex;
-align-items:center;
-justify-content:center;
+gap:10px;
 opacity:0;
-transition:0.4s;
+transition:0.4s ease;
 }
 
 .image_wrapper:hover .overlay_buttons{
 opacity:1;
+bottom:25px;
 }
 
 .overlay_buttons a{
-background:white;
-padding:10px 18px;
-border-radius:30px;
 text-decoration:none;
-color:#111;
+padding:10px 16px;
+border-radius:30px;
+font-size:12px;
 font-weight:600;
+letter-spacing:0.5px;
+backdrop-filter:blur(10px);
+transition:0.3s ease;
+}
+
+/* DETAILS BUTTON */
+
+.overlay_buttons a:first-child{
+background:rgba(255,255,255,0.9);
+color:#111;
+}
+
+/* CART BUTTON */
+
+.overlay_buttons a:last-child{
+background:#B8924C;
+color:white;
+}
+
+.overlay_buttons a:hover{
+transform:translateY(-3px);
 }
 
 .shirt_text{
@@ -749,21 +840,69 @@ margin-bottom:50px;
 }
 
 .step{
-padding:25px;
+padding:35px 25px;
+border-radius:28px;
+transition:0.5s ease;
+position:relative;
+overflow:hidden;
+background:transparent;
+}
+
+/* GOLD LIGHT */
+
+.step::before{
+content:"";
+position:absolute;
+width:180px;
+height:180px;
+background:rgba(184,146,76,0.08);
+border-radius:50%;
+top:-90px;
+right:-90px;
+transition:0.5s ease;
+}
+
+.step:hover{
+background:white;
+transform:translateY(-12px);
+
+box-shadow:
+0 15px 40px rgba(0,0,0,0.08);
+}
+
+.step:hover::before{
+transform:scale(1.3);
 }
 
 .step_icon{
-width:90px;
-height:90px;
-background:#B8924C;
+width:95px;
+height:95px;
+background:
+linear-gradient(135deg,#B8924C,#D8B56A);
+
 margin:auto;
+
 border-radius:50%;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 font-size:34px;
 color:white;
+
 margin-bottom:25px;
+
+transition:0.4s ease;
+
+box-shadow:
+0 10px 25px rgba(184,146,76,0.28);
+}
+
+.step:hover .step_icon{
+transform:
+rotate(8deg)
+scale(1.08);
 }
 
 
@@ -1197,10 +1336,302 @@ background:#F8F3EA;
 color:#B8924C;
 }
 
+/* ================= ULTRA LUXURY SPLASH SCREEN ================= */
+
+/* ================= CINEMATIC SPLASH SCREEN ================= */
+
+#splash_screen{
+
+position:fixed;
+
+top:0;
+left:0;
+
+width:100%;
+height:100vh;
+
+background:
+radial-gradient(circle at top left,
+#f5e7ca 0%,
+#f8f3ea 35%,
+#ffffff 100%);
+
+display:flex;
+
+align-items:center;
+justify-content:center;
+
+z-index:9999999999;
+
+overflow:hidden;
+
+transition:
+opacity 1s ease,
+visibility 1s ease;
+}
+
+/* HIDE */
+
+#splash_screen.hide{
+
+opacity:0;
+
+visibility:hidden;
+
+pointer-events:none;
+}
+
+/* MOVING GOLD LIGHT */
+
+.gold_light{
+
+position:absolute;
+
+width:500px;
+height:500px;
+
+border-radius:50%;
+
+background:
+rgba(184,146,76,0.18);
+
+filter:blur(120px);
+
+animation:
+moveLight 7s ease-in-out infinite;
+}
+
+.gold_light.two{
+
+width:400px;
+height:400px;
+
+right:-100px;
+bottom:-100px;
+
+animation-delay:2s;
+}
+
+/* CONTENT */
+
+.splash_content{
+
+position:relative;
+
+z-index:2;
+
+text-align:center;
+}
+
+/* LOGO */
+
+.splash_logo{
+
+font-family:'Playfair Display',serif;
+
+font-size:88px;
+
+font-weight:700;
+
+letter-spacing:2px;
+
+color:#B8924C;
+
+opacity:0;
+
+transform:translateY(30px) scale(0.96);
+
+animation:
+logoEntrance 1.4s ease forwards;
+
+text-shadow:
+0 10px 30px rgba(184,146,76,0.2);
+}
+
+/* SUBTEXT */
+
+.splash_tagline{
+
+margin-top:18px;
+
+font-size:14px;
+
+letter-spacing:6px;
+
+color:#5a4a33;
+
+opacity:0;
+
+animation:
+tagReveal 1.5s ease forwards;
+
+animation-delay:0.9s;
+}
+
+/* GOLD LINE */
+
+.splash_line{
+
+width:0;
+
+height:2px;
+
+background:#D8B56A;
+
+margin:24px auto;
+
+border-radius:20px;
+
+animation:
+lineOpen 1.2s ease forwards;
+
+animation-delay:0.5s;
+}
+
+/* ANIMATIONS */
+
+@keyframes logoEntrance{
+
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+}
+
+@keyframes tagReveal{
+
+to{
+opacity:1;
+letter-spacing:4px;
+}
+
+}
+
+@keyframes lineOpen{
+
+to{
+width:180px;
+}
+
+}
+
+@keyframes moveLight{
+
+0%{
+transform:translate(-40px,-20px);
+}
+
+50%{
+transform:translate(40px,20px);
+}
+
+100%{
+transform:translate(-40px,-20px);
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.splash_logo{
+font-size:54px;
+}
+
+.splash_tagline{
+font-size:11px;
+letter-spacing:3px;
+}
+
+}
+
+.floating_bg{
+position:fixed;
+inset:0;
+pointer-events:none;
+z-index:-1;
+
+background-image:
+radial-gradient(circle at 20% 30%, rgba(184,146,76,0.08) 0, transparent 120px),
+radial-gradient(circle at 80% 20%, rgba(224,192,141,0.08) 0, transparent 160px),
+radial-gradient(circle at 60% 80%, rgba(184,146,76,0.06) 0, transparent 140px);
+
+animation:floatingMove 18s ease-in-out infinite alternate;
+}
+
+@keyframes floatingMove{
+
+0%{
+transform:translateY(0px);
+}
+
+100%{
+transform:translateY(-30px);
+}
+
+}
+
+.luxury_divider{
+width:140px;
+height:2px;
+
+margin:20px auto 60px;
+
+background:
+linear-gradient(
+to right,
+transparent,
+#D8B56A,
+transparent
+);
+
+opacity:0.7;
+}
+
+.product_card,
+.step,
+.fashion_taital,
+.section_badge{
+opacity:0;
+transform:translateY(40px);
+transition:1s ease;
+}
+
+.active_reveal{
+opacity:1 !important;
+transform:translateY(0) !important;
+}
 </style>
 
 </head>
 <body>
+
+    <!-- ================= SPLASH SCREEN ================= -->
+
+<div class="floating_bg"></div>
+    <div id="splash_screen">
+
+        <div class="gold_light"></div>
+
+        <div class="gold_light two"></div>
+
+        <div class="splash_content">
+
+            <h1 class="splash_logo">
+                Ethnic Vault
+            </h1>
+
+            <div class="splash_line"></div>
+
+            <p class="splash_tagline">
+                LUXURY ETHNIC RENTALS
+            </p>
+
+        </div>
+    </div>
+
 
 <!-- ================= LUXURY RIBBON ================= -->
 
@@ -1598,6 +2029,7 @@ color:#B8924C;
 </section>
 
 <!-- ================= HER COLLECTION ================= -->
+<div class="luxury_divider"></div>
 
 <div class="fashion_section">
 
@@ -1617,7 +2049,7 @@ color:#B8924C;
 
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
-                <div class="product_card">
+                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
 
                     <a href="{% url 'add_to_wishlist' d.id %}"
                         class="wishlist_icon">
@@ -1636,6 +2068,12 @@ color:#B8924C;
                     </a>
 
                     <div class="image_wrapper">
+
+                        {% if not d.is_available %}
+                        <div class="unavailable_overlay">
+                            Currently Rented
+                        </div>
+                        {% endif %}
 
                         <img src="{{ d.design_image1.url }}">
 
@@ -1674,7 +2112,7 @@ color:#B8924C;
 </div>
 
 <!-- ================= HIS COLLECTION ================= -->
-
+<div class="luxury_divider"></div>
 <div class="fashion_section">
 
     <div class="container">
@@ -1693,7 +2131,7 @@ color:#B8924C;
 
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
-                <div class="product_card">
+                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
 
                     <a href="{% url 'add_to_wishlist' d.id %}"
                         class="wishlist_icon">
@@ -1712,6 +2150,12 @@ color:#B8924C;
                     </a>
 
                     <div class="image_wrapper">
+
+                        {% if not d.is_available %}
+                        <div class="unavailable_overlay">
+                            Currently Rented
+                        </div>
+                        {% endif %}
 
                         <img src="{{ d.design_image1.url }}">
 
@@ -1750,7 +2194,7 @@ color:#B8924C;
 </div>
 
 <!-- ================= KIDS COLLECTION ================= -->
-
+<div class="luxury_divider"></div>
 <div class="fashion_section">
 
     <div class="container">
@@ -1769,7 +2213,7 @@ color:#B8924C;
 
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
-                <div class="product_card">
+                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
 
                     <a href="{% url 'add_to_wishlist' d.id %}"
                         class="wishlist_icon">
@@ -1788,6 +2232,12 @@ color:#B8924C;
                     </a>
 
                     <div class="image_wrapper">
+
+                        {% if not d.is_available %}
+                        <div class="unavailable_overlay">
+                            Currently Rented
+                        </div>
+                        {% endif %}
 
                         <img src="{{ d.design_image1.url }}">
 
@@ -1826,7 +2276,7 @@ color:#B8924C;
 </div>
 
 <!-- ================= ACCESSORIES ================= -->
-
+<div class="luxury_divider"></div>
 <div class="fashion_section">
 
     <div class="container">
@@ -1845,7 +2295,7 @@ color:#B8924C;
 
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
-                <div class="product_card">
+                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
 
                     <a href="{% url 'add_to_wishlist' d.id %}"
                         class="wishlist_icon">
@@ -1865,6 +2315,12 @@ color:#B8924C;
 
                     <div class="image_wrapper">
 
+                        {% if not d.is_available %}
+                        <div class="unavailable_overlay">
+                            Currently Rented
+                        </div>
+                        {% endif %}
+
                         <img src="{{ d.design_image1.url }}">
 
                         <div class="overlay_buttons">
@@ -1872,10 +2328,21 @@ color:#B8924C;
                             <a href="{% url 'view_design_details' d.id %}">
                                 View Details
                             </a>
+                            {% if d.is_available %}
+
                             <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
                                 <i class="fa fa-shopping-cart"></i>
                                 Add to Cart
                             </a>
+
+                            {% else %}
+
+                            <a class="cart_btn mt-2 disabled_btn">
+                                <i class="fa fa-ban"></i>
+                                Not Available
+                            </a>
+
+                            {% endif %}
 
                         </div>
 
@@ -1902,7 +2369,7 @@ color:#B8924C;
 </div>
 
 <!-- ================= FOOTWEAR ================= -->
-
+<div class="luxury_divider"></div>
 <div class="fashion_section">
 
     <div class="container">
@@ -1921,7 +2388,7 @@ color:#B8924C;
 
             <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
 
-                <div class="product_card">
+                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
 
                     <a href="{% url 'add_to_wishlist' d.id %}"
                         class="wishlist_icon">
@@ -1940,6 +2407,12 @@ color:#B8924C;
                     </a>
 
                     <div class="image_wrapper">
+
+                        {% if not d.is_available %}
+                        <div class="unavailable_overlay">
+                            Currently Rented
+                        </div>
+                        {% endif %}
 
                         <img src="{{ d.design_image1.url }}">
 
@@ -2399,5 +2872,56 @@ alert("{{ message }}");
 <script src="{% static 'js/jquery.min.js' %}"></script>
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script>
+
+/* ================= SPLASH SCREEN ================= */
+
+window.addEventListener("load", function(){
+
+const splash = document.getElementById("splash_screen");
+
+setTimeout(function(){
+
+splash.classList.add("hide");
+
+setTimeout(function(){
+
+splash.remove();
+
+},1000);
+
+},2500);
+
+});
+</script>
+<script>
+
+const reveals = document.querySelectorAll(
+'.product_card,.step,.fashion_taital,.section_badge'
+);
+
+function revealOnScroll(){
+
+const trigger = window.innerHeight * 0.88;
+
+reveals.forEach(item=>{
+
+const top = item.getBoundingClientRect().top;
+
+if(top < trigger){
+
+item.classList.add("active_reveal");
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+revealOnScroll();
+
+</script>
 </body>
 </html>

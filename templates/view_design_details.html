@@ -268,10 +268,21 @@ alert("{{ message }}");
         <p><b>Status:</b> {{ design.status }}</p>
     </div>
 
+    {% if design.is_available %}
+
     <a href="{% url 'rent_cloth' design.id %}" class="rent-btn">
         Rent Now
     </a>
 
+    {% else %}
+
+        <button class="rent-btn"
+            style="background:#999; cursor:not-allowed;"
+            disabled>
+            Currently Unavailable
+        </button>
+
+    {% endif %}
     <!-- REVIEW SECTION -->
     <div class="review-section">
 

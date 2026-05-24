@@ -1147,7 +1147,7 @@ def girls(request):
 
 def menAccessories(request):
     data = designs.objects.filter(
-    category="Men Accesso",
+    category="Men Accessories",
     status='Approved'
 )
     return render(request, "category_base.html", {
@@ -1363,6 +1363,16 @@ def add_to_cart(request, id):
     user_email = request.session.get('email')
 
     design_obj = get_object_or_404(designs, id=id)
+
+    # CHECK AVAILABILITY
+    if not design_obj.is_available:
+
+        messages.error(
+            request,
+        "This outfit is currently unavailable"
+    )
+
+        return redirect("homepage")
 
     # GET OR CREATE CART
     user_cart, created = cart.objects.get_or_create(
