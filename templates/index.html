@@ -20,3162 +20,1935 @@
       <!-- Scrollbar Custom CSS -->
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
-      <!-- fonts -->
-      <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
       <!-- font awesome -->
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <!--  -->
-      <!-- owl stylesheets -->
-      <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
       <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
-
       <style>
+         /* ================= RESET ================= */
+         *{
+         margin:0;
+         padding:0;
+         box-sizing:border-box;
+         }
+         body{
+         font-family:'Poppins',sans-serif;
+         background-color:#F8F3EA;
+         background-image:
+         linear-gradient(rgba(248,243,234,0.78),
+         rgba(248,243,234,0.78)),
+         url("{% static 'images/ethnic-pattern.png' %}");
+         background-size:320px;
+         background-repeat:repeat;
+         background-attachment:scroll;
+         background-position:center;
+         overflow-x:hidden;
+         color:#2B2B2B;
+         }
+         /* ================= LUXURY TOP RIBBON ================= */
+         .top_ribbon{
+         width:100%;
+         position:relative;
+         z-index:999;
+         margin:0;
+         padding:0;
+         }
+         .ribbon_container{
+         width:100%;
+         background:
+         linear-gradient(
+         135deg,
+         #1B1712,
+         #2B241C,
+         #1B1712
+         );
+         padding:16px 40px;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         gap:22px;
+         flex-wrap:wrap;
+         box-shadow:
+         0 10px 30px rgba(0,0,0,0.16);
+         border-bottom:1px solid rgba(224,192,141,0.12);
+         position:relative;
+         overflow:hidden;
+         }
+         /* GOLD GLOW EFFECT */
+         .ribbon_container::before{
+         content:"";
+         position:absolute;
+         width:260px;
+         height:260px;
+         background:rgba(224,192,141,0.08);
+         border-radius:50%;
+         top:-140px;
+         left:-120px;
+         filter:blur(25px);
+         }
+         .ribbon_container::after{
+         content:"";
+         position:absolute;
+         width:240px;
+         height:240px;
+         background:rgba(184,146,76,0.08);
+         border-radius:50%;
+         bottom:-140px;
+         right:-120px;
+         filter:blur(25px);
+         }
+         /* LINKS */
+         .ribbon_link{
+         text-decoration:none;
+         color:#F8F3EA;
+         font-size:14px;
+         font-weight:500;
+         padding:10px 22px;
+         border-radius:30px;
+         transition:0.35s ease;
+         position:relative;
+         z-index:2;
+         letter-spacing:0.5px;
+         border:1px solid transparent;
+         }
+         /* HOVER EFFECT */
+         .ribbon_link:hover{
+         background:rgba(224,192,141,0.12);
+         border:1px solid rgba(224,192,141,0.22);
+         color:#E0C08D;
+         transform:translateY(-2px);
+         text-decoration:none;
+         }
+         /* SPECIAL HIGHLIGHT BUTTON */
+         .ribbon_highlight{
+         background:#B8924C;
+         color:white !important;
+         font-weight:600;
+         padding:11px 26px;
+         box-shadow:0 6px 18px rgba(184,146,76,0.35);
+         }
+         .ribbon_highlight:hover{
+         background:#8c6a2d;
+         color:white !important;
+         }
+         /* MOBILE */
+         @media(max-width:768px){
+         .ribbon_container{
+         padding:14px 10px;
+         gap:10px;
+         }
+         .ribbon_link{
+         padding:8px 14px;
+         font-size:13px;
+         }
+         }
+         /* ================= LOGO SECTION ================= */
+         .logo_section{
+         padding:32px 0 26px;
+         text-align:center;
+         position:relative;
+         background:
+         linear-gradient(rgba(255,255,255,0.95),
+         rgba(255,255,255,0.95)),
+         url("{% static 'images/ethnic-pattern.png' %}");
+         background-size:280px;
+         border-bottom:1px solid rgba(184,146,76,0.12);
+         overflow:hidden;
+         }
+         /* GOLD GLOW */
+         .logo_section::before{
+         content:"";
+         position:absolute;
+         width:280px;
+         height:280px;
+         background:rgba(184,146,76,0.08);
+         border-radius:50%;
+         top:-140px;
+         left:-80px;
+         filter:blur(25px);
+         }
+         .logo_section::after{
+         content:"";
+         position:absolute;
+         width:220px;
+         height:220px;
+         background:rgba(224,192,141,0.08);
+         border-radius:50%;
+         bottom:-100px;
+         right:-50px;
+         filter:blur(25px);
+         }
+         /* LOGO */
+         .logo_name{
+         font-family:'Great Vibes',cursive;
+         font-size:74px;
+         color:#B8924C;
+         margin-bottom:8px;
+         position:relative;
+         z-index:2;
+         }
+         /* TAGLINE */
+         .logo_tagline{
+         font-size:15px;
+         color:#666;
+         letter-spacing:1px;
+         position:relative;
+         z-index:2;
+         }
+         /* SMALL LUXURY LINE */
+         .logo_tagline::before,
+         .logo_tagline::after{
+         content:"";
+         display:inline-block;
+         width:55px;
+         height:1px;
+         background:#D8B56A;
+         margin:0 12px;
+         vertical-align:middle;
+         }
+         /* ================= NAVBAR ================= */
+         .nav_wrapper{
+         display:flex;
+         align-items:center;
+         justify-content:space-between;
+         gap:20px;
+         flex-wrap:wrap;
+         }
+         .toggle_icon img{
+         width:30px;
+         cursor:pointer;
+         filter:
+         brightness(0)
+         saturate(100%)
+         sepia(35%)
+         hue-rotate(5deg)
+         brightness(90%);
+         }
+         .category_btn{
+         background:#111;
+         color:white;
+         padding:12px 22px;
+         border:none;
+         border-radius:30px;
+         font-weight:500;
+         }
+        
+         .search_box input{
+         width:100%;
+         padding:12px 18px;
+         border:none;
+         outline:none;
+         background:#f8f8f8;
+         border-radius:30px;
+         font-size:14px;
+         }
+         .search_box button{
+         border:none;
+         background:#B8924C;
+         color:white;
+         padding:0 22px;
+         }
+         .nav_right{
+         display:flex;
+         align-items:center;
+         gap:22px;
+         }
+         .nav_right a{
+         text-decoration:none;
+         color:#222;
+         font-weight:500;
+         }
+         .nav_right a:hover{
+         color:#B8924C;
+         }
+         /* ================= SIDE NAV ================= */
+         .sidenav{
+         height:auto;
+         max-height:85vh;
+         width:0;
+         position:fixed;
+         z-index:999999;
+         top:85px;
+         left:15px;
+         background:#1E1A14;
+         overflow-x:hidden;
+         padding-top:20px;
+         padding-bottom:20px;
+         transition:0.4s ease;
+         border-radius:22px;
+         box-shadow:0 10px 35px rgba(0,0,0,0.28);
+         }
+         .sidenav a{
+         padding:12px 28px;
+         text-decoration:none;
+         font-size:16px;
+         color:#FAF7F2;
+         display:block;
+         transition:0.3s;
+         white-space:nowrap;
+         }
+        
+         /* ================= SIDE MENU IMPROVED ================= */
+         .side_menu_title{
+         font-family:'Playfair Display',serif;
+         font-size:28px;
+         color:#E0C08D;
+         text-align:center;
+         margin-bottom:25px;
+         padding-bottom:18px;
+         border-bottom:1px solid rgba(255,255,255,0.08);
+         letter-spacing:1px;
+         }
+         .sidenav a i{
+         margin-right:12px;
+         font-size:15px;
+         width:20px;
+         }
+         .sidenav a{
+         font-weight:500;
+         border-radius:12px;
+         margin:4px 12px;
+         transition:0.3s ease;
+         }
+         .sidenav a:hover{
+         background:rgba(224,192,141,0.08);
+         padding-left:34px;
+         }
+         .closebtn{
+         color:white !important;
+         }
+         .closebtn{
+         position:absolute;
+         top:-8px;;
+         right:10px;
+         font-size:28px !important;
+         color:#E0C08D !important;
+         z-index:999999;
+         width:36px;
+         height:36px;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         border-radius:50%;
+         background:rgba(255,255,255,0.05);
+         transition:background 0.3s ease,color 0.3s ease;
+         }
+         .closebtn:hover{
+         background:rgba(224,192,141,0.12);
+         color:white !important;
+         text-decoration:none;
+         }
+         /* ================= HERO ================= */
+         .hero_banner{
+         width:100%;
+         position:relative;
+         z-index:1;
+         overflow:hidden;
+         }
+         .banner_slide{
+         height:72vh;
+         background-size:cover;
+         background-position:center;
+         background-repeat:no-repeat;
+         position:relative;
+         }
+         .carousel-inner{
+         overflow:hidden;
+         }
+         .carousel-item-next,
+         .carousel-item-prev,
+         .carousel-item.active{
+         display:block;
+         }
+         .banner_overlay{
+         position:absolute;
+         inset:0;
+         background:
+         linear-gradient(
+         90deg,
+         rgba(0,0,0,0.10),
+         rgba(0,0,0,0.03)
+         );
+         }
+         .banner_content{
+         position:absolute;
+         top:58%;
+         left:8%;
+         transform:translateY(-50%);
+         z-index:2;
+         }
+         .banner_content h1{
+         font-family:'Playfair Display',serif;
+         font-size:56px;
+         line-height:1.25;
+         color:#ffffff;
+         font-weight:700;
+         letter-spacing:1px;
+         text-shadow:
+         0 6px 24px rgba(0,0,0,0.65);
+         max-width:620px;
+         }
+         /* SMALL GOLD TEXT */
+         .banner_content h1 span{
+         font-family:'Great Vibes',cursive;
+         font-size:58px;
+         font-weight:400;
+         color:#F6D89C;
+         display:block;
+         margin-bottom:16px;
+         letter-spacing:2px;
+         text-shadow:
+         0 4px 18px rgba(0,0,0,0.35);
+         }
+         /* SUBTITLE */
+    
+         .carousel-item{
+         position:relative;
+         z-index:1;
+         }
+         @keyframes fadeUp{
+         from{
+         opacity:0;
+         transform:translateY(40px);
+         }
+         to{
+         opacity:1;
+         transform:translateY(0);
+         }
+         }
+         /* ================= COLLECTION ================= */
+         .fashion_section{
+         padding:45px 0 20px;
+         }
+         .fashion_taital{
+         font-family:'Playfair Display',serif;
+         font-size:58px;
+         font-weight:700;
+         color:#2B2B2B;
+         text-align:center;
+         margin-bottom:28px;
+         position:relative;
+         letter-spacing:1px;
+         }
+         .product_card{
+         background:rgba(255,255,255,0.72);
+         backdrop-filter:blur(5px);
+         border-radius:28px;
+         padding:14px;
+         overflow:hidden;
+         position:relative;
+         transition:0.5s ease;
+         height:100%;
+         border:1px solid rgba(255,255,255,0.5);
+         box-shadow:
+         0 5px 15px rgba(0,0,0,0.05);
+         }
+         /* TOP GOLD SHINE */
+         .product_card::before{
+         content:"";
+         position:absolute;
+         top:0;
+         left:-120%;
+         width:70%;
+         height:100%;
+         background:
+         linear-gradient(
+         120deg,
+         transparent,
+         rgba(255,255,255,0.55),
+         transparent
+         );
+         transform:skewX(-25deg);
+         transition:0.8s;
+         z-index:2;
+         }
+         /* HOVER */
+         .product_card:hover{
+         transform:
+         translateY(-10px)
+         scale(1.01);
+         box-shadow:
+         0 18px 40px rgba(0,0,0,0.12);
+         }
+         .product_card:hover::before{
+         left:140%;
+         }
+         /* ================= RENTED PRODUCT EFFECT ================= */
+         .unavailable_card{
+         opacity:0.6;
+         filter:grayscale(40%);
+         position:relative;
+         }
+         .unavailable_overlay{
+         position:absolute;
+         top:15px;
+         left:15px;
+         background:#111;
+         color:white;
+         padding:8px 16px;
+         border-radius:30px;
+         font-size:12px;
+         font-weight:600;
+         z-index:5;
+         letter-spacing:1px;
+         }
+         .disabled_btn{
+         pointer-events:none;
+         opacity:0.5;
+         }
+         .image_wrapper{
+         position:relative;
+         overflow:hidden;
+         border-radius:14px;
+         }
+         .image_wrapper img{
+         width:100%;
+         height:360px;
+         object-fit:cover;
+         border-radius:18px;
+         transition:0.6s ease;
+         }
+         .product_card:hover .image_wrapper img{
+         transform:scale(1.08);
+         }
+         .overlay_buttons{
+         position:absolute;
+         bottom:18px;
+         left:50%;
+         transform:translateX(-50%);
+         display:flex;
+         flex-direction:column;
+         gap:10px;
+         width:85%;
+         opacity:0;
+         transition:0.4s ease;
+         }
+         .image_wrapper:hover .overlay_buttons{
+         opacity:1;
+         bottom:24px;
+         }
+         .overlay_buttons a{
+         text-decoration:none;
+         padding:13px 18px;
+         border-radius:14px;
+         font-size:13px;
+         font-weight:600;
+         letter-spacing:0.5px;
+         text-align:center;
+         transition:0.3s ease;
+         width:100%;
+         }
+         /* VIEW DETAILS */
+         .overlay_buttons a:first-child{
+         background:rgba(255,255,255,0.92);
+         color:#111;
+         backdrop-filter:blur(10px);
+         }
+         /* ADD TO CART */
+         .overlay_buttons a:last-child{
+         background:linear-gradient(
+         135deg,
+         #B8924C,
+         #D8B56A
+         );
+         color:white;
+         box-shadow:0 8px 18px rgba(184,146,76,0.3);
+         }
+         /* HOVER */
+         .overlay_buttons a:hover{
+         transform:translateY(-2px) scale(1.02);
+         }
+         .shirt_text{
+         font-size:20px;
+         margin-top:18px;
+         font-weight:600;
+         }
+         .price_text{
+         font-size:18px;
+         color:#B8924C;
+         font-weight:700;
+         }
+         .wishlist_icon{
+         position:absolute;
+         top:18px;
+         right:18px;
+         z-index:2;
+         background:white;
+         width:38px;
+         height:38px;
+         border-radius:50%;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         color:#111;
+         text-decoration:none;
+         }
+         /* ================= WORKS ================= */
+         .works_section{
+         padding:80px 0;
+         background:#FAF7F2;
+         }
+         .works_title{
+         font-size:50px;
+         margin-bottom:15px;
+         font-family:'Playfair Display',serif;
+         }
+         .works_subtitle{
+         color:#777;
+         margin-bottom:50px;
+         }
+         .step{
+         padding:35px 25px;
+         border-radius:28px;
+         transition:0.5s ease;
+         position:relative;
+         overflow:hidden;
+         background:transparent;
+         }
+         /* GOLD LIGHT */
+         .step::before{
+         content:"";
+         position:absolute;
+         width:180px;
+         height:180px;
+         background:rgba(184,146,76,0.08);
+         border-radius:50%;
+         top:-90px;
+         right:-90px;
+         transition:0.5s ease;
+         }
+         .step:hover{
+         background:white;
+         transform:translateY(-12px);
+         box-shadow:
+         0 15px 40px rgba(0,0,0,0.08);
+         }
+         .step:hover::before{
+         transform:scale(1.3);
+         }
+         .step_icon{
+         width:95px;
+         height:95px;
+         background:
+         linear-gradient(135deg,#B8924C,#D8B56A);
+         margin:auto;
+         border-radius:50%;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         font-size:34px;
+         color:white;
+         margin-bottom:25px;
+         transition:0.4s ease;
+         box-shadow:
+         0 10px 25px rgba(184,146,76,0.28);
+         }
+         .step:hover .step_icon{
+         transform:
+         rotate(8deg)
+         scale(1.08);
+         }
+         /* ================= NEW FOOTER ================= */
+         .footer_logo{
+         font-family:'Great Vibes',cursive;
+         font-size:42px;
+         color:#E0C08D;
+         margin-bottom:15px;
+         }
+         .footer_desc{
+         font-size:14px;
+         line-height:1.8;
+         color:#ccc;
+         margin-bottom:15px;
+         }
+         .footer_tagline{
+         color:#B8924C;
+         font-weight:600;
+         letter-spacing:1px;
+         }
+         .footer_links{
+         list-style:none;
+         padding:0;
+         }
+         .footer_links li{
+         margin-bottom:12px;
+         }
+         .footer_links a{
+         color:#ddd;
+         text-decoration:none;
+         transition:0.3s ease;
+         font-size:15px;
+         }
+         .footer_links a:hover{
 
-/* ================= RESET ================= */
+            color:#E0C08D;
+            padding-left:8px;
+            letter-spacing:0.4px;
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+        }
+         .contact_text{
+         font-size:14px;
+         margin-bottom:15px;
+         color:#ddd;
+         }
+         .contact_text i{
+         color:#B8924C;
+         margin-right:10px;
+         }
+         .social_icons{
+         display:flex;
+         gap:12px;
+         }
+         .social_icons a{
+        width:42px;
+        height:42px;
+        border-radius:50%;
+        background:#2B241C;
+         }
+         .social_icons a:hover{
+         transform:translateY(-4px);
+         background:#B8924C;
+         color:white;
+         }
 
-body{
-font-family:'Poppins',sans-serif;
+         /* ================= PRETTIER SOCIAL ICONS ================= */
 
-background-color:#F8F3EA;
-
-background-image:
-linear-gradient(rgba(248,243,234,0.78),
-rgba(248,243,234,0.78)),
-url("{% static 'images/ethnic-pattern.png' %}");
-
-background-size:320px;
-
-background-repeat:repeat;
-
-background-attachment:scroll;
-
-background-position:center;
-
-overflow-x:hidden;
-
-color:#2B2B2B;
-}
-
-/* ================= LUXURY TOP RIBBON ================= */
-
-.top_ribbon{
-
-width:100%;
-
-position:relative;
-
-z-index:999;
-
-margin:0;
-
-padding:0;
-}
-
-.ribbon_container{
-
-width:100%;
-
-background:
-linear-gradient(
-135deg,
-#1B1712,
-#2B241C,
-#1B1712
-);
-
-padding:16px 40px;
-
+.social_icons a{
+width:48px;
+height:48px;
+border-radius:50%;
+background:rgba(255,255,255,0.08);
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
-gap:22px;
-
-flex-wrap:wrap;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.16);
-
-border-bottom:1px solid rgba(224,192,141,0.12);
-
-position:relative;
-
-overflow:hidden;
-}
-
-/* GOLD GLOW EFFECT */
-
-.ribbon_container::before{
-
-content:"";
-
-position:absolute;
-
-width:260px;
-height:260px;
-
-background:rgba(224,192,141,0.08);
-
-border-radius:50%;
-
-top:-140px;
-left:-120px;
-
-filter:blur(25px);
-}
-
-.ribbon_container::after{
-
-content:"";
-
-position:absolute;
-
-width:240px;
-height:240px;
-
-background:rgba(184,146,76,0.08);
-
-border-radius:50%;
-
-bottom:-140px;
-right:-120px;
-
-filter:blur(25px);
-}
-
-/* LINKS */
-
-.ribbon_link{
-
-text-decoration:none;
-
-color:#F8F3EA;
-
-font-size:14px;
-
-font-weight:500;
-
-padding:10px 22px;
-
-border-radius:30px;
-
+color:#E0C08D;
+font-size:20px;
 transition:0.35s ease;
-
-position:relative;
-
-z-index:2;
-
-letter-spacing:0.5px;
-
-border:1px solid transparent;
+border:1px solid rgba(224,192,141,0.15);
+backdrop-filter:blur(8px);
+box-shadow:0 6px 18px rgba(0,0,0,0.15);
 }
 
 /* HOVER EFFECT */
 
-.ribbon_link:hover{
-
-background:rgba(224,192,141,0.12);
-
-border:1px solid rgba(224,192,141,0.22);
-
-color:#E0C08D;
-
-transform:translateY(-2px);
-
-text-decoration:none;
-}
-
-/* SPECIAL HIGHLIGHT BUTTON */
-
-.ribbon_highlight{
-
-background:#B8924C;
-
-color:white !important;
-
-font-weight:600;
-
-padding:11px 26px;
-
-box-shadow:0 6px 18px rgba(184,146,76,0.35);
-}
-
-.ribbon_highlight:hover{
-
-background:#8c6a2d;
-
-color:white !important;
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.ribbon_container{
-
-padding:14px 10px;
-
-gap:10px;
-}
-
-.ribbon_link{
-
-padding:8px 14px;
-
-font-size:13px;
-}
-
-}
-/* ================= LOGO SECTION ================= */
-
-.logo_section{
-
-padding:32px 0 26px;
-
-text-align:center;
-
-position:relative;
-
-background:
-linear-gradient(rgba(255,255,255,0.95),
-rgba(255,255,255,0.95)),
-
-url("{% static 'images/ethnic-pattern.png' %}");
-
-background-size:280px;
-
-border-bottom:1px solid rgba(184,146,76,0.12);
-
-overflow:hidden;
-}
-
-/* GOLD GLOW */
-
-.logo_section::before{
-
-content:"";
-
-position:absolute;
-
-width:280px;
-height:280px;
-
-background:rgba(184,146,76,0.08);
-
-border-radius:50%;
-
-top:-140px;
-left:-80px;
-
-filter:blur(25px);
-}
-
-.logo_section::after{
-
-content:"";
-
-position:absolute;
-
-width:220px;
-height:220px;
-
-background:rgba(224,192,141,0.08);
-
-border-radius:50%;
-
-bottom:-100px;
-right:-50px;
-
-filter:blur(25px);
-}
-
-/* LOGO */
-
-.logo_name{
-
-font-family:'Great Vibes',cursive;
-
-font-size:74px;
-
-color:#B8924C;
-
-margin-bottom:8px;
-
-position:relative;
-
-z-index:2;
-}
-
-/* TAGLINE */
-
-.logo_tagline{
-
-font-size:15px;
-
-color:#666;
-
-letter-spacing:1px;
-
-position:relative;
-
-z-index:2;
-}
-
-/* SMALL LUXURY LINE */
-
-.logo_tagline::before,
-.logo_tagline::after{
-
-content:"";
-
-display:inline-block;
-
-width:55px;
-height:1px;
-
-background:#D8B56A;
-
-margin:0 12px;
-
-vertical-align:middle;
-}
-
-/* ================= NAVBAR ================= */
-
-.navbar_section{
-background:rgba(255,255,255,0.92);
-backdrop-filter:blur(10px);
-padding:18px 0;
-box-shadow:0 4px 15px rgba(0,0,0,0.05);
-position:sticky;
-will-change:auto;
-top:0;
-z-index:9999;
-}
-
-.nav_wrapper{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.toggle_icon img{
-width:30px;
-cursor:pointer;
-filter:
-brightness(0)
-saturate(100%)
-sepia(35%)
-hue-rotate(5deg)
-brightness(90%);
-}
-
-.category_btn{
-background:#111;
-color:white;
-padding:12px 22px;
-border:none;
-border-radius:30px;
-font-weight:500;
-}
-
-.search_box{
-display:flex;
-flex:1;
-max-width:500px;
-background:#f3f3f3;
-border-radius:40px;
-overflow:hidden;
-}
-
-.search_box input{
-width:100%;
-padding:12px 18px;
-border:none;
-outline:none;
-background:#f8f8f8;
-border-radius:30px;
-font-size:14px;
-}
-
-.search_box button{
-border:none;
-background:#B8924C;
-color:white;
-padding:0 22px;
-}
-
-.nav_right{
-display:flex;
-align-items:center;
-gap:22px;
-}
-
-.nav_right a{
-text-decoration:none;
-color:#222;
-font-weight:500;
-}
-
-.nav_right a:hover{
-color:#B8924C;
-}
-
-/* ================= SIDE NAV ================= */
-
-.sidenav{
-height:auto;
-max-height:85vh;
-width:0;
-position:fixed;
-z-index:999999;
-top:85px;
-left:15px;
-background:#1E1A14;
-overflow-x:hidden;
-padding-top:20px;
-padding-bottom:20px;
-transition:0.4s ease;
-border-radius:22px;
-box-shadow:0 10px 35px rgba(0,0,0,0.28);
-}
-
-.sidenav a{
-padding:12px 28px;
-text-decoration:none;
-font-size:16px;
-color:#FAF7F2;
-display:block;
-transition:0.3s;
-white-space:nowrap;
-}
-
-.sidenav a:hover{
-color:#E0C08D;
-}
-
-/* ================= SIDE MENU IMPROVED ================= */
-
-.side_menu_title{
-
-font-family:'Playfair Display',serif;
-
-font-size:28px;
-
-color:#E0C08D;
-
-text-align:center;
-
-margin-bottom:25px;
-
-padding-bottom:18px;
-
-border-bottom:1px solid rgba(255,255,255,0.08);
-
-letter-spacing:1px;
-}
-
-.sidenav a i{
-
-margin-right:12px;
-
-font-size:15px;
-
-width:20px;
-}
-
-.sidenav a{
-
-font-weight:500;
-
-border-radius:12px;
-
-margin:4px 12px;
-
-transition:0.3s ease;
-}
-
-.sidenav a:hover{
-
-background:rgba(224,192,141,0.08);
-
-padding-left:34px;
-}
-
-.closebtn{
-
-color:white !important;
-}
-
-.closebtn{
-
-position:absolute;
-
-top:-8px;;
-
-right:10px;
-
-font-size:28px !important;
-
-color:#E0C08D !important;
-
-z-index:999999;
-
-width:36px;
-
-height:36px;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-border-radius:50%;
-
-background:rgba(255,255,255,0.05);
-
-transition:background 0.3s ease,color 0.3s ease;
-}
-
-.closebtn:hover{
-
-background:rgba(224,192,141,0.12);
-
-color:white !important;
-
-text-decoration:none;
-}
-/* ================= HERO ================= */
-
-.hero_banner{
-width:100%;
-position:relative;
-z-index:1;
-overflow:hidden;
-}
-
-.banner_slide{
-height:72vh;
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-position:relative;
-}
-
-.carousel-inner{
-overflow:hidden;
-}
-
-.carousel-item-next,
-.carousel-item-prev,
-.carousel-item.active{
-display:block;
-}
-
-.banner_overlay{
-position:absolute;
-inset:0;
-background:
-linear-gradient(
-90deg,
-rgba(255,255,255,0.08),
-rgba(255,255,255,0.02)
-);
-}
-
-.banner_content h1{
-
-font-family:'Playfair Display',serif;
-
-font-size:48px;
-
-line-height:1.3;
-
-color:#ffffff;
-
-font-weight:600;
-
-letter-spacing:1px;
-
-text-shadow:
-0 4px 18px rgba(0,0,0,0.45);
-
-max-width:500px;
-
-}
-
-/* SMALL GOLD TEXT */
-
-.banner_content h1 span{
-
-font-family:'Great Vibes',cursive;
-
-font-size:52px;
-
-font-weight:400;
-
-color:#F6D89C;
-
-display:block;
-
-margin-bottom:10px;
-
-letter-spacing:2px;
-
-}
-
-/* SUBTITLE */
-
-.hero_subtitle{
-
-color:rgba(255,255,255,0.92);
-
-font-size:15px;
-
-line-height:1.8;
-
-margin-top:14px;
-
-max-width:420px;
-
-text-shadow:
-0 2px 8px rgba(0,0,0,0.35);
-
-}
-
-.carousel-item{
-position:relative;
-z-index:1;
-}
-
-@keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
-
-/* ================= COLLECTION ================= */
-
-.fashion_section{
-padding:45px 0 20px;
-}
-
-.fashion_taital{
-
-font-family:'Playfair Display',serif;
-
-font-size:58px;
-
-font-weight:700;
-
-color:#2B2B2B;
-
-text-align:center;
-
-margin-bottom:28px;
-
-position:relative;
-
-letter-spacing:1px;
-
-}
-
-.product_card{
-background:rgba(255,255,255,0.72);
-backdrop-filter:blur(5px);
-border-radius:28px;
-padding:14px;
-overflow:hidden;
-position:relative;
-transition:0.5s ease;
-height:100%;
-border:1px solid rgba(255,255,255,0.5);
-
-box-shadow:
-0 5px 15px rgba(0,0,0,0.05);
-}
-
-/* TOP GOLD SHINE */
-
-.product_card::before{
-content:"";
-position:absolute;
-top:0;
-left:-120%;
-width:70%;
-height:100%;
-background:
-linear-gradient(
-120deg,
-transparent,
-rgba(255,255,255,0.55),
-transparent
-);
-
-transform:skewX(-25deg);
-transition:0.8s;
-z-index:2;
-}
-
-/* HOVER */
-
-.product_card:hover{
-
-transform:
-translateY(-10px)
-scale(1.01);
-
-box-shadow:
-0 18px 40px rgba(0,0,0,0.12);
-}
-
-.product_card:hover::before{
-left:140%;
-}
-
-/* ================= RENTED PRODUCT EFFECT ================= */
-
-.unavailable_card{
-opacity:0.6;
-filter:grayscale(40%);
-position:relative;
-}
-
-.unavailable_overlay{
-position:absolute;
-top:15px;
-left:15px;
-background:#111;
-color:white;
-padding:8px 16px;
-border-radius:30px;
-font-size:12px;
-font-weight:600;
-z-index:5;
-letter-spacing:1px;
-}
-
-.disabled_btn{
-pointer-events:none;
-opacity:0.5;
-}
-
-.image_wrapper{
-position:relative;
-overflow:hidden;
-border-radius:14px;
-}
-
-.image_wrapper img{
-width:100%;
-height:360px;
-object-fit:cover;
-border-radius:18px;
-transition:0.6s ease;
-}
-
-.product_card:hover .image_wrapper img{
-transform:scale(1.08);
-}
-
-.overlay_buttons{
-
-position:absolute;
-bottom:18px;
-left:50%;
-transform:translateX(-50%);
-
-display:flex;
-flex-direction:column;
-
-gap:10px;
-
-width:85%;
-
-opacity:0;
-
-transition:0.4s ease;
-}
-
-.image_wrapper:hover .overlay_buttons{
-
-opacity:1;
-bottom:24px;
-}
-
-.overlay_buttons a{
-
-text-decoration:none;
-
-padding:13px 18px;
-
-border-radius:14px;
-
-font-size:13px;
-
-font-weight:600;
-
-letter-spacing:0.5px;
-
-text-align:center;
-
-transition:0.3s ease;
-
-width:100%;
-}
-
-/* VIEW DETAILS */
-
-.overlay_buttons a:first-child{
-
-background:rgba(255,255,255,0.92);
-
-color:#111;
-
-backdrop-filter:blur(10px);
-}
-
-/* ADD TO CART */
-
-.overlay_buttons a:last-child{
-
-background:linear-gradient(
-135deg,
-#B8924C,
-#D8B56A
-);
-
-color:white;
-
-box-shadow:0 8px 18px rgba(184,146,76,0.3);
-}
-
-/* HOVER */
-
-.overlay_buttons a:hover{
-
-transform:translateY(-2px) scale(1.02);
-}
-
-.shirt_text{
-font-size:20px;
-margin-top:18px;
-font-weight:600;
-}
-
-.price_text{
-font-size:18px;
-color:#B8924C;
-font-weight:700;
-}
-
-.wishlist_icon{
-position:absolute;
-top:18px;
-right:18px;
-z-index:2;
-background:white;
-width:38px;
-height:38px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#111;
-text-decoration:none;
-}
-
-/* ================= WORKS ================= */
-
-.works_section{
-padding:80px 0;
-background:#FAF7F2;
-}
-
-.works_title{
-font-size:50px;
-margin-bottom:15px;
-font-family:'Playfair Display',serif;
-}
-
-.works_subtitle{
-color:#777;
-margin-bottom:50px;
-}
-
-.step{
-padding:35px 25px;
-border-radius:28px;
-transition:0.5s ease;
-position:relative;
-overflow:hidden;
-background:transparent;
-}
-
-/* GOLD LIGHT */
-
-.step::before{
-content:"";
-position:absolute;
-width:180px;
-height:180px;
-background:rgba(184,146,76,0.08);
-border-radius:50%;
-top:-90px;
-right:-90px;
-transition:0.5s ease;
-}
-
-.step:hover{
-background:white;
-transform:translateY(-12px);
-
-box-shadow:
-0 15px 40px rgba(0,0,0,0.08);
-}
-
-.step:hover::before{
-transform:scale(1.3);
-}
-
-.step_icon{
-width:95px;
-height:95px;
-background:
-linear-gradient(135deg,#B8924C,#D8B56A);
-
-margin:auto;
-
-border-radius:50%;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:34px;
-color:white;
-
-margin-bottom:25px;
-
-transition:0.4s ease;
-
-box-shadow:
-0 10px 25px rgba(184,146,76,0.28);
-}
-
-.step:hover .step_icon{
-transform:
-rotate(8deg)
-scale(1.08);
-}
-
-
-/* ================= NEW FOOTER ================= */
-
-.footer_logo{
-font-family:'Great Vibes',cursive;
-font-size:42px;
-color:#E0C08D;
-margin-bottom:15px;
-}
-
-.footer_desc{
-font-size:14px;
-line-height:1.8;
-color:#ccc;
-margin-bottom:15px;
-}
-
-.footer_tagline{
-color:#B8924C;
-font-weight:600;
-letter-spacing:1px;
-}
-
-.footer_links{
-list-style:none;
-padding:0;
-}
-
-.footer_links li{
-margin-bottom:12px;
-}
-
-.footer_links a{
-color:#ddd;
-text-decoration:none;
-transition:0.3s ease;
-font-size:15px;
-}
-
-.footer_links a:hover{
-color:#E0C08D;
-padding-left:5px;
-}
-
-.contact_text{
-font-size:14px;
-margin-bottom:15px;
-color:#ddd;
-}
-
-.contact_text i{
-color:#B8924C;
-margin-right:10px;
-}
-
-.social_icons{
-display:flex;
-gap:12px;
-}
-
-.social_icons a{
-width:42px;
-height:42px;
-border-radius:50%;
-background:#2B241C;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#E0C08D;
-font-size:18px;
-transition:0.3s ease;
-text-decoration:none;
-}
-
 .social_icons a:hover{
-transform:translateY(-4px);
+transform:translateY(-5px) scale(1.08);
 background:#B8924C;
 color:white;
-}
-
-.newsletter_title{
-font-size:14px;
-margin-bottom:12px;
-color:#ddd;
-}
-
-.newsletter_input{
-display:flex;
-overflow:hidden;
-border-radius:30px;
-background:#fff;
-}
-
-.newsletter_input input{
-flex:1;
-border:none;
-outline:none;
-padding:12px 15px;
-font-size:14px;
-}
-
-.newsletter_input button{
-border:none;
-background:#B8924C;
-color:white;
-padding:0 18px;
-font-size:14px;
-font-weight:600;
-}
-
-.newsletter_input button:hover{
-background:#8c6a2d;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:992px){
-
-.banner_content h1{
-font-size:50px;
-}
-
-.nav_wrapper{
-justify-content:center;
-}
-
-.search_box{
-max-width:100%;
-}
-
-}
-
-@media(max-width:768px){
-
-.logo_name{
-font-size:52px;
-}
-
-.banner_slide{
-height:65vh;
-}
-
-.banner_content{
-left:5%;
-}
-
-.banner_content h1{
-font-size:38px;
-}
-
-.fashion_taital,
-.works_title{
-font-size:34px;
-}
-
-.nav_right{
-gap:14px;
-flex-wrap:wrap;
-justify-content:center;
-}
-
-}
-
-.profile_menu{
-border:none;
-border-radius:14px;
-padding:10px;
-box-shadow:0 10px 30px rgba(0,0,0,0.12);
-}
-
-.profile_menu .dropdown-item{
-padding:10px 18px;
-border-radius:10px;
-font-size:14px;
-}
-
-.profile_menu .dropdown-item:hover{
-background:#F8F3EA;
-color:#B8924C;
-}
-
-/* ================= CART BUTTON ================= */
-
-.cart_btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 10px 16px;
-    border-radius: 30px;
-    background: #B8924C;
-    color: white;
-    font-weight: 600;
-    text-decoration: none;
-    border: none;
-    transition: 0.3s ease;
-}
-
-.cart_btn i {
-    font-size: 16px;
-}
-
-.cart_btn:hover {
-    background: #8c6a2d;
-    color: white;
-    transform: translateY(-2px);
-}
-
-.navbar_section{
-background:rgba(255,255,255,0.82);
-backdrop-filter:blur(6px);
-padding:16px 0;
-box-shadow:0 8px 30px rgba(0,0,0,0.05);
-position:sticky;
-will-change:auto;
-top:0;
-z-index:9999;
-border-bottom:1px solid rgba(184,146,76,0.08);
-}
-.hero_subtitle{
-color:rgba(255,255,255,0.88);
-font-size:16px;
-line-height:1.9;
-margin-top:18px;
-max-width:500px;
-}
-
-.hero_btn{
-
-display:inline-block;
-
-margin-top:24px;
-
-padding:12px 28px;
-
-background:rgba(255,255,255,0.16);
-
-border:1px solid rgba(255,255,255,0.35);
-
-backdrop-filter:blur(8px);
-
-color:white;
-
-text-decoration:none;
-
-border-radius:40px;
-
-font-weight:500;
-
-font-size:14px;
-
-letter-spacing:1px;
-
-transition:0.35s ease;
-
-}
-
-.hero_btn:hover{
-
-background:#B8924C;
-
-border-color:#B8924C;
-
-transform:translateY(-3px);
-
-color:white;
-
-}
-
-.section_badge{
-text-align:center;
-color:#B8924C;
-font-size:13px;
-letter-spacing:2px;
-font-weight:600;
-margin-bottom:12px;
-}
-
-.product_card::before{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:4px;
-background:linear-gradient(to right,#B8924C,#E0C08D);
-}
-
-.nav_right a,
-.sidenav a,
-.dropdown-item{
-transition:0.3s ease;
-}
-
-/* PROFILE ICON */
-
-.profile_circle{
-
-width:40px;
-height:40px;
-
-border-radius:50%;
-
-background:#E0C08D;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-color:#111;
-
-font-size:16px;
-
-flex-shrink:0;
-}
-
-/* ================= FOOTER ================= */
-
-.footer_section{
-
-background:
-linear-gradient(rgba(17,17,17,0.96),
-rgba(17,17,17,0.96)),
-
-url("{% static 'images/ethnic-pattern.png' %}");
-
-background-size:260px;
-
-padding:75px 0 65px;
-
-color:#ddd;
-
-position:relative;
-
-overflow:hidden;
-}
-
-/* GOLD EFFECT */
-
-.footer_section::before{
-
-content:"";
-
-position:absolute;
-
-width:320px;
-height:320px;
-
-background:rgba(184,146,76,0.08);
-
-border-radius:50%;
-
-top:-120px;
-left:-100px;
-
-filter:blur(30px);
-}
-
-.footer_section::after{
-
-content:"";
-
-position:absolute;
-
-width:260px;
-height:260px;
-
-background:rgba(224,192,141,0.06);
-
-border-radius:50%;
-
-bottom:-120px;
-right:-100px;
-
-filter:blur(30px);
-}
-
-.copyright_section{
-
-background:#0E0C09;
-
-padding:18px;
-
-text-align:center;
-
-color:#b9b9b9;
-
-font-size:14px;
-
-letter-spacing:0.5px;
-
-border-top:1px solid rgba(255,255,255,0.05);
-}
-
-/* ================= SEARCH AUTO SUGGEST ================= */
-
-.search_wrapper{
-position:relative;
-flex:1;
-max-width:500px;
-}
-.search_bar_box{
-
-display:flex;
-
-align-items:center;
-
-background:#f3f3f3;
-
-border-radius:40px;
-
-overflow:hidden;
-
-box-shadow:0 3px 10px rgba(0,0,0,0.04);
-
-}
-
-.search_bar_box button{
-
-border:none;
-
-background:#B8924C;
-
-color:white;
-
-padding:0 22px;
-
-height:48px;
-
-transition:0.3s ease;
-
-}
-
-.search_bar_box button:hover{
-
-background:#8c6a2d;
-
-}
-
-.search_input{
-width:100%;
-padding:13px 20px;
-border:none;
-outline:none;
-border-radius:40px;
-background:#f3f3f3;
-font-size:14px;
-box-shadow:0 3px 10px rgba(0,0,0,0.04);
-}
-
-.suggestions_box{
-
-position:absolute;
-
-top:105%;
-
-left:0;
-
-width:100%;
-
-background:white;
-
-border-radius:18px;
-
-overflow:hidden;
-
-box-shadow:0 10px 25px rgba(0,0,0,0.08);
-
-z-index:99999;
-
-display:none;
-}
-
-.suggestion_item{
-
-padding:14px 18px;
-
-cursor:pointer;
-
-transition:0.3s ease;
-
-font-size:14px;
-
-border-bottom:1px solid #f2f2f2;
-}
-
-.suggestion_item:hover{
-
-background:#F8F3EA;
-
-color:#B8924C;
-}
-
-/* ================= ULTRA LUXURY SPLASH SCREEN ================= */
-
-/* ================= CINEMATIC SPLASH SCREEN ================= */
-
-#splash_screen{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:100vh;
-
-background:
-radial-gradient(circle at top left,
-#f5e7ca 0%,
-#f8f3ea 35%,
-#ffffff 100%);
-
-display:flex;
-
-align-items:center;
-justify-content:center;
-
-z-index:9999999999;
-
-overflow:hidden;
-
-transition:
-opacity 1s ease,
-visibility 1s ease;
-}
-
-/* HIDE */
-
-#splash_screen.hide{
-
-opacity:0;
-
-visibility:hidden;
-
-pointer-events:none;
-}
-
-/* MOVING GOLD LIGHT */
-
-.gold_light{
-
-position:absolute;
-
-width:500px;
-height:500px;
-
-border-radius:50%;
-
-background:
-rgba(184,146,76,0.18);
-
-filter:blur(120px);
-
-animation:
-moveLight 14s linear infinite;
-}
-
-.gold_light.two{
-
-width:400px;
-height:400px;
-
-right:-100px;
-bottom:-100px;
-
-animation-delay:2s;
-}
-
-/* CONTENT */
-
-.splash_content{
-
-position:relative;
-
-z-index:2;
-
-text-align:center;
-}
-
-/* LOGO */
-
-.splash_logo{
-
-font-family:'Playfair Display',serif;
-
-font-size:88px;
-
-font-weight:700;
-
-letter-spacing:2px;
-
-color:#B8924C;
-
-opacity:0;
-
-transform:translateY(30px) scale(0.96);
-
-animation:
-logoEntrance 1.4s ease forwards;
-
-text-shadow:
-0 10px 30px rgba(184,146,76,0.2);
-}
-
-/* SUBTEXT */
-
-.splash_tagline{
-
-margin-top:18px;
-
-font-size:14px;
-
-letter-spacing:6px;
-
-color:#5a4a33;
-
-opacity:0;
-
-animation:
-tagReveal 1.5s ease forwards;
-
-animation-delay:0.9s;
-}
-
-/* GOLD LINE */
-
-.splash_line{
-
-width:0;
-
-height:2px;
-
-background:#D8B56A;
-
-margin:24px auto;
-
-border-radius:20px;
-
-animation:
-lineOpen 1.2s ease forwards;
-
-animation-delay:0.5s;
-}
-
-/* ANIMATIONS */
-
-@keyframes logoEntrance{
-
-to{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-
-}
-
-@keyframes tagReveal{
-
-to{
-opacity:1;
-letter-spacing:4px;
-}
-
-}
-
-@keyframes lineOpen{
-
-to{
-width:180px;
-}
-
-}
-
-@keyframes moveLight{
-
-0%{
-transform:translate(-40px,-20px);
-}
-
-50%{
-transform:translate(40px,20px);
-}
-
-100%{
-transform:translate(-40px,-20px);
-}
-
-}
-
-/* MOBILE */
-
-@media(max-width:768px){
-
-.splash_logo{
-font-size:54px;
-}
-
-.splash_tagline{
-font-size:11px;
-letter-spacing:3px;
-}
-
-}
-
-.floating_bg{
-position:fixed;
-inset:0;
-pointer-events:none;
-z-index:-1;
-
-background-image:
-radial-gradient(circle at 20% 30%, rgba(184,146,76,0.08) 0, transparent 120px),
-radial-gradient(circle at 80% 20%, rgba(224,192,141,0.08) 0, transparent 160px),
-radial-gradient(circle at 60% 80%, rgba(184,146,76,0.06) 0, transparent 140px);
-
-animation:floatingMove 18s ease-in-out infinite alternate;
-}
-
-@keyframes floatingMove{
-
-0%{
-transform:translateY(0px);
-}
-
-100%{
-transform:translateY(-30px);
-}
-
-}
-
-.luxury_divider{
-width:140px;
-height:2px;
-
-margin:10px auto 25px;
-
-background:
-linear-gradient(
-to right,
-transparent,
-#D8B56A,
-transparent
-);
-
-opacity:0.7;
-}
-
-.product_card,
-.step,
-.fashion_taital,
-.section_badge{
-opacity:1;
-transform:none;
-display:flex;
-flex-direction:column;
-justify-content:space-between;
-transition:0.4s ease;
-}
-
-.active_reveal{
-opacity:1 !important;
-transform:translateY(0) !important;
-}
-
-img{
-max-width:100%;
-height:auto;
-}
-
-*{
--webkit-font-smoothing:antialiased;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-.product_card,
-.step,
-.banner_slide{
-contain:layout paint;
-}
-
-.category_menu{
-
-border:none;
-
-border-radius:20px;
-
-padding:14px;
-
-box-shadow:0 15px 35px rgba(0,0,0,0.08);
-
-margin-top:14px;
-}
-
-.category_menu .dropdown-item{
-
-padding:10px 16px;
-
-border-radius:12px;
-
-transition:0.3s ease;
-}
-
-.category_menu .dropdown-item:hover{
-
-background:#F8F3EA;
-
-color:#B8924C;
-
-padding-left:20px;
-}
-</style>
-
-</head>
-<body>
-
-    <!-- ================= SPLASH SCREEN ================= -->
-
-<div class="floating_bg"></div>
-    <div id="splash_screen">
-
-        <div class="gold_light"></div>
-
-        <div class="gold_light two"></div>
-
-        <div class="splash_content">
-
+box-shadow:0 10px 25px rgba(184,146,76,0.35);
+}
+
+
+         .footer_heading{
+
+            font-size:22px;
+
+            font-family:'Playfair Display',serif;
+
+        color:#fff;
+
+        margin-bottom:22px;
+
+        position:relative;
+
+        padding-bottom:10px;
+
+        }
+
+        /* GOLD UNDERLINE */
+
+        .footer_heading::after{
+
+        content:"";
+
+        position:absolute;
+
+        left:0;
+        bottom:0;
+
+        width:45px;
+        height:2px;
+
+        background:#B8924C;
+
+        border-radius:10px;
+
+        }
+
+        .footer_section .col-lg-3{
+
+        transition:0.4s ease;
+
+        }
+
+        .footer_section .col-lg-3:hover{
+
+        transform:translateY(-6px);
+
+        }
+         /* ================= RESPONSIVE ================= */
+         @media(max-width:992px){
+         .banner_content h1{
+         font-size:50px;
+         }
+         .nav_wrapper{
+         justify-content:center;
+         }
+         .search_box{
+         max-width:100%;
+         }
+         }
+         @media(max-width:768px){
+         .logo_name{
+         font-size:52px;
+         }
+         .banner_slide{
+         height:65vh;
+         }
+         .banner_content{
+         left:5%;
+         }
+         .banner_content h1{
+         font-size:38px;
+         }
+         .fashion_taital,
+         .works_title{
+         font-size:34px;
+         }
+         .nav_right{
+         gap:14px;
+         flex-wrap:wrap;
+         justify-content:center;
+         }
+         }
+         .profile_menu{
+         border:none;
+         border-radius:14px;
+         padding:10px;
+         box-shadow:0 10px 30px rgba(0,0,0,0.12);
+         }
+         .profile_menu .dropdown-item{
+         padding:10px 18px;
+         border-radius:10px;
+         font-size:14px;
+         }
+         .profile_menu .dropdown-item:hover{
+         background:#F8F3EA;
+         color:#B8924C;
+         }
+         /* ================= CART BUTTON ================= */
+         .cart_btn {
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         gap: 8px;
+         padding: 10px 16px;
+         border-radius: 30px;
+         background: #B8924C;
+         color: white;
+         font-weight: 600;
+         text-decoration: none;
+         border: none;
+         transition: 0.3s ease;
+         }
+         .cart_btn i {
+         font-size: 16px;
+         }
+         .cart_btn:hover {
+         background: #8c6a2d;
+         color: white;
+         transform: translateY(-2px);
+         }
+         .navbar_section{
+         background:rgba(255,255,255,0.82);
+         backdrop-filter:blur(6px);
+         padding:16px 0;
+         box-shadow:0 8px 30px rgba(0,0,0,0.05);
+         position:sticky;
+         will-change:auto;
+         top:0;
+         z-index:9999;
+         border-bottom:1px solid rgba(184,146,76,0.08);
+         }
+         .hero_subtitle{
+         color:rgba(255,255,255,0.88);
+         font-size:16px;
+         line-height:1.9;
+         margin-top:18px;
+         max-width:500px;
+         }
+         .hero_btn{
+         display:inline-block;
+         margin-top:28px;
+         padding:14px 34px;
+         background:#B8924C;
+         border:2px solid #E0C08D;
+         color:white;
+         text-decoration:none;
+         border-radius:50px;
+         font-weight:600;
+         font-size:14px;
+         letter-spacing:1px;
+         transition:0.35s ease;
+         box-shadow:
+         0 10px 25px rgba(184,146,76,0.35);
+         text-transform:uppercase;
+         }
+         .hero_btn:hover{
+         background:#8c6a2d;
+         border-color:#E0C08D;
+         transform:
+         translateY(-4px)
+         scale(1.03);
+         color:white;
+         }
+         .section_badge{
+         text-align:center;
+         color:#B8924C;
+         font-size:13px;
+         letter-spacing:2px;
+         font-weight:600;
+         margin-bottom:12px;
+         }
+         .nav_right a,
+         .sidenav a,
+         .dropdown-item{
+         transition:0.3s ease;
+         }
+         /* PROFILE ICON */
+         .profile_circle{
+         width:40px;
+         height:40px;
+         border-radius:50%;
+         background:#E0C08D;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         color:#111;
+         font-size:16px;
+         flex-shrink:0;
+         }
+         /* ================= FOOTER ================= */
+         .footer_section{
+         background:
+         linear-gradient(rgba(17,17,17,0.96),
+         rgba(17,17,17,0.96)),
+         url("{% static 'images/ethnic-pattern.png' %}");
+         background-size:260px;
+         padding:75px 0 65px;
+         color:#ddd;
+         position:relative;
+         border-top:1px solid rgba(184,146,76,0.15);
+         overflow:hidden;
+         }
+         /* GOLD EFFECT */
+         .footer_section::before{
+         content:"";
+         position:absolute;
+         width:320px;
+         height:320px;
+         background:rgba(184,146,76,0.08);
+         border-radius:50%;
+         top:-120px;
+         left:-100px;
+         filter:blur(30px);
+         }
+         .footer_section::after{
+         content:"";
+         position:absolute;
+         width:260px;
+         height:260px;
+         background:rgba(224,192,141,0.06);
+         border-radius:50%;
+         bottom:-120px;
+         right:-100px;
+         filter:blur(30px);
+         }
+         .copyright_section{
+         background:#0E0C09;
+         padding:18px;
+         text-align:center;
+         color:#b9b9b9;
+         font-size:14px;
+         letter-spacing:0.5px;
+         border-top:1px solid rgba(255,255,255,0.05);
+         }
+         /* ================= SEARCH AUTO SUGGEST ================= */
+         .search_wrapper{
+         position:relative;
+         flex:1;
+         max-width:500px;
+         }
+         .search_bar_box{
+         display:flex;
+         align-items:center;
+         background:#f3f3f3;
+         border-radius:40px;
+         overflow:hidden;
+         box-shadow:0 3px 10px rgba(0,0,0,0.04);
+         }
+         .search_bar_box button{
+         border:none;
+         background:#B8924C;
+         color:white;
+         padding:0 22px;
+         height:48px;
+         transition:0.3s ease;
+         }
+         .search_bar_box button:hover{
+         background:#8c6a2d;
+         }
+         .search_input{
+         width:100%;
+         padding:13px 20px;
+         border:none;
+         outline:none;
+         border-radius:40px;
+         background:#f3f3f3;
+         font-size:14px;
+         box-shadow:0 3px 10px rgba(0,0,0,0.04);
+         }
+         .suggestions_box{
+         position:absolute;
+         top:105%;
+         left:0;
+         width:100%;
+         background:white;
+         border-radius:18px;
+         overflow:hidden;
+         box-shadow:0 10px 25px rgba(0,0,0,0.08);
+         z-index:99999;
+         display:none;
+         }
+         .suggestion_item{
+         padding:14px 18px;
+         cursor:pointer;
+         transition:0.3s ease;
+         font-size:14px;
+         border-bottom:1px solid #f2f2f2;
+         }
+         .suggestion_item:hover{
+         background:#F8F3EA;
+         color:#B8924C;
+         }
+         /* ================= ULTRA LUXURY SPLASH SCREEN ================= */
+         /* ================= CINEMATIC SPLASH SCREEN ================= */
+         #splash_screen{
+         position:fixed;
+         top:0;
+         left:0;
+         width:100%;
+         height:100vh;
+         background:
+         radial-gradient(circle at top left,
+         #f5e7ca 0%,
+         #f8f3ea 35%,
+         #ffffff 100%);
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         z-index:9999999999;
+         overflow:hidden;
+         transition:
+         opacity 1s ease,
+         visibility 1s ease;
+         }
+         /* HIDE */
+         #splash_screen.hide{
+         opacity:0;
+         visibility:hidden;
+         pointer-events:none;
+         }
+         /* MOVING GOLD LIGHT */
+         .gold_light{
+         position:absolute;
+         width:500px;
+         height:500px;
+         border-radius:50%;
+         background:
+         rgba(184,146,76,0.18);
+         filter:blur(120px);
+         animation:
+         moveLight 14s linear infinite;
+         }
+         .gold_light.two{
+         width:400px;
+         height:400px;
+         right:-100px;
+         bottom:-100px;
+         animation-delay:2s;
+         }
+         /* CONTENT */
+         .splash_content{
+         position:relative;
+         z-index:2;
+         text-align:center;
+         }
+         /* LOGO */
+         .splash_logo{
+         font-family:'Great Vibes',cursive;
+         font-size:110px;
+         font-weight:400;
+         letter-spacing:3px;
+         color:#B8924C;
+         opacity:0;
+         transform:translateY(40px) scale(0.9);
+         animation:
+         luxuryReveal 1.8s ease forwards;
+         text-shadow:
+         0 12px 35px rgba(184,146,76,0.28);
+         position:relative;
+         }
+         /* SUBTEXT */
+         .splash_tagline{
+         margin-top:10px;
+         font-size:16px;
+         letter-spacing:3px;
+         color:#6f5730;
+         opacity:0;
+         animation:
+         fadeLuxury 1.8s ease forwards;
+         animation-delay:1s;
+         font-weight:500;
+         }
+         .splash_glow_ring{
+         width:180px;
+         height:180px;
+         border:1px solid rgba(184,146,76,0.25);
+         border-radius:50%;
+         position:absolute;
+         top:50%;
+         left:50%;
+         transform:translate(-50%,-50%);
+         animation:ringPulse 3s ease-in-out infinite;
+         }
+         /* NEW ANIMATIONS */
+         @keyframes luxuryReveal{
+         0%{
+         opacity:0;
+         transform:translateY(40px) scale(0.88);
+         filter:blur(10px);
+         }
+         100%{
+         opacity:1;
+         transform:translateY(0) scale(1);
+         filter:blur(0);
+         }
+         }
+         @keyframes fadeLuxury{
+         from{
+         opacity:0;
+         letter-spacing:10px;
+         }
+         to{
+         opacity:1;
+         letter-spacing:3px;
+         }
+         }
+         @keyframes ringPulse{
+         0%{
+         transform:translate(-50%,-50%) scale(0.8);
+         opacity:0.3;
+         }
+         50%{
+         transform:translate(-50%,-50%) scale(1);
+         opacity:0.8;
+         }
+         100%{
+         transform:translate(-50%,-50%) scale(1.15);
+         opacity:0;
+         }
+         }
+         
+         /* ANIMATIONS */
+         @keyframes lineOpen{
+         to{
+         width:180px;
+         }
+         }
+         @keyframes moveLight{
+         0%{
+         transform:translate(-40px,-20px);
+         }
+         50%{
+         transform:translate(40px,20px);
+         }
+         100%{
+         transform:translate(-40px,-20px);
+         }
+         }
+         /* MOBILE */
+         @media(max-width:768px){
+         .splash_logo{
+         font-size:54px;
+         }
+         .splash_tagline{
+         font-size:11px;
+         letter-spacing:3px;
+         }
+         }
+         .floating_bg{
+         position:fixed;
+         inset:0;
+         pointer-events:none;
+         z-index:-1;
+         background-image:
+         radial-gradient(circle at 20% 30%, rgba(184,146,76,0.08) 0, transparent 120px),
+         radial-gradient(circle at 80% 20%, rgba(224,192,141,0.08) 0, transparent 160px),
+         radial-gradient(circle at 60% 80%, rgba(184,146,76,0.06) 0, transparent 140px);
+         animation:floatingMove 18s ease-in-out infinite alternate;
+         }
+         @keyframes floatingMove{
+         0%{
+         transform:translateY(0px);
+         }
+         100%{
+         transform:translateY(-30px);
+         }
+         }
+         .luxury_divider{
+         width:140px;
+         height:2px;
+         margin:10px auto 25px;
+         background:
+         linear-gradient(
+         to right,
+         transparent,
+         #D8B56A,
+         transparent
+         );
+         opacity:0.7;
+         }
+         .product_card,
+         .step,
+         .fashion_taital,
+         .section_badge{
+         opacity:1;
+         transform:none;
+         display:flex;
+         flex-direction:column;
+         justify-content:space-between;
+         transition:0.4s ease;
+         }
+         
+         img{
+         max-width:100%;
+         height:auto;
+         }
+         *{
+         -webkit-font-smoothing:antialiased;
+         }
+         html{
+         scroll-behavior:smooth;
+         }
+        
+         .category_menu{
+         border:none;
+         border-radius:20px;
+         padding:14px;
+         box-shadow:0 15px 35px rgba(0,0,0,0.08);
+         margin-top:14px;
+         }
+         .category_menu .dropdown-item{
+         padding:10px 16px;
+         border-radius:12px;
+         transition:0.3s ease;
+         }
+         .category_menu .dropdown-item:hover{
+         background:#F8F3EA;
+         color:#B8924C;
+         padding-left:20px;
+         }
+
+         .footer_section::before,
+         .footer_section::after{
+
+            animation:footerGlow 8s ease-in-out infinite alternate;
+
+        }
+
+        @keyframes footerGlow{
+
+        0%{
+        transform:scale(1);
+        opacity:0.5;
+        }
+
+        100%{
+        transform:scale(1.15);
+        opacity:1;
+        }
+
+        }
+      </style>
+   </head>
+   <body>
+      <!-- ================= SPLASH SCREEN ================= -->
+      <div class="floating_bg"></div>
+      <div id="splash_screen">
+         <div class="gold_light"></div>
+         <div class="gold_light two"></div>
+         <div class="splash_content">
             <h1 class="splash_logo">
-                Ethnic Vault
+               Ethnic Vault
             </h1>
-
-            <div class="splash_line"></div>
-
             <p class="splash_tagline">
-                LUXURY ETHNIC RENTALS
+               Rent • Style • Return
             </p>
-
-        </div>
-    </div>
-
-
-<!-- ================= LUXURY RIBBON ================= -->
-
-<div class="top_ribbon">
-
-    <div class="ribbon_container">
-
-        <a href="{% url 'new_arrivals' %}"
-           class="ribbon_link ribbon_highlight">
-
+            <div class="splash_glow_ring"></div>
+         </div>
+      </div>
+      <!-- ================= LUXURY RIBBON ================= -->
+      <div class="top_ribbon">
+         <div class="ribbon_container">
+            <a href="{% url 'new_arrivals' %}"
+               class="ribbon_link ribbon_highlight">
             ✨ New Arrivals
-
-        </a>
-
-        <a href="{% url 'offers_page' %}"
-           class="ribbon_link">
-
+            </a>
+            <a href="{% url 'offers_page' %}"
+               class="ribbon_link">
             Offers
-
-        </a>
-
-        <a href="{% url 'rental_guidelines_page' %}"
-           class="ribbon_link">
-
+            </a>
+            <a href="{% url 'rental_guidelines_page' %}"
+               class="ribbon_link">
             Rental Guidelines
-
-        </a>
-
-        <a href="{% url 'faq_page' %}"
-           class="ribbon_link">
-
+            </a>
+            <a href="{% url 'faq_page' %}"
+               class="ribbon_link">
             FAQs
-
-        </a>
-
-        <a href="{% url 'terms_conditions' %}"
-           class="ribbon_link">
-
+            </a>
+            <a href="{% url 'terms_conditions' %}"
+               class="ribbon_link">
             Terms & Conditions
-
-        </a>
-
-    </div>
-
-</div>
-<!-- ================= LOGO ================= -->
-
-<div class="logo_section">
-    <div class="container text-center">
-        <h1 class="logo_name">Ethnic Vault</h1>
-        <p class="logo_tagline">Your dream look, without the full price</p>
-    </div>
-</div>
-
-<!-- ================= NAVBAR ================= -->
-
-<nav class="navbar_section">
-
-    <div class="container nav_wrapper">
-
-        <!-- SIDE MENU -->
-
-        <div class="menu_left">
-
-            <span class="toggle_icon" onclick="openNav()">
-                <img src="{% static 'images/toggle-icon.png' %}">
-            </span>
-
-            <div id="mySidenav" class="sidenav">
-
-
-                <!-- MENU TITLE -->
-
-                <div class="side_menu_title">
-
-                    Ethnic Vault
-
-                    <a href="javascript:void(0)"
+            </a>
+         </div>
+      </div>
+      <!-- ================= LOGO ================= -->
+      <div class="logo_section">
+         <div class="container text-center">
+            <h1 class="logo_name">Ethnic Vault</h1>
+            <p class="logo_tagline">Your dream look, without the full price</p>
+         </div>
+      </div>
+      <!-- ================= NAVBAR ================= -->
+      <nav class="navbar_section">
+         <div class="container nav_wrapper">
+            <!-- SIDE MENU -->
+            <div class="menu_left">
+               <span class="toggle_icon" onclick="openNav()">
+               <img src="{% static 'images/toggle-icon.png' %}">
+               </span>
+               <div id="mySidenav" class="sidenav">
+                  <!-- MENU TITLE -->
+                  <div class="side_menu_title">
+                     Ethnic Vault
+                     <a href="javascript:void(0)"
                         class="closebtn"
                         onclick="closeNav()">
-
-                        &times;
-
-                    </a>
-
-                </div>
-
-                <!-- MAIN LINKS -->
-
-                <a href="{% url 'homepage' %}">
-                    <i class="fa fa-home"></i>
-                    Home
-                </a>
-
-                {% if request.session.role == 'user' %}
-
-                <a href="{% url 'user_dashboard' %}">
-
-                    <i class="fa fa-user-circle"></i>
-
-                    Profile
-
-                </a>
-
-                {% endif %}
-
-                <a href="{% url 'designer_login' %}">
-
-                    <i class="fa fa-diamond"></i>
-
-                    Designer Login
-
-                </a>
-
-                <a href="{% url 'admin_login' %}">
-
-                    <i class="fa fa-lock"></i>
-
-                    Admin Login
-
-                </a>
-
-                {% if request.session.role == 'user' %}
-
-                <a href="{% url 'logout_view' %}">
-
-                    <i class="fa fa-sign-out"></i>
-
-                    Logout
-
-                </a>
-
-                {% else %}
-
-                <a href="{% url 'user_login' %}">
-
-                    <i class="fa fa-user"></i>
-
-                    User Login
-
-                </a>
-
-                {% endif %}
-
+                     &times;
+                     </a>
+                  </div>
+                  <!-- MAIN LINKS -->
+                  <a href="{% url 'homepage' %}">
+                  <i class="fa fa-home"></i>
+                  Home
+                  </a>
+                  {% if request.session.role == 'user' %}
+                  <a href="{% url 'user_dashboard' %}">
+                  <i class="fa fa-user-circle"></i>
+                  Profile
+                  </a>
+                  {% endif %}
+                  <a href="{% url 'designer_login' %}">
+                  <i class="fa fa-diamond"></i>
+                  Designer Login
+                  </a>
+                  <a href="{% url 'admin_login' %}">
+                  <i class="fa fa-lock"></i>
+                  Admin Login
+                  </a>
+                  {% if request.session.role == 'user' %}
+                  <a href="{% url 'logout_view' %}">
+                  <i class="fa fa-sign-out"></i>
+                  Logout
+                  </a>
+                  {% else %}
+                  <a href="{% url 'user_login' %}">
+                  <i class="fa fa-user"></i>
+                  User Login
+                  </a>
+                  {% endif %}
+               </div>
             </div>
-        </div>
-
-        <!-- CATEGORY -->
-
-        <div class="dropdown">
-
-            <button class="category_btn dropdown-toggle" data-toggle="dropdown">
-                Collections
-            </button>
-
-            <div class="dropdown-menu category_menu">
-
-                <h6 class="dropdown-header">Her Collection</h6>
-
-                <a class="dropdown-item" href="{% url 'lehenga' %}">
-                    Lehenga
-                </a>
-
-                <a class="dropdown-item" href="{% url 'saree' %}">
-                    Saree
-                </a>
-
-                <a class="dropdown-item" href="{% url 'chaniya' %}">
-                    Chaniya Choli
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <h6 class="dropdown-header">His Collection</h6>
-
-                <a class="dropdown-item" href="{% url 'sherwani' %}">
-                    Sherwani
-                </a>
-
-                <a class="dropdown-item" href="{% url 'kurta' %}">
-                    Kurta
-                </a>
-
-                <a class="dropdown-item" href="{% url 'tuxedo' %}">
-                    Tuxedo
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <h6 class="dropdown-header">Kids Collection</h6>
-
-                <a class="dropdown-item" href="{% url 'boys' %}">
-                    Boys Wear
-                </a>
-
-                <a class="dropdown-item" href="{% url 'girls' %}">
-                    Girls Wear
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <h6 class="dropdown-header">Accessories</h6>
-
-                <a class="dropdown-item" href="{% url 'menAccessories' %}">
-                    Men Accessories
-                </a>
-
-                <a class="dropdown-item" href="{% url 'womenAccessories' %}">
-                    Women Accessories
-                </a>
-
-                <div class="dropdown-divider"></div>
-
-                <h6 class="dropdown-header">Footwear</h6>
-
-                <a class="dropdown-item" href="{% url 'menfootwear' %}">
-                    Men Footwear
-                </a>
-
-                <a class="dropdown-item" href="{% url 'womenfootwear' %}">
-                    Women Footwear
-                </a>
-
+            <!-- CATEGORY -->
+            <div class="dropdown">
+               <button class="category_btn dropdown-toggle" data-toggle="dropdown">
+               Collections
+               </button>
+               <div class="dropdown-menu category_menu">
+                  <h6 class="dropdown-header">Her Collection</h6>
+                  <a class="dropdown-item" href="{% url 'lehenga' %}">
+                  Lehenga
+                  </a>
+                  <a class="dropdown-item" href="{% url 'saree' %}">
+                  Saree
+                  </a>
+                  <a class="dropdown-item" href="{% url 'chaniya' %}">
+                  Chaniya Choli
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <h6 class="dropdown-header">His Collection</h6>
+                  <a class="dropdown-item" href="{% url 'sherwani' %}">
+                  Sherwani
+                  </a>
+                  <a class="dropdown-item" href="{% url 'kurta' %}">
+                  Kurta
+                  </a>
+                  <a class="dropdown-item" href="{% url 'tuxedo' %}">
+                  Tuxedo
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <h6 class="dropdown-header">Kids Collection</h6>
+                  <a class="dropdown-item" href="{% url 'boys' %}">
+                  Boys Wear
+                  </a>
+                  <a class="dropdown-item" href="{% url 'girls' %}">
+                  Girls Wear
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <h6 class="dropdown-header">Accessories</h6>
+                  <a class="dropdown-item" href="{% url 'menAccessories' %}">
+                  Men Accessories
+                  </a>
+                  <a class="dropdown-item" href="{% url 'womenAccessories' %}">
+                  Women Accessories
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <h6 class="dropdown-header">Footwear</h6>
+                  <a class="dropdown-item" href="{% url 'menfootwear' %}">
+                  Men Footwear
+                  </a>
+                  <a class="dropdown-item" href="{% url 'womenfootwear' %}">
+                  Women Footwear
+                  </a>
+               </div>
             </div>
-        </div>
-
-        <!-- SEARCH -->
-
-        <div class="search_wrapper">
-
-            <div class="search_bar_box">
-
-                <input type="text"
-                    id="searchInput"
-                    class="search_input"
-                    placeholder="Search collections...">
-
-            <button id="searchBtn">
-
-                <i class="fa fa-search"></i>
-
-            </button>
-
-        </div>
-
-        <div id="suggestionsBox"
-            class="suggestions_box">
-        </div>
-
-    </div>
-        <!-- RIGHT -->
-
-
-<div class="nav_right">
-
-    <!-- CART -->
-
-    <a href="{% url 'view_cart' %}" class="nav_icon_btn">
-
-        <i class="fa fa-shopping-bag"></i>
-
-        <span>Cart</span>
-
-    </a>
-
-    <!-- WISHLIST -->
-
-    <a href="{% url 'view_wishlist' %}" class="nav_icon_btn">
-
-        <i class="fa fa-heart"></i>
-
-        <span>Wishlist</span>
-
-    </a>
-
-    <!-- USER PROFILE -->
-
-    {% if request.session.role == 'user' %}
-
-    <div class="dropdown">
-
-        <a class="user_profile_btn dropdown-toggle"
-           data-toggle="dropdown">
-
-            <div class="profile_circle">
-
-                <i class="fa fa-user"></i>
-
+            <!-- SEARCH -->
+            <div class="search_wrapper">
+               <div class="search_bar_box">
+                  <input type="text"
+                     id="searchInput"
+                     class="search_input"
+                     placeholder="Search collections...">
+                  <button id="searchBtn">
+                  <i class="fa fa-search"></i>
+                  </button>
+               </div>
+               <div id="suggestionsBox"
+                  class="suggestions_box">
+               </div>
             </div>
-
-            <span>
-                Hello, {{ request.session.user_name }}
-            </span>
-
-        </a>
-
-        <div class="dropdown-menu profile_menu">
-
-            <a class="dropdown-item"
-               href="{% url 'user_dashboard' %}">
-
-                <i class="fa fa-user-circle"></i>
-
-                Dashboard
-
-            </a>
-
-            <a class="dropdown-item"
-               href="{% url 'logout_view' %}">
-
-                <i class="fa fa-sign-out"></i>
-
-                Logout
-
-            </a>
-
-        </div>
-
-    </div>
-
-    {% endif %}
-
-</div>
-    </div>
-
-</nav>
-
-<!-- ================= HERO BANNER ================= -->
-
-<section class="hero_banner">
-
-    <div id="my_slider"
-    class="carousel slide"
-    data-ride="carousel"
-    data-interval="6000">
-        <div class="carousel-inner">
-
-            <!-- BANNER 1 -->
-
-            <div class="carousel-item active banner_slide"
-                 style="background-image:url('{% static 'images/banner.jpeg' %}')">
-
-                <div class="banner_overlay"></div>
-
-                <div class="banner_content">
-
-                    <h1 class="hero_title">
-
-                        <span>Ethnic Vault</span>
-
-                        Rent • Style • Return
-
-                    </h1>
-                    <p class="hero_subtitle">
-                        Premium designer ethnic wear for weddings,
-                        festive celebrations and unforgettable moments.
-                    </p>
-
-                    <a href="javascript:void(0)"
+            <!-- RIGHT -->
+            <div class="nav_right">
+               <!-- CART -->
+               <a href="{% url 'view_cart' %}" class="nav_icon_btn">
+               <i class="fa fa-shopping-bag"></i>
+               <span>Cart</span>
+               </a>
+               <!-- WISHLIST -->
+               <a href="{% url 'view_wishlist' %}" class="nav_icon_btn">
+               <i class="fa fa-heart"></i>
+               <span>Wishlist</span>
+               </a>
+               <!-- USER PROFILE -->
+               {% if request.session.role == 'user' %}
+               <div class="dropdown">
+                  <a class="user_profile_btn dropdown-toggle"
+                     data-toggle="dropdown">
+                     <div class="profile_circle">
+                        <i class="fa fa-user"></i>
+                     </div>
+                     <span>
+                     Hello, {{ request.session.user_name }}
+                     </span>
+                  </a>
+                  <div class="dropdown-menu profile_menu">
+                     <a class="dropdown-item"
+                        href="{% url 'user_dashboard' %}">
+                     <i class="fa fa-user-circle"></i>
+                     Dashboard
+                     </a>
+                     <a class="dropdown-item"
+                        href="{% url 'logout_view' %}">
+                     <i class="fa fa-sign-out"></i>
+                     Logout
+                     </a>
+                  </div>
+               </div>
+               {% endif %}
+            </div>
+         </div>
+      </nav>
+      <!-- ================= HERO BANNER ================= -->
+      <section class="hero_banner">
+         <div id="my_slider"
+            class="carousel slide"
+            data-ride="carousel"
+            data-interval="6000">
+            <div class="carousel-inner">
+               <!-- BANNER 1 -->
+               <div class="carousel-item active banner_slide"
+                  style="background-image:url('{% static 'images/banner.jpeg' %}')">
+                  <div class="banner_overlay"></div>
+                  <div class="banner_content">
+                     <h1 class="hero_title">
+                        Wedding Season.<br>
+                        Dress Grand, Spend Smart.
+                     </h1>
+                     <a href="javascript:void(0)"
                         class="hero_btn"
                         id="exploreBtn">
-
-                        Explore Collections
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- BANNER 2 -->
-
-            <div class="carousel-item banner_slide"
-                 style="background-image:url('{% static 'images/banner1.jpeg' %}')">
-
-                <div class="banner_overlay"></div>
-
-                <div class="banner_content">
-
-                    <h1 class="hero_title">
-
-                        <span>Wedding Luxury</span>
-
-                        Crafted For Grand Celebrations
-
-                    </h1>
-
-                    <p class="hero_subtitle">
-
-                        Designer outfits curated for weddings,
-                        receptions and unforgettable memories.
-
-                    </p>
-                    <a href="javascript:void(0)"
+                     Explore Collection
+                     </a>
+                  </div>
+               </div>
+               <!-- BANNER 2 -->
+               <div class="carousel-item banner_slide"
+                  style="background-image:url('{% static 'images/banner1.jpeg' %}')">
+                  <div class="banner_overlay"></div>
+                  <div class="banner_content">
+                     <h1 class="hero_title">
+                        Luxury Ethnic Wear.<br>
+                        Rented For Your Perfect Moment.
+                     </h1>
+                     <a href="javascript:void(0)"
                         class="hero_btn">
-
-                        Explore Collections
-
-                    </a>
-
-                </div>
-
-            </div>
-
-            <!-- BANNER 3 -->
-
-            <div class="carousel-item banner_slide"
-                 style="background-image:url('{% static 'images/banner2.jpeg' %}')">
-
-                <div class="banner_overlay"></div>
-
-                <div class="banner_content">
-
-                    <h1 class="hero_title">
-
-                        <span>Luxury Fashion</span>
-
-                            Wear Royalty Without Buying
-
-                    </h1>
-
-                    <p class="hero_subtitle">
-
-                        Experience premium ethnic fashion
-                        at a fraction of the original price.
-
-                    </p>
-                    <a href="javascript:void(0)"
+                     Explore Collection
+                     </a>
+                  </div>
+               </div>
+               <!-- BANNER 3 -->
+               <div class="carousel-item banner_slide"
+                  style="background-image:url('{% static 'images/banner2.jpeg' %}')">
+                  <div class="banner_overlay"></div>
+                  <div class="banner_content">
+                     <h1 class="hero_title">
+                        Rent • Style • Return.<br>
+                        Fashion That Feels Royal.
+                     </h1>
+                     <a href="javascript:void(0)"
                         class="hero_btn">
+                     Explore Collection
+                     </a>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </section>
+        {% include 'product_section.html' with title="Her Collection" data=her_data %}
 
-                        Explore Collections
+        {% include 'product_section.html' with title="His Collection" data=his_data %}
 
+        {% include 'product_section.html' with title="Kids Collection" data=kids_data %}
+
+        {% include 'product_section.html' with title="Accessories" data=accessories_data %}
+
+        {% include 'product_section.html' with title="Footwear" data=footwear_data %}
+      <!-- ================= HOW IT WORKS ================= -->
+      <div class="works_section">
+         <div class="container text-center">
+            <h2 class="works_title">
+               How Ethnic Vault Works ?
+            </h2>
+            <p class="works_subtitle">
+               Simple steps to rent your perfect outfit
+            </p>
+            <div class="row mt-5">
+               <div class="col-md-3 step">
+                  <div class="step_icon">
+                     <i class="fa fa-shopping-bag"></i>
+                  </div>
+                  <h4>Select Outfit</h4>
+                  <p>
+                     Browse and choose from our premium ethnic collection.
+                  </p>
+               </div>
+               <div class="col-md-3 step">
+                  <div class="step_icon">
+                     <i class="fa fa-calendar"></i>
+                  </div>
+                  <h4>Book It</h4>
+                  <p>
+                     Select your date and place your rental order easily.
+                  </p>
+               </div>
+               <div class="col-md-3 step">
+                  <div class="step_icon">
+                     <i class="fa fa-star"></i>
+                  </div>
+                  <h4>Wear & Shine</h4>
+                  <p>
+                     Look stunning and enjoy your special occasion.
+                  </p>
+               </div>
+               <div class="col-md-3 step">
+                  <div class="step_icon">
+                     <i class="fa fa-refresh"></i>
+                  </div>
+                  <h4>Return It</h4>
+                  <p>
+                     Easy return process with pickup at your doorstep.
+                  </p>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- ================= FOOTER ================= -->
+      <div class="footer_section">
+         <div class="container">
+            <div class="row">
+               <!-- BRAND -->
+               <div class="col-lg-3 col-md-6 mb-4">
+                  <h3 class="footer_logo">
+                     Ethnic Vault
+                  </h3>
+                  <p class="footer_desc">
+                     India's modern ethnic rental platform for weddings,
+                     festivals, parties and unforgettable occasions.
+                  </p>
+                  <p class="footer_tagline">
+                     Rent • Style • Return
+                  </p>
+               </div>
+               <!-- COLLECTION LINKS -->
+               <div class="col-lg-3 col-md-6 mb-4">
+                  <h4>Collections</h4>
+                  <ul class="footer_links">
+                     <li><a href="{% url 'homepage' %}">Home</a></li>
+                     <li><a href="{% url 'lehenga' %}">Her Collection</a></li>
+                     <li><a href="{% url 'sherwani' %}">His Collection</a></li>
+                     <li><a href="{% url 'boys' %}">Kids Collection</a></li>
+                     <li><a href="{% url 'womenAccessories' %}">Accessories</a></li>
+                     <li><a href="{% url 'womenfootwear' %}">Footwear</a></li>
+                  </ul>
+               </div>
+               <!-- SUPPORT -->
+               <div class="col-lg-3 col-md-6 mb-4">
+                  <h4 class="footer_heading">
+                     Customer Support
+                  </h4>
+                  <ul class="footer_links">
+                     <li><a href="{% url 'faq_page' %}">FAQs</a></li>
+                     <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
+                     <li><a href="{% url 'rental_guidelines_page' %}">Rental Guidelines</a></li>
+                  </ul>
+               </div>
+               <!-- CONTACT -->
+               <div class="col-lg-3 col-md-6 mb-4">
+                  <h4 class="footer_heading">
+                     Contact
+                  </h4>
+                  <p class="contact_text">
+                     <i class="fa fa-phone"></i>
+                     +91 9876543210
+                  </p>
+                  <p class="contact_text">
+                     <i class="fa fa-envelope"></i>
+                     ethnicvault@gmail.com
+                  </p>
+                  <p class="contact_text">
+                     <i class="fa fa-map-marker"></i>
+                     Belagavi, Karnataka
+                  </p>
+                  <!-- SOCIAL ICONS -->
+                  <div class="social_icons mt-4">
+                     <a href="https://instagram.com/srushti__31.12"
+                        target="_blank">
+                     <i class="fa fa-instagram"></i>
+                     </a>
+                     <a href="#">
+                     <i class="fa fa-facebook"></i>
+                     </a>
+                     <a href="https://wa.me/918618304315" target="_blank" class="whatsapp_icon">
+                    <i class="fa fa-whatsapp"></i>
                     </a>
-
-                </div>
-
+                  </div>
+               </div>
             </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= HER COLLECTION ================= -->
-<div class="luxury_divider"></div>
-
-<div class="fashion_section">
-
-    <div class="container">
-
-        <div class="section_badge">
-            PREMIUM COLLECTION
-        </div>
-
-        <h1 class="fashion_taital">
-            Her Collection
-        </h1>
-
-        <div class="row">
-
-            {% for d in her_data %}
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-
-                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
-
-                    <a href="{% url 'add_to_wishlist' d.id %}"
-                        class="wishlist_icon">
-
-                        {% if d.id in wishlist_ids %}
-
-                            <i class="fa fa-heart"
-                                style="color:red;"></i>
-
-                        {% else %}
-
-                            <i class="fa fa-heart-o"></i>
-
-                        {% endif %}
-
-                    </a>
-
-                    <div class="image_wrapper">
-
-                        {% if not d.is_available %}
-                        <div class="unavailable_overlay">
-                            Currently Rented
-                        </div>
-                        {% endif %}
-
-                        <img src="{{ d.design_image1.url }}" loading="lazy" decoding="async">
-
-                        <div class="overlay_buttons">
-
-                            <a href="{% url 'view_design_details' d.id %}">
-                                View Details
-                            </a>
-                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
-                                <i class="fa fa-shopping-cart"></i>
-                                Add to Cart
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <h4 class="shirt_text">
-                        {{ d.design_title }}
-                    </h4>
-
-                    <p class="price_text">
-                        ₹{{ d.charges }}
-                    </p>
-
-                </div>
-
-            </div>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ================= HIS COLLECTION ================= -->
-<div class="luxury_divider"></div>
-<div class="fashion_section">
-
-    <div class="container">
-
-        <div class="section_badge">
-            PREMIUM COLLECTION
-        </div>
-
-        <h1 class="fashion_taital">
-            His Collection
-        </h1>
-
-        <div class="row">
-
-            {% for d in his_data %}
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-
-                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
-
-                    <a href="{% url 'add_to_wishlist' d.id %}"
-                        class="wishlist_icon">
-
-                        {% if d.id in wishlist_ids %}
-
-                            <i class="fa fa-heart"
-                                style="color:red;"></i>
-
-                        {% else %}
-
-                            <i class="fa fa-heart-o"></i>
-
-                        {% endif %}
-
-                    </a>
-
-                    <div class="image_wrapper">
-
-                        {% if not d.is_available %}
-                        <div class="unavailable_overlay">
-                            Currently Rented
-                        </div>
-                        {% endif %}
-
-                        <img src="{{ d.design_image1.url }}" loading="lazy" decoding="async">
-
-                        <div class="overlay_buttons">
-
-                            <a href="{% url 'view_design_details' d.id %}">
-                                View Details
-                            </a>
-                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
-                                <i class="fa fa-shopping-cart"></i>
-                                Add to Cart
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <h4 class="shirt_text">
-                        {{ d.design_title }}
-                    </h4>
-
-                    <p class="price_text">
-                        ₹{{ d.charges }}
-                    </p>
-
-                </div>
-
-            </div>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ================= KIDS COLLECTION ================= -->
-<div class="luxury_divider"></div>
-<div class="fashion_section">
-
-    <div class="container">
-
-        <div class="section_badge">
-            PREMIUM COLLECTION
-        </div>
-
-        <h1 class="fashion_taital">
-            Kids Collection
-        </h1>
-
-        <div class="row">
-
-            {% for d in kids_data %}
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-
-                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
-
-                    <a href="{% url 'add_to_wishlist' d.id %}"
-                        class="wishlist_icon">
-
-                        {% if d.id in wishlist_ids %}
-
-                            <i class="fa fa-heart"
-                                style="color:red;"></i>
-
-                        {% else %}
-
-                            <i class="fa fa-heart-o"></i>
-
-                        {% endif %}
-
-                    </a>
-
-                    <div class="image_wrapper">
-
-                        {% if not d.is_available %}
-                        <div class="unavailable_overlay">
-                            Currently Rented
-                        </div>
-                        {% endif %}
-
-                        <img src="{{ d.design_image1.url }}" loading="lazy" decoding="async">
-
-                        <div class="overlay_buttons">
-
-                            <a href="{% url 'view_design_details' d.id %}">
-                                View Details
-                            </a>
-                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
-                                <i class="fa fa-shopping-cart"></i>
-                                Add to Cart
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <h4 class="shirt_text">
-                        {{ d.design_title }}
-                    </h4>
-
-                    <p class="price_text">
-                        ₹{{ d.charges }}
-                    </p>
-
-                </div>
-
-            </div>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ================= ACCESSORIES ================= -->
-<div class="luxury_divider"></div>
-<div class="fashion_section">
-
-    <div class="container">
-
-        <div class="section_badge">
-            PREMIUM COLLECTION
-        </div>
-
-        <h1 class="fashion_taital">
-            Accessories
-        </h1>
-
-        <div class="row">
-
-            {% for d in accessories_data %}
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-
-                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
-
-                    <a href="{% url 'add_to_wishlist' d.id %}"
-                        class="wishlist_icon">
-
-                        {% if d.id in wishlist_ids %}
-
-                            <i class="fa fa-heart"
-                                style="color:red;"></i>
-
-                        {% else %}
-
-                            <i class="fa fa-heart-o"></i>
-
-                        {% endif %}
-
-                    </a>
-
-                    <div class="image_wrapper">
-
-                        {% if not d.is_available %}
-                        <div class="unavailable_overlay">
-                            Currently Rented
-                        </div>
-                        {% endif %}
-
-                        <img src="{{ d.design_image1.url }}" loading="lazy" decoding="async">
-
-                        <div class="overlay_buttons">
-
-                            <a href="{% url 'view_design_details' d.id %}">
-                                View Details
-                            </a>
-                            {% if d.is_available %}
-
-                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
-                                <i class="fa fa-shopping-cart"></i>
-                                Add to Cart
-                            </a>
-
-                            {% else %}
-
-                            <a class="cart_btn mt-2 disabled_btn">
-                                <i class="fa fa-ban"></i>
-                                Not Available
-                            </a>
-
-                            {% endif %}
-
-                        </div>
-
-                    </div>
-
-                    <h4 class="shirt_text">
-                        {{ d.design_title }}
-                    </h4>
-
-                    <p class="price_text">
-                        ₹{{ d.charges }}
-                    </p>
-
-                </div>
-
-            </div>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ================= FOOTWEAR ================= -->
-<div class="luxury_divider"></div>
-<div class="fashion_section">
-
-    <div class="container">
-
-        <div class="section_badge">
-            PREMIUM COLLECTION
-        </div>
-
-        <h1 class="fashion_taital">
-            Footwear
-        </h1>
-
-        <div class="row">
-
-            {% for d in footwear_data %}
-
-            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-
-                <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
-
-                    <a href="{% url 'add_to_wishlist' d.id %}"
-                        class="wishlist_icon">
-
-                        {% if d.id in wishlist_ids %}
-
-                            <i class="fa fa-heart"
-                                style="color:red;"></i>
-
-                        {% else %}
-
-                            <i class="fa fa-heart-o"></i>
-
-                        {% endif %}
-
-                    </a>
-
-                    <div class="image_wrapper">
-
-                        {% if not d.is_available %}
-                        <div class="unavailable_overlay">
-                            Currently Rented
-                        </div>
-                        {% endif %}
-
-                        <img src="{{ d.design_image1.url }}" loading="lazy" decoding="async">
-
-                        <div class="overlay_buttons">
-
-                            <a href="{% url 'view_design_details' d.id %}">
-                                View Details
-                            </a>
-                            <a href="{% url 'add_to_cart' d.id %}" class="cart_btn mt-2">
-                                <i class="fa fa-shopping-cart"></i>
-                                Add to Cart
-                            </a>
-                        </div>
-
-                    </div>
-
-                    <h4 class="shirt_text">
-                        {{ d.design_title }}
-                    </h4>
-
-                    <p class="price_text">
-                        ₹{{ d.charges }}
-                    </p>
-
-                </div>
-
-            </div>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ================= HOW IT WORKS ================= -->
-
-<div class="works_section">
-
-    <div class="container text-center">
-
-        <h2 class="works_title">
-            How Ethnic Vault Works ?
-        </h2>
-
-        <p class="works_subtitle">
-            Simple steps to rent your perfect outfit
-        </p>
-
-        <div class="row mt-5">
-
-            <div class="col-md-3 step">
-
-                <div class="step_icon">
-                    <i class="fa fa-shopping-bag"></i>
-                </div>
-
-                <h4>Select Outfit</h4>
-
-                <p>
-                    Browse and choose from our premium ethnic collection.
-                </p>
-
-            </div>
-
-            <div class="col-md-3 step">
-
-                <div class="step_icon">
-                    <i class="fa fa-calendar"></i>
-                </div>
-
-                <h4>Book It</h4>
-
-                <p>
-                    Select your date and place your rental order easily.
-                </p>
-
-            </div>
-
-            <div class="col-md-3 step">
-
-                <div class="step_icon">
-                    <i class="fa fa-star"></i>
-                </div>
-
-                <h4>Wear & Shine</h4>
-
-                <p>
-                    Look stunning and enjoy your special occasion.
-                </p>
-
-            </div>
-
-            <div class="col-md-3 step">
-
-                <div class="step_icon">
-                    <i class="fa fa-refresh"></i>
-                </div>
-
-                <h4>Return It</h4>
-
-                <p>
-                    Easy return process with pickup at your doorstep.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- ================= FOOTER ================= -->
-
-<div class="footer_section">
-
-    <div class="container">
-
-        <div class="row">
-
-            <!-- BRAND -->
-
-            <div class="col-lg-3 col-md-6 mb-4">
-
-                <h3 class="footer_logo">
-                    Ethnic Vault
-                </h3>
-
-                <p class="footer_desc">
-                    India's modern ethnic rental platform for weddings,
-                    festivals, parties and unforgettable occasions.
-                </p>
-
-                <p class="footer_tagline">
-                    Rent • Style • Return
-                </p>
-
-            </div>
-
-            <!-- COLLECTION LINKS -->
-
-            <div class="col-lg-3 col-md-6 mb-4">
-
-                <h4>Collections</h4>
-
-                <ul class="footer_links">
-
-                    <li><a href="{% url 'homepage' %}">Home</a></li>
-
-                    <li><a href="{% url 'lehenga' %}">Her Collection</a></li>
-
-                    <li><a href="{% url 'sherwani' %}">His Collection</a></li>
-
-                    <li><a href="{% url 'boys' %}">Kids Collection</a></li>
-
-                    <li><a href="{% url 'womenAccessories' %}">Accessories</a></li>
-
-                    <li><a href="{% url 'womenfootwear' %}">Footwear</a></li>
-
-                </ul>
-
-            </div>
-
-            <!-- SUPPORT -->
-
-            <div class="col-lg-3 col-md-6 mb-4">
-
-                <h4>Customer Support</h4>
-
-                <ul class="footer_links">
-
-                    <li><a href="{% url 'faq_page' %}">FAQs</a></li>
-
-                    <li><a href="{% url 'terms_conditions' %}">Terms & Conditions</a></li>
-
-                    <li><a href="{% url 'rental_guidelines_page' %}">Rental Guidelines</a></li>
-
-                </ul>
-
-                <!-- NEWSLETTER -->
-
-                <div class="newsletter_box mt-4">
-
-                    <p class="newsletter_title">
-                        Subscribe for latest arrivals
-                    </p>
-
-                    <div class="newsletter_input">
-
-                        <input type="email"
-                               placeholder="Enter Email">
-
-                        <button>
-                            Subscribe
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- CONTACT -->
-
-            <div class="col-lg-3 col-md-6 mb-4">
-
-                <h4>Contact</h4>
-
-                <p class="contact_text">
-                    <i class="fa fa-phone"></i>
-                    +91 9876543210
-                </p>
-
-                <p class="contact_text">
-                    <i class="fa fa-envelope"></i>
-                    ethnicvault@gmail.com
-                </p>
-
-                <p class="contact_text">
-                    <i class="fa fa-map-marker"></i>
-                    Belagavi, Karnataka
-                </p>
-
-                <!-- SOCIAL ICONS -->
-
-                <div class="social_icons mt-4">
-
-                    <a href="https://instagram.com/srushti__31.12"
-                       target="_blank">
-
-                        <i class="fa fa-instagram"></i>
-
-                    </a>
-
-                    <a href="#">
-
-                        <i class="fa fa-facebook"></i>
-
-                    </a>
-
-                    <a href="#">
-
-                        <i class="fa fa-twitter"></i>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-<!-- ================= COPYRIGHT ================= -->
-
-<div class="copyright_section">
-
-    <div class="container">
-
-        <p>
-            © 2026 Ethnic Vault.
-            Designed with elegance for modern ethnic fashion rentals.
-        </p>
-
-    </div>
-
-</div>
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-function openNav() {
-    document.getElementById("mySidenav").style.width = "260px";
-}
-
-function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-}
-
-
-/* OPEN COLLECTION DROPDOWN */
-
-document.getElementById("exploreBtn").addEventListener("click", function(){
-
-const dropdownToggle =
-document.querySelector(".category_btn");
-
-dropdownToggle.click();
-
-});
-/* ================= SEARCH AUTO SUGGEST ================= */
-
-const searchInput = document.getElementById("searchInput");
-
-const suggestionsBox = document.getElementById("suggestionsBox");
-
-/* COLLECTION DATA */
-
-const collections = [
-
-{
-name: "Lehenga",
-url: "{% url 'lehenga' %}"
-},
-
-{
-name: "Saree",
-url: "{% url 'saree' %}"
-},
-
-{
-name: "Chaniya Choli",
-url: "{% url 'chaniya' %}"
-},
-
-{
-name: "Sherwani",
-url: "{% url 'sherwani' %}"
-},
-
-{
-name: "Kurta",
-url: "{% url 'kurta' %}"
-},
-
-{
-name: "Tuxedo",
-url: "{% url 'tuxedo' %}"
-},
-
-{
-name: "Boys Wear",
-url: "{% url 'boys' %}"
-},
-
-{
-name: "Girls Wear",
-url: "{% url 'girls' %}"
-},
-
-{
-name: "Men Accessories",
-url: "{% url 'menAccessories' %}"
-},
-
-{
-name: "Women Accessories",
-url: "{% url 'womenAccessories' %}"
-},
-
-{
-name: "Men Footwear",
-url: "{% url 'menfootwear' %}"
-},
-
-{
-name: "Women Footwear",
-url: "{% url 'womenfootwear' %}"
-}
-
-];
-
-/* INPUT SEARCH */
-
-let searchTimeout;
-
-searchInput.addEventListener("input", function(){
-
-clearTimeout(searchTimeout);
-
-searchTimeout = setTimeout(() => {
-
-const value = this.value.toLowerCase();
-
-suggestionsBox.innerHTML = "";
-
-if(value === ""){
-
-suggestionsBox.style.display = "none";
-
-return;
+         </div>
+      </div>
+      <!-- ================= COPYRIGHT ================= -->
+      <div class="copyright_section">
+         <div class="container">
+            <p>
+               © 2026 Ethnic Vault.
+               Designed with elegance for modern ethnic fashion rentals.
+            </p>
+         </div>
+      </div>
+      <!-- ================= JAVASCRIPT ================= -->
+      <script>
+         function openNav() {
+             document.getElementById("mySidenav").style.width = "260px";
+         }
+         
+         function closeNav() {
+             document.getElementById("mySidenav").style.width = "0";
+         }
+         
+         
+         /* ================= SEARCH AUTO SUGGEST ================= */
+         
+         const searchInput = document.getElementById("searchInput");
+         
+         const suggestionsBox = document.getElementById("suggestionsBox");
+
+         const searchBtn = document.getElementById("searchBtn");
+         
+         /* COLLECTION DATA */
+         
+         const collections = [
+         
+         {
+         name: "Lehenga",
+         url: "{% url 'lehenga' %}"
+         },
+         
+         {
+         name: "Saree",
+         url: "{% url 'saree' %}"
+         },
+         
+         {
+         name: "Chaniya Choli",
+         url: "{% url 'chaniya' %}"
+         },
+         
+         {
+         name: "Sherwani",
+         url: "{% url 'sherwani' %}"
+         },
+         
+         {
+         name: "Kurta",
+         url: "{% url 'kurta' %}"
+         },
+         
+         {
+         name: "Tuxedo",
+         url: "{% url 'tuxedo' %}"
+         },
+         
+         {
+         name: "Boys Wear",
+         url: "{% url 'boys' %}"
+         },
+         
+         {
+         name: "Girls Wear",
+         url: "{% url 'girls' %}"
+         },
+         
+         {
+         name: "Men Accessories",
+         url: "{% url 'menAccessories' %}"
+         },
+         
+         {
+         name: "Women Accessories",
+         url: "{% url 'womenAccessories' %}"
+         },
+         
+         {
+         name: "Men Footwear",
+         url: "{% url 'menfootwear' %}"
+         },
+         
+         {
+         name: "Women Footwear",
+         url: "{% url 'womenfootwear' %}"
+         }
+         
+         ];
+         
+         /* INPUT SEARCH */
+         
+         let searchTimeout;
+         
+         searchInput.addEventListener("input", function(){
+         
+         clearTimeout(searchTimeout);
+         
+         searchTimeout = setTimeout(() => {
+         
+         const value = this.value.toLowerCase();
+         
+         suggestionsBox.innerHTML = "";
+         
+         if(value === ""){
+         
+         suggestionsBox.style.display = "none";
+         
+         return;
+         
+         }
+         
+         const filtered = collections.filter(item =>
+         item.name.toLowerCase().includes(value)
+         );
+         
+         if(filtered.length > 0){
+         
+         suggestionsBox.style.display = "block";
+         
+         filtered.forEach(item => {
+         
+         const div = document.createElement("div");
+         
+         div.classList.add("suggestion_item");
+         
+         div.innerText = item.name;
+         
+         div.onclick = function(){
+         
+         window.location.href = item.url;
+         
+         };
+         
+         suggestionsBox.appendChild(div);
+         
+         });
+         
+         }else{
+         
+         suggestionsBox.style.display = "none";
+         
+         }
+         
+         },300);
+         
+         });
+         
+         /* SEARCH FUNCTION */
+
+function performSearch() {
+
+    const value = searchInput.value.toLowerCase();
+
+    const matched = collections.find(item =>
+        item.name.toLowerCase().includes(value)
+    );
+
+    if (matched) {
+
+        window.location.href = matched.url;
+
+    } else {
+
+        alert("No collection found");
+
+    }
 
 }
 
-const filtered = collections.filter(item =>
-item.name.toLowerCase().includes(value)
-);
+/* ENTER BUTTON */
 
-if(filtered.length > 0){
+searchInput.addEventListener("keypress", function (e) {
 
-suggestionsBox.style.display = "block";
+    if (e.key === "Enter") {
 
-filtered.forEach(item => {
+        e.preventDefault();
 
-const div = document.createElement("div");
+        performSearch();
 
-div.classList.add("suggestion_item");
-
-div.innerText = item.name;
-
-div.onclick = function(){
-
-window.location.href = item.url;
-
-};
-
-suggestionsBox.appendChild(div);
+    }
 
 });
 
-}else{
+/* SEARCH ICON BUTTON */
 
-suggestionsBox.style.display = "none";
+searchBtn.addEventListener("click", function () {
 
-}
-
-},300);
+    performSearch();
 
 });
+         
+         /* ================= HERO BUTTON DROPDOWN ================= */
+         
+         document.querySelectorAll(".hero_btn").forEach(button => {
+         
+         button.addEventListener("click", function(e){
+         
+         e.preventDefault();
+         
+         const dropdownBtn = document.querySelector(".category_btn");
+         
+         dropdownBtn.click();
+         
+         /* smooth scroll to navbar */
+         
+         document.querySelector(".navbar_section")
+         .scrollIntoView({
+         behavior:"smooth"
+         });
+         
+         });
+         
+         });
+         
+         /* CLICK OUTSIDE */
+         
+         document.addEventListener("click", function(e){
+         
+         if(!document.querySelector(".search_wrapper").contains(e.target)){
+         
+         suggestionsBox.style.display = "none";
+         
+         }
+         
+         }, 200);
+         
+      </script>
+      {% if messages %}
+      <script>
+         {% for message in messages %}
+         alert("{{ message }}");
+         {% endfor %}
+      </script>
+      {% endif %}
+      <script src="{% static 'js/jquery.min.js' %}"></script>
+      <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
-/* ENTER BUTTON REDIRECT */
+      <script>
+document.addEventListener("DOMContentLoaded", function () {
 
-searchInput.addEventListener("keypress", function(e){
+    const splash = document.getElementById("splash_screen");
 
-if(e.key === "Enter"){
+    /* IF ALREADY SHOWN */
+    if (localStorage.getItem("splashShown") === "true") {
 
-e.preventDefault();
+        splash.remove();
+        return;
 
-const value = this.value.toLowerCase();
+    }
 
-const matched = collections.find(item =>
-item.name.toLowerCase().includes(value)
-);
+    /* SHOW SPLASH FIRST TIME */
+    setTimeout(() => {
 
-if(matched){
+        splash.classList.add("hide");
 
-window.location.href = matched.url;
+        setTimeout(() => {
 
-}
+            splash.remove();
 
-}
+        }, 1000);
 
-});
+    }, 3000);
 
-/* ================= HERO BUTTON DROPDOWN ================= */
-
-document.querySelectorAll(".hero_btn").forEach(button => {
-
-button.addEventListener("click", function(e){
-
-e.preventDefault();
-
-const dropdownBtn = document.querySelector(".category_btn");
-
-dropdownBtn.click();
-
-/* smooth scroll to navbar */
-
-document.querySelector(".navbar_section")
-.scrollIntoView({
-behavior:"smooth"
-});
-
-});
-
-});
-
-/* CLICK OUTSIDE */
-
-document.addEventListener("click", function(e){
-
-if(!document.querySelector(".search_wrapper").contains(e.target)){
-
-suggestionsBox.style.display = "none";
-
-}
-
-}, 200);
-
-</script>
-
-{% if messages %}
-<script>
-{% for message in messages %}
-alert("{{ message }}");
-{% endfor %}
-</script>
-{% endif %}
-
-<script src="{% static 'js/jquery.min.js' %}"></script>
-
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-<script>
-
-/* ================= SPLASH SCREEN ================= */
-
-window.addEventListener("load", function(){
-
-const splash = document.getElementById("splash_screen");
-
-setTimeout(function(){
-
-splash.classList.add("hide");
-
-setTimeout(function(){
-
-splash.remove();
-
-},1200);
-
-},3000); // stays for 3 seconds
+    /* SAVE STATE */
+    localStorage.setItem("splashShown", "true");
 
 });
 </script>
-</body>
+   </body>
 </html>

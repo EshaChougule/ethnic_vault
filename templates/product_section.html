@@ -1,0 +1,92 @@
+<div class="luxury_divider"></div>
+
+<div class="fashion_section">
+   <div class="container">
+
+      <div class="section_badge">
+         PREMIUM COLLECTION
+      </div>
+
+      <h1 class="fashion_taital">
+         {{ title }}
+      </h1>
+
+      <div class="row">
+
+         {% for d in data %}
+
+         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+
+            <div class="product_card {% if not d.is_available %}unavailable_card{% endif %}">
+
+               <a href="{% url 'add_to_wishlist' d.id %}"
+                  class="wishlist_icon">
+
+                  {% if d.id in wishlist_ids %}
+                     <i class="fa fa-heart" style="color:red;"></i>
+                  {% else %}
+                     <i class="fa fa-heart-o"></i>
+                  {% endif %}
+
+               </a>
+
+               <div class="image_wrapper">
+
+                  {% if not d.is_available %}
+                  <div class="unavailable_overlay">
+                     Currently Rented
+                  </div>
+                  {% endif %}
+
+                  <img src="{{ d.design_image1.url }}"
+                       loading="lazy"
+                       decoding="async">
+
+                  <div class="overlay_buttons">
+
+                     <a href="{% url 'view_design_details' d.id %}">
+                        View Details
+                     </a>
+
+                     {% if d.is_available %}
+                     <a href="{% url 'add_to_cart' d.id %}"
+                        class="cart_btn mt-2">
+
+                        <i class="fa fa-shopping-cart"></i>
+                        Add to Cart
+
+                     </a>
+
+                     {% else %}
+
+                     <a class="cart_btn mt-2 disabled_btn">
+
+                        <i class="fa fa-ban"></i>
+                        Not Available
+
+                     </a>
+
+                     {% endif %}
+
+                  </div>
+
+               </div>
+
+               <h4 class="shirt_text">
+                  {{ d.design_title }}
+               </h4>
+
+               <p class="price_text">
+                  ₹{{ d.charges }}
+               </p>
+
+            </div>
+
+         </div>
+
+         {% endfor %}
+
+      </div>
+
+   </div>
+</div>
