@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -8,405 +9,568 @@
 
 <title>Ethnic Vault | Admin Login</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- GOOGLE FONTS -->
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- BOOTSTRAP -->
 
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
+<!-- FONT AWESOME -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
 
+/* ================= RESET ================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+/* ================= BODY ================= */
 
 body{
 
-font-family:'Poppins',sans-serif;
+    font-family:'Poppins',sans-serif;
 
-min-height:100vh;
+    min-height:100vh;
 
-display:flex;
-align-items:center;
-justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-padding:40px 20px;
+    padding:40px 20px;
 
-background-color:#F8F3EA;
+    background-color:#F8F3EA;
 
-background-image:
-linear-gradient(rgba(248,243,234,0.84),
-rgba(248,243,234,0.84)),
-url("{% static 'images/ethnic-pattern.png' %}");
+    background-image:
+    linear-gradient(rgba(248,243,234,0.90),
+    rgba(248,243,234,0.90)),
+    url("{% static 'images/ethnic-pattern.png' %}");
 
-background-size:320px;
+    background-size:320px;
+    background-repeat:repeat;
+    background-attachment:fixed;
 
-background-repeat:repeat;
+    overflow-x:hidden;
 
-background-attachment:fixed;
-
-overflow:hidden;
-position:relative;
+    position:relative;
 }
 
-/* GOLD GLOW */
+/* ================= BACKGROUND GLOW ================= */
 
 body::before{
 
-content:"";
+    content:"";
 
-position:absolute;
+    position:absolute;
 
-width:420px;
-height:420px;
+    width:340px;
+    height:340px;
 
-background:rgba(184,146,76,0.14);
+    background:rgba(184,146,76,0.16);
 
-border-radius:50%;
+    border-radius:50%;
 
-top:-120px;
-left:-100px;
+    top:-100px;
+    left:-100px;
 
-filter:blur(80px);
-
-z-index:0;
+    filter:blur(90px);
 }
 
 body::after{
 
-content:"";
+    content:"";
 
-position:absolute;
+    position:absolute;
 
-width:350px;
-height:350px;
+    width:280px;
+    height:280px;
 
-background:rgba(184,146,76,0.10);
+    background:rgba(212,175,55,0.12);
 
-border-radius:50%;
+    border-radius:50%;
 
-bottom:-120px;
-right:-100px;
+    bottom:-90px;
+    right:-70px;
 
-filter:blur(80px);
-
-z-index:0;
+    filter:blur(90px);
 }
 
-/* LOGIN CONTAINER */
+/* ================= MAIN WRAPPER ================= */
 
-.login-container{
+.login_wrapper{
 
-width:100%;
-max-width:1180px;
+    width:100%;
+    max-width:1250px;
 
-display:grid;
-grid-template-columns:1fr 1fr;
+    min-height:720px;
 
-background:rgba(255,255,255,0.72);
+    display:grid;
+    grid-template-columns:1fr 0.95fr;
 
-backdrop-filter:blur(16px);
+    background:rgba(255,255,255,0.88);
 
-border-radius:34px;
+    backdrop-filter:blur(14px);
 
-overflow:hidden;
+    border-radius:36px;
 
-box-shadow:
-0 20px 60px rgba(0,0,0,0.12);
+    overflow:hidden;
 
-position:relative;
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.10);
 
-z-index:2;
+    position:relative;
+
+    z-index:5;
 }
 
-/* LEFT PANEL */
+/* ================= LEFT PANEL ================= */
 
-.left-panel{
+.left_panel{
 
-padding:70px 60px;
+    position:relative;
 
-background:
-linear-gradient(rgba(24,20,15,0.82),
-rgba(24,20,15,0.88)),
-url("{% static 'images/banner1.jpeg' %}");
+    padding:70px 65px;
 
-background-size:cover;
-background-position:center;
+    background:
+    linear-gradient(rgba(17,17,17,0.74),
+    rgba(17,17,17,0.84)),
+    url("{% static 'images/banner1.jpeg' %}");
 
-color:white;
+    background-size:cover;
+    background-position:center;
 
-display:flex;
-flex-direction:column;
-justify-content:center;
-
-position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
-/* GOLD LINE */
+/* ================= BACK BUTTON ================= */
 
-.left-panel::before{
+.back_btn{
 
-content:"";
+    position:absolute;
 
-position:absolute;
+    top:24px;
+    left:24px;
 
-top:60px;
-left:60px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
-width:70px;
-height:3px;
+    background:rgba(17,17,17,0.92);
 
-background:#B8924C;
+    color:#E0C08D;
+
+    padding:11px 18px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-size:13px;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    border:1px solid rgba(255,255,255,0.08);
 }
 
-/* BRAND */
+.back_btn:hover{
 
-.brand-name{
+    background:#B8924C;
 
-font-family:'Playfair Display',serif;
+    color:white;
 
-font-size:58px;
+    text-decoration:none;
 
-line-height:1.1;
-
-margin-bottom:18px;
-
-color:#F8E7C2;
+    transform:translateY(-2px);
 }
 
-.brand-text{
+/* ================= BRAND CONTENT ================= */
 
-font-size:15px;
+.brand_badge{
 
-line-height:1.9;
+    display:inline-block;
 
-max-width:420px;
+    width:max-content;
 
-color:rgba(255,255,255,0.82);
+    padding:10px 22px;
+
+    border-radius:40px;
+
+    background:rgba(224,192,141,0.16);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#F8E7C2;
+
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+
+    margin-bottom:28px;
 }
 
-.admin-tag{
+.brand_title{
 
-display:inline-block;
+    font-family:'Playfair Display',serif;
 
-margin-top:28px;
+    font-size:68px;
 
-padding:10px 20px;
+    line-height:1.1;
 
-background:rgba(184,146,76,0.18);
+    color:white;
 
-border:1px solid rgba(255,255,255,0.12);
-
-border-radius:40px;
-
-font-size:13px;
-
-letter-spacing:1px;
-
-width:fit-content;
-
-backdrop-filter:blur(10px);
+    margin-bottom:18px;
 }
 
-/* RIGHT PANEL */
+.brand_title span{
 
-.right-panel{
+    font-family:'Great Vibes',cursive;
 
-padding:70px 55px;
+    font-size:88px;
 
-display:flex;
-align-items:center;
-justify-content:center;
+    color:#F8E7C2;
 
-background:rgba(255,255,255,0.55);
+    display:block;
+
+    margin-bottom:10px;
 }
 
-/* LOGIN CARD */
+.brand_desc{
 
-.login-card{
+    color:rgba(255,255,255,0.84);
 
-width:100%;
-max-width:400px;
+    font-size:15px;
+
+    line-height:2;
+
+    max-width:520px;
 }
 
-/* SMALL TITLE */
+/* ================= FEATURES ================= */
 
-.small-title{
+.feature_list{
 
-font-size:14px;
-
-letter-spacing:2px;
-
-font-weight:600;
-
-color:#B8924C;
-
-margin-bottom:10px;
+    margin-top:42px;
 }
 
-/* MAIN TITLE */
+.feature_item{
 
-.login-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
 
-font-family:'Playfair Display',serif;
+    margin-bottom:18px;
 
-font-size:44px;
+    color:white;
 
-color:#2B2B2B;
-
-margin-bottom:12px;
+    font-size:14px;
 }
 
-.login-subtitle{
+.feature_icon{
 
-font-size:14px;
+    width:46px;
+    height:46px;
 
-line-height:1.8;
+    border-radius:14px;
 
-color:#777;
+    background:rgba(224,192,141,0.14);
 
-margin-bottom:35px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#E0C08D;
+
+    font-size:16px;
 }
 
-/* INPUTS */
+/* ================= RIGHT PANEL ================= */
 
-.input-group{
+.right_panel{
 
-margin-bottom:20px;
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    padding:60px 40px;
 }
 
-.input-group label{
+/* ================= LOGIN CARD ================= */
 
-display:block;
+.login_card{
 
-font-size:14px;
-
-font-weight:600;
-
-margin-bottom:8px;
-
-color:#444;
+    width:100%;
+    max-width:420px;
 }
 
-.input-group input{
+/* ================= BADGE ================= */
 
-width:100%;
+.login_badge{
 
-height:54px;
+    display:inline-block;
 
-border:none;
+    background:#111;
 
-background:#fff;
+    color:#E0C08D;
 
-border-radius:16px;
+    padding:8px 18px;
 
-padding:0 18px;
+    border-radius:40px;
 
-font-size:14px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
 
-box-shadow:
-0 4px 15px rgba(0,0,0,0.04);
-
-transition:0.3s ease;
+    margin-bottom:22px;
 }
 
-.input-group input:focus{
+/* ================= HEADINGS ================= */
 
-outline:none;
+.login_card h2{
 
-box-shadow:
-0 0 0 4px rgba(184,146,76,0.16);
+    font-family:'Playfair Display',serif;
 
-border:1px solid #B8924C;
+    font-size:48px;
+
+    color:#222;
+
+    margin-bottom:12px;
 }
 
-/* BUTTON */
+.subtext{
 
-.login-btn{
+    color:#777;
 
-width:100%;
+    font-size:14px;
 
-height:56px;
+    line-height:1.9;
 
-border:none;
-
-border-radius:18px;
-
-background:#B8924C;
-
-color:white;
-
-font-size:15px;
-
-font-weight:600;
-
-letter-spacing:0.5px;
-
-margin-top:10px;
-
-transition:0.3s ease;
-
-box-shadow:
-0 10px 25px rgba(184,146,76,0.28);
+    margin-bottom:34px;
 }
 
-.login-btn:hover{
+/* ================= INPUTS ================= */
 
-background:#8A6A2F;
+.input_group{
 
-transform:translateY(-2px);
+    margin-bottom:22px;
 }
 
-/* FOOT NOTE */
+.input_group label{
 
-.footer-note{
+    display:block;
 
-text-align:center;
+    margin-bottom:10px;
 
-margin-top:25px;
+    font-size:14px;
+    font-weight:600;
 
-font-size:13px;
-
-color:#777;
+    color:#444;
 }
 
-/* RESPONSIVE */
+.input_wrapper{
+
+    position:relative;
+}
+
+.input_wrapper i{
+
+    position:absolute;
+
+    left:18px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#B8924C;
+
+    font-size:14px;
+}
+
+.input_wrapper input{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#fafafa;
+
+    padding-left:50px;
+    padding-right:18px;
+
+    font-size:14px;
+
+    border:1px solid rgba(184,146,76,0.14);
+
+    transition:0.3s ease;
+}
+
+.input_wrapper input:focus{
+
+    outline:none;
+
+    border:1px solid #B8924C;
+
+    background:white;
+
+    box-shadow:
+    0 0 0 4px rgba(184,146,76,0.12);
+}
+
+/* ================= BUTTON ================= */
+
+.login_btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(135deg,#B8924C,#D8B56A);
+
+    color:white;
+
+    font-size:15px;
+    font-weight:600;
+
+    margin-top:10px;
+
+    transition:0.3s ease;
+
+    box-shadow:
+    0 14px 30px rgba(184,146,76,0.28);
+}
+
+.login_btn:hover{
+
+    transform:translateY(-2px);
+
+    background:
+    linear-gradient(135deg,#9C7736,#C9A65E);
+}
+
+/* ================= DIVIDER ================= */
+
+.divider{
+
+    display:flex;
+    align-items:center;
+
+    gap:14px;
+
+    margin:32px 0;
+}
+
+.divider::before,
+.divider::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:rgba(0,0,0,0.08);
+}
+
+.divider span{
+
+    color:#999;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+}
+
+/* ================= FOOTER NOTE ================= */
+
+.footer_note{
+
+    text-align:center;
+
+    font-size:13px;
+
+    color:#777;
+
+    margin-top:10px;
+}
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:992px){
 
-.login-container{
+    .login_wrapper{
+        grid-template-columns:1fr;
+    }
 
-grid-template-columns:1fr;
+    .left_panel{
+        min-height:430px;
+        padding:70px 35px 50px;
+    }
+
+    .right_panel{
+        padding:50px 25px;
+    }
+
+    .brand_title{
+        font-size:50px;
+    }
+
+    .brand_title span{
+        font-size:64px;
+    }
+
+    .login_card h2{
+        font-size:40px;
+    }
+
 }
 
-.left-panel{
+@media(max-width:576px){
 
-min-height:320px;
-}
+    body{
+        padding:18px;
+    }
 
-.brand-name{
+    .left_panel{
+        padding:65px 28px 45px;
+    }
 
-font-size:46px;
-}
-}
+    .brand_title{
+        font-size:42px;
+    }
 
-@media(max-width:768px){
+    .brand_title span{
+        font-size:56px;
+    }
 
-.left-panel,
-.right-panel{
+    .login_card h2{
+        font-size:34px;
+    }
 
-padding:45px 28px;
-}
+    .back_btn{
+        top:18px;
+        left:18px;
+    }
 
-.login-title{
-
-font-size:36px;
-}
-
-.brand-name{
-
-font-size:38px;
-}
 }
 
 </style>
@@ -415,82 +579,156 @@ font-size:38px;
 
 <body>
 
-<div class="login-container">
+<div class="login_wrapper">
 
-    <!-- LEFT PANEL -->
+    <!-- ================= LEFT PANEL ================= -->
 
-    <div class="left-panel">
+    <div class="left_panel">
 
-        <h1 class="brand-name">
-            Ethnic<br>
-            Vault
-        </h1>
+        <!-- BACK BUTTON -->
 
-        <p class="brand-text">
+        <a href="{% url 'homepage' %}" class="back_btn">
 
-            Access the premium administration portal to manage rentals,
-            users, designers, collections, approvals, and the complete
-            Ethnic Vault ecosystem with elegance and control.
+            <i class="fa-solid fa-arrow-left"></i>
 
-        </p>
+            Back to Home
 
-        <div class="admin-tag">
+        </a>
+
+        <!-- BRAND -->
+
+        <div class="brand_badge">
             ADMIN CONTROL PANEL
+        </div>
+
+        <div class="brand_title">
+
+            <span>Ethnic Vault</span>
+
+            Admin Portal
+
+        </div>
+
+        <div class="brand_desc">
+
+            Manage designer approvals, rental bookings,
+            collections, users, outfit availability,
+            order tracking and complete Ethnic Vault
+            administration with secure dashboard access.
+
+        </div>
+
+        <!-- FEATURES -->
+
+        <div class="feature_list">
+
+            <div class="feature_item">
+
+                <div class="feature_icon">
+
+                    <i class="fa-solid fa-user-check"></i>
+
+                </div>
+
+                Approve & Manage Designers
+
+            </div>
+
+            <div class="feature_item">
+
+                <div class="feature_icon">
+
+                    <i class="fa-solid fa-box-open"></i>
+
+                </div>
+
+                Track Rentals & Orders
+
+            </div>
+
+            <div class="feature_item">
+
+                <div class="feature_icon">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                </div>
+
+                Control Complete Platform Operations
+
+            </div>
+
         </div>
 
     </div>
 
-    <!-- RIGHT PANEL -->
+    <!-- ================= RIGHT PANEL ================= -->
 
-    <div class="right-panel">
+    <div class="right_panel">
 
-        <div class="login-card">
+        <div class="login_card">
 
-            <div class="small-title">
-                SECURE LOGIN
+            <div class="login_badge">
+                ADMIN LOGIN
             </div>
 
-            <h2 class="login-title">
-                Welcome Back
-            </h2>
+            <h2>Welcome Back</h2>
 
-            <p class="login-subtitle">
-                Please login to continue to the Ethnic Vault admin dashboard.
+            <p class="subtext">
+
+                Login to continue managing the Ethnic Vault
+                administration dashboard securely.
+
             </p>
+
+            <!-- LOGIN FORM -->
 
             <form method="POST"
                   action="{% url 'admin_login_validation' %}">
 
                 {% csrf_token %}
 
-                <div class="input-group">
+                <!-- EMAIL -->
 
-                    <label>
-                        Admin Email
-                    </label>
+                <div class="input_group">
 
-                    <input type="email"
-                           name="email"
-                           placeholder="Enter your admin email"
-                           required>
+                    <label>Admin Email</label>
 
-                </div>
+                    <div class="input_wrapper">
 
-                <div class="input-group">
+                        <i class="fa-solid fa-envelope"></i>
 
-                    <label>
-                        Password
-                    </label>
+                        <input type="email"
+                               name="email"
+                               placeholder="Enter your admin email"
+                               required>
 
-                    <input type="password"
-                           name="password"
-                           placeholder="Enter your password"
-                           required>
+                    </div>
 
                 </div>
 
-                <button type="submit"
-                        class="login-btn">
+                <!-- PASSWORD -->
+
+                <div class="input_group">
+
+                    <label>Password</label>
+
+                    <div class="input_wrapper">
+
+                        <i class="fa-solid fa-lock"></i>
+
+                        <input type="password"
+                               name="password"
+                               placeholder="Enter your password"
+                               required>
+
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit" class="login_btn">
 
                     Login to Dashboard
 
@@ -498,8 +736,18 @@ font-size:38px;
 
             </form>
 
-            <div class="footer-note">
-                Ethnic Vault © 2026
+            <!-- DIVIDER -->
+
+            <div class="divider">
+
+                <span>ETHNIC VAULT</span>
+
+            </div>
+
+            <div class="footer_note">
+
+                Secure Administration Access • Ethnic Vault © 2026
+
             </div>
 
         </div>
@@ -508,12 +756,20 @@ font-size:38px;
 
 </div>
 
+<!-- ================= ALERT MESSAGES ================= -->
+
 {% if messages %}
+
 <script>
+
 {% for message in messages %}
+
 alert("{{ message }}");
+
 {% endfor %}
+
 </script>
+
 {% endif %}
 
 </body>

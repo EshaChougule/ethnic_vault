@@ -9,487 +9,595 @@
 
 <title>Ethnic Vault | Designer Registration</title>
 
-<!-- Fonts -->
+<!-- GOOGLE FONTS -->
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Bootstrap -->
+<!-- BOOTSTRAP -->
 
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-<!-- Font Awesome -->
+<!-- FONT AWESOME -->
 
 <link rel="stylesheet"
-href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
+/* ================= RESET ================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+/* ================= BODY ================= */
 
 body{
 
-font-family:'Poppins',sans-serif;
+    font-family:'Poppins',sans-serif;
 
-background-color:#F8F3EA;
+    min-height:100vh;
 
-background-image:
-linear-gradient(rgba(248,243,234,0.90),
-rgba(248,243,234,0.90)),
-url("{% static 'images/ethnic-pattern.png' %}");
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-background-size:320px;
-background-repeat:repeat;
-background-attachment:fixed;
+    padding:40px 20px;
 
-min-height:100vh;
+    background-color:#F8F3EA;
 
-display:flex;
+    background-image:
+    linear-gradient(rgba(248,243,234,0.92),
+    rgba(248,243,234,0.92)),
+    url("{% static 'images/ethnic-pattern.png' %}");
 
-overflow-x:hidden;
+    background-size:320px;
+    background-repeat:repeat;
+    background-attachment:fixed;
 
-position:relative;
+    overflow-x:hidden;
+
+    position:relative;
 }
 
-/* GOLD GLOW */
+/* ================= GLOW EFFECT ================= */
 
 body::before{
 
-content:"";
+    content:"";
 
-position:absolute;
+    position:absolute;
 
-width:380px;
-height:380px;
+    width:340px;
+    height:340px;
 
-background:rgba(184,146,76,0.12);
+    background:rgba(184,146,76,0.15);
 
-border-radius:50%;
+    border-radius:50%;
 
-top:-120px;
-left:-100px;
+    top:-100px;
+    left:-100px;
 
-filter:blur(80px);
-
-z-index:0;
+    filter:blur(90px);
 }
 
 body::after{
 
-content:"";
+    content:"";
 
-position:absolute;
+    position:absolute;
 
-width:320px;
-height:320px;
+    width:300px;
+    height:300px;
 
-background:rgba(184,146,76,0.10);
+    background:rgba(212,175,55,0.10);
 
-border-radius:50%;
+    border-radius:50%;
 
-bottom:-100px;
-right:-100px;
+    bottom:-100px;
+    right:-80px;
 
-filter:blur(80px);
-
-z-index:0;
+    filter:blur(90px);
 }
 
-/* LEFT PANEL */
+/* ================= MAIN CONTAINER ================= */
+
+.register-wrapper{
+
+    width:100%;
+    max-width:1280px;
+
+    min-height:780px;
+
+    display:grid;
+    grid-template-columns:1fr 1.08fr;
+
+    background:rgba(255,255,255,0.88);
+
+    backdrop-filter:blur(16px);
+
+    border-radius:36px;
+
+    overflow:hidden;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.10);
+
+    position:relative;
+
+    z-index:5;
+}
+
+/* ================= LEFT PANEL ================= */
 
 .left-panel{
 
-width:42%;
+    position:relative;
 
-position:fixed;
+    padding:70px 60px;
 
-height:100vh;
+    background:
+    linear-gradient(rgba(17,17,17,0.76),
+    rgba(17,17,17,0.84)),
+    url("{% static 'images/banner2.jpg' %}");
 
-padding:70px 55px;
+    background-size:cover;
+    background-position:center;
 
-background:
-linear-gradient(rgba(20,18,14,0.84),
-rgba(20,18,14,0.88)),
-url("{% static 'images/banner2.jpg' %}");
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 
-background-size:cover;
-background-position:center;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-
-color:white;
-
-z-index:2;
+    color:white;
 }
 
-.left-panel::before{
+/* ================= BACK BUTTON ================= */
 
-content:"";
+.back-btn{
 
-position:absolute;
+    position:absolute;
 
-top:60px;
-left:55px;
+    top:24px;
+    left:24px;
 
-width:75px;
-height:3px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
-background:#B8924C;
+    background:rgba(17,17,17,0.92);
+
+    color:#E0C08D;
+
+    padding:11px 18px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-size:13px;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    width:max-content;
 }
 
-/* BRAND */
+.back-btn:hover{
 
-.brand-title{
+    background:#B8924C;
 
-font-family:'Playfair Display',serif;
+    color:white;
 
-font-size:58px;
+    text-decoration:none;
 
-line-height:1.1;
-
-color:#F5DFC0;
-
-margin-bottom:18px;
+    transform:translateY(-2px);
 }
 
-.brand-text{
-
-font-size:15px;
-
-line-height:1.9;
-
-max-width:420px;
-
-color:rgba(255,255,255,0.82);
-}
+/* ================= BADGE ================= */
 
 .portal-badge{
 
-display:inline-block;
+    display:inline-block;
 
-margin-top:28px;
+    width:max-content;
 
-padding:10px 20px;
+    padding:10px 22px;
 
-background:rgba(184,146,76,0.16);
+    border-radius:40px;
 
-border:1px solid rgba(255,255,255,0.10);
+    background:rgba(224,192,141,0.16);
 
-border-radius:40px;
+    border:1px solid rgba(255,255,255,0.08);
 
-font-size:12px;
+    color:#F8E7C2;
 
-letter-spacing:1px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
 
-width:fit-content;
-
-backdrop-filter:blur(10px);
-
-color:#F5DFC0;
+    margin-bottom:28px;
 }
 
-/* RIGHT PANEL */
+/* ================= BRAND TITLE ================= */
+
+.brand-title{
+
+    font-family:'Playfair Display',serif;
+
+    font-size:66px;
+
+    line-height:1.1;
+
+    color:white;
+
+    margin-bottom:18px;
+}
+
+.brand-title span{
+
+    font-family:'Great Vibes',cursive;
+
+    font-size:82px;
+
+    color:#F8E7C2;
+
+    display:block;
+
+    margin-bottom:8px;
+}
+
+/* ================= TEXT ================= */
+
+.brand-text{
+
+    color:rgba(255,255,255,0.84);
+
+    font-size:15px;
+
+    line-height:2;
+
+    max-width:500px;
+}
+
+/* ================= FEATURES ================= */
+
+.feature-list{
+
+    margin-top:42px;
+}
+
+.feature-item{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    margin-bottom:18px;
+
+    color:white;
+
+    font-size:14px;
+}
+
+.feature-icon{
+
+    width:46px;
+    height:46px;
+
+    border-radius:14px;
+
+    background:rgba(224,192,141,0.14);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#E0C08D;
+
+    font-size:16px;
+}
+
+/* ================= RIGHT PANEL ================= */
 
 .right-panel{
 
-margin-left:42%;
+    background:white;
 
-width:58%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-min-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-padding:50px 30px;
-
-position:relative;
-
-z-index:2;
+    padding:55px 40px;
 }
 
-/* REGISTER CARD */
+/* ================= REGISTER CARD ================= */
 
 .register-card{
 
-width:100%;
-max-width:760px;
-
-background:rgba(255,255,255,0.74);
-
-backdrop-filter:blur(16px);
-
-border-radius:32px;
-
-padding:45px;
-
-box-shadow:
-0 20px 60px rgba(0,0,0,0.10);
-
-border:1px solid rgba(184,146,76,0.12);
+    width:100%;
+    max-width:720px;
 }
 
-/* SMALL TITLE */
+/* ================= SMALL BADGE ================= */
 
 .small-title{
 
-font-size:13px;
+    display:inline-block;
 
-font-weight:600;
+    background:#111;
 
-letter-spacing:2px;
+    color:#E0C08D;
 
-color:#B8924C;
+    padding:8px 18px;
 
-margin-bottom:10px;
+    border-radius:40px;
+
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+
+    margin-bottom:22px;
 }
 
-/* MAIN TITLE */
+/* ================= HEADINGS ================= */
 
 .main-title{
 
-font-family:'Playfair Display',serif;
+    font-family:'Playfair Display',serif;
 
-font-size:42px;
+    font-size:46px;
 
-color:#2B2B2B;
+    color:#222;
 
-margin-bottom:10px;
+    margin-bottom:10px;
 }
 
 .sub-text{
 
-font-size:14px;
+    color:#777;
 
-line-height:1.8;
+    font-size:14px;
 
-color:#777;
+    line-height:1.9;
 
-margin-bottom:35px;
+    margin-bottom:34px;
 }
 
-/* FORM GRID */
+/* ================= FORM GRID ================= */
 
 .form-grid{
 
-display:grid;
+    display:grid;
 
-grid-template-columns:1fr 1fr;
+    grid-template-columns:1fr 1fr;
 
-gap:22px;
+    gap:22px;
 }
 
 .full-width{
-grid-column:span 2;
+    grid-column:span 2;
 }
 
-/* LABEL */
+/* ================= LABEL ================= */
 
 label{
 
-display:block;
+    display:block;
 
-font-size:13px;
+    margin-bottom:10px;
 
-font-weight:600;
+    font-size:14px;
+    font-weight:600;
 
-margin-bottom:8px;
-
-color:#444;
+    color:#444;
 }
 
-/* INPUT WRAP */
+/* ================= INPUT WRAP ================= */
 
 .input-wrap{
 
-position:relative;
+    position:relative;
 }
 
 .input-wrap i{
 
-position:absolute;
+    position:absolute;
 
-top:18px;
-left:15px;
+    left:18px;
+    top:50%;
 
-color:#B8924C;
+    transform:translateY(-50%);
 
-font-size:14px;
+    color:#B8924C;
+
+    font-size:14px;
 }
 
-/* INPUTS */
+/* ================= INPUTS ================= */
 
 input,
 textarea,
 select{
 
-width:100%;
+    width:100%;
 
-border:none;
+    border:none;
 
-background:#FAF7F2;
+    border-radius:16px;
 
-border-radius:16px;
+    background:#fafafa;
 
-padding:15px 15px 15px 44px;
+    padding:16px 18px 16px 50px;
 
-font-size:14px;
+    font-size:14px;
 
-transition:0.3s ease;
+    border:1px solid rgba(184,146,76,0.14);
 
-color:#333;
+    transition:0.3s ease;
 }
 
 textarea{
-resize:none;
+
+    resize:none;
+
+    min-height:120px;
+
+    padding-top:18px;
 }
 
-input:focus,
 textarea:focus,
+input:focus,
 select:focus{
 
-outline:none;
+    outline:none;
 
-background:white;
+    border:1px solid #B8924C;
 
-box-shadow:
-0 0 0 4px rgba(184,146,76,0.14);
+    background:white;
+
+    box-shadow:
+    0 0 0 4px rgba(184,146,76,0.12);
 }
 
-/* FILE INPUT */
+/* ================= FILE INPUT ================= */
 
 .file-input{
 
-padding-left:15px !important;
+    padding:15px !important;
+
+    background:#fafafa;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 
 .register-btn{
 
-width:100%;
+    width:100%;
 
-height:58px;
+    height:58px;
 
-border:none;
+    border:none;
 
-border-radius:18px;
+    border-radius:18px;
 
-background:#B8924C;
+    background:
+    linear-gradient(135deg,#B8924C,#D8B56A);
 
-color:white;
+    color:white;
 
-font-size:15px;
+    font-size:15px;
+    font-weight:600;
 
-font-weight:600;
+    margin-top:28px;
 
-margin-top:28px;
+    transition:0.3s ease;
 
-transition:0.3s ease;
-
-box-shadow:
-0 10px 25px rgba(184,146,76,0.26);
+    box-shadow:
+    0 14px 30px rgba(184,146,76,0.28);
 }
 
 .register-btn:hover{
 
-background:#8A6A2F;
-
-transform:translateY(-2px);
+    transform:translateY(-2px);
 }
 
-/* LOGIN LINK */
+/* ================= LOGIN LINK ================= */
 
 .bottom-link{
 
-text-align:center;
+    text-align:center;
 
-margin-top:24px;
+    margin-top:24px;
 
-font-size:14px;
+    font-size:14px;
 
-color:#666;
+    color:#666;
 }
 
 .bottom-link a{
 
-text-decoration:none;
+    color:#B8924C;
 
-font-weight:600;
+    font-weight:600;
 
-color:#B8924C;
+    text-decoration:none;
 
-margin-left:5px;
+    margin-left:5px;
 }
 
 .bottom-link a:hover{
 
-color:#8A6A2F;
+    color:#8A6A2F;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:992px){
 
-body{
-flex-direction:column;
+    .register-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .left-panel{
+        min-height:480px;
+        padding:70px 35px 50px;
+    }
+
+    .right-panel{
+        padding:45px 25px;
+    }
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full-width{
+        grid-column:span 1;
+    }
+
+    .brand-title{
+        font-size:50px;
+    }
+
+    .brand-title span{
+        font-size:64px;
+    }
+
+    .main-title{
+        font-size:38px;
+    }
 }
 
-.left-panel{
+@media(max-width:576px){
 
-position:relative;
+    body{
+        padding:18px;
+    }
 
-width:100%;
+    .left-panel{
+        padding:65px 28px 45px;
+    }
 
-height:320px;
-}
+    .brand-title{
+        font-size:42px;
+    }
 
-.right-panel{
+    .brand-title span{
+        font-size:56px;
+    }
 
-margin-left:0;
+    .main-title{
+        font-size:32px;
+    }
 
-width:100%;
-
-padding:30px 18px;
-}
-
-.form-grid{
-grid-template-columns:1fr;
-}
-
-.full-width{
-grid-column:span 1;
-}
-
-.brand-title{
-font-size:44px;
-}
-}
-
-@media(max-width:768px){
-
-.left-panel,
-.right-panel{
-padding:35px 22px;
-}
-
-.register-card{
-padding:30px 22px;
-}
-
-.main-title{
-font-size:34px;
-}
-
-.brand-title{
-font-size:38px;
-}
+    .back-btn{
+        top:18px;
+        left:18px;
+    }
 }
 
 </style>
@@ -498,241 +606,299 @@ font-size:38px;
 
 <body>
 
-<!-- LEFT PANEL -->
+<div class="register-wrapper">
 
-<div class="left-panel">
+    <!-- ================= LEFT PANEL ================= -->
 
-    <h1 class="brand-title">
-        Ethnic<br>
-        Vault
-    </h1>
+    <div class="left-panel">
 
-    <p class="brand-text">
+        <!-- BACK BUTTON -->
 
-        Become a part of Ethnic Vault and showcase your creativity,
-        designer collections, and traditional fashion to a wider audience.
+        <a href="{% url 'designer_login' %}" class="back-btn">
 
-    </p>
+            <i class="fa-solid fa-arrow-left"></i>
 
-    <div class="portal-badge">
-        DESIGNER REGISTRATION
-    </div>
+            Back to Login
 
-</div>
+        </a>
 
-<!-- RIGHT PANEL -->
+        <!-- BADGE -->
 
-<div class="right-panel">
-
-    <div class="register-card">
-
-        <div class="small-title">
-            CREATE ACCOUNT
+        <div class="portal-badge">
+            DESIGNER PORTAL
         </div>
 
-        <h2 class="main-title">
-            Join as Designer
-        </h2>
+        <!-- TITLE -->
 
-        <p class="sub-text">
-            Start your journey with Ethnic Vault
-        </p>
+        <div class="brand-title">
 
-        <form action="{% url 'designer_register_code' %}"
-              method="POST"
-              enctype="multipart/form-data"
-              onsubmit="return Validate()">
+            <span>Ethnic Vault</span>
 
-            {% csrf_token %}
+            Become a Designer
 
-            <div class="form-grid">
+        </div>
 
-                <!-- NAME -->
+        <!-- DESCRIPTION -->
 
-                <div>
+        <div class="brand-text">
 
-                    <label>Full Name</label>
+            Join Ethnic Vault and showcase your premium traditional
+            collections, fashion creativity, and elegant ethnic styles
+            to customers looking for memorable celebrations.
 
-                    <div class="input-wrap">
+        </div>
 
-                        <i class="fa fa-user"></i>
+        <!-- FEATURES -->
 
-                        <input type="text"
-                               name="name"
-                               placeholder="Enter your full name"
-                               required>
+        <div class="feature-list">
 
-                    </div>
+            <div class="feature-item">
 
+                <div class="feature-icon">
+                    <i class="fa-solid fa-shirt"></i>
                 </div>
 
-                <!-- EMAIL -->
-
-                <div>
-
-                    <label>Email Address</label>
-
-                    <div class="input-wrap">
-
-                        <i class="fa fa-envelope"></i>
-
-                        <input type="email"
-                               name="email"
-                               placeholder="Enter your email"
-                               required>
-
-                    </div>
-
-                </div>
-
-                <!-- CONTACT -->
-
-                <div>
-
-                    <label>Contact Number</label>
-
-                    <div class="input-wrap">
-
-                        <i class="fa fa-phone"></i>
-
-                        <input type="tel"
-                               name="contact"
-                               maxlength="10"
-                               pattern="[6-9][0-9]{9}"
-                               placeholder="Enter contact number"
-                               required>
-
-                    </div>
-
-                </div>
-
-                <!-- PROFILE -->
-
-                <div>
-
-                    <label>Profile Picture</label>
-
-                    <input type="file"
-                           name="file"
-                           class="file-input"
-                           accept="image/*"
-                           required>
-
-                </div>
-
-                <!-- BIO -->
-
-                <div class="full-width">
-
-                    <label>Designer Bio</label>
-
-                    <div class="input-wrap">
-
-                        <i class="fa fa-pencil"></i>
-
-                        <textarea name="bio"
-                                  rows="4"
-                                  placeholder="Tell users about your creativity and designs"></textarea>
-
-                    </div>
-
-                </div>
-
-                <!-- SPECIALIZATION -->
-
-                <div>
-
-                    <label>Specialization</label>
-
-                    <div class="input-wrap">
-
-                        <i class="fa fa-star"></i>
-
-                        <select name="specialization" required>
-
-                            <option value="">
-                                Select Specialization
-                            </option>
-
-                            <option value="Dresses">
-                                Dresses
-                            </option>
-
-                            <option value="Jewelry">
-                                Jewelry
-                            </option>
-
-                        </select>
-
-                    </div>
-
-                </div>
-
-                <div></div>
-
-                <!-- PASSWORD -->
-
-                <div>
-
-                    <label>Password</label>
-
-                    <div class="input-wrap">
-
-                        <i class="fa fa-lock"></i>
-
-                        <input type="password"
-                               name="password"
-                               id="password1"
-                               placeholder="Create password"
-                               required
-                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}">
-
-                    </div>
-
-                </div>
-
-                <!-- CONFIRM PASSWORD -->
-
-                <div>
-
-                    <label>Confirm Password</label>
-
-                    <div class="input-wrap">
-
-                        <i class="fa fa-lock"></i>
-
-                        <input type="password"
-                               name="confirm_password"
-                               id="password2"
-                               placeholder="Confirm password"
-                               required>
-
-                    </div>
-
-                </div>
+                Upload Exclusive Designer Collections
 
             </div>
 
-            <!-- BUTTON -->
+            <div class="feature-item">
 
-            <button type="submit"
-                    class="register-btn">
+                <div class="feature-icon">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
 
-                Register as Designer
+                Build Your Fashion Identity
 
-            </button>
+            </div>
 
-        </form>
+            <div class="feature-item">
 
-        <!-- LOGIN LINK -->
+                <div class="feature-icon">
+                    <i class="fa-solid fa-gem"></i>
+                </div>
 
-        <div class="bottom-link">
+                Connect With Premium Customers
 
-            Already have an account?
+            </div>
 
-            <a href="{% url 'designer_login' %}">
-                Login Here
-            </a>
+        </div>
+
+    </div>
+
+    <!-- ================= RIGHT PANEL ================= -->
+
+    <div class="right-panel">
+
+        <div class="register-card">
+
+            <div class="small-title">
+                CREATE ACCOUNT
+            </div>
+
+            <h2 class="main-title">
+                Designer Registration
+            </h2>
+
+            <p class="sub-text">
+
+                Create your Ethnic Vault designer account and start
+                showcasing your elegant ethnic fashion collections.
+
+            </p>
+
+            <!-- FORM -->
+
+            <form action="{% url 'designer_register_code' %}"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  onsubmit="return Validate()">
+
+                {% csrf_token %}
+
+                <div class="form-grid">
+
+                    <!-- NAME -->
+
+                    <div>
+
+                        <label>Full Name</label>
+
+                        <div class="input-wrap">
+
+                            <i class="fa-solid fa-user"></i>
+
+                            <input type="text"
+                                   name="name"
+                                   placeholder="Enter your full name"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <!-- EMAIL -->
+
+                    <div>
+
+                        <label>Email Address</label>
+
+                        <div class="input-wrap">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input type="email"
+                                   name="email"
+                                   placeholder="Enter your email"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONTACT -->
+
+                    <div>
+
+                        <label>Contact Number</label>
+
+                        <div class="input-wrap">
+
+                            <i class="fa-solid fa-phone"></i>
+
+                            <input type="tel"
+                                   name="contact"
+                                   maxlength="10"
+                                   pattern="[6-9][0-9]{9}"
+                                   placeholder="Enter contact number"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                    <!-- PROFILE -->
+
+                    <div>
+
+                        <label>Profile Picture</label>
+
+                        <input type="file"
+                               name="file"
+                               class="file-input"
+                               accept="image/*"
+                               required>
+
+                    </div>
+
+                    <!-- BIO -->
+
+                    <div class="full-width">
+
+                        <label>Designer Bio</label>
+
+                        <textarea name="bio"
+                                  placeholder="Tell users about your creativity and designer collections"></textarea>
+
+                    </div>
+
+                    <!-- SPECIALIZATION -->
+
+                    <div>
+
+                        <label>Specialization</label>
+
+                        <div class="input-wrap">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            <select name="specialization" required>
+
+                                <option value="">
+                                    Select Specialization
+                                </option>
+
+                                <option value="Dresses">
+                                    Dresses
+                                </option>
+
+                                <option value="Jewelry">
+                                    Jewelry
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                    <div></div>
+
+                    <!-- PASSWORD -->
+
+                    <div>
+
+                        <label>Password</label>
+
+                        <div class="input-wrap">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input type="password"
+                                   name="password"
+                                   id="password1"
+                                   placeholder="Create password"
+                                   required
+                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}">
+
+                        </div>
+
+                    </div>
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div>
+
+                        <label>Confirm Password</label>
+
+                        <div class="input-wrap">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input type="password"
+                                   name="confirm_password"
+                                   id="password2"
+                                   placeholder="Confirm password"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit"
+                        class="register-btn">
+
+                    Register as Designer
+
+                </button>
+
+            </form>
+
+            <!-- LOGIN LINK -->
+
+            <div class="bottom-link">
+
+                Already have an account?
+
+                <a href="{% url 'designer_login' %}">
+                    Login Here
+                </a>
+
+            </div>
 
         </div>
 
@@ -740,13 +906,23 @@ font-size:38px;
 
 </div>
 
+<!-- ================= ALERT MESSAGES ================= -->
+
 {% if messages %}
+
 <script>
+
 {% for message in messages %}
+
 alert("{{ message }}");
+
 {% endfor %}
+
 </script>
+
 {% endif %}
+
+<!-- ================= PASSWORD VALIDATION ================= -->
 
 <script>
 

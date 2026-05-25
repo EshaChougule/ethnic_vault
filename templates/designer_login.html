@@ -9,460 +9,620 @@
 
 <title>Ethnic Vault | Designer Login</title>
 
-<!-- Fonts -->
+<!-- GOOGLE FONTS -->
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Bootstrap -->
+<!-- BOOTSTRAP -->
 
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-<!-- Font Awesome -->
+<!-- FONT AWESOME -->
 
 <link rel="stylesheet"
-href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 
+/* ================= RESET ================= */
+
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
+
+/* ================= BODY ================= */
 
 body{
 
-font-family:'Poppins',sans-serif;
+    font-family:'Poppins',sans-serif;
 
-min-height:100vh;
+    min-height:100vh;
 
-display:flex;
-align-items:center;
-justify-content:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-padding:30px;
+    padding:40px 20px;
 
-background-color:#F8F3EA;
+    background-color:#F8F3EA;
 
-background-image:
-linear-gradient(rgba(248,243,234,0.90),
-rgba(248,243,234,0.90)),
-url("{% static 'images/ethnic-pattern.png' %}");
+    background-image:
+    linear-gradient(rgba(248,243,234,0.90),
+    rgba(248,243,234,0.90)),
+    url("{% static 'images/ethnic-pattern.png' %}");
 
-background-size:320px;
-background-repeat:repeat;
-background-attachment:fixed;
+    background-size:320px;
+    background-repeat:repeat;
+    background-attachment:fixed;
 
-overflow:hidden;
-position:relative;
+    overflow-x:hidden;
+
+    position:relative;
 }
 
-/* GLOW */
+/* ================= BACKGROUND GLOW ================= */
 
 body::before{
 
-content:"";
+    content:"";
 
-position:absolute;
+    position:absolute;
 
-width:380px;
-height:380px;
+    width:340px;
+    height:340px;
 
-background:rgba(184,146,76,0.14);
+    background:rgba(184,146,76,0.15);
 
-border-radius:50%;
+    border-radius:50%;
 
-top:-120px;
-left:-120px;
+    top:-120px;
+    left:-120px;
 
-filter:blur(80px);
+    filter:blur(90px);
 }
 
 body::after{
 
-content:"";
+    content:"";
 
-position:absolute;
+    position:absolute;
 
-width:320px;
-height:320px;
+    width:280px;
+    height:280px;
 
-background:rgba(184,146,76,0.10);
+    background:rgba(212,175,55,0.12);
 
-border-radius:50%;
+    border-radius:50%;
 
-bottom:-100px;
-right:-100px;
+    bottom:-100px;
+    right:-80px;
 
-filter:blur(80px);
+    filter:blur(90px);
 }
 
-/* MAIN CONTAINER */
+/* ================= MAIN WRAPPER ================= */
 
-.login-container{
+.login_wrapper{
 
-width:100%;
-max-width:1120px;
+    width:100%;
+    max-width:1240px;
 
-display:grid;
-grid-template-columns:1fr 1fr;
+    min-height:720px;
 
-background:rgba(255,255,255,0.72);
+    display:grid;
+    grid-template-columns:1fr 0.95fr;
 
-backdrop-filter:blur(16px);
+    background:rgba(255,255,255,0.88);
 
-border-radius:34px;
+    backdrop-filter:blur(14px);
 
-overflow:hidden;
+    border-radius:36px;
 
-box-shadow:
-0 20px 60px rgba(0,0,0,0.12);
+    overflow:hidden;
 
-position:relative;
-z-index:2;
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.10);
+
+    position:relative;
+
+    z-index:5;
 }
 
-/* LEFT PANEL */
+/* ================= LEFT PANEL ================= */
 
-.left-panel{
+.left_panel{
 
-padding:70px 55px;
+    position:relative;
 
-background:
-linear-gradient(rgba(22,18,14,0.84),
-rgba(22,18,14,0.88)),
-url("{% static 'images/banner2.jpg' %}");
+    padding:70px 65px;
 
-background-size:cover;
-background-position:center;
+    background:
+    linear-gradient(rgba(18,18,18,0.76),
+    rgba(18,18,18,0.84)),
+    url("{% static 'images/banner2.jpg' %}");
 
-color:white;
+    background-size:cover;
+    background-position:center;
 
-display:flex;
-flex-direction:column;
-justify-content:center;
-
-position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
-.left-panel::before{
+/* ================= BACK BUTTON ================= */
 
-content:"";
+.back_btn{
 
-position:absolute;
+    position:absolute;
 
-top:55px;
-left:55px;
+    top:24px;
+    left:24px;
 
-width:70px;
-height:3px;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
 
-background:#B8924C;
+    background:rgba(17,17,17,0.92);
+
+    color:#E0C08D;
+
+    padding:11px 18px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-size:13px;
+    font-weight:600;
+
+    transition:0.3s ease;
+
+    border:1px solid rgba(255,255,255,0.08);
 }
 
-/* BRAND */
+.back_btn:hover{
 
-.brand-title{
+    background:#B8924C;
 
-font-family:'Playfair Display',serif;
+    color:white;
 
-font-size:58px;
+    text-decoration:none;
 
-line-height:1.1;
-
-color:#F5DFC0;
-
-margin-bottom:18px;
+    transform:translateY(-2px);
 }
 
-.brand-text{
+/* ================= BRAND CONTENT ================= */
 
-font-size:15px;
+.brand_badge{
 
-line-height:1.9;
+    display:inline-block;
 
-color:rgba(255,255,255,0.82);
+    width:max-content;
 
-max-width:400px;
+    padding:10px 22px;
+
+    border-radius:40px;
+
+    background:rgba(224,192,141,0.16);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:#F8E7C2;
+
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+
+    margin-bottom:28px;
 }
 
-.designer-tag{
+.brand_title{
 
-display:inline-block;
+    font-family:'Playfair Display',serif;
 
-margin-top:28px;
+    font-size:68px;
 
-padding:10px 20px;
+    line-height:1.1;
 
-background:rgba(184,146,76,0.16);
+    color:white;
 
-border:1px solid rgba(255,255,255,0.10);
-
-border-radius:40px;
-
-font-size:12px;
-
-letter-spacing:1px;
-
-width:fit-content;
-
-backdrop-filter:blur(10px);
-
-color:#F5DFC0;
+    margin-bottom:18px;
 }
 
-/* RIGHT PANEL */
+.brand_title span{
 
-.right-panel{
+    font-family:'Great Vibes',cursive;
 
-padding:60px 50px;
+    font-size:86px;
 
-display:flex;
-align-items:center;
-justify-content:center;
+    color:#F8E7C2;
 
-background:rgba(255,255,255,0.55);
+    display:block;
+
+    margin-bottom:10px;
 }
 
-/* LOGIN CARD */
+.brand_desc{
 
-.login-card{
+    color:rgba(255,255,255,0.84);
 
-width:100%;
-max-width:400px;
+    font-size:15px;
+
+    line-height:2;
+
+    max-width:520px;
 }
 
-/* SMALL TEXT */
+/* ================= FEATURES ================= */
 
-.small-title{
+.feature_list{
 
-font-size:13px;
-
-font-weight:600;
-
-letter-spacing:2px;
-
-color:#B8924C;
-
-margin-bottom:10px;
+    margin-top:42px;
 }
 
-/* MAIN TITLE */
+.feature_item{
 
-.login-title{
+    display:flex;
+    align-items:center;
+    gap:15px;
 
-font-family:'Playfair Display',serif;
+    margin-bottom:18px;
 
-font-size:42px;
+    color:white;
 
-color:#2B2B2B;
-
-margin-bottom:10px;
+    font-size:14px;
 }
 
-.login-subtitle{
+.feature_icon{
 
-font-size:14px;
+    width:46px;
+    height:46px;
 
-line-height:1.7;
+    border-radius:14px;
 
-color:#777;
+    background:rgba(224,192,141,0.14);
 
-margin-bottom:30px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#E0C08D;
+
+    font-size:16px;
 }
 
-/* FORM BOX */
+/* ================= RIGHT PANEL ================= */
 
-.form-box{
+.right_panel{
 
-background:rgba(255,255,255,0.92);
+    background:white;
 
-padding:28px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-border-radius:24px;
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.06);
-
-border:1px solid rgba(184,146,76,0.10);
+    padding:60px 40px;
 }
 
-/* INPUT GROUP */
+/* ================= LOGIN CARD ================= */
 
-.input-group{
+.login_card{
 
-margin-bottom:18px;
-
-position:relative;
+    width:100%;
+    max-width:430px;
 }
 
-.input-group i{
+/* ================= BADGE ================= */
 
-position:absolute;
+.login_badge{
 
-top:18px;
-left:16px;
+    display:inline-block;
 
-font-size:15px;
+    background:#111;
 
-color:#B8924C;
+    color:#E0C08D;
+
+    padding:8px 18px;
+
+    border-radius:40px;
+
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:1px;
+
+    margin-bottom:22px;
 }
 
-.input-group input{
+/* ================= HEADINGS ================= */
 
-width:100%;
+.login_card h2{
 
-height:55px;
+    font-family:'Playfair Display',serif;
 
-border:none;
+    font-size:48px;
 
-background:#FAF7F2;
+    color:#222;
 
-border-radius:14px;
-
-padding-left:46px;
-padding-right:15px;
-
-font-size:14px;
-
-transition:0.3s ease;
-
-color:#333;
+    margin-bottom:12px;
 }
 
-.input-group input:focus{
+.subtext{
 
-outline:none;
+    color:#777;
 
-background:white;
+    font-size:14px;
 
-box-shadow:
-0 0 0 4px rgba(184,146,76,0.14);
+    line-height:1.9;
+
+    margin-bottom:34px;
 }
 
-/* BUTTON */
+/* ================= FORM BOX ================= */
 
-.login-btn{
+.form_box{
 
-width:100%;
+    background:rgba(255,255,255,0.95);
 
-height:56px;
+    padding:30px;
 
-border:none;
+    border-radius:26px;
 
-border-radius:16px;
+    border:1px solid rgba(184,146,76,0.12);
 
-background:#B8924C;
-
-color:white;
-
-font-size:15px;
-
-font-weight:600;
-
-margin-top:8px;
-
-transition:0.3s ease;
-
-box-shadow:
-0 10px 25px rgba(184,146,76,0.28);
+    box-shadow:
+    0 10px 35px rgba(0,0,0,0.05);
 }
 
-.login-btn:hover{
+/* ================= INPUTS ================= */
 
-background:#8A6A2F;
+.input_group{
 
-transform:translateY(-2px);
+    margin-bottom:22px;
 }
 
-/* LINKS */
+.input_group label{
 
-.extra-links{
+    display:block;
 
-text-align:center;
+    margin-bottom:10px;
 
-margin-top:22px;
+    font-size:14px;
+    font-weight:600;
+
+    color:#444;
 }
 
-.extra-links a{
+.input_wrapper{
 
-text-decoration:none;
-
-font-size:13px;
-
-font-weight:500;
-
-color:#B8924C;
-
-transition:0.3s;
+    position:relative;
 }
 
-.extra-links a:hover{
+.input_wrapper i{
 
-color:#8A6A2F;
+    position:absolute;
 
-text-decoration:none;
+    left:18px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#B8924C;
+
+    font-size:14px;
 }
+
+.input_wrapper input{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:#fafafa;
+
+    padding-left:50px;
+    padding-right:18px;
+
+    font-size:14px;
+
+    border:1px solid rgba(184,146,76,0.14);
+
+    transition:0.3s ease;
+}
+
+.input_wrapper input:focus{
+
+    outline:none;
+
+    border:1px solid #B8924C;
+
+    background:white;
+
+    box-shadow:
+    0 0 0 4px rgba(184,146,76,0.12);
+}
+
+/* ================= BUTTON ================= */
+
+.login_btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(135deg,#B8924C,#D8B56A);
+
+    color:white;
+
+    font-size:15px;
+    font-weight:600;
+
+    margin-top:10px;
+
+    transition:0.3s ease;
+
+    box-shadow:
+    0 14px 30px rgba(184,146,76,0.28);
+}
+
+.login_btn:hover{
+
+    transform:translateY(-2px);
+
+    background:
+    linear-gradient(135deg,#A97E37,#C89F54);
+}
+
+/* ================= DIVIDER ================= */
 
 .divider{
 
-margin:0 8px;
+    display:flex;
+    align-items:center;
 
-color:#bbb;
+    gap:14px;
+
+    margin:32px 0;
 }
 
-/* FOOTER */
+.divider::before,
+.divider::after{
 
-.footer-note{
+    content:"";
 
-margin-top:22px;
+    flex:1;
 
-text-align:center;
+    height:1px;
 
-font-size:12px;
-
-color:#888;
+    background:rgba(0,0,0,0.08);
 }
 
-/* RESPONSIVE */
+.divider span{
+
+    color:#999;
+
+    font-size:12px;
+
+    letter-spacing:1px;
+}
+
+/* ================= LINKS ================= */
+
+.extra_links{
+
+    text-align:center;
+}
+
+.extra_links p{
+
+    font-size:14px;
+
+    color:#666;
+
+    margin-bottom:14px;
+}
+
+.extra_links a{
+
+    color:#B8924C;
+
+    font-weight:600;
+
+    text-decoration:none;
+
+    transition:0.3s ease;
+}
+
+.extra_links a:hover{
+
+    color:#8A6A2F;
+}
+
+/* ================= FOOTER ================= */
+
+.footer_note{
+
+    margin-top:22px;
+
+    text-align:center;
+
+    font-size:12px;
+
+    color:#999;
+}
+
+/* ================= RESPONSIVE ================= */
 
 @media(max-width:992px){
 
-.login-container{
-grid-template-columns:1fr;
+    .login_wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .left_panel{
+        min-height:430px;
+        padding:70px 35px 50px;
+    }
+
+    .right_panel{
+        padding:50px 25px;
+    }
+
+    .brand_title{
+        font-size:50px;
+    }
+
+    .brand_title span{
+        font-size:64px;
+    }
+
+    .login_card h2{
+        font-size:40px;
+    }
+
 }
 
-.left-panel{
-min-height:320px;
-}
+@media(max-width:576px){
 
-.brand-title{
-font-size:46px;
-}
-}
+    body{
+        padding:18px;
+    }
 
-@media(max-width:768px){
+    .left_panel{
+        padding:65px 28px 45px;
+    }
 
-body{
-padding:18px;
-}
+    .brand_title{
+        font-size:42px;
+    }
 
-.left-panel,
-.right-panel{
-padding:40px 28px;
-}
+    .brand_title span{
+        font-size:56px;
+    }
 
-.brand-title{
-font-size:38px;
-}
+    .login_card h2{
+        font-size:34px;
+    }
 
-.login-title{
-font-size:34px;
-}
+    .back_btn{
+        top:18px;
+        left:18px;
+    }
 
-.form-box{
-padding:22px;
-}
+    .form_box{
+        padding:22px;
+    }
+
 }
 
 </style>
@@ -471,51 +631,110 @@ padding:22px;
 
 <body>
 
-<div class="login-container">
+<div class="login_wrapper">
 
-    <!-- LEFT PANEL -->
+    <!-- ================= LEFT PANEL ================= -->
 
-    <div class="left-panel">
+    <div class="left_panel">
 
-        <h1 class="brand-title">
-            Ethnic<br>
-            Vault
-        </h1>
+        <!-- BACK BUTTON -->
 
-        <p class="brand-text">
+        <a href="{% url 'homepage' %}" class="back_btn">
 
-            Showcase your creations, manage bookings,
-            and grow your designer presence with elegance.
+            <i class="fa-solid fa-arrow-left"></i>
 
-        </p>
+            Back to Home
 
-        <div class="designer-tag">
-            DESIGNER PORTAL
+        </a>
+
+        <!-- BRAND -->
+
+        <div class="brand_badge">
+            DESIGNER EXCLUSIVE PORTAL
+        </div>
+
+        <div class="brand_title">
+
+            <span>Ethnic Vault</span>
+
+            Designer Login
+
+        </div>
+
+        <div class="brand_desc">
+
+            Manage your designer collections, approve rental bookings,
+            update outfit availability, and showcase your premium
+            ethnic creations with elegance and professionalism.
+
+        </div>
+
+        <!-- FEATURES -->
+
+        <div class="feature_list">
+
+            <div class="feature_item">
+
+                <div class="feature_icon">
+
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                </div>
+
+                Upload Premium Designer Collections
+
+            </div>
+
+            <div class="feature_item">
+
+                <div class="feature_icon">
+
+                    <i class="fa-solid fa-calendar-check"></i>
+
+                </div>
+
+                Manage Orders & Booking Requests
+
+            </div>
+
+            <div class="feature_item">
+
+                <div class="feature_icon">
+
+                    <i class="fa-solid fa-truck-fast"></i>
+
+                </div>
+
+                Track Deliveries & Returns
+
+            </div>
+
         </div>
 
     </div>
 
-    <!-- RIGHT PANEL -->
+    <!-- ================= RIGHT PANEL ================= -->
 
-    <div class="right-panel">
+    <div class="right_panel">
 
-        <div class="login-card">
+        <div class="login_card">
 
-            <div class="small-title">
-                LOGIN
+            <div class="login_badge">
+                DESIGNER LOGIN
             </div>
 
-            <h2 class="login-title">
-                Welcome Back
-            </h2>
+            <h2>Welcome Back</h2>
 
-            <p class="login-subtitle">
-                Continue to your designer dashboard
+            <p class="subtext">
+
+                Login to continue managing your collections,
+                rental bookings, approvals, and designer dashboard.
+
             </p>
 
             <!-- FORM BOX -->
 
-            <div class="form-box">
+            <div class="form_box">
 
                 <form method="POST"
                       action="{% url 'designer_login_validation' %}">
@@ -524,34 +743,46 @@ padding:22px;
 
                     <!-- EMAIL -->
 
-                    <div class="input-group">
+                    <div class="input_group">
 
-                        <i class="fa fa-envelope"></i>
+                        <label>Designer Email</label>
 
-                        <input type="email"
-                               name="email"
-                               placeholder="Designer Email"
-                               required>
+                        <div class="input_wrapper">
+
+                            <i class="fa-solid fa-envelope"></i>
+
+                            <input type="email"
+                                   name="email"
+                                   placeholder="Enter your designer email"
+                                   required>
+
+                        </div>
 
                     </div>
 
                     <!-- PASSWORD -->
 
-                    <div class="input-group">
+                    <div class="input_group">
 
-                        <i class="fa fa-lock"></i>
+                        <label>Password</label>
 
-                        <input type="password"
-                               name="password"
-                               placeholder="Password"
-                               required>
+                        <div class="input_wrapper">
+
+                            <i class="fa-solid fa-lock"></i>
+
+                            <input type="password"
+                                   name="password"
+                                   placeholder="Enter your password"
+                                   required>
+
+                        </div>
 
                     </div>
 
                     <!-- BUTTON -->
 
                     <button type="submit"
-                            class="login-btn">
+                            class="login_btn">
 
                         Login to Dashboard
 
@@ -561,23 +792,45 @@ padding:22px;
 
             </div>
 
-            <!-- LINKS -->
+            <!-- DIVIDER -->
 
-            <div class="extra-links">
+            <div class="divider">
 
-                <a href="{% url 'designer_register_page' %}">
-                    Create Account
-                </a>
-
-                <span class="divider">|</span>
-
-                <a href="{% url 'forgot_password_designer' %}">
-                    Forgot Password?
-                </a>
+                <span>ETHNIC VAULT</span>
 
             </div>
 
-            <div class="footer-note">
+            <!-- LINKS -->
+
+            <div class="extra_links">
+
+                <p>
+
+                    New Designer?
+
+                    <a href="{% url 'designer_register_page' %}">
+
+                        Create Account
+
+                    </a>
+
+                </p>
+
+                <p>
+
+                    Forgot Password?
+
+                    <a href="{% url 'forgot_password_designer' %}">
+
+                        Recover Here
+
+                    </a>
+
+                </p>
+
+            </div>
+
+            <div class="footer_note">
                 Ethnic Vault © 2026
             </div>
 
@@ -587,12 +840,20 @@ padding:22px;
 
 </div>
 
+<!-- ================= ALERT MESSAGES ================= -->
+
 {% if messages %}
+
 <script>
+
 {% for message in messages %}
+
 alert("{{ message }}");
+
 {% endfor %}
+
 </script>
+
 {% endif %}
 
 </body>
