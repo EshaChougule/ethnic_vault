@@ -1058,134 +1058,311 @@ def rent_check_banner(request):
         return redirect('homepage')  # or dashboard if you want
     
 def saree(request):
+
     data = designs.objects.filter(
-    category="Saree",
-    status='Approved'
-)
+        category="Saree",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Saree"
+        "category_name": "Saree",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def lehenga(request):
+
     data = designs.objects.filter(
-    category="Lehenga",
-    status='Approved'
-)
+        category="Lehenga",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Lehenga"
+        "category_name": "Lehenga",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def chaniya(request):
+
     data = designs.objects.filter(
-    category="Chaniya",
-    status='Approved'
-)
+        category="Chaniya",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Chaniya"
+        "category_name": "Chaniya",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def sherwani(request):
+
     data = designs.objects.filter(
-    category="Sherwani",
-    status='Approved'
-)
+        category="Sherwani",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Sherwani"
+        "category_name": "Sherwani",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def kurta(request):
+
     data = designs.objects.filter(
-    category="Kurta",
-    status='Approved'
-)
+        category="Kurta",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Kurta"
+        "category_name": "Kurta",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def tuxedo(request):
+
     data = designs.objects.filter(
-    category="Tuxedo",
-    status='Approved'
-)
+        category="Tuxedo",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Tuxedo"
+        "category_name": "Tuxedo",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def boys(request):
+
     data = designs.objects.filter(
-    category="Boys",
-    status='Approved'
-)
+        category="Boys",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Boys Wear"
+        "category_name": "Boys Wear",
+        "wishlist_ids": wishlist_ids
+
     })
 
-
 def girls(request):
+
     data = designs.objects.filter(
-    category="Girls",
-    status='Approved'
-)
+        category="Girls",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Girls Wear"
+        "category_name": "Girls Wear",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def menAccessories(request):
+
     data = designs.objects.filter(
-    category="Men Accessories",
-    status='Approved'
-)
+        category="Men Accessories",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Men Accessories"
+        "category_name": "Men Accessories",
+        "wishlist_ids": wishlist_ids
+
     })
 
-
 def womenAccessories(request):
+
     data = designs.objects.filter(
-    category="Women Accessories",
-    status='Approved'
-)
+        category="Women Accessories",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Women Accessories"
+        "category_name": "Women Accessories",
+        "wishlist_ids": wishlist_ids
+
     })
 
 
 def menfootwear(request):
+
     data = designs.objects.filter(
-    category="Men Footwear",
-    status='Approved'
-)
+        category="Men Footwear",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Men Footwear"
+        "category_name": "Men Footwear",
+        "wishlist_ids": wishlist_ids
+
     })
 
-
 def womenfootwear(request):
+
     data = designs.objects.filter(
-    category="Women Footwear",
-    status='Approved'
-)
+        category="Women Footwear",
+        status='Approved'
+    )
+
+    wishlist_ids = []
+
+    if request.session.get('role') == 'user':
+
+        user_email = request.session.get('email')
+
+        wishlist_ids = wishlist.objects.filter(
+            user_email=user_email
+        ).values_list('design_id', flat=True)
+
     return render(request, "category_base.html", {
+
         "design": data,
-        "category_name": "Women Footwear"
+        "category_name": "Women Footwear",
+        "wishlist_ids": wishlist_ids
+
     })
 
 from .models import wishlist, cart, cart_item

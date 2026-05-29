@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,11 +8,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>{{ category_name }} Collection | Ethnic Vault</title>
+<title>{{ category_name }} | Ethnic Vault</title>
 
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -30,18 +31,19 @@ body{
     font-family:'Poppins',sans-serif;
     background:#F8F3EA;
     overflow-x:hidden;
+    color:#111827;
 }
 
-/* BACKGROUND */
+/* ================= BACKGROUND ================= */
 
 body::before{
     content:"";
     position:fixed;
     inset:0;
     background:
-    linear-gradient(rgba(248,243,234,0.92),rgba(248,243,234,0.92)),
+    linear-gradient(rgba(248,243,234,0.94),rgba(248,243,234,0.94)),
     url("{% static 'images/ethnic-pattern.png' %}");
-    background-size:320px;
+    background-size:300px;
     z-index:-2;
 }
 
@@ -52,26 +54,26 @@ body::after{
     height:500px;
     background:rgba(184,146,76,0.12);
     border-radius:50%;
-    top:-150px;
-    right:-150px;
+    top:-120px;
+    right:-120px;
     filter:blur(90px);
     z-index:-1;
 }
 
-/* TOPBAR */
+/* ================= TOPBAR ================= */
 
 .topbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:22px 60px;
+    padding:25px 60px;
 }
 
 .back-btn{
     background:#111827;
     color:#D8B56A;
-    padding:12px 20px;
-    border-radius:30px;
+    padding:12px 22px;
+    border-radius:40px;
     text-decoration:none;
     font-weight:600;
     transition:0.3s;
@@ -82,7 +84,7 @@ body::after{
     color:white;
 }
 
-/* BRAND */
+/* ================= BRAND ================= */
 
 .brand{
     display:flex;
@@ -91,59 +93,97 @@ body::after{
 }
 
 .brand-icon{
-    width:50px;
-    height:50px;
-    border-radius:14px;
+    width:55px;
+    height:55px;
+    border-radius:16px;
     background:linear-gradient(135deg,#B8924C,#D8B56A);
     display:flex;
     align-items:center;
     justify-content:center;
     color:white;
+    font-size:20px;
+    box-shadow:0 10px 25px rgba(184,146,76,0.3);
 }
 
-/* HERO */
+.brand h2{
+    margin:0;
+    font-family:'Playfair Display',serif;
+    font-size:32px;
+    color:#111827;
+}
+
+/* ================= HERO ================= */
 
 .hero-section{
-    margin:20px 60px;
-    padding:70px;
-    border-radius:30px;
+    margin:10px 60px 40px;
+    padding:80px;
+    border-radius:35px;
     background:
     linear-gradient(rgba(0,0,0,0.75),rgba(0,0,0,0.7)),
     url("{% static 'images/banner1.jpeg' %}");
     background-size:cover;
+    background-position:center;
     color:white;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero-section::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg,
+    rgba(184,146,76,0.2),
+    transparent);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
 }
 
 .hero-section h1{
     font-family:'Playfair Display',serif;
-    font-size:52px;
+    font-size:60px;
     color:#F8E7C2;
+    margin-bottom:15px;
 }
 
-/* GRID */
+.hero-section p{
+    max-width:650px;
+    line-height:1.8;
+    font-size:16px;
+    color:#f4f4f4;
+}
+
+/* ================= GRID ================= */
 
 .design-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
-    gap:28px;
-    padding:40px 60px;
+    grid-template-columns:repeat(auto-fill,minmax(310px,1fr));
+    gap:35px;
+    padding:20px 60px 80px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 
 .design-card{
-    background:rgba(255,255,255,0.78);
-    border-radius:28px;
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(16px);
+    border-radius:30px;
     overflow:hidden;
     position:relative;
     transition:0.4s;
+    box-shadow:0 15px 40px rgba(0,0,0,0.08);
+    border:1px solid rgba(255,255,255,0.4);
 }
 
 .design-card:hover{
-    transform:translateY(-10px);
+    transform:translateY(-12px);
+    box-shadow:0 25px 50px rgba(0,0,0,0.12);
 }
 
-/* IMAGE */
+/* ================= IMAGE ================= */
 
 .image-wrapper{
     position:relative;
@@ -152,7 +192,7 @@ body::after{
 
 .image-wrapper img{
     width:100%;
-    height:380px;
+    height:390px;
     object-fit:cover;
     transition:0.5s;
 }
@@ -161,115 +201,172 @@ body::after{
     transform:scale(1.08);
 }
 
-/* ================= WISHLIST HEART ================= */
+/* ================= WISHLIST ================= */
 
-.wishlist-icon{
+.wishlist-btn{
     position:absolute;
-    top:14px;
-    right:14px;
-    width:42px;
-    height:42px;
+    top:16px;
+    right:16px;
+    width:48px;
+    height:48px;
     border-radius:50%;
     background:white;
     display:flex;
     align-items:center;
     justify-content:center;
-    cursor:pointer;
-    z-index:3;
+    text-decoration:none;
+    z-index:10;
     transition:0.3s;
-    font-size:18px;
-    color:#111;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
-.wishlist-icon:hover{
+.wishlist-btn:hover{
     transform:scale(1.1);
 }
 
-/* ACTIVE HEART (RED) */
-.wishlist-icon.active{
-    background:#fff0f0;
+.wishlist-btn i{
+    font-size:20px;
+}
+
+/* WHITE HEART */
+
+.heart-outline{
+    color:#444;
+}
+
+/* RED HEART */
+
+.heart-filled{
     color:#e60023;
 }
 
-/* OVERLAY */
+/* ================= OVERLAY ================= */
 
 .overlay{
     position:absolute;
     inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,0.75),transparent);
+    background:linear-gradient(to top,
+    rgba(0,0,0,0.82),
+    rgba(0,0,0,0.1));
     opacity:0;
+    transition:0.4s;
     display:flex;
     align-items:flex-end;
     justify-content:center;
-    padding:20px;
-    transition:0.4s;
+    padding:25px;
 }
 
 .design-card:hover .overlay{
     opacity:1;
 }
 
-/* BUTTONS */
+/* ================= BUTTONS ================= */
 
 .overlay-buttons{
+    width:100%;
     display:flex;
     flex-direction:column;
-    gap:10px;
-    width:100%;
+    gap:12px;
 }
 
 .overlay-buttons a{
-    text-align:center;
-    padding:12px;
-    border-radius:12px;
-    font-weight:600;
     text-decoration:none;
+    text-align:center;
+    padding:13px;
+    border-radius:14px;
+    font-weight:600;
+    transition:0.3s;
 }
-
-/* VIEW */
 
 .view-btn{
     background:white;
-    color:#111;
+    color:#111827;
 }
 
-/* CART */
+.view-btn:hover{
+    background:#f5f5f5;
+}
 
 .cart-btn{
     background:#B8924C;
     color:white;
 }
 
-/* CONTENT */
+.cart-btn:hover{
+    background:#9f7b39;
+    color:white;
+}
+
+/* ================= CONTENT ================= */
 
 .card-content{
-    padding:20px;
+    padding:24px;
 }
 
 .design-title{
-    font-size:20px;
+    font-size:22px;
     font-weight:700;
+    margin-bottom:10px;
 }
 
 .design-price{
     color:#B8924C;
-    font-size:22px;
+    font-size:28px;
     font-weight:700;
-    margin-top:8px;
 }
 
-/* TOAST MESSAGE */
+/* ================= FOOTER ================= */
+
+.design-footer{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:18px;
+}
+
+.rental-tag{
+    background:#111827;
+    color:#F8E7C2;
+    padding:8px 14px;
+    border-radius:30px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.rating{
+    color:#B8924C;
+    font-weight:600;
+}
+
+/* ================= EMPTY ================= */
+
+.empty-box{
+    text-align:center;
+    padding:120px 20px;
+}
+
+.empty-box i{
+    font-size:80px;
+    color:#B8924C;
+    margin-bottom:20px;
+}
+
+.empty-box h2{
+    font-family:'Playfair Display',serif;
+    margin-bottom:10px;
+}
+
+/* ================= TOAST ================= */
 
 .toast{
     position:fixed;
     bottom:30px;
     left:50%;
     transform:translateX(-50%);
-    background:#111;
+    background:#111827;
     color:white;
-    padding:14px 22px;
-    border-radius:30px;
-    font-size:14px;
+    padding:14px 24px;
+    border-radius:40px;
     opacity:0;
     transition:0.4s;
     z-index:9999;
@@ -280,32 +377,72 @@ body::after{
     bottom:50px;
 }
 
+/* ================= MOBILE ================= */
+
+@media(max-width:768px){
+
+    .topbar{
+        padding:20px;
+    }
+
+    .hero-section{
+        margin:10px 20px 30px;
+        padding:45px 25px;
+    }
+
+    .hero-section h1{
+        font-size:38px;
+    }
+
+    .design-grid{
+        padding:20px;
+    }
+}
+
 </style>
 
 </head>
 
 <body>
 
-<!-- TOP -->
+<!-- ================= TOPBAR ================= -->
 
 <div class="topbar">
 
-    <a href="/" class="back-btn">← Back</a>
+    <a href="/" class="back-btn">
+        ← Back
+    </a>
 
     <div class="brand">
-        <div class="brand-icon"><i class="fa fa-crown"></i></div>
+
+        <div class="brand-icon">
+            <i class="fa fa-crown"></i>
+        </div>
+
         <h2>Ethnic Vault</h2>
+
     </div>
 
 </div>
 
-<!-- HERO -->
+<!-- ================= HERO ================= -->
 
 <div class="hero-section">
-    <h1>{{ category_name }} Collection</h1>
+
+    <div class="hero-content">
+
+        <h1>{{ category_name }} Collection</h1>
+
+        <p>
+            Discover luxurious ethnic rentals crafted for elegance,
+            celebrations, weddings and unforgettable moments.
+        </p>
+
+    </div>
+
 </div>
 
-<!-- GRID -->
+<!-- ================= GRID ================= -->
 
 {% if design %}
 
@@ -317,24 +454,46 @@ body::after{
 
     <div class="image-wrapper">
 
-        <!-- WISHLIST HEART -->
-        <div class="wishlist-icon" onclick="toggleWishlist(this)">
-            <i class="fa-regular fa-heart"></i>
-        </div>
+        <!-- WISHLIST -->
+
+        <a href="{% url 'add_to_wishlist' d.id %}"
+           class="wishlist-btn">
+
+            {% if d.id in wishlist_ids %}
+
+                <i class="fa-solid fa-heart heart-filled"></i>
+
+            {% else %}
+
+                <i class="fa-regular fa-heart heart-outline"></i>
+
+            {% endif %}
+
+        </a>
+
+        <!-- IMAGE -->
 
         <img src="{{ d.design_image1.url }}">
+
+        <!-- OVERLAY -->
 
         <div class="overlay">
 
             <div class="overlay-buttons">
 
-                <a href="{% url 'view_design_details' d.id %}" class="view-btn">
+                <a href="{% url 'view_design_details' d.id %}"
+                   class="view-btn">
+
                     View Details
+
                 </a>
 
-                <a href="{% url 'add_to_cart' d.id %}" class="cart-btn"
-                   onclick="showToast('Added to cart 🛒')">
+                <a href="{% url 'add_to_cart' d.id %}"
+                   class="cart-btn"
+                   onclick="showToast('Added to Cart 🛒')">
+
                     Add to Cart
+
                 </a>
 
             </div>
@@ -343,11 +502,19 @@ body::after{
 
     </div>
 
+    <!-- CONTENT -->
+
     <div class="card-content">
 
-        <div class="design-title">{{ d.design_title }}</div>
+        <div class="design-title">
+            {{ d.design_title }}
+        </div>
 
-        <div class="design-price">₹{{ d.charges }}</div>
+        <div class="design-price">
+            ₹{{ d.charges }}
+        </div>
+
+        
 
     </div>
 
@@ -357,44 +524,42 @@ body::after{
 
 </div>
 
+{% else %}
+
+<div class="empty-box">
+
+    <i class="fa fa-shirt"></i>
+
+    <h2>No Designs Available</h2>
+
+    <p>
+        New ethnic styles will be added soon.
+    </p>
+
+</div>
+
 {% endif %}
 
-<!-- TOAST -->
+<!-- ================= TOAST ================= -->
 
-<div id="toast" class="toast">Added</div>
+<div id="toast" class="toast">
+    Added Successfully
+</div>
 
 <script>
-
-/* ================= WISHLIST TOGGLE ================= */
-
-function toggleWishlist(el){
-
-    let icon = el.querySelector("i");
-
-    el.classList.toggle("active");
-
-    if(el.classList.contains("active")){
-        icon.classList.remove("fa-regular");
-        icon.classList.add("fa-solid");
-        showToast("Added to Wishlist ❤️");
-    } else {
-        icon.classList.remove("fa-solid");
-        icon.classList.add("fa-regular");
-        showToast("Removed from Wishlist 💔");
-    }
-}
-
-/* ================= TOAST ================= */
 
 function showToast(message){
 
     let toast = document.getElementById("toast");
 
     toast.innerText = message;
+
     toast.classList.add("show");
 
     setTimeout(() => {
+
         toast.classList.remove("show");
+
     }, 2000);
 }
 
