@@ -15,6 +15,7 @@
 
 <link rel="stylesheet"
 href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
 
@@ -651,9 +652,25 @@ height:300px;
 
 {% if messages %}
 {% for message in messages %}
+
 <script>
-alert("{{ message }}");
+
+Swal.fire({
+
+    icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% elif message.tags == 'warning' %}warning{% else %}info{% endif %}",
+
+    title: "{{ message|escapejs }}",
+
+    showConfirmButton: false,
+
+    timer: 2500,
+
+    timerProgressBar: true
+
+});
+
 </script>
+
 {% endfor %}
 {% endif %}
 
@@ -684,7 +701,9 @@ alert("{{ message }}");
         {% if design.design_image1 %}
         <div class="col-lg-4 col-md-6 mb-4">
             <div class="image-box">
-                <img src="/media/{{ design.design_image1 }}" class="design-img">
+                <img src="{{ design.design_image1.url }}"
+                    class="design-img"
+                    alt="{{ design.design_title }}">
             </div>
         </div>
         {% endif %}

@@ -317,7 +317,7 @@
          }
          .closebtn{
          position:absolute;
-         top:-8px;;
+         top:-8px;
          right:10px;
          font-size:28px !important;
          color:#E0C08D !important;
@@ -1237,6 +1237,71 @@
          opacity:1;
          }
          }
+         /* ================= LUXURY TOAST ================= */
+         .toast-container{
+         position:fixed;
+         top:25px;
+         right:25px;
+         z-index:999999;
+         display:flex;
+         flex-direction:column;
+         gap:12px;
+         }
+         .custom-toast{
+         min-width:320px;
+         max-width:420px;
+         padding:16px 20px;
+         border-radius:18px;
+         background:white;
+         box-shadow:0 15px 40px rgba(0,0,0,0.15);
+         display:flex;
+         align-items:center;
+         gap:14px;
+         transform:translateX(120%);
+         opacity:0;
+         transition:0.5s ease;
+         border-left:5px solid #B8924C;
+         }
+         .custom-toast.show{
+         transform:translateX(0);
+         opacity:1;
+         }
+         .toast-icon{
+         width:42px;
+         height:42px;
+         border-radius:50%;
+         background:#F8F3EA;
+         display:flex;
+         align-items:center;
+         justify-content:center;
+         color:#B8924C;
+         font-size:18px;
+         flex-shrink:0;
+         }
+         .toast-text{
+         font-size:14px;
+         font-weight:500;
+         color:#333;
+         line-height:1.5;
+         }
+         .toast-close{
+         margin-left:auto;
+         cursor:pointer;
+         font-size:18px;
+         color:#888;
+         }
+         .toast-close:hover{
+         color:#111;
+         }
+         @media(max-width:768px){
+         .custom-toast{
+         min-width:90vw;
+         }
+         .toast-container{
+         right:10px;
+         left:10px;
+         }
+         }
       </style>
    </head>
    <body>
@@ -1798,7 +1863,7 @@
          
          } else {
          
-         alert("No collection found");
+         showToast("No collection found");
          
          }
          
@@ -1859,16 +1924,9 @@
          
          }
          
-         }, 200);
+         });
          
       </script>
-      {% if messages %}
-      <script>
-         {% for message in messages %}
-         alert("{{ message }}");
-         {% endfor %}
-      </script>
-      {% endif %}
       <script src="{% static 'js/jquery.min.js' %}"></script>
       <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
       <script>
@@ -1901,6 +1959,58 @@
              sessionStorage.setItem("splashShown", "true");
          
          });
+      </script>
+      <div class="toast-container" id="toastContainer"></div>
+      <script>
+         function showToast(message){
+         
+         const container =
+         document.getElementById("toastContainer");
+         
+         const toast =
+         document.createElement("div");
+         
+         toast.classList.add("custom-toast");
+         
+         toast.innerHTML = `
+         <div class="toast-icon">
+         <i class="fa fa-check"></i>
+         </div>
+         
+         <div class="toast-text">
+         ${message}
+         </div>
+         
+         <div class="toast-close">
+         &times;
+         </div>
+         `;
+         
+         container.appendChild(toast);
+         
+         setTimeout(()=>{
+         toast.classList.add("show");
+         },100);
+         
+         toast.querySelector(".toast-close")
+         .addEventListener("click",()=>{
+         
+         toast.remove();
+         
+         });
+         
+         setTimeout(()=>{
+         
+         toast.classList.remove("show");
+         
+         setTimeout(()=>{
+         toast.remove();
+         },500);
+         
+         },3000);
+         
+         }
+         
       </script>
    </body>
 </html>

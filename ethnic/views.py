@@ -1426,7 +1426,7 @@ def remove_wishlist(request, id):
 
     item.delete()
 
-    messages.success(request, "Removed from wishlist")
+    messages.success(request, "Item removed from wishlist successfully")
 
     return redirect("view_wishlist")
 
@@ -1574,7 +1574,7 @@ def add_to_cart(request, id):
             design=design_obj
         )
 
-        messages.success(request, "Added to cart 🛒")
+        messages.success(request, "Added to cart successfully 🛒")
 
     # RETURN TO SAME PAGE
     return redirect("view_cart")
