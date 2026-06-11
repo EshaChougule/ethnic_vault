@@ -258,6 +258,11 @@ def user_login_validation(request):
                 request.session['location'] = user_login.location
                 request.session['role'] = 'user'
 
+                messages.success(
+                    request,
+                    "Login successful. Welcome back!"
+                )
+
                 next_url = request.POST.get('next')
 
                 if next_url:
@@ -281,7 +286,7 @@ def user_register_code(request):
         confirm_password = request.POST.get('confirm_password')
         location=request.POST.get('location')
         if user.objects.filter(user_email=email , user_contact=contact).exists():
-            messages.success(request,"This account alredy exits. Plz Login")
+            messages.success(request,"Account already exists. Please login.")
             return redirect("user_login")
         else:
             un=user(user_name=name,
@@ -292,7 +297,7 @@ def user_register_code(request):
                     location=location
                     )
             un.save()
-            messages.success(request,"Your Details Has been registred successfully. Now You can Log In")
+            messages.success(request,"Registration successful. You can now login.")
             return redirect("user_login")
         
 def user_register_page(request):
@@ -1874,17 +1879,20 @@ def approve_review(request, id):
     review = get_object_or_404(Review, id=id)
     review.status = "APPROVED"
     review.save()
+    messages.success(request, "Review approved successfully")
     return redirect('view_reviews')
 
 def reject_review(request, id):
     review = get_object_or_404(Review, id=id)
     review.status = "REJECTED"
     review.save()
+    messages.success(request, "Review rejected successfully")
     return redirect('view_reviews')
 
 def delete_review(request, id):
     review = Review.objects.get(id=id)
     review.delete()
+    messages.success(request, "Review deleted successfully")
     return redirect('view_reviews')
 
 from django.shortcuts import render

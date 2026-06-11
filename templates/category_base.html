@@ -327,27 +327,19 @@
    </head>
    <body>
       {% if messages %}
-{% for message in messages %}
-
-<script>
-
-Swal.fire({
-
-    icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% elif message.tags == 'warning' %}warning{% else %}info{% endif %}",
-
-    title: "{{ message|escapejs }}",
-
-    showConfirmButton: false,
-
-    timer: 2200,
-
-    timerProgressBar: true
-
-});
-
-</script>
-
-{% endfor %}
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true
+        });
+    </script>
+    {% endfor %}
 {% endif %}
       <!-- ================= TOPBAR ================= -->
       <div class="topbar">

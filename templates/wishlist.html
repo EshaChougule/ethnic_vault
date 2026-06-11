@@ -301,29 +301,20 @@ body{
 
 <body>
     {% if messages %}
-{% for message in messages %}
-
-<script>
-
-Swal.fire({
-
-    icon: "{% if message.tags == 'success' %}success{% elif message.tags == 'error' %}error{% elif message.tags == 'warning' %}warning{% else %}info{% endif %}",
-
-    title: "{{ message|escapejs }}",
-
-    showConfirmButton: false,
-
-    timer: 2200,
-
-    timerProgressBar: true
-
-});
-
-</script>
-
-{% endfor %}
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true
+        });
+    </script>
+    {% endfor %}
 {% endif %}
-
 <div class="container">
 
     <!-- TOPBAR -->
@@ -375,32 +366,19 @@ Swal.fire({
 
                     <!-- VIEW DETAILS -->
 
-                    <a href="{% url 'view_design_details' w.design.id %}">
-
-                        <button class="btn-custom btn-view">
-
-                            <i class="fa-solid fa-eye"></i>
-
-                            View Details
-
-                        </button>
-
+                    <a href="{% url 'view_design_details' w.design.id %}"
+                        class="btn-custom btn-view d-block text-center text-decoration-none">
+                        <i class="fa-solid fa-eye"></i>
+                        View Details
                     </a>
 
                     <!-- REMOVE -->
 
-                    <a href="{% url 'remove_wishlist' w.id %}">
-
-                        <button class="btn-custom btn-remove">
-
-                            <i class="fa-solid fa-heart-crack"></i>
-
-                            Remove Wishlist
-
-                        </button>
-
+                    <a href="{% url 'remove_wishlist' w.id %}"
+                        class="btn-custom btn-remove d-block text-center text-decoration-none">
+                        <i class="fa-solid fa-heart-crack"></i>
+                        Remove Wishlist
                     </a>
-
                 </div>
 
             </div>

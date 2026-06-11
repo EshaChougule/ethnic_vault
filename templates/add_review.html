@@ -10,6 +10,7 @@
 <title>Add Review</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
 
@@ -94,6 +95,21 @@ textarea{
 </head>
 
 <body>
+    {% if messages %}
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true
+        });
+    </script>
+    {% endfor %}
+{% endif %}
 
 <div class="review-box">
 

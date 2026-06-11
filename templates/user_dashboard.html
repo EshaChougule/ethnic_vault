@@ -16,6 +16,8 @@
 <link rel="stylesheet"
 href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
 
 *{
@@ -586,6 +588,21 @@ body{
 </head>
 
 <body>
+    {% if messages %}
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true
+        });
+    </script>
+    {% endfor %}
+{% endif %}
 
 <!-- HEADER -->
 

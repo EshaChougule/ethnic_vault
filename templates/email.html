@@ -15,6 +15,8 @@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
 
 *{
@@ -253,12 +255,19 @@ body{
 </div>
 
 {% if messages %}
-<script>
-{% for message in messages %}
-alert("{{ message }}");
-{% endfor %}
-</script>
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true
+        });
+    </script>
+    {% endfor %}
 {% endif %}
-
 </body>
 </html>

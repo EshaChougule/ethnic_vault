@@ -22,6 +22,7 @@
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <!-- font awesome -->
       <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <!--  -->
       <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
       <style>
@@ -1305,6 +1306,21 @@
       </style>
    </head>
    <body>
+      {% if messages %}
+    {% for message in messages %}
+    <script>
+        Swal.fire({
+            toast: true,
+            position: 'top',
+            icon: '{{ message.tags }}',
+            title: '{{ message }}',
+            showConfirmButton: false,
+            timer: 2500,
+            timerProgressBar: true
+        });
+    </script>
+    {% endfor %}
+{% endif %}
       <!-- ================= SPLASH SCREEN ================= -->
       <div class="floating_bg"></div>
       <div id="splash_screen">
